@@ -11,13 +11,18 @@
     "babel-plugin-styled-components": "^2.0.7",
     "color": "^4.2.3",
     "dotenv": "^16.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^10.0.1",
     "next": "latest",
+    "next-optimized-images": "^2.6.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "eslint": "8.20.0",
-    "eslint-config-next": "12.2.3"
+    "eslint-config-next": "12.2.3",
+    "next-compose-plugins": "^2.2.1"
   }
 }

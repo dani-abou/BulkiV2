@@ -20,7 +20,7 @@ const BulkiPage = ({ children, title = 'Bulki' }) => {
   return <ThemeProvider theme={theme} style={{ margin: '0', padding: '0' }}>
     <Head>
       <title>{title}</title>
-      <link rel="icon" href={icon} />
+      {/* <link rel="icon" href={icon} /> */}
       <link rel="stylesheet" href="https://use.typekit.net/vou1mix.css"></link>
     </Head>
     <BulkiNavbar />

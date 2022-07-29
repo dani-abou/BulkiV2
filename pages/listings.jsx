@@ -1,7 +1,7 @@
 import BulkiPage from "../components/BulkiPage"
 
 const Listings = () => {
-  return <BulkiPage>
+  return <BulkiPage title="Listings">
     LISTINGS
   </BulkiPage>
 }
