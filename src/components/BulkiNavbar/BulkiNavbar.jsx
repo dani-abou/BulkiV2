@@ -1,10 +1,10 @@
-import { BulkiA, BulkiBody1 } from "../tags"
+import { BulkiA, BulkiBody1 } from "../../common/tags"
 import { useState } from "react"
 import {
   StyledHeaderContainer, StyledBulkiLogoContainer, StyledRightDiv, StyledBulkiInput,
   StyledNavbarDiv, StyledLoginButton, StyledSearchButton, StyledNavbarButton
 } from "./style"
-import logo from '../../public/BulkiLogo.png'
+import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
 import Link from "next/link"
 

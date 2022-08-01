@@ -1,9 +1,12 @@
-import BulkiPage from "../components/BulkiPage"
+import BulkiPage from "../src/common/BulkiPage"
+import { useTranslation } from 'react-i18next';
+import { Listings } from "../src/pagesSrc";
 
-const Listings = () => {
+const ListingsPage = () => {
+  const { t } = useTranslation();
   return <BulkiPage title="Listings">
-    LISTINGS
+    <Listings />
   </BulkiPage>
 }
 
-export default Listings
+export default ListingsPage

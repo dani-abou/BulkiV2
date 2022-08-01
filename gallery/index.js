@@ -1,12 +1,10 @@
-import BulkiPage from '../components/BulkiPage';
+import BulkiPage from '../src/common/BulkiPage';
 import GalleryCard from './galleryCard';
 import { StyledGalleryFrame } from './style'
 
 const Gallery = () => {
   return <BulkiPage>
-    <StyledGalleryFrame>
-      <GalleryCard />
-    </StyledGalleryFrame>
+    <GalleryCard />
   </BulkiPage>
 }
 

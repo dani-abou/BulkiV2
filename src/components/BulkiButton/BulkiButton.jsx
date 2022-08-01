@@ -1,4 +1,4 @@
-import { BulkiButtonText } from "../tags";
+import { BulkiButtonText } from "../../common/tags";
 import { StyledButton } from "./style"
 import { forwardRef } from "react";
 

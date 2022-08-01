@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Image from 'next/image'
-import { BulkiA, BulkiBody1 } from "../tags";
+import { BulkiA, BulkiBody1 } from "../../common/tags";
 import Link from 'next/link';
-import BulkiButton from "../BulkiButton/BulkiButton";
+import { BulkiButton } from "../BulkiButton";
 import BulkiInput from "../BulkiInput/BulkiInput";
 
 export const StyledHeaderContainer = styled.div`

@@ -1,4 +1,4 @@
-import BulkiPage from "../components/BulkiPage"
+import BulkiPage from "../src/common/BulkiPage"
 
 const ContactUs = () => {
   return <BulkiPage title={"Contact Us"}>
