@@ -15,14 +15,17 @@ const NAVBAR_ITEMS = {
   'Contact Us': '/contactUs'
 }
 
+const SearchButton = ({ searchbarValue }) => {
+  return <Link href={searchbarValue == "" ?
+    `${NAVBAR_ITEMS['Listings']}` :
+    `${NAVBAR_ITEMS['Listings']}?search=${searchbarValue}`}>
+    <StyledSearchButton noHover>Search</StyledSearchButton>
+  </Link>
+}
 
 const BulkiNavbar = () => {
 
   const [searchbarValue, setSearchbarValue] = useState('')
-
-  const navbarSearch = () => {
-    console.log('Searching for: ', searchbarValue)
-  }
 
   return <>
     <StyledHeaderContainer>
@@ -41,12 +44,11 @@ const BulkiNavbar = () => {
                 <BulkiBody1>{label}</BulkiBody1>
               </StyledNavbarButton>
             </Link>
-            // <BulkiA key={label} href={NAVBAR_ITEMS[label]}>{label}</BulkiA>
           })}
           <StyledLoginButton>Log In</StyledLoginButton>
         </StyledNavbarDiv>
         <StyledBulkiInput
-          suffix={<StyledSearchButton noHover onClick={navbarSearch}>Search</StyledSearchButton>}
+          suffix={<SearchButton searchbarValue={searchbarValue} />}
           placeholder='yesy'
           value={searchbarValue}
           onChange={e => setSearchbarValue(e.target.value)} />

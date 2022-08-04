@@ -2,18 +2,21 @@ import {
   StyledSearchFlex, StyledFiltersBox, StyledProductsDiv, StyledCardDivWithMargin,
   StyledPrice, StyledOrderButton, StyledCard
 } from "./style"
-import { useSearchProducts } from "../../hooks"
+import { useSearchProducts, useImageUrls } from "../../hooks"
 import { BulkiButtonTypes } from "../../components/BulkiButton";
 import urls from "../../common/urls.json"
 import Link from "next/link"
+import { useRouter } from 'next/router'
 
+const Listings = () => {
 
+  const router = useRouter()
+  const { search } = router.query
 
-const Listings = ({ search = "" }) => {
-  const [products, loadingProducts] = useSearchProducts(search);
+  const [products, loading] = useSearchProducts(search || "");
+  const images = useImageUrls(products)
 
   return <StyledSearchFlex>
-    {search}
     <StyledFiltersBox>DFGHJK</StyledFiltersBox>
     <StyledProductsDiv>
       {
@@ -21,13 +24,12 @@ const Listings = ({ search = "" }) => {
           <Link key={product.id} href={urls.product + product.id}>
             <StyledCardDivWithMargin >
               <StyledCard
-                imageSrc={product.img} header={product.name}>
+                images={images[product.id] || []} header={product.productName}>
                 <StyledPrice>US$ {product.price}</StyledPrice>
                 <StyledOrderButton type={BulkiButtonTypes['outline']}>Order</StyledOrderButton>
               </StyledCard>
             </StyledCardDivWithMargin>
           </Link>
-
         )
       }
     </StyledProductsDiv>

@@ -1,12 +1,19 @@
 import {
-  StyledCard, StyledImage, StyledHeader, StyledIDK, StyledFixedDimensions
+  StyledCard, StyledHeader, StyledImage, StyledFixedDimensions
 } from './style'
 import Image from 'next/image'
+import { BulkiCarousel } from '../BulkiCarousel'
 
-const BulkiCard = ({ imageSrc, header, children, className }) => {
+//If images is an array of > 1, then a carousel is shown
+
+const BulkiCard = ({ images, header, children, className }) => {
   return <StyledCard className={className}>
     <StyledImage>
-      <StyledIDK alt={header} src={imageSrc} layout='fill' />
+      {
+        images.length > 1 ?
+          <BulkiCarousel urls={images} /> :
+          <Image alt={header} src={images[0] || images} layout='fill' />
+      }
     </StyledImage>
     <StyledHeader>{header}</StyledHeader>
     <StyledFixedDimensions>

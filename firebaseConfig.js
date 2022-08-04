@@ -1,9 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+import { initializeFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,17 +13,19 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+let app;
 //App instance
-const firebase = initializeApp(firebaseConfig);
-//Analytics
-const analytics = getAnalytics(app);
-//Database
-const firestore = getFirestore(firebase)
-//File storage
-const storage = getStorage()
-const storageRef = ref(storage);
-
-const app = { firebase, analytics, firestore, storage: storageRef }
+if (!getApps().length) {
+  const firebase = initializeApp(firebaseConfig);
+  //Analytics
+  // const analytics = getAnalytics(firebase);
+  //Database
+  const firestore = initializeFirestore(firebase, { experimentalForceLongPolling: true, useFetchStreams: false })
+  //File storage
+  const storage = getStorage(firebase)
+  console.log(storage)
+  app = { firebase, firestore, storage }
+}
 
 export default app;
 

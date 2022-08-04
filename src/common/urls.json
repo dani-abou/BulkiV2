@@ -1,3 +1,4 @@
 {
-  "product": "/listing/"
+  "product": "/listing/",
+  "listings": "/listings"
 }

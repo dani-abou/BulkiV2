@@ -25,7 +25,6 @@ export const StyledImage = styled.div`
   width: 100%;
   height: 45%;
   overflow: hidden;
-  background-color: coral;
 `
 
 export const StyledHeader = styled(BulkiH4)`
@@ -36,9 +35,6 @@ export const StyledHeader = styled(BulkiH4)`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical; 
   overflow: hidden; 
-`
-export const StyledIDK = styled(Image)`
-  margin: 0;
 `
 export const StyledFixedDimensions = styled.div`
   width: 100%;
