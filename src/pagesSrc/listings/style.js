@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BulkiH5 } from "../../common/tags";
 import { BulkiButton } from "../../components/BulkiButton"
 import { BulkiCard } from "../../components/BulkiCard";
-
+import { Grid } from "@mui/material";
 
 export const StyledSearchFlex = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const StyledFiltersBox = styled.div`
   width: 250px;
   height: min-content;
   min-height: 80vh;
-  flex: 1 0;
+  flex: 1 0 20%;
 `
 
 export const StyledProductsDiv = styled.div`
@@ -49,3 +49,4 @@ export const StyledOrderButton = styled(BulkiButton)`
   margin-top: 10%;
   width: 50%;
 `
+

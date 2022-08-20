@@ -1,33 +1,55 @@
 import { useState, useEffect } from "react";
-import { ref, getDownloadURL } from "firebase/storage";
-import app from "../../firebaseConfig";
+import { getImage } from './utils'
 
+//First image of all the given listings
 
-const useImageUrls = (listings) => {
-  const [urls, setUrls] = useState([]);
+export const useImageUrls = (listings, setUrls) => {
+  // const [urls, setUrls] = useState([]);
+  const [loading, setLoading] = useState({})
 
   useEffect(() => {
     const getImages = async () => {
-      let accListings = {}
       for (const listing of listings) {
-        let accUrls = []
-        const folder = `gs://${process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}/listings/${listing.id}/`
+        setLoading(prev => ({ ...prev, listing: true }))
+        if (listing?.images[0]) {
 
-        for (const image of listing.images) {
-          const imgRef = ref(app.storage, folder + image);
-          console.log(folder + image)
-          // try {
-          const imgUrl = await getDownloadURL(imgRef);
-          accUrls.push(imgUrl)
-          // } catch (error) { console.log(`Could not find image: ${image} for ${listing.id}`) }
+          const url = await getImage(listing.id, listing?.images[0])
+          setUrls(prev => {
+            prev[listing.id] = url
+            return prev
+          })
+          // accListings[listing.id] = url
+          if (url) setLoading(prev => ({ ...prev, listing: false }))
         }
-        accListings[listing.id] = accUrls;
+        // for (const image of listing.images) {
+        //   accUrls.push(url)
+        // }
+        // accListings[listing.id] = accUrls;
       }
-      setUrls(accListings)
     }
     getImages()
-  }, [listings])
-  return urls
+  }, [listings, setUrls])
+  return loading
 }
 
-export default useImageUrls
+//All the images of the given product
+export const useImagesOfProduct = (product) => {
+  const [urls, setUrls] = useState([]);
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const getImages = async () => {
+      const { id, images } = product
+      setLoading(true);
+      if (product && Object.keys(product).length > 0) {
+        for (const image of images) {
+          const url = await getImage(id, image)
+          setUrls(prev => [...prev, url])
+        }
+        setLoading(false)
+      }
+    }
+    getImages()
+  }, [product])
+  return [urls, loading]
+}

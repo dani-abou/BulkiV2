@@ -1,33 +1,45 @@
-import { ThemeProvider } from 'styled-components';
-import BulkiNavbar from '../components/BulkiNavbar/BulkiNavbar';
-import theme from './theme';
+import { BulkiNavbar } from '../components/BulkiNavbar';
 import styled from "styled-components";
 import Head from 'next/head'
+import { Paper } from '@mui/material';
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
-const StyledBackgroundDiv = styled.div`
-  width: 100vw !important;
-  max-width:100% !important;
+const StyledBackgroundDiv = styled(Paper)`
+  width: 100% !important;
+  min-width: 950px;
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: ${props => props.theme.colors.background.hexa()};
   position: relative;
+  background-color: ${props => props.theme.colors.background.hexa()};
+  overflow-x: hidden;
+  overflow-y: auto;
 `
 
-const BulkiPage = ({ children, title = 'Bulki' }) => {
-  return <ThemeProvider theme={theme} style={{ margin: '0', padding: '0' }}>
+const DEFAULT_HEAD = {
+  title: 'Bulki',
+  icon: '/favicon.ico',
+  fonts: {
+    rel: 'stylesheet',
+    href: 'ttps://use.typekit.net/vou1mix.css'
+  }
+}
+
+const BulkiPage = ({ children, headProps }) => {
+  const { title, icon, ...links } = { ...DEFAULT_HEAD, ...headProps }
+  return <>
     <Head>
-      <title>{title}</title>
-      <link rel="icon" href='/favicon.ico' />
+      <title>{title || 'Bulki'}</title>
+      <link rel="icon" href={icon || '/favicon.ico'} />
       <link rel="stylesheet" href="https://use.typekit.net/vou1mix.css"></link>
+      {Object.keys(links).map(linkKey => <link rel={links[linkKey].rel} href={links[linkKey].href} key={linkKey} />)}
     </Head>
     <BulkiNavbar />
-    <StyledBackgroundDiv>
+    <StyledBackgroundDiv elevation={0} >
       {children}
     </StyledBackgroundDiv>
-  </ThemeProvider>
+  </>
 }
 
 // export const getServerSideProps = async ({ locale }) => ({

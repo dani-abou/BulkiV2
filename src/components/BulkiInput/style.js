@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TextField } from "@mui/material";
 
 export const StyledInputDiv = styled.div`
   display: flex;
@@ -12,13 +13,10 @@ export const StyledInputDiv = styled.div`
   overflow: hidden;
 `
 
-export const StyledInput = styled.input`
-  flex: 1 1 80%;
-  border: none;
-  outline: none;
-  border-radius: 15px;
-  height: 100%;
-  background-color: transparent;
+export const StyledInput = styled(TextField)`
+  ${props => props.height && `height: ${props.height};`}
+  ${props => props.width && `width: ${props.width};`}
+  padding: 0;
 `
 
 export const StyledInputEnd = styled.div`

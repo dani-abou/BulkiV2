@@ -1,41 +1,49 @@
-import { BulkiButtonText } from "../../common/tags";
-import { StyledButton } from "./style"
+import { StyledTextButton, StyledButton } from "./style"
 import { forwardRef } from "react";
+import { Button } from "@mui/material";
 
 export const BulkiButtonTypes = {
-  borderless: 'BORDERLESS',
+  text: 'TEXT',
   outline: 'OUTLINE',
   primary: 'PRIMARY',
   secondary: 'SECONDARY'
 }
 
 const typeStyles = {
-  [BulkiButtonTypes['borderless']]: {
-    backgroundColor: 'inherit',
-    border: 'none',
-    color: 'onSurface'
+  [BulkiButtonTypes['text']]: {
+    variant: 'text',
+    custom: StyledTextButton
   },
   [BulkiButtonTypes['outline']]: {
-    backgroundColor: 'inherit',
-    border: 'onSurface',
-    color: 'onSurface'
+    variant: 'outlined',
+    color: 'primary'
   },
   [BulkiButtonTypes['primary']]: {
-    backgroundColor: 'primary',
-    border: 'none',
-    color: 'surface'
+    variant: 'contained',
   },
   [BulkiButtonTypes['secondary']]: {
-    backgroundColor: 'secondary',
-    border: 'none',
-    color: 'surface'
+    variant: 'contained',
+    color: 'secondary'
   },
 }
 
-const BulkiButton = forwardRef(({ type = BulkiButtonTypes['primary'], className, children, ...props }, ref) => {
-  return (
-    <StyledButton {...props} className={className} typeStyles={typeStyles[type]} ref={ref}>
-      <BulkiButtonText>{children}</BulkiButtonText>
+const BulkiButton = forwardRef(({ type = [BulkiButtonTypes['primary']], className, children, ...props }, ref) => {
+  const Custom = typeStyles[type]?.custom
+  return (Custom ?
+    <Custom
+      className={className}
+      variant={typeStyles[type]?.variant}
+      color={typeStyles[type]?.color}
+      {...props} ref={ref}>
+      {children}
+    </Custom>
+    :
+    <StyledButton
+      className={className}
+      variant={typeStyles[type]?.variant}
+      color={typeStyles[type]?.color}
+      ref={ref}{...props} >
+      {children}
     </StyledButton>
   )
 })

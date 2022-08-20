@@ -23,7 +23,6 @@ if (!getApps().length) {
   const firestore = initializeFirestore(firebase, { experimentalForceLongPolling: true, useFetchStreams: false })
   //File storage
   const storage = getStorage(firebase)
-  console.log(storage)
   app = { firebase, firestore, storage }
 }
 

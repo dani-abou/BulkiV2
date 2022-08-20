@@ -1,2 +1,3 @@
 export { default as useSearchProducts } from "./useSearchProducts"
-export { default as useImageUrls } from "./useImageUrls"
+export { useImageUrls, useImagesOfProduct } from "./useImageUrls"
+export { default as useProduct } from "./useProduct"

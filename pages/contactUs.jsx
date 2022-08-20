@@ -1,9 +1,15 @@
+import { useEffect } from "react"
 import BulkiPage from "../src/common/BulkiPage"
 
-const ContactUs = () => {
-  return <BulkiPage title={"Contact Us"}>
+const PAGE_META = {
+  title: 'Contact Us'
+}
+
+const ContactUs = ({ headControls }) => {
+  useEffect(() => headControls(PAGE_META), [headControls])
+  return <>
     Contact Us
-  </BulkiPage>
+  </>
 }
 
 export default ContactUs

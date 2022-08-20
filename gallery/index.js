@@ -1,12 +1,14 @@
 import BulkiPage from '../src/common/BulkiPage';
 import GalleryCard from './galleryCard';
 import GalleryCarousel from "./galleryCarousel"
-import { StyledGalleryFrame } from './style'
+import GalleryIconButton from './galleryIconButton'
+import { StyledGalleryFrame, StyledButtonTest } from './style'
+import { BulkiButton } from '../src/components/BulkiButton';
 
 const Gallery = () => {
-  return <BulkiPage>
-    <GalleryCarousel />
-  </BulkiPage>
+  return <StyledGalleryFrame>
+    <GalleryIconButton />
+  </StyledGalleryFrame>
 }
 
-export default Gallery
+export default Gallery 
