@@ -1,27 +1,15 @@
+import { AppBar } from "@mui/material";
 import styled from "styled-components";
-import { BulkiButton } from "../BulkiButton";
-import { BulkiInput } from "../BulkiInput";
+import BulkiButton from "../BulkiButton";
+import BulkiInput from "../BulkiInput";
 
-export const StyledHeaderContainer = styled.div`
-  width: 100vw;
-  min-width: 950px;
-  height: 120px;
-  padding: 0 80px 0 3px;
-  margin: 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  background-color: ${props => props.theme.colors.surface.hexa()};
-  margin-top: 15px;
-  margin-botton: 30px;
-  gap: 10px;
+export const StyledAppbar = styled(AppBar)`
+  width: 100%;
+  min-width: 1050px;
+  height: 18%;
+  box-shadow: none;
 `
 
-export const StyledButton = styled.button`
-  background-color: ${props => props.theme.colors.primary.hexa()};
-  cursor: pointer;
-`
 export const StyledBulkiLogoContainer = styled.div`
   position: relative;
   z-index: 0;
@@ -30,12 +18,7 @@ export const StyledBulkiLogoContainer = styled.div`
   width: 200px;
   margin-left: 10%;
 `
-//flex: 0 0 150px;
 
-
-export const StyledRightDiv = styled.div`
-  flex: 0 1 80%;
-`
 
 export const StyledBulkiInput = styled(BulkiInput)`
   margin-left: auto;
@@ -43,14 +26,7 @@ export const StyledBulkiInput = styled(BulkiInput)`
   margin-top: 20px;
   height: 100%;
   float: right;
-`
-export const StyledNavbarDiv = styled.div`
-  display: flex;
-  margin-left: auto;
-  margin-right: 0;
-  width: max-content;
-  gap: 50px;
-  align-items: center;
+  width: 90%;
 `
 
 export const StyledSearchButton = styled(BulkiButton)`
@@ -60,13 +36,8 @@ export const StyledSearchButton = styled(BulkiButton)`
   float: right;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-`
-
-export const StyledLoginButton = styled(BulkiButton)`
-`
-export const StyledNavbarButton = styled(BulkiButton)`
-  height: 40px;
-  width: 100px;
-  cursor:pointer;
-  border-radius: 3px;
+  box-shadow: none;
+  :hover {
+    box-shadow: none;
+  }
 `

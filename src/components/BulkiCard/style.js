@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BulkiH4, BulkiH6 } from '../../common/tags'
+import { BulkiH4, BulkiH6 } from '../../assets/tags'
 import { Card, CardMedia } from '@mui/material'
 
 export const StyledCard = styled(Card)`
@@ -34,4 +34,5 @@ export const StyledHeader = styled(BulkiH6)`
   overflow: hidden; 
   font-size: 12x;
   height: 38%;
-`
+  width: 100%;
+  `

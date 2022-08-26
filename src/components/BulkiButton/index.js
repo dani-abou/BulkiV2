@@ -1,3 +1,3 @@
-export { default as BulkiButton } from "./BulkiButton"
+export { default } from "./BulkiButton"
 export { BulkiButtonTypes } from "./BulkiButton"
 export { default as BulkiIconButton } from "./BulkiIconButton"

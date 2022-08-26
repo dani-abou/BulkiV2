@@ -1,6 +1,4 @@
-import BulkiPage from "../src/common/BulkiPage"
 import { useEffect } from "react"
-
 
 const PAGE_META = {
   title: 'Account'

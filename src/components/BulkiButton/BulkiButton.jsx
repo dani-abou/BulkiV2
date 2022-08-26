@@ -1,7 +1,8 @@
 import { StyledTextButton, StyledButton } from "./style"
 import { forwardRef } from "react";
-import { Button } from "@mui/material";
+import PropTypes from 'prop-types';
 
+//Enumerations for different button types
 export const BulkiButtonTypes = {
   text: 'TEXT',
   outline: 'OUTLINE',
@@ -9,6 +10,7 @@ export const BulkiButtonTypes = {
   secondary: 'SECONDARY'
 }
 
+//Styles for each button type 
 const typeStyles = {
   [BulkiButtonTypes['text']]: {
     variant: 'text',
@@ -49,5 +51,9 @@ const BulkiButton = forwardRef(({ type = [BulkiButtonTypes['primary']], classNam
 })
 
 BulkiButton.displayName = 'BulkiButton';
+
+BulkiButton.propTypes = {
+  type: PropTypes.oneOf([...Object.values(BulkiButtonTypes), undefined])
+}
 
 export default BulkiButton;

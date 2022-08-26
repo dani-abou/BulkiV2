@@ -1,0 +1,11 @@
+{
+  "primary": "/catalog",
+  "home": "/",
+  "listing": "/listing",
+  "catalog": "/catalog",
+  "contactUs": "/contactUs",
+  "account": "/account",
+  "signin": "/signin",
+  "signup": "/signup",
+  "forgotPassword": "/signin/forgotPassword"
+}

@@ -31,3 +31,8 @@ export const StyledInputEnd = styled.div`
 
   }
 `
+
+export const StyledAdornment = styled.div`
+  flex: 0 0 min-content;
+  ${props => props.$prefix ? "padding-left" : "padding-right"}: 3px;
+`

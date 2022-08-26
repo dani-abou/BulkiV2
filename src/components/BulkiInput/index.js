@@ -1,1 +1,2 @@
-export { default as BulkiInput } from "./BulkiInput"
+export { default } from "./BulkiInput"
+export * from './commonRegex'

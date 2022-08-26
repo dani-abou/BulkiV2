@@ -1,24 +1,43 @@
-import { StyledInput, StyledInputDiv, StyledInputEnd } from "./style"
+import { StyledInput, StyledAdornment } from "./style"
 import { InputBase } from "@mui/material";
+import PropTypes from "prop-types"
 
-
-const BulkiInput = ({ prefix, suffix, className, width, height, ...props }) => {
-  // return <StyledInput {...props} className={className} />
+const BulkiInput = ({ prefix, suffix, className, width = '100%', ...props }) => {
   return <StyledInput
-    {...props} className={className}
+    className={className}
     width={width}
+    inputProps={{
+      sx: {
+        flex: "1 1",
+        marginLeft: '10px',
+        marginRight: '10px'
+      }
+    }}
     sx={{
       width: width,
-      height: height
     }}
     InputProps={{
-      startAdornment: prefix,
-      endAdornment: suffix,
+      startAdornment: <StyledAdornment $prefix>{prefix}</StyledAdornment>,
+      endAdornment: <StyledAdornment>{suffix}</StyledAdornment>,
       style: {
         padding: 0,
       }
     }}
+    {...props}
   />
 }
+
+BulkiInput.propTypes = {
+  //Left side adornmnent within text field
+  prefix: PropTypes.element,
+  //Right side adornmnent within text field
+  suffix: PropTypes.element,
+  //Width of element
+  width: PropTypes.number,
+  //Height of element
+  height: PropTypes.number
+
+}
+
 
 export default BulkiInput;

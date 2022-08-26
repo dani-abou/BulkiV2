@@ -1,4 +1,4 @@
-import { BulkiCarousel } from "../src/components/BulkiCarousel"
+import BulkiCarousel from "../src/components/BulkiCarousel"
 import cans from "../public/cans.png"
 import antelope from "../public/antelope.png"
 import mulch from "../public/mulch.png"

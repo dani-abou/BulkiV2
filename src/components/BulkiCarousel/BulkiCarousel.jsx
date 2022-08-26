@@ -6,6 +6,10 @@ import {
 } from "./style"
 import Image from "next/image";
 import Thumbnail from "./thumbnail"
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import PropTypes from "prop-types"
+
 
 const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -58,9 +62,13 @@ const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className
     </StyledViewPort>
     {showButtons &&
       <>
-        <StyledScrollButton onClick={scrollPrev} nextButton={false}>
+        <StyledScrollButton onClick={scrollPrev} nextbutton={false}>
+          <ChevronLeftRoundedIcon fontSize='large' />
         </StyledScrollButton>
-        <StyledScrollButton onClick={scrollNext} nextButton={true}>N</StyledScrollButton>
+        <StyledScrollButton onClick={scrollNext} nextbutton={true}>
+          <ChevronRightRoundedIcon fontSize='large' />
+
+        </StyledScrollButton>
       </>
     }
     {showThumbnails && <StyledThumbnailViewport ref={thumbViewportRef}>
@@ -76,6 +84,17 @@ const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className
     </StyledThumbnailViewport>}
 
   </StyledCarouselDiv>
+}
+
+BulkiCarousel.proptypes = {
+  //Order array of the image paths
+  urls: PropTypes.arrayOf(PropTypes.string).isRequired,
+  //Whether to show the scroll buttons
+  showButton: PropTypes.bool,
+  //Whether the carousel is draggable -- drag to traverse images
+  draggable: PropTypes.bool,
+  //Whether the clickable thumbnails are visible at bottom of carousel
+  showThumbnails: PropTypes.bool
 }
 
 export default BulkiCarousel

@@ -1,1 +1,1 @@
-export { default as BulkiCarousel } from "./BulkiCarousel"
+export { default } from "./BulkiCarousel"

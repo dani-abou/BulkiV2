@@ -1,1 +1,1 @@
-export { default as BulkiCard } from "./BulkiCard"
+export { default } from "./BulkiCard"

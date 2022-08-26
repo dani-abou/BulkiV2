@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BulkiButton } from "../BulkiButton";
+import { BulkiIconButton } from "../BulkiButton";
 
 export const StyledCarouselDiv = styled.div`
   position: relative;
@@ -29,22 +29,19 @@ export const StyledImage = styled.div`
   position: relative;
 `
 
-export const StyledScrollButton = styled(BulkiButton)`
+export const StyledScrollButton = styled(BulkiIconButton)`
   position: absolute;
   top: 50%;
-  ${props => props.nextButton ? "right: 5%;" : "left:5%"};
+  ${props => props.nextbutton ? "right: 5%;" : "left:5%"};
   transform: translate(0, -50%;);
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  box-shadow: none;
-  background-color: transparent;
-  color: ${props => props.theme.colors.primary.hexa()};
+
   :hover {
-    background-color: ${props => props.theme.colors.onSurface.darken(0.3).alpha(0.9).hexa()};
-    transition: 0.2s;
+    background-color: ${props => props.theme.colors.onSurface.darken(1).alpha(0.65).hexa()};
   }
 `
+
+
+
 export const StyledThumbnailDiv = styled.div`
   opacity: ${props => props.selected ? '1' : '0.5'};
   flex: 0 0 10%;

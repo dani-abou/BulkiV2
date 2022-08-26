@@ -1,29 +1,49 @@
-import { BulkiBody1 } from "../../common/tags"
-
-import { useState, useRef, useEffect, useMemo } from "react"
+import { BulkiBody1 } from "../../assets/tags"
+import { useState, useRef } from "react"
 import {
-  StyledHeaderContainer, StyledBulkiLogoContainer, StyledRightDiv, StyledBulkiInput,
-  StyledNavbarDiv, StyledLoginButton, StyledSearchButton, StyledNavbarButton
+  StyledBulkiLogoContainer, StyledBulkiInput,
+  StyledSearchButton, StyledAppbar
 } from "./style"
 import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
 import Link from "next/link"
-import { BulkiButton, BulkiButtonTypes } from "../BulkiButton"
+import BulkiButton, { BulkiButtonTypes } from "../BulkiButton"
 import { AppBar, Toolbar, Grid } from "@mui/material";
-import { Box } from "@mui/system"
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
+import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded';
+import { urls } from "../../assets"
+import app from "../../../firebaseConfig"
 
-
+//ALl the buttons (other than the login button) that will show in the navbar
 const NAVBAR_ITEMS = {
-  Home: '/',
-  Listings: '/listings',
-  Account: '/account',
-  'Contact Us': '/contactUs'
+  home: {
+    href: urls.home,
+    icon: <HomeRoundedIcon />,
+    translateKey: "home"
+  },
+  listings: {
+    href: urls.catalog,
+    icon: <LocalShippingRoundedIcon />,
+    translateKey: 'listings'
+  },
+  account: {
+    href: urls.account,
+    icon: <AccountBoxRoundedIcon />,
+    translateKey: 'account'
+  },
+  contactUs: {
+    href: urls.contactUs,
+    icon: <PermPhoneMsgRoundedIcon />,
+    translateKey: 'contactUs'
+  }
 }
 
 const SearchButton = ({ searchbarValue, width }) => {
   return <Link href={searchbarValue == "" ?
-    `${NAVBAR_ITEMS['Listings']}` :
-    `${NAVBAR_ITEMS['Listings']}?search=${searchbarValue}`}>
+    `${NAVBAR_ITEMS.listings.href}` :
+    `${NAVBAR_ITEMS.listings.href}?search=${searchbarValue}`}>
     <StyledSearchButton width={width}>Search</StyledSearchButton>
   </Link>
 }
@@ -34,61 +54,49 @@ const BulkiNavbar = () => {
   const navbarRef = useRef(null)
   const loginRef = useRef(null)
 
-  // return <StyledHeaderContainer>
-  //   <StyledBulkiLogoContainer>
-  //     <Image
-  //       src={logo}
-  //       alt='BulkiLogo'
-  //       layout='fill'
-  //     />
-  //   </StyledBulkiLogoContainer>
-  //   <StyledRightDiv>
-  //     <StyledNavbarDiv ref={navbarRef}>
-  //       {Object.keys(NAVBAR_ITEMS).map(label => {
-  //         return <Link key={label} href={NAVBAR_ITEMS[label]}>
-  //           <StyledNavbarButton type={BulkiButtonTypes['text']}> {label} </StyledNavbarButton>
-  //         </Link>
-  //       })}
-  //       <StyledLoginButton ref={loginRef}>Log In</StyledLoginButton>
-  //     </StyledNavbarDiv>
-  //     <StyledBulkiInput
-  //       color='primary'
-  //       focused
-  //       suffix={<SearchButton searchbarValue={searchbarValue} width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth + 20) * 2) + 'px' : '30%'} />}
-  //       width={navbarRef?.current?.offsetWidth ? navbarRef.current.offsetWidth + 'px' : '675px'}
-  //       placeholder='yesy'
-  //       value={searchbarValue}
-  //       size='small'
-  //       onChange={e => setSearchbarValue(e.target.value)} />
-  //   </StyledRightDiv>
-  // </StyledHeaderContainer>
-
-  return <AppBar position='static' color='grey'>
+  return <StyledAppbar position='static' color='grey'>
     <Grid container sx={{
-      height: '150px',
+      height: '100%',
     }}>
-      <Grid item md={5} lg={5}>
-        <StyledBulkiLogoContainer>
-          <Image
-            src={logo}
-            alt='BulkiLogo'
-            layout='fill'
-          />
-        </StyledBulkiLogoContainer>
+
+      <Grid item sm={3} xs={3} md={3} lg={5}>
+
+        <Link href={urls.primary}>
+          <a>
+            <StyledBulkiLogoContainer>
+              <Image
+                src={logo}
+                alt='BulkiLogo'
+                layout='fill'
+              />
+            </StyledBulkiLogoContainer>
+          </a>
+        </Link>
       </Grid>
-      <Grid item md={5} lg={7}>
-        <Toolbar ref={navbarRef}>
-          {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label]}>
-            <BulkiButton type={BulkiButtonTypes['text']} sx={{ width: '500px' }}>{label}</BulkiButton>
+
+      <Grid item sm={9} xs={9} md={9} lg={7}>
+        <Toolbar ref={navbarRef} sx={{ gap: '15px' }}>
+          {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label].href}>
+            <BulkiButton
+              type={BulkiButtonTypes['text']}
+              sx={{ width: '500px' }}
+              startIcon={NAVBAR_ITEMS[label].icon}
+              onClick={() => setSearchbarValue('')}>
+              {label}
+            </BulkiButton>
           </Link>
           )}
-          <BulkiButton ref={loginRef} sx={{ width: '500px' }}>Log In</BulkiButton>
+          <Link href={urls.signin}>
+            <BulkiButton ref={loginRef} sx={{ width: '500px' }}>{app?.auth?.currentUser ? 'Log out' : 'Log in'}</BulkiButton>
+          </Link>
         </Toolbar>
         <StyledBulkiInput
           color='primary'
           focused
-          suffix={<SearchButton searchbarValue={searchbarValue} width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth + 20) * 2) + 'px' : '30%'} />}
-          width={navbarRef?.current?.offsetWidth ? navbarRef.current.offsetWidth + 'px' : '700px'}
+          suffix={
+            <SearchButton
+              searchbarValue={searchbarValue}
+              width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth + 20) * 2) + 'px' : '30%'} />}
           style={{ marginRight: '20px' }}
           placeholder='Search for'
           value={searchbarValue}
@@ -97,8 +105,7 @@ const BulkiNavbar = () => {
 
       </Grid>
     </Grid>
-  </AppBar >
-
+  </StyledAppbar >
 }
 
 export default BulkiNavbar

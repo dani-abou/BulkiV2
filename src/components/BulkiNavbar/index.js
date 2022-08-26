@@ -1,1 +1,1 @@
-export { default as BulkiNavbar } from './BulkiNavbar'
+export { default } from './BulkiNavbar'

@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps } from "firebase/app";
+import { initializeApp, getApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { initializeFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,18 +14,24 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-let app;
+let firebase;
 //App instance
-if (!getApps().length) {
-  const firebase = initializeApp(firebaseConfig);
-  //Analytics
-  // const analytics = getAnalytics(firebase);
-  //Database
-  const firestore = initializeFirestore(firebase, { experimentalForceLongPolling: true, useFetchStreams: false })
-  //File storage
-  const storage = getStorage(firebase)
-  app = { firebase, firestore, storage }
+try {
+  firebase = getApp()
+
+} catch (error) {
+  firebase = initializeApp(firebaseConfig);
 }
+
+//Analytics
+// const analytics = getAnalytics(firebase);
+//Database
+const firestore = initializeFirestore(firebase, { experimentalForceLongPolling: true, useFetchStreams: false })
+//File storage
+const storage = getStorage(firebase)
+//Auth
+const auth = getAuth(firebase);
+const app = { firebase, firestore, storage, auth }
 
 export default app;
 

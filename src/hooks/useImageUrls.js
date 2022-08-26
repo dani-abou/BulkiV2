@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getImage } from './utils'
+import { DUMMY_IMAGES } from "./data";
 
 //First image of all the given listings
 
@@ -11,20 +12,21 @@ export const useImageUrls = (listings, setUrls) => {
     const getImages = async () => {
       for (const listing of listings) {
         setLoading(prev => ({ ...prev, listing: true }))
-        if (listing?.images[0]) {
-
+        if (process.env.NODE_ENV === 'development') {
+          const url = DUMMY_IMAGES[listing?.images[0]]
+          setUrls(prev => {
+            prev[listing.id] = url
+            return prev
+          })
+          setLoading(prev => ({ ...prev, listing: false }))
+        } else if (listing?.images[0]) {
           const url = await getImage(listing.id, listing?.images[0])
           setUrls(prev => {
             prev[listing.id] = url
             return prev
           })
-          // accListings[listing.id] = url
           if (url) setLoading(prev => ({ ...prev, listing: false }))
         }
-        // for (const image of listing.images) {
-        //   accUrls.push(url)
-        // }
-        // accListings[listing.id] = accUrls;
       }
     }
     getImages()
@@ -43,8 +45,13 @@ export const useImagesOfProduct = (product) => {
       setLoading(true);
       if (product && Object.keys(product).length > 0) {
         for (const image of images) {
-          const url = await getImage(id, image)
-          setUrls(prev => [...prev, url])
+          if (process.env.NODE_ENV) {
+            const url = DUMMY_IMAGES[image]
+            setUrls(prev => [...prev, url])
+          } else {
+            const url = await getImage(id, image)
+            setUrls(prev => [...prev, url])
+          }
         }
         setLoading(false)
       }

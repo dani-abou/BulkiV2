@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import BulkiPage from "../src/common/BulkiPage"
 
 const PAGE_META = {
   title: 'Contact Us'
