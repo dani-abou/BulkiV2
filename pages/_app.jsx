@@ -7,7 +7,8 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../src/assets/theme';
 import createEmotionCache from '../src/assets/createEmotionCache';
 import { BulkiPage } from "../src/assets"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import instantiateFirebase from "../firebaseConfig"
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.
