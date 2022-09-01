@@ -25,6 +25,8 @@ let Node_Shape = {
 //Array of tree nodes, if undefined
 Node_Shape.elements = PropTypes.arrayOf(PropTypes.shape(Node_Shape));
 
+export { Node_Shape };
+
 const TreeNode = ({ id,
   elements,
   value,
@@ -42,13 +44,11 @@ const TreeNode = ({ id,
     Component = StyledEndNode
   }
 
-
   return <Component $parent={parent} nodeId={id} collapseIcon={collapse} expandIcon={expanded}{...props} >
     <StyledCenteredDiv>
       {additionalComponent}
       {Array.isArray(elements) && elements.map(node => <TreeNode key={node.id} defaultEndIcon={defaultEndIcon}{...node} />)}
     </StyledCenteredDiv>
-
   </Component>
 }
 
