@@ -10,15 +10,16 @@ const BulkiInput = ({ prefix, suffix, className, width = '100%', ...props }) => 
       sx: {
         flex: "1 1",
         marginLeft: '10px',
-        marginRight: '10px'
+        marginRight: '10px',
       }
     }}
     sx={{
       width: width,
+      padding: 0
     }}
     InputProps={{
       startAdornment: <StyledAdornment $prefix>{prefix}</StyledAdornment>,
-      endAdornment: <StyledAdornment>{suffix}</StyledAdornment>,
+      endAdornment: suffix,
       style: {
         padding: 0,
       }

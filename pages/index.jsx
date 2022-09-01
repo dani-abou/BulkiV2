@@ -6,7 +6,6 @@ import {
 } from '../src/assets/tags';
 import styled from "styled-components";
 import { useEffect } from "react"
-import '../src/assets/translation/i18n.js';
 
 
 const TestButton = styled(Button)`

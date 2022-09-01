@@ -20,7 +20,7 @@ export const StyledImage = styled.div`
 export const StyledImageDiv = styled(CardMedia)`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border: 0.5px solid ${props => props.theme.colors.background.darken(0.2).hexa()};
+
   overflow: hidden;
   height: 45%;
   width: 100%

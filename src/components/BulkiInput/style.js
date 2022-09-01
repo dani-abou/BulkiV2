@@ -19,20 +19,7 @@ export const StyledInput = styled(TextField)`
   padding: 0;
 `
 
-export const StyledInputEnd = styled.div`
-  flex: 0 0 18%;
-  height: 100%;
-  text-align: center;  
-  padding: 0;
-  margin:0;
-  ${props => props.borderOn == 'right' ?
-    `border-right: 1px solid ${props.theme.colors.onSurface.alpha(0.3).hexa()};` :
-    `border-left: 1px solid ${props.theme.colors.onSurface.alpha(0.3).hexa()};`
-
-  }
-`
-
 export const StyledAdornment = styled.div`
-  flex: 0 0 min-content;
-  ${props => props.$prefix ? "padding-left" : "padding-right"}: 3px;
+  flex: 0 0;
+  margin: 0;
 `

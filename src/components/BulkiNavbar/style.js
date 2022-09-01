@@ -31,13 +31,13 @@ export const StyledBulkiInput = styled(BulkiInput)`
 
 export const StyledSearchButton = styled(BulkiButton)`
   height: 100%;
-  width: ${props => props.width || '10%'};
-  margin:0;
-  float: right;
+  width: ${props => props.width || '100%'};
+  margin-top:-1px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   box-shadow: none;
   :hover {
     box-shadow: none;
+    background-color: ${props => props.theme.colors.primary.hexa()};
   }
 `

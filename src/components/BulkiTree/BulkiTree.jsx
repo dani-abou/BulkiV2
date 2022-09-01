@@ -16,13 +16,14 @@ const BulkiTree = ({
   className,
   ...props
 }) => {
-  return <TreeView {...props} className={className}
+  return <TreeView {...props} sx={{ gap: '30px' }} className={className}
     defaultCollapseIcon={collapseIcon}
     defaultExpandIcon={expandIcon}
     defaultEndIcon={nodeIcon}
     selected={selected}
     onNodeSelect={onNodeSelect}>
-    <TreeNode {...tree} defaultEndIcon={nodeIcon} />
+    <TreeNode {...tree} parent={true} defaultEndIcon={nodeIcon} />
+    <br />
   </TreeView>
 }
 

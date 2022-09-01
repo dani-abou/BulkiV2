@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { TreeItem } from '@mui/lab';
+import { StyledEndNode, StyledParentNode, StyledCenteredDiv } from "./style"
 
 let Node_Shape = {
   //The label of this node
@@ -25,22 +25,31 @@ let Node_Shape = {
 //Array of tree nodes, if undefined
 Node_Shape.elements = PropTypes.arrayOf(PropTypes.shape(Node_Shape));
 
-const TreeNode = ({ id, elements, value, defaultEndIcon, additionalComponent, ...props }) => {
+const TreeNode = ({ id,
+  elements,
+  value,
+  defaultEndIcon,
+  parent = false,
+  additionalComponent, ...props }) => {
   const { icon } = props;
   let collapse;
   let expanded;
+  let Component = StyledParentNode
+  //If an end node (the additionalComponents sometimes make it expand/collapse icon despite being an end)
   if (!Array.isArray(elements)) {
     expanded = icon || defaultEndIcon
     collapse = icon || defaultEndIcon
+    Component = StyledEndNode
   }
-  // console.log(!Array.isArray(elements), collapse, defaultEndIcon, id)
 
 
-  return <TreeItem nodeId={id} collapseIcon={collapse} expandIcon={expanded}{...props} >
-    {additionalComponent}
-    {Array.isArray(elements) && elements.map(node => <TreeNode key={node.id} defaultEndIcon={defaultEndIcon}{...node} />)
-    }
-  </TreeItem>
+  return <Component $parent={parent} nodeId={id} collapseIcon={collapse} expandIcon={expanded}{...props} >
+    <StyledCenteredDiv>
+      {additionalComponent}
+      {Array.isArray(elements) && elements.map(node => <TreeNode key={node.id} defaultEndIcon={defaultEndIcon}{...node} />)}
+    </StyledCenteredDiv>
+
+  </Component>
 }
 
 TreeNode.propTypes = PropTypes.shape(Node_Shape)

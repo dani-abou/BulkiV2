@@ -20,7 +20,4 @@ export const getServerSideProps = async ({ query }) => {
   };
 }
 
-
-
-
 export default ResetPasswordPage

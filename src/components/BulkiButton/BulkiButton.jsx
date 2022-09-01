@@ -29,21 +29,21 @@ const typeStyles = {
   },
 }
 
-const BulkiButton = forwardRef(({ type = [BulkiButtonTypes['primary']], className, children, ...props }, ref) => {
-  const Custom = typeStyles[type]?.custom
+const BulkiButton = forwardRef(({ variant = [BulkiButtonTypes['primary']], className, children, ...props }, ref) => {
+  const Custom = typeStyles[variant]?.custom
   return (Custom ?
     <Custom
       className={className}
-      variant={typeStyles[type]?.variant}
-      color={typeStyles[type]?.color}
+      variant={typeStyles[variant]?.variant}
+      color={typeStyles[variant]?.color}
       {...props} ref={ref}>
       {children}
     </Custom>
     :
     <StyledButton
       className={className}
-      variant={typeStyles[type]?.variant}
-      color={typeStyles[type]?.color}
+      variant={typeStyles[variant]?.variant}
+      color={typeStyles[variant]?.color}
       ref={ref}{...props} >
       {children}
     </StyledButton>
@@ -53,7 +53,7 @@ const BulkiButton = forwardRef(({ type = [BulkiButtonTypes['primary']], classNam
 BulkiButton.displayName = 'BulkiButton';
 
 BulkiButton.propTypes = {
-  type: PropTypes.oneOf([...Object.values(BulkiButtonTypes), undefined])
+  variant: PropTypes.oneOf([...Object.values(BulkiButtonTypes), undefined])
 }
 
 export default BulkiButton;

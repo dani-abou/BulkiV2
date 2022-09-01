@@ -1,6 +1,6 @@
 // const i18n = require('./src/assets/translation/i18n');
 // const i18n_init = require('./src/assets/translation/i18n_init');
-const nextTranslate = require('next-translate')
+// const nextTranslate = require('next-translate')
 const withPlugins = require("next-compose-plugins");
 
 const nextConfig = {

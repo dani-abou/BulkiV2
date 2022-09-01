@@ -7,17 +7,21 @@ import theme from "./theme"
 const StyledWholePage = styled.div`
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledBackgroundDiv = styled(Paper)`
+  flex: 1;
+  overflow: auto;
   width: 100% !important;
   min-width: 1050px;
-  min-height: 82% !important;
+
   margin: 0;
   padding: 2% 0;
   position: relative;
   background-color: ${props => props.theme.colors.background.hexa()};
-  box-sizing: border-box;
+  padding-bottom: 10%;
 `
 
 const DEFAULT_HEAD = {

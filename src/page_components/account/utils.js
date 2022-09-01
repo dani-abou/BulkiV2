@@ -31,12 +31,7 @@ export const StyledPaper = ({ children, title, className, ...props }) => {
   </StyledSignInContainer>
 }
 
-const StyledIconDiv = styled.div`
-  width: 16%;
-`
-const StyledIconButton = styled(BulkiIconButton)`
-  color: ${props => props.$secondary ? props.theme.colors.secondary.lighten(0.1).hexa() : props.theme.colors.onSurface.hexa()};
-`
+
 
 export const EmailField = ({ label = 'Email', value, onChange, className, ...props }) => {
   return <BulkiInput
@@ -49,6 +44,13 @@ export const EmailField = ({ label = 'Email', value, onChange, className, ...pro
     onChange={e => onChange(e.target.value)} />
 }
 
+const StyledIconDiv = styled.div`
+  width: min-content;
+  margin-right: 5px;
+`
+const StyledIconButton = styled(BulkiIconButton)`
+  color: ${props => props.$secondary ? props.theme.colors.secondary.lighten(0.1).hexa() : props.theme.colors.onSurface.hexa()};
+`
 
 export const PasswordField = ({ label = 'Password', shrink, value, onChange, className, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);

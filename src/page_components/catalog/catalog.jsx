@@ -1,6 +1,6 @@
 import {
-  StyledSearchFlex, StyledFiltersBox, StyledProductsDiv, StyledCardDivWithMargin,
-  StyledPrice, StyledOrderButton, StyledCard, StyledListingsGrid
+  StyledSearchFlex, StyledFiltersBox, StyledDecoratedQuery,
+  StyledPrice, StyledOrderButton, StyledCard, StyledSearchDescription, StyledSearchQueryBox
 } from "./style"
 import { useSearchProducts, useImageUrls } from "../../hooks"
 import { BulkiButtonTypes } from "../../components/BulkiButton";
@@ -45,22 +45,37 @@ const Catalog = ({ searchQuery }) => {
           onNodeSelect={(e, node) => selectFilter(tree.id, e, node)} />
       })}
     </StyledFiltersBox>
-    <Grid container spacing={2}>
+    <div>
       {
-        products.map(product =>
-          <Link href={urls.listing + '/' + product.id} key={product.id}>
-            <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
-              <StyledCard
-                imageLoading={loadingImages[product.id]} image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.productName}>
-                <StyledPrice>US$ {product.price}</StyledPrice>
-                <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
-              </StyledCard>
-            </Grid>
-          </Link>
+        searchQuery && searchQuery !== '' && <StyledSearchQueryBox>
+          <StyledSearchDescription>
+            Showing results for {" "}
+            <StyledDecoratedQuery>
+              {`"`}{searchQuery}{`"`}
 
-        )
+            </StyledDecoratedQuery>
+          </StyledSearchDescription>
+        </StyledSearchQueryBox>
       }
-    </Grid>
+      <Grid container spacing={2}>
+
+        {
+          products.map(product =>
+            <Link href={urls.listing + '/' + product.id} key={product.id}>
+              <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
+                <StyledCard
+                  imageLoading={loadingImages[product.id]} image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.productName}>
+                  <StyledPrice>US$ {product.price}</StyledPrice>
+                  <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
+                </StyledCard>
+              </Grid>
+            </Link>
+
+          )
+        }
+      </Grid>
+    </div>
+
   </StyledSearchFlex>
 }
 
