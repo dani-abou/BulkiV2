@@ -1,5 +1,4 @@
-import { BulkiBody1 } from "../../assets/tags"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import {
   StyledBulkiLogoContainer, StyledBulkiInput,
   StyledSearchButton, StyledAppbar
@@ -8,7 +7,7 @@ import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
 import Link from "next/link"
 import BulkiButton, { BulkiButtonTypes } from "../BulkiButton"
-import { AppBar, Toolbar, Grid } from "@mui/material";
+import { Toolbar, Grid } from "@mui/material";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
@@ -16,8 +15,9 @@ import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded';
 import { urls } from "../../assets"
 import app from "../../../firebaseConfig"
 import { useRouter } from 'next/router'
+import AccountDropdown from "./AccountDropdown"
 
-//ALl the buttons (other than the login button) that will show in the navbar
+//All the buttons (other than the login button) that will show in the navbar
 const NAVBAR_ITEMS = {
   home: {
     href: urls.home,
@@ -48,15 +48,39 @@ const search = (e, searchbarValue, router) => {
     `${NAVBAR_ITEMS.listings.href}?search=${searchbarValue}`);
 }
 
-const BulkiNavbar = () => {
-
+const SearchField = ({ loginRef }) => {
+  const [searchbarValue, setSearchbarValue] = useState('')
   const router = useRouter()
 
-  const [searchbarValue, setSearchbarValue] = useState('')
+
+  return <form onSubmit={e => search(e, searchbarValue, router)}>
+    <StyledBulkiInput
+      color='primary'
+      focused
+      suffix={
+        <StyledSearchButton
+          type="submit"
+          width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth) * 2) + 'px' : '20%'}>
+          Search</StyledSearchButton>
+      }
+      style={{ marginRight: '20px' }}
+      placeholder='Search for'
+      value={searchbarValue}
+      size='small'
+      onChange={e => setSearchbarValue(e.target.value)} />
+  </form>
+}
+
+
+const BulkiNavbar = ({ scrollTrigger }) => {
+
+
   const navbarRef = useRef(null)
   const loginRef = useRef(null)
 
+
   return <StyledAppbar position='static' color='grey'>
+
     <Grid container sx={{
       height: '100%',
     }}>
@@ -88,27 +112,14 @@ const BulkiNavbar = () => {
             </BulkiButton>
           </Link>
           )}
-          <Link href={urls.signin}>
-            <BulkiButton ref={loginRef} sx={{ width: '500px' }}>{app?.auth?.currentUser ? 'Log out' : 'Log in'}</BulkiButton>
-          </Link>
+          {
+            app?.auth?.currentUser ? <AccountDropdown /> :
+              <Link href={urls.signin}>
+                <BulkiButton ref={loginRef} sx={{ width: '500px' }}>Log in</BulkiButton>
+              </Link>
+          }
         </Toolbar>
-        <form onSubmit={e => search(e, searchbarValue, router)}>
-          <StyledBulkiInput
-            color='primary'
-            focused
-            suffix={
-              <StyledSearchButton
-                type="submit"
-                width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth) * 2) + 'px' : '20%'}>
-                Search</StyledSearchButton>
-            }
-            style={{ marginRight: '20px' }}
-            placeholder='Search for'
-            value={searchbarValue}
-            size='small'
-            onChange={e => setSearchbarValue(e.target.value)} />
-        </form>
-
+        <SearchField loginRef={loginRef} />
       </Grid>
     </Grid>
   </StyledAppbar >

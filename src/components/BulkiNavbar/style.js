@@ -5,7 +5,6 @@ import BulkiInput from "../BulkiInput";
 
 export const StyledAppbar = styled(AppBar)`
   width: 100%;
-  min-width: 1050px;
   height: 18%;
   box-shadow: none;
 `

@@ -46,7 +46,7 @@ export const StyledSearchFlex = styled.div`
   display: flex;
   justify-content: space-between;
   height: 15%;
-  margin-top: -3%;
+  margin-top: 3%;
 `
 export const StyledCheckbox = styled(FormControlLabel)`
 `

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyledPaper, LogInButton } from "../utils";
+import { StyledPaper, LogInButton, AuthChecker } from "../utils";
 import {
   StyledNameDiv, StyledNameField, StyledEmail, StyledHelperText,
   StyledPasswordDiv, StyledPasswordField, StyledPasswordInstructions
@@ -20,50 +20,53 @@ const SignUp = () => {
 
   return (
     <StyledPaper title='Sign up'>
-      <StyledNameDiv>
-        <StyledNameField
-          required
-          label='First Name'
-          placeholder='John'
-          value={firstName}
-          onChange={e => setFirstName(e.target.value)}
-          error={helperText?.ref === 'firstName'}
-          helperText={helperText?.ref == 'firstName' ? helperText?.text : undefined}
-        />
-        <StyledNameField
-          required
-          label='Last Name'
-          placeholder='Doe'
-          value={lastName}
-          onChange={e => setLastName(e.target.value)}
-          error={helperText?.ref === 'lastName'}
-          helperText={helperText?.ref == 'lastName' ? helperText?.text : undefined}
-        />
-      </StyledNameDiv>
+      <AuthChecker>
+        <StyledNameDiv>
+          <StyledNameField
+            required
+            label='First Name'
+            placeholder='John'
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            error={helperText?.ref === 'firstName'}
+            helperText={helperText?.ref == 'firstName' ? helperText?.text : undefined}
+          />
+          <StyledNameField
+            required
+            label='Last Name'
+            placeholder='Doe'
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+            error={helperText?.ref === 'lastName'}
+            helperText={helperText?.ref == 'lastName' ? helperText?.text : undefined}
+          />
+        </StyledNameDiv>
 
-      <StyledEmail
-        value={email}
-        onChange={setEmail}
-        error={helperText?.ref === 'email'}
-        helperText={helperText?.ref === 'email' ? helperText?.text : undefined}
-      />
-      <StyledPasswordDiv>
-        <StyledPasswordField
-          value={password}
-          onChange={setPassword}
-          shrink
-          error={helperText?.ref === 'password' || helperText?.ref === 'password'}
-          helperText={helperText?.ref == 'password' ? <StyledHelperText>{helperText?.text}</StyledHelperText> : undefined} />
-        <StyledPasswordField
-          label='Confirm Password'
-          shrink
-          value={passwordConfirm}
-          onChange={setPasswordConfirm} />
-      </StyledPasswordDiv>
-      <LogInButton
-        onClick={() => verifyForm({ email, firstName, lastName, password, passwordConfirm },
-          setHelperText, router)}
-      >Sign up</LogInButton>
+        <StyledEmail
+          value={email}
+          onChange={setEmail}
+          error={helperText?.ref === 'email'}
+          helperText={helperText?.ref === 'email' ? helperText?.text : undefined}
+        />
+        <StyledPasswordDiv>
+          <StyledPasswordField
+            value={password}
+            onChange={setPassword}
+            shrink
+            error={helperText?.ref === 'password' || helperText?.ref === 'password'}
+            helperText={helperText?.ref == 'password' ? <StyledHelperText>{helperText?.text}</StyledHelperText> : undefined} />
+          <StyledPasswordField
+            label='Confirm Password'
+            shrink
+            value={passwordConfirm}
+            onChange={setPasswordConfirm} />
+        </StyledPasswordDiv>
+        <LogInButton
+          onClick={() => verifyForm({ email, firstName, lastName, password, passwordConfirm },
+            setHelperText, router)}
+        >Sign up</LogInButton>
+      </AuthChecker>
+
     </StyledPaper >)
 }
 

@@ -6,6 +6,10 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from "react";
 import { BulkiH4 } from "../../assets/tags";
+import { useRouter } from "next/router"
+import { useEffect } from "react";
+import app from "../../../firebaseConfig";
+import { urls } from "../../assets";
 
 const StyledSignInContainer = styled(Paper)`
   margin-left: auto;
@@ -81,4 +85,18 @@ const StyledLogInButton = styled(BulkiButton)`
 
 export const LogInButton = ({ children, ...props }) => {
   return <StyledLogInButton {...props}>{children}</StyledLogInButton>
+}
+
+
+export const AuthChecker = ({ children }) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    console.log(app?.auth?.currentUser ? 'true' : 'false')
+    if (app?.auth?.currentUser) {
+      console.log('here')
+      router.push(urls.catalog);
+    }
+  }, [router])
+  return children
 }

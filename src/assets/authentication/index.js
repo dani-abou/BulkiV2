@@ -1,5 +1,6 @@
 export { default as signOut } from "./signOut"
 export { default as useEmailSignIn } from "./signIn"
+export { default as emailSignIn } from "./emailSignIn"
 export { default as signUp } from "./makeAccount"
 export { default as sendPasswordReset } from "./sendPasswordReset"
 export { default as useConfirmResetCode } from "./useConfirmResetCode"

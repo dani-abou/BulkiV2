@@ -1,8 +1,8 @@
 import { signOut } from "firebase/auth";
 import app from "../../../firebaseConfig";
+import { urls } from "..";
 
 const bulkiSignOut = async (router, redirectPath = urls.catalog) => {
-
   const auth = app?.auth;
   if (!auth) throw 'Auth instance invalid';
   try {

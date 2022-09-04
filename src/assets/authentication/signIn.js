@@ -23,6 +23,7 @@ const useEmailSignIn = (email, password, redirectPath = urls.primary) => {
 
     const auth = app?.auth;
     if (!auth) throw 'Auth instance invalid'
+    console.log(email, password)
     if (email && email !== '' && password && password !== '') {
       signIn();
     }

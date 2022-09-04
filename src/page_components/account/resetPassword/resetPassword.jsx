@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material"
 import { useConfirmResetCode, resetPassword } from "../../../assets/authentication"
-import { StyledPaper, PasswordField, LogInButton } from "../utils"
+import { StyledPaper, PasswordField, LogInButton, AuthChecker } from "../utils"
 import { Link } from "next/link"
 import { urls } from "../../../assets"
 import { useState } from "react"
@@ -23,36 +23,39 @@ const ResetPassword = ({ validationResponse }) => {
   }
 
   return <StyledPaper title='Reset Password'>
-    <StyledPaperBody>
-      {
-        validationResponse.type === 'failure' ?
-          <>{validationResponse.message}</> :
-          <>
-            <StyledFieldDiv>
-              <PasswordField
-                value={password}
-                onChange={setPassword}
-                shrink
-                error={helperText}
-                helperText={helperText}
-              />
-            </StyledFieldDiv>
-            <StyledFieldDiv>
-              <PasswordField
-                label='Confirm Password'
-                value={confirmPassword}
-                onChange={setConfirmPassword}
-                shrink
-              />
-            </StyledFieldDiv>
+    <AuthChecker>
+      <StyledPaperBody>
+        {
+          validationResponse.type === 'failure' ?
+            <>{validationResponse.message}</> :
+            <>
+              <StyledFieldDiv>
+                <PasswordField
+                  value={password}
+                  onChange={setPassword}
+                  shrink
+                  error={helperText}
+                  helperText={helperText}
+                />
+              </StyledFieldDiv>
+              <StyledFieldDiv>
+                <PasswordField
+                  label='Confirm Password'
+                  value={confirmPassword}
+                  onChange={setConfirmPassword}
+                  shrink
+                />
+              </StyledFieldDiv>
 
-            <LogInButton onClick={() => validatePassword(validationResponse.message)}>Reset password</LogInButton>
-            <StyledResponseDiv>
-              <StyledResponse>{response}</StyledResponse>
-            </StyledResponseDiv>
-          </>
-      }
-    </StyledPaperBody>
+              <LogInButton onClick={() => validatePassword(validationResponse.message)}>Reset password</LogInButton>
+              <StyledResponseDiv>
+                <StyledResponse>{response}</StyledResponse>
+              </StyledResponseDiv>
+            </>
+        }
+      </StyledPaperBody>
+    </AuthChecker>
+
   </StyledPaper>
 }
 
