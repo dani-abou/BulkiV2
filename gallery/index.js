@@ -6,12 +6,15 @@ import BulkiButton from '../src/components/BulkiButton';
 import GalleryModal from './galleryModal';
 import { signOut } from '../src/assets/authentication';
 import { useRouter } from "next/router"
+import GalleryForm from './galleryForm';
+import BulkiSelect from '../src/components/BulkiSelect';
+import { useState } from 'react';
+import GallerySelect from './gallerySelect';
 
 const Gallery = () => {
   const router = useRouter()
   return <StyledGalleryFrame>
-    <GalleryModal>Child</GalleryModal>
-    <BulkiButton onClick={() => signOut(router)}>Sign out</BulkiButton>
+    <GallerySelect />
   </StyledGalleryFrame>
 }
 

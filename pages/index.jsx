@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import {
   BulkiBody1, BulkiBody2, BulkiH1, BulkiH2, BulkiH3, BulkiH4, BulkiH5, BulkiH6,
   BulkiSubtitle1, BulkiSubtitle2, BulkiCaption, BulkiButtonText, BulkiOverline
-} from '../src/assets/tags';
+} from '../src/assets/styles';
 import styled from "styled-components";
 import { useEffect } from "react"
 

@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 import styled from "styled-components";
-import { BulkiBody1, BulkiH5 } from "../../assets/tags";
+import { BulkiBody1, BulkiH5 } from "../../assets/styles";
 import BulkiButton from "../../components/BulkiButton"
 import BulkiCard from "../../components/BulkiCard";
 

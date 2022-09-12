@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import {
-  StyledBulkiLogoContainer, StyledBulkiInput,
-  StyledSearchButton, StyledAppbar
+  StyledBulkiLogoContainer, StyledBulkiInput, StyledButton,
+  StyledSearchButton, StyledAppbar, StyledToolbar
 } from "./style"
 import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
@@ -13,9 +13,10 @@ import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded';
 import { urls } from "../../assets"
-import app from "../../../firebaseConfig"
 import { useRouter } from 'next/router'
 import AccountDropdown from "./AccountDropdown"
+import { BulkiContextConsumer } from "../../assets/context"
+
 
 //All the buttons (other than the login button) that will show in the navbar
 const NAVBAR_ITEMS = {
@@ -48,10 +49,8 @@ const search = (e, searchbarValue, router) => {
     `${NAVBAR_ITEMS.listings.href}?search=${searchbarValue}`);
 }
 
-const SearchField = ({ loginRef }) => {
-  const [searchbarValue, setSearchbarValue] = useState('')
+export const SearchField = ({ loginRef, searchbarValue, setSearchbarValue }) => {
   const router = useRouter()
-
 
   return <form onSubmit={e => search(e, searchbarValue, router)}>
     <StyledBulkiInput
@@ -72,21 +71,22 @@ const SearchField = ({ loginRef }) => {
 }
 
 
-const BulkiNavbar = ({ scrollTrigger }) => {
+const BulkiNavbar = ({ skinny, bulkiContext }) => {
 
+  const [searchbarValue, setSearchbarValue] = useState('')
 
   const navbarRef = useRef(null)
   const loginRef = useRef(null)
 
 
-  return <StyledAppbar position='static' color='grey'>
+  // return <CompressedNavbar />
+  return <StyledAppbar position='static' >
 
     <Grid container sx={{
       height: '100%',
     }}>
-
       <Grid item sm={3} xs={3} md={3} lg={5} >
-        <StyledBulkiLogoContainer>
+        <StyledBulkiLogoContainer $skinny={true}>
           <Link href={urls.primary}>
             <a href={urls.primary}>
               <Image
@@ -99,30 +99,40 @@ const BulkiNavbar = ({ scrollTrigger }) => {
         </StyledBulkiLogoContainer>
 
       </Grid>
-
       <Grid item sm={9} xs={9} md={9} lg={7}>
-        <Toolbar ref={navbarRef} sx={{ gap: '15px' }}>
+
+        <StyledToolbar ref={navbarRef} $skinny={skinny}>
           {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label].href}>
-            <BulkiButton
+            <StyledButton
               variant={BulkiButtonTypes['text']}
-              sx={{ width: '500px' }}
               startIcon={NAVBAR_ITEMS[label].icon}
-              onClick={() => setSearchbarValue('')}>
+              onClick={() => setSearchbarValue('')}
+            >
               {label}
-            </BulkiButton>
+            </StyledButton>
           </Link>
           )}
           {
-            app?.auth?.currentUser ? <AccountDropdown /> :
+            bulkiContext?.userData ? <AccountDropdown /> :
               <Link href={urls.signin}>
-                <BulkiButton ref={loginRef} sx={{ width: '500px' }}>Log in</BulkiButton>
+                <StyledButton
+                  startIcon={<AccountBoxRoundedIcon />}
+                  ref={loginRef}
+                >Log in</StyledButton>
               </Link>
           }
-        </Toolbar>
-        <SearchField loginRef={loginRef} />
+        </StyledToolbar>
+
+        <SearchField loginRef={loginRef}
+          searchbarValue={searchbarValue}
+          setSearchbarValue={setSearchbarValue} />
       </Grid>
     </Grid>
   </StyledAppbar >
 }
 
-export default BulkiNavbar
+export default function BulkiNavbarWithContext(props) {
+  return <BulkiContextConsumer>
+    {context => <BulkiNavbar {...props} bulkiContext={context} />}
+  </BulkiContextConsumer>
+}

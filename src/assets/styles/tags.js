@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import { ForwardedRef, forwardRef } from "react";
+import { forwardRef } from "react";
 
 export const BulkiBody1 = forwardRef(({ children, className, ...props }, ref) => <Typography {...props} ref={ref} className={className} variant='body1'>{children}</Typography>)
 export const BulkiBody2 = forwardRef(({ children, className, ...props }, ref) => <Typography {...props} className={className} variant='body2'>{children}</Typography>)

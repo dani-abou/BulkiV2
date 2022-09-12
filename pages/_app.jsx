@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider as MUIThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
-import theme from '../src/assets/theme';
+import { theme, BulkiPage } from '../src/assets';
 import createEmotionCache from '../src/assets/createEmotionCache';
-import { BulkiPage } from "../src/assets"
-import { useState, useEffect, useMemo } from 'react';
-import instantiateFirebase from "../firebaseConfig"
+import { useState } from 'react';
+import { BulkiContextProvider } from '../src/assets/context';
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.
@@ -31,10 +30,12 @@ function MyApp(props) {
       </Head>
       <MUIThemeProvider theme={theme}>
         <SCThemeProvider theme={theme}>
-          <BulkiPage headProps={pageHead}>
-            <CssBaseline />
-            <Component headControls={setPageHead} {...pageProps} />
-          </BulkiPage>
+          <BulkiContextProvider>
+            <BulkiPage headProps={pageHead}>
+              <CssBaseline />
+              <Component headControls={setPageHead} {...pageProps} />
+            </BulkiPage>
+          </BulkiContextProvider>
         </SCThemeProvider>
       </MUIThemeProvider>
     </CacheProvider>

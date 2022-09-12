@@ -1,4 +1,4 @@
-import { SignUp } from "../src/page_components"
+import { SignUp } from "../../src/page_components"
 import { useEffect } from "react"
 
 const PAGE_META = {

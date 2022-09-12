@@ -6,6 +6,7 @@ const PALETTE = {
   primary: deepOrange,
   secondary: teal,
   info: purple,
+  neutral: grey
 }
 
 //Colors incoroporates a color object to include functions such as lighten, darken , alpha...

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BulkiCarousel from "../../components/BulkiCarousel"
 import { Grid, Paper } from "@mui/material";
-import { BulkiH5 } from "../../assets/tags";
+import { BulkiH5 } from "../../assets/styles";
 import BulkiButton from "../../components/BulkiButton";
 
 export const StyledListingPage = styled(Grid)`
@@ -41,7 +41,6 @@ export const StyledBackgroundPaper = styled(Paper)`
   margin: auto;
   height: 74vh;
 `
-//height:100%
 
 export const StyledBuyButton = styled(BulkiButton)`
   position: absolute;

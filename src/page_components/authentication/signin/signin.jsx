@@ -7,7 +7,7 @@ import { StyledPaper, LogInButton, AuthChecker } from "../utils";
 import { useEmailSignIn, emailSignIn } from "../../../assets/authentication"
 import { useState, useEffect } from "react";
 import { Checkbox } from '@mui/material';
-import { BulkiCaption } from '../../../assets/tags';
+import { BulkiCaption } from '../../../assets/styles';
 import Link from "next/link"
 import { urls } from '../../../assets';
 import { useRouter } from 'next/router';

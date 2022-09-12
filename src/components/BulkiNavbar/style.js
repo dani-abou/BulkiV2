@@ -1,23 +1,39 @@
-import { AppBar } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import styled from "styled-components";
 import BulkiButton from "../BulkiButton";
 import BulkiInput from "../BulkiInput";
 
 export const StyledAppbar = styled(AppBar)`
   width: 100%;
-  height: 18%;
+  height: 100%;
   box-shadow: none;
+  background-color: transparent;
 `
 
 export const StyledBulkiLogoContainer = styled.div`
   position: relative;
   z-index: 0;
   cursor: pointer;
-  height: 110%;
+  height: ${props => props.$skinny ? '100%' : '110%'};
   width: 200px;
   margin-left: 10%;
 `
+// height: ${ props => props.$skinny ? '0' : 'inherit' };
 
+export const StyledToolbar = styled(Toolbar)`
+  visibility:${props => props.$skinny ? 'hidden' : 'visible'};
+  max-height:${props => props.$skinny ? '0px' : 'auto'};
+
+  transition: all 0.2s;
+  gap: 15px;
+  justify-content: space-between;
+  
+`
+
+export const StyledButton = styled(BulkiButton)`
+  max-height:${props => props.$skinny ? '0px' : 'auto'};
+  width: 100%;
+`
 
 export const StyledBulkiInput = styled(BulkiInput)`
   margin-left: auto;
@@ -40,3 +56,9 @@ export const StyledSearchButton = styled(BulkiButton)`
     background-color: ${props => props.theme.colors.primary.hexa()};
   }
 `
+
+export const StyledDropdown = styled.div`
+  width: 100%;
+`
+
+// export const StyledMenu

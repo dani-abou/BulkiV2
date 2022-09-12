@@ -7,5 +7,7 @@
   "account": "/account",
   "signin": "/signin",
   "signup": "/signup",
-  "forgotPassword": "/signin/forgotPassword"
+  "forgotPassword": "/signin/forgotPassword",
+  "accountType": "/signup/type",
+  "purchaseFlow": "/purchase"
 }

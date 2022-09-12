@@ -64,7 +64,7 @@ const SignUp = () => {
         <LogInButton
           onClick={() => verifyForm({ email, firstName, lastName, password, passwordConfirm },
             setHelperText, router)}
-        >Sign up</LogInButton>
+        >Next</LogInButton>
       </AuthChecker>
 
     </StyledPaper >)

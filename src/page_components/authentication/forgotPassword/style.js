@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BulkiBody2, BulkiCaption } from "../../../assets/tags";
+import { BulkiBody2, BulkiCaption } from "../../../assets/styles";
 
 export const StyledInstructions = styled(BulkiCaption)`
   color: ${props => props.theme.colors.onSurface.hexa()};

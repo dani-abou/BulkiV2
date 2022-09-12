@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BulkiH4, BulkiH6 } from '../../assets/tags'
+import { BulkiH4, BulkiH6 } from '../../assets/styles'
 import { Card, CardMedia } from '@mui/material'
 
 export const StyledCard = styled(Card)`

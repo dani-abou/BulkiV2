@@ -6,6 +6,7 @@ import { useImagesOfProduct, useProduct } from "../../hooks"
 import { CircularProgress } from "@mui/material";
 import Link from "next/link"
 import { useEffect, } from "react";
+import { urls } from "../../assets";
 
 
 const Listing = ({ productID, setPageTitle }) => {
@@ -31,7 +32,7 @@ const Listing = ({ productID, setPageTitle }) => {
           <StyledProductTitle>
             {product?.productName}
           </StyledProductTitle>
-          <Link href={'/'}>
+          <Link href={urls.purchaseFlow + '/' + productID}>
             <StyledBuyButton>Buy now </StyledBuyButton>
           </Link>
 
