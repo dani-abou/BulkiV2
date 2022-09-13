@@ -43,10 +43,11 @@ export const StyledFormDiv = styled.div`
 `
 export const StyledQuoteDiv = styled.div`
   flex: 0 0 50%;
-  text-align: right;
 `
 export const StyledQuote = styled.div`
   width: 70%;
   margin-left: 100%;
   transform: translate(-100%);
+  text-align: right;
+
 `

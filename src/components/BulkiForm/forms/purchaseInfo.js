@@ -32,18 +32,16 @@ export const ShippingInfoForm = ({ className, onChange }) => {
       },
       3: {
         type: FormInputTypes.select,
-        width: 20,
+        width: 25,
         additionalProps: {
           options: states.map(x => ({ value: x.name, label: x.abbreviation })),
           label: 'State',
-          value: selectValue,
-          onChange: changeSelected,
-          id: 'state'
+          id: 'state',
         }
       },
       4: {
         type: FormInputTypes.input,
-        width: 80,
+        width: 75,
         additionalProps: {
           label: 'Zip Code',
           id: 'zip'
@@ -51,10 +49,13 @@ export const ShippingInfoForm = ({ className, onChange }) => {
         }
       }
     }
-  }, [selectValue, onChange])
+  }, [onChange])
 
   return <BulkiForm className={className} form={form}
-    onChange={e => onChange(e.target.id, e.target.value, 'shippingInfo')}
+    onChange={e => {
+      console.log(e)
+      onChange(e.target.id, e.target.value, 'shippingInfo')
+    }}
   />
 }
 

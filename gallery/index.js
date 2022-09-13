@@ -10,11 +10,12 @@ import GalleryForm from './galleryForm';
 import BulkiSelect from '../src/components/BulkiSelect';
 import { useState } from 'react';
 import GallerySelect from './gallerySelect';
+import GalleryRadio from './galleryRadio';
 
 const Gallery = () => {
   const router = useRouter()
   return <StyledGalleryFrame>
-    <GallerySelect />
+    <GalleryRadio />
   </StyledGalleryFrame>
 }
 

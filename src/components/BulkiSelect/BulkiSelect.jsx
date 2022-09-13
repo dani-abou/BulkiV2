@@ -3,24 +3,23 @@ import { useState } from "react"
 import { v1 } from "uuid"
 import { StyledFormControl } from './style'
 
-const BulkiSelect = ({ options, className, required, value, onChange, ...props }) => {
+const BulkiSelect = ({ options, className, required, value, label, ...props }) => {
   const [open, setOpen] = useState(false);
 
   const selectOption = option => {
-    onChange(option);
+    if (props.onChange) props.onChange(option);
     setOpen(false)
   }
-  return <StyledFormControl shrink fullwidth required={required}>
-    <InputLabel id="dummy">Test</InputLabel>
+  return <StyledFormControl fullwidth required={required}>
+    <InputLabel >{label}</InputLabel>
     <Select
-      labelId="dummy"
+
       className={className}
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      label='Test'
-      shrink
       required={required}
+      label={label}
       {...props}>
       {
         options.map(option => {
