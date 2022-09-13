@@ -8,6 +8,7 @@ export const StyledAppbar = styled(AppBar)`
   height: 100%;
   box-shadow: none;
   background-color: transparent;
+  border-bottom: 1px solid ${props => props.theme.colors.onSurface.alpha(0.2).hexa()};
 `
 
 export const StyledBulkiLogoContainer = styled.div`

@@ -100,28 +100,31 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
 
       </Grid>
       <Grid item sm={9} xs={9} md={9} lg={7}>
+        {
+          !skinny && <StyledToolbar ref={navbarRef} $skinny={skinny}>
+            {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label].href}>
+              <StyledButton
+                variant={BulkiButtonTypes['text']}
+                startIcon={NAVBAR_ITEMS[label].icon}
+                onClick={() => setSearchbarValue('')}
+              >
+                {label}
+              </StyledButton>
+            </Link>
+            )}
+            {
+              bulkiContext?.userData ? <AccountDropdown /> :
+                <Link href={urls.signin}>
+                  <StyledButton
+                    startIcon={<AccountBoxRoundedIcon />}
+                    ref={loginRef}
+                  >Log in</StyledButton>
+                </Link>
+            }
+          </StyledToolbar>
+        }
 
-        <StyledToolbar ref={navbarRef} $skinny={skinny}>
-          {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label].href}>
-            <StyledButton
-              variant={BulkiButtonTypes['text']}
-              startIcon={NAVBAR_ITEMS[label].icon}
-              onClick={() => setSearchbarValue('')}
-            >
-              {label}
-            </StyledButton>
-          </Link>
-          )}
-          {
-            bulkiContext?.userData ? <AccountDropdown /> :
-              <Link href={urls.signin}>
-                <StyledButton
-                  startIcon={<AccountBoxRoundedIcon />}
-                  ref={loginRef}
-                >Log in</StyledButton>
-              </Link>
-          }
-        </StyledToolbar>
+
 
         <SearchField loginRef={loginRef}
           searchbarValue={searchbarValue}

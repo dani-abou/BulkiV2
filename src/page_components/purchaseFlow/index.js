@@ -3,9 +3,10 @@ import {
   StyledSurface, StyledPageUnderStepper, StyledButtonDiv, StyledButton, StyledBackButton
 } from "./style"
 import ShippingInfo from "./shippingInfo"
-import { useEffect, useState } from "react"
-import BulkiButton, { BulkiIconButton } from "../../components/BulkiButton"
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import PaymentInfo from "./paymentInfo"
+import ConfirmOrder from "./confirmOrder"
+import { useState } from "react"
+
 
 const FLOW_PAGES = [
   {
@@ -15,12 +16,12 @@ const FLOW_PAGES = [
   },
   {
     label: 'Payment Info',
-    page: (formControl) => <ShippingInfo formControl={formControl} />,
+    page: (formControl) => <PaymentInfo formControl={formControl} />,
 
   },
   {
     label: 'Confirm Order',
-    page: (formControl) => <ShippingInfo formControl={formControl} />,
+    page: (formControl) => <ConfirmOrder formControl={formControl} />,
 
   },
 ]

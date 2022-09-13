@@ -1,2 +1,2 @@
 export { default as urls } from "./urls.json"
-export * from "./styles"
+export { BulkiPage, theme } from "./styles"
