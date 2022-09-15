@@ -65,7 +65,9 @@ const Catalog = ({ searchQuery }) => {
               <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
                 <StyledCard
                   imageLoading={loadingImages[product.id]} image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.productName}>
-                  <StyledPrice>US$ {product.price}</StyledPrice>
+                  {/* <StyledPrice>US$ {product.price[0].price}</StyledPrice> */}
+                  <StyledPrice>US$ 40</StyledPrice>
+
                   <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
                 </StyledCard>
               </Grid>

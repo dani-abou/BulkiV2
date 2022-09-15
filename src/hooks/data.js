@@ -7,68 +7,148 @@ export const DUMMY_PRODUCTS = {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '1',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
   },
   '2': {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '2',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
-
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
   },
   '3': {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '3',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "4": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '4',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "5": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '5',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "6": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '6',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "7": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '7',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "8": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '8',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
 
   },
   "9": {
     productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '9',
-    images: ['cans.png', 'antelope.png', 'mulch.png']
+    images: ['cans.png', 'antelope.png', 'mulch.png'],
+    description: `These cans are awesome, I promise you'll want all of them. I first bough them back in 2010 for my small brewery business, and now I;m just babbling to pretend this is an accurate sized description`,
+    unitDescription: 'One unit is a case of 30 cans',
+    moq: 10,
+    price: [
+      { maxQ: 20, price: 20 },
+      { maxQ: 40, price: 15 },
+      { maxQ: 60, price: 10 },
+      { maxQ: 80, price: 9 },
+    ]
   }
 
 }
 
 export const DUMMY_IMAGES = {
-  'cans.png': cans,
-  'antelope.png': antelope,
-  'mulch.png': mulch
+  'cans.png': '../../public/cans.png',
+  'antelope.png': '../../public/mulch.png',
+  'mulch.png': '../../public/mulch.png'
 }

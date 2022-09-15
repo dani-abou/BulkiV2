@@ -34,20 +34,28 @@ export const StyledButton = styled(BulkiButton)`
 `
 
 export const StyledShippingDiv = styled.div`
+`
+
+export const StyledFlexDiv = styled.div`
+  width: 100%;
   display: flex;
-  align-content: flex-start; 
+  justify-content: space-between;
 `
 
 export const StyledFormDiv = styled.div`
   flex: 0 0 50%;
 `
-export const StyledQuoteDiv = styled.div`
-  flex: 0 0 50%;
-`
-export const StyledQuote = styled.div`
+
+export const StyledQuoteCompressToLeftDiv = styled.div`
   width: 70%;
   margin-left: 100%;
   transform: translate(-100%);
-  text-align: right;
-
 `
+
+export const StyledQuote = styled.div`
+  text-align: right;
+  `
+
+export const StyledRadioDiv = styled.div`
+  flex: 0 0 46.5%;
+  `

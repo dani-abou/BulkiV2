@@ -34,7 +34,7 @@ export const ShippingInfoForm = ({ className, onChange }) => {
         type: FormInputTypes.select,
         width: 25,
         additionalProps: {
-          options: states.map(x => ({ value: x.name, label: x.abbreviation })),
+          options: states.filter(x => (!x.territory && x.contiguous)).map(x => ({ value: x.name, label: x.abbreviation })),
           label: 'State',
           id: 'state',
         }
@@ -53,7 +53,6 @@ export const ShippingInfoForm = ({ className, onChange }) => {
 
   return <BulkiForm className={className} form={form}
     onChange={e => {
-      console.log(e)
       onChange(e.target.id, e.target.value, 'shippingInfo')
     }}
   />
