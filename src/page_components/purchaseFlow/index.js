@@ -16,12 +16,13 @@ const FLOW_PAGES = [
   },
   {
     label: 'Payment Info',
-    page: (formControl) => <PaymentInfo formControl={formControl} />,
+    page: (formControl, formValues) => <PaymentInfo formControl={formControl} />,
 
   },
   {
     label: 'Confirm Order',
-    page: (formControl) => <ConfirmOrder formControl={formControl} />,
+    page: (formControl, formValues, product, loadingProduct) =>
+      <ConfirmOrder formControl={formControl} formValues={formValues} product={product} loadingProduct={loadingProduct} />,
 
   },
 ]
@@ -64,7 +65,7 @@ export const PurchaseFlow = ({ product, loadingProduct }) => {
       }
     </Stepper>
     <StyledPageUnderStepper>
-      {FLOW_PAGES[activeStepIndex].page(changeFormValue, purchaseData)}
+      {FLOW_PAGES[activeStepIndex].page(changeFormValue, purchaseData, product, loadingProduct)}
     </StyledPageUnderStepper>
     <StyledButtonDiv $previous={activeStepIndex !== 0}>
       {

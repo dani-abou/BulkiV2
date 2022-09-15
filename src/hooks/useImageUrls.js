@@ -5,7 +5,6 @@ import { DUMMY_IMAGES } from "./data";
 //First image of all the given listings
 
 export const useImageUrls = (listings, setUrls) => {
-  // const [urls, setUrls] = useState([]);
   const [loading, setLoading] = useState({})
 
   useEffect(() => {
@@ -47,10 +46,11 @@ export const useImagesOfProduct = (product) => {
         for (const image of images) {
           if (process.env.NODE_ENV) {
             const url = DUMMY_IMAGES[image]
+            console.log(image, url)
             setUrls(prev => [...prev, url])
           } else {
             const url = await getImage(id, image)
-            setUrls(prev => [...prev, url])
+            setUrls(prev => [...prev, url.src])
           }
         }
         setLoading(false)

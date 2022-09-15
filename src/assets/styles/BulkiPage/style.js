@@ -36,3 +36,4 @@ export const StyledFooterDiv = styled.div`
   flex: 0 0 300px;
   background-color: ${props => props.theme.colors.footer.hexa()};
 `
+

@@ -3,7 +3,6 @@ import priceRanges from "./priceRanges";
 
 const filterTree = [
   catagories,
-  priceRanges
 ]
 
 

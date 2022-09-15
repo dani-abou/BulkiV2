@@ -1,6 +1,6 @@
 import {
   StyledListingPage, StyledCarousel, StyledCarouselDiv, StyledProductTitle, StyledInformationDiv,
-  StyledBackgroundPaper, StyledBuyButton
+  StyledBackgroundPaper, StyledBuyButton, StyledDescription
 } from "./style"
 import { useImagesOfProduct, useProduct } from "../../hooks"
 import { CircularProgress } from "@mui/material";
@@ -17,6 +17,7 @@ const Listing = ({ productID, setPageTitle }) => {
   useEffect(() => setPageTitle(product.productName), [setPageTitle, product])
 
 
+
   return <StyledBackgroundPaper>
     {product && loading === false &&
 
@@ -29,12 +30,14 @@ const Listing = ({ productID, setPageTitle }) => {
           }
         </StyledCarouselDiv>
         <StyledInformationDiv >
-          <StyledProductTitle>
-            {product?.productName}
-          </StyledProductTitle>
+          <StyledProductTitle>{product?.productName}</StyledProductTitle>
+          <br />
+          <br />
+          <StyledDescription>{product?.description}</StyledDescription>
           <Link href={urls.purchaseFlow + '/' + productID}>
             <StyledBuyButton>Buy now </StyledBuyButton>
           </Link>
+          {console.log(images)}
 
         </StyledInformationDiv>
       </StyledListingPage>
