@@ -1,12 +1,10 @@
-import { Paper } from "@mui/material";
 import styled from "styled-components";
-import { BulkiH5 } from "../../assets/styles";
+import { BulkiH5 } from "../../common/styles";
 import BulkiButton, { BulkiIconButton } from "../../components/BulkiButton";
+import BulkiSurface from "../../components/BulkiSurface/BulkiSurface";
 
-export const StyledSurface = styled(Paper)`
-  background-color: ${props => props.theme.colors.surface.hexa()};
+export const StyledSurface = styled(BulkiSurface)`
   width: 95%;
-  margin-left: 2.5%;
   padding: 4%;
 `
 

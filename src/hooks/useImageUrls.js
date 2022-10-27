@@ -46,7 +46,6 @@ export const useImagesOfProduct = (product) => {
         for (const image of images) {
           if (process.env.NODE_ENV) {
             const url = DUMMY_IMAGES[image]
-            console.log(image, url)
             setUrls(prev => [...prev, url])
           } else {
             const url = await getImage(id, image)

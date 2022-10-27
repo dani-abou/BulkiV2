@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
-import { StyledPaper, EmailField, LogInButton, AuthChecker } from "../utils"
+import { StyledPaper, EmailField, LogInButton } from "../utils"
+import { PageIfNotAuthenticated } from "../../utils";
+
 import { Radio, RadioGroup, FormControlLabel } from "@mui/material"
 import {
   StyledFormLabel, StyledStyledInstruction, StyledSectionTitle, StyledFormControl
 } from "./style"
-import { urls } from "../../../assets"
+import { urls } from "../../../common"
 import { useRouter } from "next/router"
 import BulkiInput from "../../../components/BulkiInput"
 
@@ -16,7 +18,7 @@ const AccountType = ({ accountInfo }) => {
   //   if (!accountInfo) router.push(urls.signup)
   // }, [accountInfo, router])
 
-  return <AuthChecker>
+  return <PageIfNotAuthenticated>
     <StyledPaper>
       <StyledFormControl sx={{ width: '100%' }}>
         <StyledFormLabel focused={false}>Do you sell products?</StyledFormLabel>
@@ -45,7 +47,7 @@ const AccountType = ({ accountInfo }) => {
         <LogInButton>Next</LogInButton>
       </StyledFormControl>
     </StyledPaper>
-  </AuthChecker>
+  </PageIfNotAuthenticated>
 }
 
 export default AccountType

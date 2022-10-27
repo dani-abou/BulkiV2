@@ -1,4 +1,4 @@
-const LOCALES_LOCATIONS = './src/assets/translation'
+const LOCALES_LOCATIONS = './src/common/translation'
 
 module.exports = {
   // These are all the locales you want to support in

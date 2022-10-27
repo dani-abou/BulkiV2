@@ -4,10 +4,10 @@ import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
-import { theme, BulkiPage } from '../src/assets';
-import createEmotionCache from '../src/assets/createEmotionCache';
+import { theme, BulkiPage } from '../src/common';
+import createEmotionCache from '../src/common/createEmotionCache';
 import { useState } from 'react';
-import { BulkiContextProvider } from '../src/assets/context';
+import { BulkiContextProvider } from '../src/common/context';
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.

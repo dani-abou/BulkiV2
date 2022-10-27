@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { RadioGroup, FormControl, Radio } from "@mui/material";
-import { BulkiH6 } from "../../assets/styles";
+import { BulkiH6 } from "../../common/styles";
 
 export const StyledFormLabel = styled(BulkiH6)`
   color: ${props => props.theme.colors.onSurface.hexa()};

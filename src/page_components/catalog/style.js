@@ -1,8 +1,8 @@
-import { Paper } from "@mui/material";
 import styled from "styled-components";
-import { BulkiBody1, BulkiH5 } from "../../assets/styles";
+import { BulkiBody1, BulkiH5 } from "../../common/styles";
 import BulkiButton from "../../components/BulkiButton"
 import BulkiCard from "../../components/BulkiCard";
+import BulkiSurface from "../../components/BulkiSurface/BulkiSurface";
 
 export const StyledSearchFlex = styled.div`
   display: flex;
@@ -12,8 +12,7 @@ export const StyledSearchFlex = styled.div`
   height: 100%;
 `
 
-export const StyledFiltersBox = styled(Paper)`
-  background-color: ${props => props.theme.colors.surface.hexa()};
+export const StyledFiltersBox = styled(BulkiSurface)`
   width: 250px;
   height: min-content;
   min-height: 80vh;
@@ -58,7 +57,7 @@ export const StyledSearchDescription = styled(BulkiBody1)`
   margin-left: 2%;
 `
 
-export const StyledSearchQueryBox = styled(Paper)`
+export const StyledSearchQueryBox = styled(BulkiSurface)`
   height: 60px;
   margin-bottom: 2%;
   width: 100%;

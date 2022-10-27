@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FormControlLabel } from "@mui/material";
 import BulkiButton, { BulkiIconButton } from "../../../components/BulkiButton";
-import { BulkiCaption, BulkiH4 } from "../../../assets/styles";
+import { BulkiCaption, BulkiH4 } from "../../../common/styles";
 import { PasswordField, EmailField } from "../utils";
 
 

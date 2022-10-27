@@ -1,28 +1,24 @@
 import styled from "styled-components";
-import { Paper } from "@mui/material";
 import BulkiInput from "../../components/BulkiInput";
 import BulkiButton, { BulkiIconButton } from "../../components/BulkiButton";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from "react";
-import { BulkiH4 } from "../../assets/styles";
+import { BulkiH4 } from "../../common/styles";
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 import app from "../../../firebaseConfig";
-import { urls } from "../../assets";
-import { BulkiContextConsumer } from "../../assets/context";
+import { urls } from "../../common";
+import { BulkiContextConsumer } from "../../common/context";
+import BulkiSurface from "../../components/BulkiSurface/BulkiSurface";
 
-const StyledSignInContainer = styled(Paper)`
-  margin-left: auto;
-  margin-right:auto;
+const StyledSignInContainer = styled(BulkiSurface)`
   margin-top: 2%;
   width: 500px;
   height: min-content;
 `
 
 const StyledPaddingDiv = styled.div`
-  height: 100%;
-  width: 100%;
   padding: 8% 15%;
   position: relative;
 `
@@ -89,19 +85,19 @@ export const LogInButton = ({ children, ...props }) => {
 }
 
 
-const AuthCheckerRouter = ({ context, children }) => {
-  const router = useRouter()
+// const AuthCheckerRouter = ({ context, children }) => {
+//   const router = useRouter()
 
-  useEffect(() => {
-    if (context?.userData) {
-      router.push(urls.catalog);
-    }
-  }, [router, context])
-  return children
-}
+//   useEffect(() => {
+//     if (context?.userData) {
+//       router.push(urls.catalog);
+//     }
+//   }, [router, context])
+//   return children
+// }
 
-export const AuthChecker = (props) => {
-  return <BulkiContextConsumer>
-    {context => <AuthCheckerRouter {...props} context={context} />}
-  </BulkiContextConsumer>
-}
+// export const AuthChecker = (props) => {
+//   return <BulkiContextConsumer>
+//     {context => <AuthCheckerRouter {...props} context={context} />}
+//   </BulkiContextConsumer>
+// }

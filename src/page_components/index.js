@@ -6,4 +6,5 @@ export {
 
 
 export { PurchaseFlow } from './purchaseFlow'
+export { default as Account } from "./account"
 

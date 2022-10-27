@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { StyledPaper, LogInButton, AuthChecker } from "../utils";
+import { StyledPaper, LogInButton } from "../utils";
+import { PageIfNotAuthenticated } from "../../utils";
+
+
 import {
   StyledNameDiv, StyledNameField, StyledEmail, StyledHelperText,
   StyledPasswordDiv, StyledPasswordField, StyledPasswordInstructions
 } from "./style";
-import { signUp } from "../../../assets/authentication"
+import { signUp } from "../../../common/authentication"
 import { useRouter } from 'next/router'
 import { PASSWORD_REGEX, PASSWORD_RULES, EMAIL_REGEX } from "../../../components/BulkiInput";
 
@@ -20,7 +23,7 @@ const SignUp = () => {
 
   return (
     <StyledPaper title='Sign up'>
-      <AuthChecker>
+      <PageIfNotAuthenticated>
         <StyledNameDiv>
           <StyledNameField
             required
@@ -65,7 +68,7 @@ const SignUp = () => {
           onClick={() => verifyForm({ email, firstName, lastName, password, passwordConfirm },
             setHelperText, router)}
         >Next</LogInButton>
-      </AuthChecker>
+      </PageIfNotAuthenticated>
 
     </StyledPaper >)
 }

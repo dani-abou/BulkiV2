@@ -4,7 +4,7 @@ import {
 } from "./style"
 import { useSearchProducts, useImageUrls } from "../../hooks"
 import { BulkiButtonTypes } from "../../components/BulkiButton";
-import { urls } from "../../assets"
+import { urls } from "../../common"
 import Link from "next/link"
 import { useRouter } from 'next/router'
 import { Grid } from "@mui/material";
@@ -58,7 +58,6 @@ const Catalog = ({ searchQuery }) => {
         </StyledSearchQueryBox>
       }
       <Grid container spacing={2}>
-
         {
           products.map(product =>
             <Link href={urls.listing + '/' + product.id} key={product.id}>
@@ -72,7 +71,6 @@ const Catalog = ({ searchQuery }) => {
                 </StyledCard>
               </Grid>
             </Link>
-
           )
         }
       </Grid>

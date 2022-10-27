@@ -1,6 +1,6 @@
 import { FormControl, FormLabel } from "@mui/material";
 import styled from "styled-components";
-import { BulkiCaption, BulkiH5 } from "../../../assets/styles";
+import { BulkiCaption, BulkiH5 } from "../../../common/styles";
 
 export const StyledFormLabel = styled(FormLabel)`
   color: ${props => props.theme.colors.onSurface.hexa()};

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import {
   StyledBulkiLogoContainer, StyledBulkiInput, StyledButton,
   StyledSearchButton, StyledAppbar, StyledToolbar
@@ -6,41 +6,55 @@ import {
 import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
 import Link from "next/link"
-import BulkiButton, { BulkiButtonTypes } from "../BulkiButton"
-import { Toolbar, Grid } from "@mui/material";
+import { BulkiButtonTypes } from "../BulkiButton"
+import { Grid } from "@mui/material";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded';
-import { urls } from "../../assets"
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
+import { urls } from "../../common"
 import { useRouter } from 'next/router'
 import AccountDropdown from "./AccountDropdown"
-import { BulkiContextConsumer } from "../../assets/context"
+import { BulkiContextConsumer } from "../../common/context"
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 
 //All the buttons (other than the login button) that will show in the navbar
-const NAVBAR_ITEMS = {
-  home: {
-    href: urls.home,
-    icon: <HomeRoundedIcon />,
-    translateKey: "home"
-  },
-  listings: {
+const NAVBAR_ITEMS = [
+  // home: {
+  //   href: urls.home,
+  //   icon: <HomeRoundedIcon />,
+  //   translateKey: "home"
+  // },
+  {
     href: urls.catalog,
     icon: <LocalShippingRoundedIcon />,
-    translateKey: 'listings'
+    translateKey: 'listings',
+    label: 'Listings'
   },
-  account: {
-    href: urls.account,
-    icon: <AccountBoxRoundedIcon />,
-    translateKey: 'account'
-  },
-  contactUs: {
+
+  // {
+  //   href: '/',
+  //   icon: <InfoRoundedIcon />,
+  //   // translateKey: 'About Us'
+  //   label: 'About Us'
+  // },
+  {
     href: urls.contactUs,
     icon: <PermPhoneMsgRoundedIcon />,
-    translateKey: 'contactUs'
-  }
-}
+    translateKey: 'Contact Us',
+    label: 'Who we are'
+  },
+  {
+    href: urls.newListing,
+    icon: <AddRoundedIcon />,
+    label: 'Post Listing',
+    props: {
+      variant: BulkiButtonTypes.outline,
+    }
+  },
+]
 
 const search = (e, searchbarValue, router) => {
   e.preventDefault();
@@ -86,9 +100,9 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
       height: '100%',
     }}>
       <Grid item sm={3} xs={3} md={3} lg={5} >
-        <StyledBulkiLogoContainer $skinny={true}>
+        <StyledBulkiLogoContainer $skinny={skinny}>
           <Link href={urls.primary}>
-            <a href={urls.primary}>
+            <a style={{ width: '100%', height: '100%' }} href={urls.primary}>
               <Image
                 src={logo}
                 alt='BulkiLogo'
@@ -97,18 +111,18 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
             </a>
           </Link>
         </StyledBulkiLogoContainer>
-
       </Grid>
       <Grid item sm={9} xs={9} md={9} lg={7}>
         {
           !skinny && <StyledToolbar ref={navbarRef} $skinny={skinny}>
-            {Object.keys(NAVBAR_ITEMS).map(label => <Link key={label} href={NAVBAR_ITEMS[label].href}>
+            {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
               <StyledButton
                 variant={BulkiButtonTypes['text']}
-                startIcon={NAVBAR_ITEMS[label].icon}
+                startIcon={button.icon}
                 onClick={() => setSearchbarValue('')}
+                {...button.props}
               >
-                {label}
+                {button.label}
               </StyledButton>
             </Link>
             )}
@@ -123,9 +137,6 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
             }
           </StyledToolbar>
         }
-
-
-
         <SearchField loginRef={loginRef}
           searchbarValue={searchbarValue}
           setSearchbarValue={setSearchbarValue} />

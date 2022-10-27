@@ -1,6 +1,8 @@
 import { useState } from "react"
-import { sendPasswordReset, } from "../../../assets/authentication"
-import { StyledPaper, EmailField, LogInButton, AuthChecker } from "../utils"
+import { sendPasswordReset, } from "../../../common/authentication"
+import { StyledPaper, EmailField, LogInButton } from "../utils"
+import { PageIfNotAuthenticated } from "../../utils";
+
 import {
   StyledInstructions, StyledInstructionsDiv, StyledFieldDiv, StyledSentDiv,
   StyledSent
@@ -29,7 +31,7 @@ const ForgotPassword = () => {
   }
 
   return <StyledPaper title='Reset Password'>
-    <AuthChecker>
+    <PageIfNotAuthenticated>
 
       <StyledInstructionsDiv>
         <StyledInstructions>
@@ -54,7 +56,7 @@ const ForgotPassword = () => {
         </StyledSent>
       </StyledSentDiv>
       }
-    </AuthChecker>
+    </PageIfNotAuthenticated>
   </StyledPaper>
 }
 

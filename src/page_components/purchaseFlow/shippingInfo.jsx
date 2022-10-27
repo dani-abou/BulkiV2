@@ -9,7 +9,7 @@ import {
 import { useInstantQuote } from "../../hooks"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import { useEffect, useState } from "react"
-import { BulkiCaption, BulkiH5 } from "../../assets/styles"
+import { BulkiCaption, BulkiH5 } from "../../common/styles"
 
 const SHIPPING_RADIO = [
   { value: 'scheduled', label: 'Schedule Appointment Delivery' },

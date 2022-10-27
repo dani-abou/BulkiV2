@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BulkiBody2 } from "../../../assets/styles"
+import { BulkiBody2 } from "../../../common/styles"
 
 
 export const StyledPaperBody = styled.div`
