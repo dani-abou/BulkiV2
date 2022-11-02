@@ -21,7 +21,16 @@ const nextConfig = {
     };
     return config;
   },
-  fallback: false
+  fallback: false,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/catalog',
+        permanent: false,
+      },
+    ]
+  },
 
 }
 

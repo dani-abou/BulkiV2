@@ -21,7 +21,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 
 //All the buttons (other than the login button) that will show in the navbar
-const NAVBAR_ITEMS = [
+export const NAVBAR_ITEMS = [
   // home: {
   //   href: urls.home,
   //   icon: <HomeRoundedIcon />,
