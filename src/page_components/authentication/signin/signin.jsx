@@ -3,13 +3,14 @@ import {
   StyledOptions, StyledSignIn,
   StyledCheckbox, StyledSearchFlex, StyledOptionsDiv
 } from './style'
-import { StyledPaper, LogInButton, AuthChecker } from "../utils";
-import { useEmailSignIn, emailSignIn } from "../../../assets/authentication"
+import { StyledPaper, LogInButton } from "../utils";
+import { PageIfNotAuthenticated } from "../../utils";
+import { useEmailSignIn, emailSignIn } from "../../../common/authentication"
 import { useState, useEffect } from "react";
 import { Checkbox } from '@mui/material';
-import { BulkiCaption } from '../../../assets/styles';
+import { BulkiCaption } from '../../../common/styles';
 import Link from "next/link"
-import { urls } from '../../../assets';
+import { urls } from '../../../common';
 import { useRouter } from 'next/router';
 
 const SignIn = () => {
@@ -26,7 +27,7 @@ const SignIn = () => {
   }
 
   return <StyledPaper title='Log in'>
-    <AuthChecker>
+    <PageIfNotAuthenticated>
       <form onSubmit={signin}>
         <StyledEmail
           label='Email'
@@ -60,7 +61,7 @@ const SignIn = () => {
 
         <LogInButton type='submit' disabled={status?.type === 'loading'}>Log In</LogInButton>
       </form>
-    </AuthChecker>
+    </PageIfNotAuthenticated>
   </StyledPaper>
 }
 

@@ -15,24 +15,24 @@ export const StyledBulkiLogoContainer = styled.div`
   position: relative;
   z-index: 0;
   cursor: pointer;
-  height: ${props => props.$skinny ? '100%' : '110%'};
-  width: 200px;
+  height: 100%;
+
+
+  width: ${props => props.$skinny ? '200px' : '300px'};
   margin-left: 10%;
+  transition: all 0.2s;
 `
 // height: ${ props => props.$skinny ? '0' : 'inherit' };
 
 export const StyledToolbar = styled(Toolbar)`
   visibility:${props => props.$skinny ? 'hidden' : 'visible'};
-  max-height:${props => props.$skinny ? '0px' : 'auto'};
-
-  transition: all 0.2s;
   gap: 15px;
   justify-content: space-between;
+  transition: all 0.2s;
   
 `
 
 export const StyledButton = styled(BulkiButton)`
-  max-height:${props => props.$skinny ? '0px' : 'auto'};
   width: 100%;
 `
 

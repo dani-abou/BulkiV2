@@ -55,7 +55,7 @@ const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className
   return <StyledCarouselDiv className={className}>
     <StyledViewPort ref={emblaRef}>
       <StyledImagesDiv>
-        {urls.map((image, index) => <StyledImage key={index} >
+        {urls.map((image, index) => <StyledImage key={index}>
           <Image src={image} alt={image} layout='fill' />
         </StyledImage>)}
       </StyledImagesDiv>

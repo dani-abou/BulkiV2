@@ -4,15 +4,7 @@ import { useState, useMemo } from "react"
 
 
 export const ShippingInfoForm = ({ className, onChange }) => {
-  const [selectValue, setSelectValue] = useState()
-
   const form = useMemo(() => {
-
-    const changeSelected = state => {
-      setSelectValue(state);
-      onChange('state', state.value, 'shippingInfo')
-    }
-
     return {
       1: {
         type: FormInputTypes.input,
@@ -49,7 +41,7 @@ export const ShippingInfoForm = ({ className, onChange }) => {
         }
       }
     }
-  }, [onChange])
+  }, [])
 
   return <BulkiForm className={className} form={form}
     onChange={e => {

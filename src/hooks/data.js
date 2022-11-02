@@ -148,7 +148,7 @@ export const DUMMY_PRODUCTS = {
 }
 
 export const DUMMY_IMAGES = {
-  'cans.png': '../../public/cans.png',
-  'antelope.png': '../../public/mulch.png',
-  'mulch.png': '../../public/mulch.png'
+  'cans.png': '/cans.png',
+  'antelope.png': '/antelope.png',
+  'mulch.png': '/mulch.png'
 }

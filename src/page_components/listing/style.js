@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import BulkiCarousel from "../../components/BulkiCarousel"
-import { Grid, Paper } from "@mui/material";
-import { BulkiBody2, BulkiH5 } from "../../assets/styles";
+import { Grid } from "@mui/material";
+import { BulkiBody2, BulkiH5 } from "../../common/styles";
 import BulkiButton from "../../components/BulkiButton";
+import BulkiSurface from "../../components/BulkiSurface/BulkiSurface";
 
 export const StyledListingPage = styled(Grid)`
   display: flex;
@@ -36,11 +37,8 @@ export const StyledInformationDiv = styled.div`
   padding-left: 4%;
 `
 
-export const StyledBackgroundPaper = styled(Paper)`
-  width: 90%;
-  background-color: ${props => props.theme.colors.surface.hexa()};
+export const StyledBackgroundPaper = styled(BulkiSurface)`
   padding: 3% 5% 3% 5%;
-  margin: auto;
   height: 74vh;
 `
 

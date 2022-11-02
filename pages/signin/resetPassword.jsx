@@ -1,6 +1,6 @@
 import { ResetPassword } from "../../src/page_components"
 import { useRouter } from "next/router";
-// import { confirmResetCode } from "../../src/assets/authentication"
+// import { confirmResetCode } from "../../src/common/authentication"
 
 const ResetPasswordPage = ({ headControl, validationResponse = { type: 'success', email: 'dummy@gmail.com' }, ...props }) => {
 

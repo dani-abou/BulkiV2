@@ -1,8 +1,10 @@
 import { CircularProgress } from "@mui/material"
-import { useConfirmResetCode, resetPassword } from "../../../assets/authentication"
-import { StyledPaper, PasswordField, LogInButton, AuthChecker } from "../utils"
+import { useConfirmResetCode, resetPassword } from "../../../common/authentication"
+import { StyledPaper, PasswordField, LogInButton } from "../utils"
+import { PageIfNotAuthenticated } from "../../utils";
+
 import { Link } from "next/link"
-import { urls } from "../../../assets"
+import { urls } from "../../../common"
 import { useState } from "react"
 import { StyledPaperBody, StyledFieldDiv, StyledResponse, StyledResponseDiv } from "./style"
 import { PASSWORD_REGEX, PASSWORD_RULES } from "../../../components/BulkiInput"
@@ -23,7 +25,7 @@ const ResetPassword = ({ validationResponse }) => {
   }
 
   return <StyledPaper title='Reset Password'>
-    <AuthChecker>
+    <PageIfNotAuthenticated>
       <StyledPaperBody>
         {
           validationResponse.type === 'failure' ?
@@ -54,7 +56,7 @@ const ResetPassword = ({ validationResponse }) => {
             </>
         }
       </StyledPaperBody>
-    </AuthChecker>
+    </PageIfNotAuthenticated>
 
   </StyledPaper>
 }

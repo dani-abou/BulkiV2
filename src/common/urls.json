@@ -1,0 +1,25 @@
+{
+  "primary": "/catalog",
+  "home": "/",
+  "listing": "/listing",
+  "catalog": "/catalog",
+  "contactUs": "/contactUs",
+  "signin": "/signin",
+  "signup": "/signup",
+  "forgotPassword": "/signin/forgotPassword",
+  "accountType": "/signup/type",
+  "purchaseFlow": "/purchase",
+  "account": {
+    "fullUrl": "/account?tab=",
+    "tabs": {
+      "profile": "profile",
+      "orders": "orders",
+      "listings": "listings",
+      "paymentInfo": "paymentInfo"
+    }
+  },
+  "accountProfile": "/account?tab=profile",
+  "accountOrders": "/account?tab=orders",
+  "accountListings": "/account?tab=listing",
+  "newListing": "/newListing"
+}

@@ -21,7 +21,7 @@ const FormInputs = {
   [FormInputTypes.select]: BulkiSelect
 }
 
-const BulkiForm = ({ form, onSubmit, className, ...props }) => {
+const BulkiForm = ({ form, onSubmit, className, showErrors, ...props }) => {
   return <StyledForm onSubmit={onSubmit} {...props}>
     <StyledFormDiv container className={className} spacing={2}>
       {Object.keys(form).map(inputKey => {
@@ -31,7 +31,7 @@ const BulkiForm = ({ form, onSubmit, className, ...props }) => {
         return <Grid item
           key={inputKey}
           xs={width} sm={width} lg={width} md={width} xl={width}>
-          <Component {...input.additionalProps} />
+          <Component {...input.additionalProps} error={showErrors && input.additionalProps.required} helperText={showErrors ? "Required Field" : ""} />
         </Grid>
       })}
     </StyledFormDiv>

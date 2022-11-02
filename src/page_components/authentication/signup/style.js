@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BulkiCaption } from "../../../assets/styles";
+import { BulkiCaption } from "../../../common/styles";
 import BulkiInput from "../../../components/BulkiInput";
 import { EmailField, PasswordField } from "../utils";
 

@@ -1,5 +1,5 @@
-// const i18n = require('./src/assets/translation/i18n');
-// const i18n_init = require('./src/assets/translation/i18n_init');
+// const i18n = require('./src/common/translation/i18n');
+// const i18n_init = require('./src/common/translation/i18n_init');
 // const nextTranslate = require('next-translate')
 const withPlugins = require("next-compose-plugins");
 
@@ -21,7 +21,16 @@ const nextConfig = {
     };
     return config;
   },
-  fallback: false
+  fallback: false,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/catalog',
+        permanent: false,
+      },
+    ]
+  },
 
 }
 

@@ -1,13 +1,30 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import BulkiButton from "../BulkiButton"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link'
 import { StyledButton, StyledDropdown } from './style';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import { urls } from "../../common"
 
-// const dropDownItems = {
-// }
+const dropDownItems = [
+  {
+    label: 'Profile',
+    href: urls.account.fullUrl + urls.account.tabs.profile
+  },
+  {
+    label: 'Orders',
+    href: urls.account.fullUrl + urls.account.tabs.orders
+  },
+  {
+    label: 'Payment Info',
+    href: urls.account.fullUrl + urls.account.tabs.paymentInfo
+  },
+  {
+    label: 'Listings',
+    href: urls.account.fullUrl + urls.account.tabs.listings
+  },
+]
 
 const AccountDropdown = () => {
   const [anchor, setAnchor] = useState()
@@ -19,7 +36,6 @@ const AccountDropdown = () => {
       Account
     </StyledButton>
     <Menu
-      width={900}
       anchorEl={anchor}
       open={anchor}
       onClose={() => setAnchor()}
@@ -31,13 +47,18 @@ const AccountDropdown = () => {
         vertical: 'top',
         horizontal: 'right',
       }}
+      PaperProps={{ elevation: 20, sx: { width: anchor?.offsetWidth || 143, marginTop: '5px' } }}
     >
-      <MenuItem onClick={() => setAnchor}>
-        <Link href={'/catalog'}>profile</Link>
-      </MenuItem>
-      <MenuItem onClick={() => setAnchor}>dumt</MenuItem>
-      <MenuItem onClick={() => setAnchor}>dfs</MenuItem>
+      {
+        dropDownItems.map(accountItem => {
+          return <Link href={accountItem.href} key={accountItem.label} >
+            <MenuItem onClick={() => setAnchor()} >
+              {accountItem.label}
 
+            </MenuItem>
+          </Link>
+        })
+      }
     </Menu>
   </StyledDropdown>
 }
