@@ -35,3 +35,7 @@ export const StyledHelperText = styled.div`
   max-width: 100%;
   width: 100%;
 `
+
+export const StyledAgreements = styled(BulkiCaption)`
+  color: ${props => props.theme.colors.onSurface.alpha(0.5).hexa()};
+`
