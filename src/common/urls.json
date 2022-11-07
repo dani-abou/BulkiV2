@@ -21,5 +21,7 @@
   "accountProfile": "/account?tab=profile",
   "accountOrders": "/account?tab=orders",
   "accountListings": "/account?tab=listing",
-  "newListing": "/newListing"
+  "newListing": "/newListing",
+  "privacyPolicy": "/policies/privacyPolicy",
+  "termsAndConditions": "/policies/termsAndConditions"
 }

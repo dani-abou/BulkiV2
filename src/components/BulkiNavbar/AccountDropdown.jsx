@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { StyledButton, StyledDropdown } from './style';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import { urls } from "../../common"
+import bulkiSignOut from '../../common/authentication/signOut';
+import { useRouter } from 'next/router';
 
 const dropDownItems = [
   {
@@ -28,6 +30,7 @@ const dropDownItems = [
 
 const AccountDropdown = () => {
   const [anchor, setAnchor] = useState()
+  const router = useRouter()
 
   return <StyledDropdown>
     <StyledButton
@@ -54,11 +57,13 @@ const AccountDropdown = () => {
           return <Link href={accountItem.href} key={accountItem.label} >
             <MenuItem onClick={() => setAnchor()} >
               {accountItem.label}
-
             </MenuItem>
           </Link>
         })
       }
+      <MenuItem onClick={() => bulkiSignOut(router)}>
+        Sign out
+      </MenuItem>
     </Menu>
   </StyledDropdown>
 }

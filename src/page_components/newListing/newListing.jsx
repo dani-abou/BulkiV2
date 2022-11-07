@@ -63,7 +63,6 @@ const defaultFormValues = {
 }
 
 const NewListing = () => {
-  //TODO actually make a second page? I just don't feel like it, and might not be worth it
   const [isConfirm, setIsConfirm] = useState(false);
 
   const [pageComplete, setPageComplete] = useState(false);
@@ -76,26 +75,28 @@ const NewListing = () => {
 
   // prompt the user if they try and leave with unsaved changes
   useEffect(() => {
-    const warningText =
-      'You have unsaved changes - are you sure you wish to leave this page?';
-    const handleWindowClose = e => {
-      // if (!unsavedChanges) return;
-      e.preventDefault();
-      return (e.returnValue = warningText);
-    };
-    const handleBrowseAway = () => {
-      // if (!unsavedChanges) return;
-      if (window.confirm(warningText)) return;
-      router.events.emit('routeChangeError');
-      throw 'routeChange aborted.';
-    };
-    window.addEventListener('beforeunload', handleWindowClose);
-    router.events.on('routeChangeStart', handleBrowseAway);
-    return () => {
-      window.removeEventListener('beforeunload', handleWindowClose);
-      router.events.off('routeChangeStart', handleBrowseAway);
-    };
-  }, [router]);
+    if (Object.values(newProduct.basicInfo).some(val => val.length !== 0)) {
+      const warningText =
+        'Are you sure you wish to leave this page? You will lose all progress';
+      const handleWindowClose = e => {
+        // if (!unsavedChanges) return;
+        e.preventDefault();
+        return (e.returnValue = warningText);
+      };
+      const handleBrowseAway = () => {
+        // if (!unsavedChanges) return;
+        if (window.confirm(warningText)) return;
+        router.events.emit('routeChangeError');
+        throw 'routeChange aborted.';
+      };
+      window.addEventListener('beforeunload', handleWindowClose);
+      router.events.on('routeChangeStart', handleBrowseAway);
+      return () => {
+        window.removeEventListener('beforeunload', handleWindowClose);
+        router.events.off('routeChangeStart', handleBrowseAway);
+      };
+    }
+  }, [router, newProduct.basicInfo]);
 
   const changeFormValue = (fieldKey, value, formKey) => {
     setNewProduct(prev => ({ ...prev, [formKey]: { ...prev[formKey], [fieldKey]: value } }))
@@ -208,15 +209,3 @@ const NewListing = () => {
 }
 
 export default NewListing
-
-  // < button onClick = {() => console.log(newProductInfo)}> Test</button >
-  //   <Button
-  //     variant="contained"
-  //     component="label"
-  //   >
-  //     Upload File
-  //     <input
-  //       type="file"
-  //       hidden
-  //     />
-  //   </Button>
