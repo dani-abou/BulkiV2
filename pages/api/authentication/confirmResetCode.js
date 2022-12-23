@@ -1,7 +1,7 @@
 import app from "../../../firebaseConfig";
 import { verifyPasswordResetCode } from "firebase/auth";
 import { Link } from "next/link";
-import { urls } from "..";
+import { urls } from "../../../src/common";
 
 
 const ValidationResponses = {

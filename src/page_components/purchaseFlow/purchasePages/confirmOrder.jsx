@@ -1,7 +1,7 @@
 import { CircularProgress } from "@mui/material"
 import { StyledFlexDiv, StyledFormDiv } from "../style"
 
-const ConfirmOrder = ({ formControl, formValues, setPageComplete, productInfo }) => {
+const ConfirmOrder = ({ formControl, formValues, setPageComplete, product }) => {
   return <StyledFlexDiv>
     <StyledFormDiv>
       {productInfo?.loadingProduct ? <CircularProgress /> : <>

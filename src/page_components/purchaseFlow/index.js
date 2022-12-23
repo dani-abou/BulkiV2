@@ -27,9 +27,9 @@ const FLOW_PAGES = [
   },
   {
     label: 'Confirm Order',
-    page: (formControl, formValues, setPageComplete, product, loadingProduct) =>
+    page: (formControl, formValues, setPageComplete, product) =>
       <ConfirmOrder formControl={formControl} formValues={formValues}
-        setPageComplete={setPageComplete} product={product} loadingProduct={loadingProduct} />,
+        setPageComplete={setPageComplete} product={product} />,
 
   },
 ]
@@ -39,7 +39,7 @@ const defaultFormValue = {
   poc: { firstName: '', lastName: '', email: '', phone: '' }
 }
 
-export const PurchaseFlowWithContext = ({ product, bulkiContext }) => {
+export const PurchaseFlowWithContext = ({ product, loadingProduct, bulkiContext }) => {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [purchaseData, setPurchaseData] = useState(defaultFormValue);
   const [pageComplete, setPageComplete] = useState(false);

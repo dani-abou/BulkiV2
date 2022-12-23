@@ -16,6 +16,7 @@ const PurchasePage = ({ headControls }) => {
   useEffect(() => headControls(PAGE_META), [headControls])
 
   const [productURL, setProductUrl] = useState({})
+  const [loadingProduct, setLoadingProduct] = useState(false);
 
   const router = useRouter()
   const { productId } = router.query
@@ -24,8 +25,10 @@ const PurchasePage = ({ headControls }) => {
   useEffect(() => {
     const callGetListing = async () => {
       if (productId) {
+        setLoadingProduct(true);
         const listing = await getListing(productId);
         setProduct(listing);
+        setLoadingProduct(false);
       }
     }
     callGetListing();
@@ -34,7 +37,7 @@ const PurchasePage = ({ headControls }) => {
   // const [product, productLoading] = useProduct(productId)
   // const loadingImages = useImageUrls([product], setProductUrl)
 
-  return <PurchaseFlow product={product} />
+  return <PurchaseFlow product={product} loadingProduct={loadingProduct} />
   // productImage={productURL[productID]} loadingImages={productLoading || loadingImages}
 }
 
