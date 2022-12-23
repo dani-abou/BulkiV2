@@ -3,23 +3,24 @@ import BulkiSurface from "../../components/BulkiSurface"
 import { useState, useEffect } from "react";
 import { Stepper, Step, StepLabel, Button } from "@mui/material"
 import { StyledButtonDiv, StyledButton, StyledPageUnderStepper, StyledSubformTitle, StyledPageTitle, StyledRequiredIndicator } from "./style";
-import { ProductInfo, PickupInfo, Pricing } from "./postingPages";
+import { ProductInfo, ConfirmListing, Pricing } from "./postingPages";
 import { ProductBasicInfoForm, ProductDimensionsForm } from "../../components/BulkiForm/forms/productInfo";
-import { POCInfo } from "../../components/BulkiForm/forms/purchaseInfo"
-import { PickupInfoForm } from "../../components/BulkiForm/forms/productInfo"
-import BulkiButton from "../../components/BulkiButton";
 import { v1 } from "uuid";
 import { cloneDeep } from "lodash";
 import { useRouter } from "next/router"
+import makeListing from "../../api/database/listings/makeListing";
+import { BulkiContextConsumer } from "../../common/context";
 
 
 const FLOW_PAGES = [
   {
     label: 'Product Details',
     page: (formValues, formControls) =>
-      <ProductInfo formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'basicInfo')}
+      <ProductInfo
+        formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'basicInfo')}
         setPageComplete={formControls.setPageComplete}
         formValues={formValues.basicInfo}
+        imageControls={formControls.imageControls}
       />,
   },
   {
@@ -34,14 +35,13 @@ const FLOW_PAGES = [
   },
   {
     label: 'Confirmation',
-    page: (formValues, formControls) => <ProductInfo formControl={formControls.changeFormValue} formValues={formValues} />,
+    page: (formValues, formControls) => <ConfirmListing formControl={formControls.changeFormValue} formValues={formValues} />,
   },
 ]
 
 const defaultFormValues = {
   basicInfo: {
-    productName: '', description: '', unitDefinition: '',
-    // images: []
+    product: '', description: '', unitDefinition: ''
   },
   pricing: {
     [v1()]: {
@@ -62,7 +62,7 @@ const defaultFormValues = {
   },
 }
 
-const NewListing = () => {
+const NewListing = ({ userId }) => {
   const [isConfirm, setIsConfirm] = useState(false);
 
   const [pageComplete, setPageComplete] = useState(false);
@@ -70,6 +70,7 @@ const NewListing = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [newProduct, setNewProduct] = useState(defaultFormValues)
 
+  const [images, setImages] = useState([]);
   const router = useRouter()
 
 
@@ -102,6 +103,32 @@ const NewListing = () => {
     setNewProduct(prev => ({ ...prev, [formKey]: { ...prev[formKey], [fieldKey]: value } }))
   }
 
+  const addImage = file => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      newImages.push({ file, id: v1() })
+      return newImages
+    })
+  }
+
+  const removeImage = (index) => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      newImages.splice(index, 1)
+      return newImages
+    })
+  }
+
+  const reorderImages = (source, destination) => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      const movedImage = newImages[source];
+      newImages.splice(source, 1);
+      newImages.splice(destination, 0, movedImage);
+      return newImages
+    })
+  }
+
   const goToNextPage = () => {
     if (pageComplete) {
       setActiveStep(prev => {
@@ -118,8 +145,8 @@ const NewListing = () => {
     })
   }
 
-  const createListing = () => {
-    console.log("Making new listing");
+  const createListing = async () => {
+    await makeListing(userId, newProduct, images)
   }
 
   const removePricingTier = (tierId) => {
@@ -149,7 +176,6 @@ const NewListing = () => {
 
   return <BulkiSurface>
     <PageIfAuthenticated>
-
       <Stepper>
         {
           FLOW_PAGES.map((page, index) => {
@@ -161,8 +187,10 @@ const NewListing = () => {
       </Stepper>
       <StyledPageUnderStepper>
         {FLOW_PAGES[activeStep].page(newProduct,
-          { changeFormValue, addPricingTier, removePricingTier, setPageComplete })}
-
+          {
+            changeFormValue, addPricingTier, removePricingTier, setPageComplete,
+            imageControls: { reorderImages, removeImage, addImage, images }
+          })}
       </StyledPageUnderStepper>
       <StyledButtonDiv $previous={activeStep !== 0}>
         {
@@ -175,19 +203,7 @@ const NewListing = () => {
               : <StyledButton onClick={createListing} disabled={!pageComplete}>Confirm</StyledButton>
           }
         </>
-
       </StyledButtonDiv>
-      {/* {
-        !isConfirm && <><StyledPageTitle>
-          New Listing
-        </StyledPageTitle>
-          <StyledSubformTitle>Product Details</StyledSubformTitle>
-          <ProductBasicInfoForm onChange={changeFormValue} />
-          <StyledButtonDiv>
-            <StyledButton onClick={() => setIsConfirm(true)}>Next</StyledButton>
-          </StyledButtonDiv>
-        </>
-      } */}
       {
         isConfirm && <>
           <StyledPageTitle>
@@ -204,8 +220,11 @@ const NewListing = () => {
       }
 
     </PageIfAuthenticated>
-
   </BulkiSurface>
 }
 
-export default NewListing
+export default function NewListingWithContext(props) {
+  return <BulkiContextConsumer>
+    {context => <NewListing {...props} userId={context?.userData?.uid} />}
+  </BulkiContextConsumer>
+}

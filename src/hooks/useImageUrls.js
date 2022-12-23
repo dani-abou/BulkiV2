@@ -11,21 +11,22 @@ export const useImageUrls = (listings, setUrls) => {
     const getImages = async () => {
       for (const listing of listings) {
         setLoading(prev => ({ ...prev, listing: true }))
-        if (process.env.NODE_ENV === 'development') {
-          const url = DUMMY_IMAGES[listing?.images[0]]
-          setUrls(prev => {
-            prev[listing.id] = url
-            return prev
-          })
-          setLoading(prev => ({ ...prev, listing: false }))
-        } else if (listing?.images[0]) {
-          const url = await getImage(listing.id, listing?.images[0])
-          setUrls(prev => {
-            prev[listing.id] = url
-            return prev
-          })
-          if (url) setLoading(prev => ({ ...prev, listing: false }))
-        }
+        // if (process.env.NODE_ENV === 'development') {
+        //   const url = DUMMY_IMAGES[listing?.images[0]]
+        //   setUrls(prev => {
+        //     prev[listing.id] = url
+        //     return prev
+        //   })
+        //   setLoading(prev => ({ ...prev, listing: false }))
+        // } else 
+        // if (listing?.images[0]) {
+        //   const url = await getImage(listing.id, listing?.images[0])
+        //   setUrls(prev => {
+        //     prev[listing.id] = url
+        //     return prev
+        //   })
+        //   if (url) setLoading(prev => ({ ...prev, listing: false }))
+        // }
       }
     }
     getImages()

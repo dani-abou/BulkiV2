@@ -68,3 +68,88 @@ export const StyledAdd = styled(BulkiButton)`
   float: right;
   width: 20%;
 `
+
+export const StyledDropZoneContainer = styled.div`
+  width: 96%;
+  height: 200px;
+  margin-left: 2%;
+
+  padding: 0px;
+
+  border: 1.5px solid ${props => props.theme.colors.neutral.alpha(0.5).hexa()};
+  border-radius: 5px;
+
+  background-color: ${props => props.theme.colors.neutral.lighten(0.5).hexa()};
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  cursor: ${props => props.$empty ? 'pointer' : 'auto'};
+`
+
+export const StyledDraggableImagesContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin: 1% 2%;
+  height: 90%;
+`
+
+export const StyledDraggableImage = styled.div`
+  border: 0.5px solid ${props => props.theme.colors.neutral.alpha(0.5).hexa()};
+  border-radius: 4px;
+  flex: 0 0 18%;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`
+
+export const StyledCloseButton = styled(BulkiIconButton)`
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  height: 28px;
+  width: 28px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color:${props => props.theme.colors.neutral.lighten(0.8).hexa()};
+  border: 0.2px solid ${props => props.theme.colors.neutral.hexa()};
+
+  :hover {
+      background-color:${props => props.theme.colors.neutral.lighten(0.5).hexa()};
+      width: 31px;
+      height: 31px;
+
+  }
+`
+
+export const StyledImagesInstruction = styled(BulkiCaption)`
+  float: right;
+  margin-right: 2.5%;
+  text-align: right;
+  white-space: pre;
+`
+
+export const StyledEmptyContents = styled.div`
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top:15px;
+  cursor: pointer;
+`
+
+export const StyledDropZone = styled.div`
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+  top:  0;
+  left: 0;
+`
+
+export const StyledAddImageButton = styled(BulkiButton)`
+  margin-left: 2%;
+  margin-bottom: 2%;
+`

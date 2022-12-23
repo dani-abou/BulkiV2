@@ -2,7 +2,7 @@ import { AccountProfile, AccountOrders, AccountListings, AccountPaymentInfo } fr
 import { urls } from "../../common"
 import {
   StyledSurface, StyledFlex, StyledTabs, StyledTab, StyledLeft,
-  StyledTitleBox, StyledTitle
+  StyledTitleBox, StyledTitle, StyledRight
 } from "./style"
 import { BulkiH4 } from "../../common/styles"
 
@@ -50,7 +50,7 @@ const Account = ({ currentTab, setSelectedTab }) => {
           })}
         </StyledTabs>
       </StyledLeft>
-      <div>{TABS[currentTab]?.page}</div>
+      <StyledRight>{TABS[currentTab]?.page}</StyledRight>
     </StyledFlex>
   </StyledSurface>
 }

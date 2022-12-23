@@ -8,6 +8,7 @@ import { theme, BulkiPage } from '../src/common';
 import createEmotionCache from '../src/common/createEmotionCache';
 import { useState } from 'react';
 import { BulkiContextProvider } from '../src/common/context';
+import "../src/common/styles/scrollbar.css"
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.
