@@ -1,4 +1,6 @@
 import uploadImages from "../images/uploadImages"
+import app from "../../../../firebaseConfig"
+import { ref, uploadBytes } from "firebase/storage"
 
 const dummyDoc = {
   seller: "Family Farm",
@@ -14,14 +16,22 @@ const dummyDoc = {
 }
 
 const makeListing = async (user, listing, images) => {
-  // if (user) {
-  //   const response = await fetch('/api/database/listings/makelisting', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ ...dummyDoc, sellerId: user.uid })
-  //   });
-  //   const myJson = await response.json();
-  // }
-  await uploadImages(listing.id, images);
+  if (user) {
+    const formData = new FormData();
+    formData.append('file', images[0].file)
+
+    const response = await fetch('/api/database/listings/makelisting', {
+      method: 'POST',
+      data: JSON.stringify(formData),
+      // data: images[0].file
+    });
+    const myJson = await response.json();
+    console.log(myJson)
+  }
+  // await uploadImages(listing.id, images);
+
+
 }
+
 
 export default makeListing
