@@ -25,6 +25,7 @@ export const StyledBackgroundDiv = styled(Paper)`
   position: relative;
   background-color: ${props => props.theme.colors.background.hexa()};
   transition: all 0.2s;
+  border-radius: 0px;
 `
 
 export const StyledNavbarDiv = styled.div`

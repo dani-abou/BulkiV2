@@ -3,7 +3,6 @@ import {
   StyledBulkiLogoContainer, StyledBulkiInput, StyledButton,
   StyledSearchButton, StyledAppbar, StyledToolbar
 } from "./style"
-import logo from '../../../public/BulkiLogo.png'
 import Image from 'next/image'
 import Link from "next/link"
 import { BulkiButtonTypes } from "../BulkiButton"
@@ -104,7 +103,7 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
           <Link href={urls.primary}>
             <a style={{ width: '100%', height: '100%' }} href={urls.primary}>
               <Image
-                src={logo}
+                src='BulkiLogo.png'
                 alt='BulkiLogo'
                 layout='fill'
               />

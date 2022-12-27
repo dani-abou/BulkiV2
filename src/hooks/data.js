@@ -4,7 +4,7 @@ import mulch from "../../public/mulch.png"
 
 export const DUMMY_PRODUCTS = {
   '1': {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '1',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -19,7 +19,7 @@ export const DUMMY_PRODUCTS = {
     ]
   },
   '2': {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '2',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -34,7 +34,7 @@ export const DUMMY_PRODUCTS = {
     ]
   },
   '3': {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '3',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -50,7 +50,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "4": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '4',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -66,7 +66,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "5": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '5',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -82,7 +82,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "6": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '6',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -98,7 +98,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "7": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '7',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -114,7 +114,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "8": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '8',
     images: ['cans.png', 'antelope.png', 'mulch.png'],
@@ -130,7 +130,7 @@ export const DUMMY_PRODUCTS = {
 
   },
   "9": {
-    productName: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
+    product: 'cans and cans and aluminum cans, tall skinny cans, long narrow cans, beer, soda, coffee cans',
     company: 'cans',
     id: '9',
     images: ['cans.png', 'antelope.png', 'mulch.png'],

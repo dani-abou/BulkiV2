@@ -3,29 +3,31 @@ import BulkiSurface from "../../components/BulkiSurface"
 import { useState, useEffect } from "react";
 import { Stepper, Step, StepLabel, Button } from "@mui/material"
 import { StyledButtonDiv, StyledButton, StyledPageUnderStepper, StyledSubformTitle, StyledPageTitle, StyledRequiredIndicator } from "./style";
-import { ProductInfo, PickupInfo, Pricing } from "./postingPages";
+import { ProductInfo, ConfirmListing, Pricing } from "./postingPages";
 import { ProductBasicInfoForm, ProductDimensionsForm } from "../../components/BulkiForm/forms/productInfo";
-import { POCInfo } from "../../components/BulkiForm/forms/purchaseInfo"
-import { PickupInfoForm } from "../../components/BulkiForm/forms/productInfo"
-import BulkiButton from "../../components/BulkiButton";
 import { v1 } from "uuid";
 import { cloneDeep } from "lodash";
 import { useRouter } from "next/router"
+import makeListing from "../../api/database/listings/makeListing";
+import { BulkiContextConsumer } from "../../common/context";
+import { changeFileName } from "./utils.";
 
 
 const FLOW_PAGES = [
   {
     label: 'Product Details',
     page: (formValues, formControls) =>
-      <ProductInfo formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'basicInfo')}
+      <ProductInfo
+        formControl={formControls.changeFormValue}
         setPageComplete={formControls.setPageComplete}
-        formValues={formValues.basicInfo}
+        formValues={formValues}
+        imageControls={formControls.imageControls}
       />,
   },
   {
     label: 'Pricing',
     page: (formValues, formControls) => <Pricing
-      formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'pricing')}
+      formControl={formControls.changeFormValue}
       formValues={formValues.pricing}
       setPageComplete={formControls.setPageComplete}
       removePricingTier={formControls.removePricingTier}
@@ -34,35 +36,21 @@ const FLOW_PAGES = [
   },
   {
     label: 'Confirmation',
-    page: (formValues, formControls) => <ProductInfo formControl={formControls.changeFormValue} formValues={formValues} />,
+    page: (formValues, formControls) => <ConfirmListing formControl={formControls.changeFormValue} formValues={formValues} />,
   },
 ]
 
 const defaultFormValues = {
-  basicInfo: {
-    productName: '', description: '', unitDefinition: '',
-    // images: []
-  },
+  name: '', description: '', unitDefinition: '',
+
   pricing: {
     [v1()]: {
       quantity: 50, price: 100, label: ''
     }
   },
-  dimensions: {
-    weight: '', height: '', width: '', length: ''
-  },
-  freight: {
-    nmfc: '', nmfcSub: '', freightClass: ''
-  },
-  pickupAddress: {
-    streetAddress: '', city: '', state: '', zip: ''
-  },
-  poc: {
-    firstName: '', lastName: '', email: '', phoneNumber: ''
-  },
 }
 
-const NewListing = () => {
+const NewListing = ({ userId }) => {
   const [isConfirm, setIsConfirm] = useState(false);
 
   const [pageComplete, setPageComplete] = useState(false);
@@ -70,12 +58,13 @@ const NewListing = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [newProduct, setNewProduct] = useState(defaultFormValues)
 
+  const [images, setImages] = useState([]);
   const router = useRouter()
 
 
   // prompt the user if they try and leave with unsaved changes
   useEffect(() => {
-    if (Object.values(newProduct.basicInfo).some(val => val.length !== 0)) {
+    if (Object.values(newProduct).some(val => val.length !== 0)) {
       const warningText =
         'Are you sure you wish to leave this page? You will lose all progress';
       const handleWindowClose = e => {
@@ -96,10 +85,39 @@ const NewListing = () => {
         router.events.off('routeChangeStart', handleBrowseAway);
       };
     }
-  }, [router, newProduct.basicInfo]);
+  }, [router, newProduct]);
 
-  const changeFormValue = (fieldKey, value, formKey) => {
-    setNewProduct(prev => ({ ...prev, [formKey]: { ...prev[formKey], [fieldKey]: value } }))
+  const changeFormValue = (fieldKey, value) => {
+    setNewProduct(prev => ({ ...prev, [fieldKey]: value }))
+  }
+
+  const addImages = files => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      for (var file of files) {
+        newImages.push(changeFileName(file))
+      }
+      return newImages
+    })
+  }
+
+
+  const removeImage = (index) => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      newImages.splice(index, 1)
+      return newImages
+    })
+  }
+
+  const reorderImages = (source, destination) => {
+    setImages(prev => {
+      let newImages = cloneDeep(prev);
+      const movedImage = newImages[source];
+      newImages.splice(source, 1);
+      newImages.splice(destination, 0, movedImage);
+      return newImages
+    })
   }
 
   const goToNextPage = () => {
@@ -118,8 +136,8 @@ const NewListing = () => {
     })
   }
 
-  const createListing = () => {
-    console.log("Making new listing");
+  const createListing = async () => {
+    await makeListing(userId, newProduct, images)
   }
 
   const removePricingTier = (tierId) => {
@@ -149,7 +167,6 @@ const NewListing = () => {
 
   return <BulkiSurface>
     <PageIfAuthenticated>
-
       <Stepper>
         {
           FLOW_PAGES.map((page, index) => {
@@ -161,8 +178,10 @@ const NewListing = () => {
       </Stepper>
       <StyledPageUnderStepper>
         {FLOW_PAGES[activeStep].page(newProduct,
-          { changeFormValue, addPricingTier, removePricingTier, setPageComplete })}
-
+          {
+            changeFormValue, addPricingTier, removePricingTier, setPageComplete,
+            imageControls: { reorderImages, removeImage, addImages, images }
+          })}
       </StyledPageUnderStepper>
       <StyledButtonDiv $previous={activeStep !== 0}>
         {
@@ -175,19 +194,7 @@ const NewListing = () => {
               : <StyledButton onClick={createListing} disabled={!pageComplete}>Confirm</StyledButton>
           }
         </>
-
       </StyledButtonDiv>
-      {/* {
-        !isConfirm && <><StyledPageTitle>
-          New Listing
-        </StyledPageTitle>
-          <StyledSubformTitle>Product Details</StyledSubformTitle>
-          <ProductBasicInfoForm onChange={changeFormValue} />
-          <StyledButtonDiv>
-            <StyledButton onClick={() => setIsConfirm(true)}>Next</StyledButton>
-          </StyledButtonDiv>
-        </>
-      } */}
       {
         isConfirm && <>
           <StyledPageTitle>
@@ -204,8 +211,11 @@ const NewListing = () => {
       }
 
     </PageIfAuthenticated>
-
   </BulkiSurface>
 }
 
-export default NewListing
+export default function NewListingWithContext(props) {
+  return <BulkiContextConsumer>
+    {context => <NewListing {...props} userId={context?.userData?.uid} />}
+  </BulkiContextConsumer>
+}

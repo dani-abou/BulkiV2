@@ -35,3 +35,4 @@ export const PageIfAuthenticated = (props) => {
     {context => <AuthCheckerRouter {...props} context={context} />}
   </BulkiContextConsumer>
 }
+

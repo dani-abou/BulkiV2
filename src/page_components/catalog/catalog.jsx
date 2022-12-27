@@ -3,7 +3,7 @@ import {
   StyledPrice, StyledOrderButton, StyledCard, StyledSearchDescription, StyledSearchQueryBox
 } from "./style"
 import { useSearchProducts, useImageUrls } from "../../hooks"
-import { BulkiButtonTypes } from "../../components/BulkiButton";
+import BulkiButton, { BulkiButtonTypes } from "../../components/BulkiButton";
 import { urls } from "../../common"
 import Link from "next/link"
 import { useRouter } from 'next/router'
@@ -12,8 +12,11 @@ import { useState } from "react";
 import cans from "../../../public/cans.png"
 import BulkiTree from "../../components/BulkiTree";
 import filterTree from "./filterTree";
+import getListing from "../../api/database/listings/getListing"
 
-const Catalog = ({ searchQuery }) => {
+import { BulkiContextConsumer } from "../../common/context"
+
+const Catalog = ({ searchQuery, bulkiContext }) => {
 
   const [products, loading] = useSearchProducts(searchQuery || "");
   const [imageUrls, setUrls] = useState({});
@@ -33,10 +36,11 @@ const Catalog = ({ searchQuery }) => {
   }
 
 
-  const loadingImages = useImageUrls(products, setUrls)
+  // const loadingImages = useImageUrls(products, setUrls)
 
   return <StyledSearchFlex>
     <StyledFiltersBox>
+      <BulkiButton onClick={async () => console.log(await getListing('3VgHlyt43mrWHBlFpFIK'))}>TEST</BulkiButton>
       {filterTree.map(tree => {
         return <BulkiTree
           multiSelect
@@ -63,7 +67,8 @@ const Catalog = ({ searchQuery }) => {
             <Link href={urls.listing + '/' + product.id} key={product.id}>
               <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
                 <StyledCard
-                  imageLoading={loadingImages[product.id]} image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.productName}>
+                  // imageLoading={loadingImages[product.id]}
+                  image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.product}>
                   {/* <StyledPrice>US$ {product.price[0].price}</StyledPrice> */}
                   <StyledPrice>US$ 40</StyledPrice>
 
@@ -79,4 +84,8 @@ const Catalog = ({ searchQuery }) => {
   </StyledSearchFlex>
 }
 
-export default Catalog
+export default function BulkiCatalogWithContext(props) {
+  return <BulkiContextConsumer>
+    {context => <Catalog {...props} bulkiContext={context} />}
+  </BulkiContextConsumer>
+}

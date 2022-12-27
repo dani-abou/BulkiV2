@@ -1,5 +1,12 @@
 {
   "purposeStatement": "Wholesale for the 21st century. We connect suppliers and buyers through a radically simple and easy to use marketplace.",
   "linkedin": "https://www.linkedin.com/company/bulki-us",
-  "slogan": "Wholesale for the 21st century"
+  "slogan": "Wholesale for the 21st century",
+  "contact": {
+    "email": "steve@bulki.us",
+    "phone": "+1 (203) 907-5559"
+  },
+  "socials": {
+    "LinkedIn": "https://www.linkedin.com/company/bulki-us/about/ "
+  }
 }

@@ -2,9 +2,7 @@ const { createContext, useState } = require("react")
 import authListener from "./authListener";
 
 
-const defaultContextObject = {
-  dummy: 'test'
-}
+const defaultContextObject = {}
 
 const Context = createContext(defaultContextObject);
 Context.displayName = 'BulkiContext';

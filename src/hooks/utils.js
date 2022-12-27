@@ -8,6 +8,6 @@ export const getImage = async (productID, imageName) => {
   try {
     const imgUrl = await getDownloadURL(imgRef);
     return imgUrl
-  } catch (error) { console.log(`Could not find image: ${image} for ${listing.id}`) }
+  } catch (error) { console.log(`Could not find image: ${imageName} for ${productID}`) }
 }
 

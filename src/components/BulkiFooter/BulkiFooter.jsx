@@ -6,13 +6,12 @@ import { BulkiBody1 } from "../../common/styles"
 import {
   StyledFooterContainer, StyledTitleDiv, StyledVStack, StyledFooterLogoContainer,
   StyledPurposeStatement, StyledFooterTitle, StyledFooterLink, StyledFooterLinkColor,
-  StyledCopyrightNotice, StyledFooterFlex, StyledCopyrightDiv, StyledSocials
+  StyledCopyrightNotice, StyledFooterFlex, StyledCopyrightDiv, StyledSocials,
+  StyledSocialIconButton
 } from "./style"
 import { urls, metadata } from "../../common"
 import { NAVBAR_ITEMS } from "../BulkiNavbar/BulkiNavbar"
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { BulkiIconButton } from "../BulkiButton"
-
+import socialIcons from "./socialIcons"
 
 
 
@@ -32,9 +31,8 @@ const BulkiFooter = () => {
           </Link>
         </StyledFooterLogoContainer>
         <StyledPurposeStatement>{metadata.slogan}</StyledPurposeStatement>
-        <StyledSocials>
-          <BulkiIconButton><LinkedInIcon /></BulkiIconButton>
-        </StyledSocials>
+        <br />
+
       </StyledTitleDiv>
       <StyledVStack>
         <StyledFooterTitle>Navigate</StyledFooterTitle>
@@ -52,6 +50,19 @@ const BulkiFooter = () => {
       <StyledVStack>
         <StyledFooterTitle>Contact us</StyledFooterTitle>
         <br />
+        <StyledFooterLink>{metadata.contact.phone}</StyledFooterLink>
+        <StyledFooterLink>{metadata.contact.email}</StyledFooterLink>
+        <StyledSocials>
+          {Object.keys(metadata.socials).map(socialKey => {
+            return <StyledSocialIconButton
+              key={socialKey}
+              href={metadata.socials[socialKey]}
+              target="_blank"
+            >
+              {socialIcons[socialKey]}
+            </StyledSocialIconButton>
+          })}
+        </StyledSocials>
       </StyledVStack>
     </StyledFooterFlex>
     <StyledCopyrightDiv>

@@ -19,7 +19,7 @@ const colors = {
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),
-  footer: Color('#455A64')
+  footer: Color('#263238')
 }
 
 Object.keys(PALETTE).forEach(k => {

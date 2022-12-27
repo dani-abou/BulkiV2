@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BulkiBody2, BulkiCaption, BulkiH6, BulkiSubtitle1, BulkiSubtitle2 } from "../../common/styles/tags"
+import { BulkiIconButton } from "../BulkiButton";
 
 export const StyledFooterContainer = styled.footer`
   width: 100%;
@@ -17,7 +18,7 @@ export const StyledFooterFlex = styled.div`
 `
 
 export const StyledTitleDiv = styled.div`
-  flex: 0 0 60%;
+  flex: 0 0 50%;
   padding-top: 3%;
 `
 
@@ -28,7 +29,7 @@ export const StyledVStack = styled.div`
 
 export const StyledFooterLogoContainer = styled.div`
   height: 110px;
-  width: 50%;
+  width: 40%;
 
   position: relative;
   filter: grayscale(100%) brightness(3);
@@ -36,7 +37,7 @@ export const StyledFooterLogoContainer = styled.div`
 
 export const StyledPurposeStatement = styled(BulkiSubtitle1)`
   width: 70%;
-  margin-left: 6%;
+  margin-left: 4%;
   margin-top: -2%;
 `
 
@@ -45,13 +46,16 @@ export const StyledFooterTitle = styled(BulkiH6)`
 
 export const StyledFooterLink = styled(BulkiSubtitle2)`
   margin-bottom: 10px;
+  color: ${props => props.theme.colors.secondary.lighten(0.4)};
+  text-decoration: none;
 `
 export const StyledFooterLinkColor = styled.a`
-  color: ${props => props.theme.colors.neutral.lighten(0.7).hexa()};
+  color: ${props => props.theme.colors.secondary.lighten(0.4)};
+  text-decoration: none;
 `
 export const StyledCopyrightDiv = styled.div`
   text-align: center;
-  background-color: ${props => props.theme.colors.footer.lighten(0.3).hexa()};
+  background-color: ${props => props.theme.colors.footer.lighten(0.3)};
   flex: 0 0 10%;
 
 `
@@ -60,6 +64,10 @@ export const StyledCopyrightNotice = styled(BulkiCaption)`
 `
 
 export const StyledSocials = styled.div`
-  margin-left: 20%;
+  margin-left: -3%;
   margin-top: 2.5%;
+`
+
+export const StyledSocialIconButton = styled(BulkiIconButton)`
+  color: ${props => props.theme.colors.secondary.lighten(1.5)};
 `
