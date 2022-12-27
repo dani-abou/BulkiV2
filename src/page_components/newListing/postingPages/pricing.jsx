@@ -71,7 +71,8 @@ const Pricing = ({ formControl, formValues, addPricingTier, removePricingTier, s
       {Object.keys(formValues)
         .map((tierId) => {
           return <Tier key={tierId} tier={formValues[tierId]}
-            onChange={(field, newValue) => formControl(tierId, { ...formValues[tierId], [field]: newValue })}
+            onChange={(field, newValue) => formControl('pricing',
+              { ...formValues, [tierId]: { ...formValues[tierId], [field]: newValue } })}
             deleteTier={() => removePricingTier(tierId)} />
         })}
     </StyledTierContainer>

@@ -1,36 +1,43 @@
 import uploadImages from "../images/uploadImages"
 import app from "../../../../firebaseConfig"
 import { ref, uploadBytes } from "firebase/storage"
-
-const dummyDoc = {
-  seller: "Family Farm",
-  product: "Whole Cow",
-  description: "Grassfed, wonderful, tasty, fake description, cool cool cool and tasty meat",
-  sellerId: 'sellerId',
-  pricing: {
-    hsojhfdo: { quantity: 50, price: 12, title: "hhhhhh" },
-    djfsdjn: { quantity: 70, price: 80, title: '' }
-  },
-  images: ['mulch.png'],
-  thisIncludes: [{ label: 'bags of mulch', quantity: '5' }, { label: 'breadsticks', quantity: '70' }]
-}
+import axios from "axios"
+import { cloneDeep } from "lodash"
 
 const makeListing = async (user, listing, images) => {
   if (user) {
-    const formData = new FormData();
-    formData.append('file', images[0].file)
 
+    //Ensures all the pricing labels are not empty
+    listing.pricing = fixPricingLabels(listing.pricing);
+
+    //Prepares the data for request
+    const formData = new FormData();
+    for (var img of images) {
+      formData.append('images', img)
+    }
+    formData.append('listing', JSON.stringify({ ...listing, sellerId: user }))
+
+    //Send request
     const response = await fetch('/api/database/listings/makelisting', {
       method: 'POST',
-      data: JSON.stringify(formData),
-      // data: images[0].file
+      body: formData,
     });
     const myJson = await response.json();
     console.log(myJson)
   }
-  // await uploadImages(listing.id, images);
 
 
+}
+
+const fixPricingLabels = (uneditedPricing) => {
+  let editedPricing = cloneDeep(uneditedPricing);
+  Object.keys(uneditedPricing).forEach(key => {
+    const currentTier = uneditedPricing[key];
+    if (currentTier.label.length === 0) {
+      editedPricing[key].label = currentTier.quantity + (currentTier.quantity === "1" ? " unit" : " units")
+    }
+  })
+  return editedPricing;
 }
 
 

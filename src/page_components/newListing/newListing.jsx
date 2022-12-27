@@ -10,6 +10,7 @@ import { cloneDeep } from "lodash";
 import { useRouter } from "next/router"
 import makeListing from "../../api/database/listings/makeListing";
 import { BulkiContextConsumer } from "../../common/context";
+import { changeFileName } from "./utils.";
 
 
 const FLOW_PAGES = [
@@ -17,16 +18,16 @@ const FLOW_PAGES = [
     label: 'Product Details',
     page: (formValues, formControls) =>
       <ProductInfo
-        formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'basicInfo')}
+        formControl={formControls.changeFormValue}
         setPageComplete={formControls.setPageComplete}
-        formValues={formValues.basicInfo}
+        formValues={formValues}
         imageControls={formControls.imageControls}
       />,
   },
   {
     label: 'Pricing',
     page: (formValues, formControls) => <Pricing
-      formControl={(fieldKey, value) => formControls.changeFormValue(fieldKey, value, 'pricing')}
+      formControl={formControls.changeFormValue}
       formValues={formValues.pricing}
       setPageComplete={formControls.setPageComplete}
       removePricingTier={formControls.removePricingTier}
@@ -40,25 +41,12 @@ const FLOW_PAGES = [
 ]
 
 const defaultFormValues = {
-  basicInfo: {
-    product: '', description: '', unitDefinition: ''
-  },
+  name: '', description: '', unitDefinition: '',
+
   pricing: {
     [v1()]: {
       quantity: 50, price: 100, label: ''
     }
-  },
-  dimensions: {
-    weight: '', height: '', width: '', length: ''
-  },
-  freight: {
-    nmfc: '', nmfcSub: '', freightClass: ''
-  },
-  pickupAddress: {
-    streetAddress: '', city: '', state: '', zip: ''
-  },
-  poc: {
-    firstName: '', lastName: '', email: '', phoneNumber: ''
   },
 }
 
@@ -76,7 +64,7 @@ const NewListing = ({ userId }) => {
 
   // prompt the user if they try and leave with unsaved changes
   useEffect(() => {
-    if (Object.values(newProduct.basicInfo).some(val => val.length !== 0)) {
+    if (Object.values(newProduct).some(val => val.length !== 0)) {
       const warningText =
         'Are you sure you wish to leave this page? You will lose all progress';
       const handleWindowClose = e => {
@@ -97,19 +85,22 @@ const NewListing = ({ userId }) => {
         router.events.off('routeChangeStart', handleBrowseAway);
       };
     }
-  }, [router, newProduct.basicInfo]);
+  }, [router, newProduct]);
 
-  const changeFormValue = (fieldKey, value, formKey) => {
-    setNewProduct(prev => ({ ...prev, [formKey]: { ...prev[formKey], [fieldKey]: value } }))
+  const changeFormValue = (fieldKey, value) => {
+    setNewProduct(prev => ({ ...prev, [fieldKey]: value }))
   }
 
-  const addImage = file => {
+  const addImages = files => {
     setImages(prev => {
       let newImages = cloneDeep(prev);
-      newImages.push({ file, id: v1() })
+      for (var file of files) {
+        newImages.push(changeFileName(file))
+      }
       return newImages
     })
   }
+
 
   const removeImage = (index) => {
     setImages(prev => {
@@ -189,7 +180,7 @@ const NewListing = ({ userId }) => {
         {FLOW_PAGES[activeStep].page(newProduct,
           {
             changeFormValue, addPricingTier, removePricingTier, setPageComplete,
-            imageControls: { reorderImages, removeImage, addImage, images }
+            imageControls: { reorderImages, removeImage, addImages, images }
           })}
       </StyledPageUnderStepper>
       <StyledButtonDiv $previous={activeStep !== 0}>

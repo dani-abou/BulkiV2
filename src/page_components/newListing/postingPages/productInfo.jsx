@@ -48,7 +48,7 @@ const DraggableImageBox = ({ onDragEnd, onDrop, images, removeImage }) => {
 }
 
 const ProductImage = ({ img, index, removeThisImage }) => (
-  <Draggable key={img.id} draggableId={img.id} index={index}>
+  <Draggable key={img.name} draggableId={img.name} index={index}>
     {(provided, snapshot) => (
 
       <StyledDraggableImage ref={provided.innerRef}
@@ -57,8 +57,8 @@ const ProductImage = ({ img, index, removeThisImage }) => (
         {...provided.draggableProps}
         {...provided.dragHandleProps}>
         <Image
-          src={URL.createObjectURL(img.file)}
-          alt={img.id}
+          src={URL.createObjectURL(img)}
+          alt={img.name}
           layout='fill'
         />
         <StyledCloseButton onClick={removeThisImage}>
@@ -86,7 +86,7 @@ const DropHere = () => {
 
 
 const ProductInfo = ({ formControl, formValues, setPageComplete, imageControls }) => {
-  const { images, reorderImages, removeImage, addImage } = imageControls;
+  const { images, reorderImages, removeImage, addImages } = imageControls;
   useEffect(() => {
     if (Object.values(formValues).some(val => val.length === 0) || images.length === 0) {
       setPageComplete(false)
@@ -106,15 +106,15 @@ const ProductInfo = ({ formControl, formValues, setPageComplete, imageControls }
 
   //Handles dropping a file into the browser
   const onDrop = useCallback(acceptedFile => {
-    addImage(acceptedFile[0])
-  }, [addImage])
+    addImages(acceptedFile[0])
+  }, [addImages])
 
   return <>
     <StyledSubformTitle>Product Details</StyledSubformTitle>
     <ProductBasicInfoForm onChange={formControl} values={formValues} />
     <br />
-    <StyledAddImageButton onChange={e => addImage(e.target.files[0])} component="label">
-      <input hidden accept="image/*" multiple type="file" />
+    <StyledAddImageButton onChange={e => addImages(e.target.files)} component="label">
+      <input hidden accept="image/*" name="image" type="file" multiple />
       Add Image
     </StyledAddImageButton>
     <StyledImagesInstruction>Images will be ordered as they appear here.{'\n'}Drag an image to change the order.</StyledImagesInstruction>
