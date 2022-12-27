@@ -6,7 +6,7 @@ import states from "states-us"
 export const ProductBasicInfoForm = ({ className, onChange, values }) => {
   const form = useMemo(() => {
     return {
-      product: {
+      name: {
         type: FormInputTypes.input,
         width: 100,
         additionalProps: {
