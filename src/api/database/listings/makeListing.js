@@ -1,4 +1,3 @@
-import uploadImages from "../images/uploadImages"
 import app from "../../../../firebaseConfig"
 import { ref, uploadBytes } from "firebase/storage"
 import axios from "axios"
