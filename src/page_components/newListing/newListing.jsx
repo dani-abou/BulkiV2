@@ -11,6 +11,7 @@ import { useRouter } from "next/router"
 import makeListing from "../../api/database/listings/makeListing";
 import { BulkiContextConsumer } from "../../common/context";
 import { changeFileName } from "./utils.";
+import { isValidEmail } from "../../common/utils";
 
 
 const FLOW_PAGES = [
@@ -36,29 +37,38 @@ const FLOW_PAGES = [
   },
   {
     label: 'Confirmation',
-    page: (formValues, formControls) => <ConfirmListing formControl={formControls.changeFormValue} formValues={formValues} />,
+    page: (formValues, formControls) => <ConfirmListing
+      formControl={formControls.changeFormValue}
+      formValues={formValues}
+      images={formControls.imageControls.images}
+      termControls={formControls.termControls}
+    />,
   },
 ]
 
-const defaultFormValues = {
-  name: '', description: '', unitDefinition: '',
-
+const defaultFormValues = (email) => ({
+  name: '',
+  description: '',
+  unitDefinition: '',
   pricing: {
     [v1()]: {
       quantity: 50, price: 100, label: ''
     }
   },
-}
+  contactEmail: email,
+})
 
-const NewListing = ({ userId }) => {
+const NewListing = ({ user }) => {
   const [isConfirm, setIsConfirm] = useState(false);
 
   const [pageComplete, setPageComplete] = useState(false);
 
   const [activeStep, setActiveStep] = useState(0);
-  const [newProduct, setNewProduct] = useState(defaultFormValues)
+  const [newProduct, setNewProduct] = useState(defaultFormValues(user?.email))
 
   const [images, setImages] = useState([]);
+
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const router = useRouter()
 
 
@@ -94,9 +104,14 @@ const NewListing = ({ userId }) => {
   const addImages = files => {
     setImages(prev => {
       let newImages = cloneDeep(prev);
-      for (var file of files) {
-        newImages.push(changeFileName(file))
+      if (files.length) {
+        for (var file of files) {
+          newImages.push(changeFileName(file))
+        }
+      } else {
+        newImages.push(changeFileName(files))
       }
+
       return newImages
     })
   }
@@ -137,7 +152,7 @@ const NewListing = ({ userId }) => {
   }
 
   const createListing = async () => {
-    await makeListing(userId, newProduct, images)
+    await makeListing(user?.uid, newProduct, images)
   }
 
   const removePricingTier = (tierId) => {
@@ -180,6 +195,7 @@ const NewListing = ({ userId }) => {
         {FLOW_PAGES[activeStep].page(newProduct,
           {
             changeFormValue, addPricingTier, removePricingTier, setPageComplete,
+            termControls: { setAcceptedTerms: e => setAcceptedTerms(e.target.checked), checked: acceptedTerms },
             imageControls: { reorderImages, removeImage, addImages, images }
           })}
       </StyledPageUnderStepper>
@@ -191,7 +207,11 @@ const NewListing = ({ userId }) => {
           <StyledRequiredIndicator>* indicates a required field</StyledRequiredIndicator>
           {
             activeStep !== FLOW_PAGES.length - 1 ? <StyledButton onClick={goToNextPage} disabled={!pageComplete}>Next</StyledButton>
-              : <StyledButton onClick={createListing} disabled={!pageComplete}>Confirm</StyledButton>
+              : <StyledButton
+                onClick={createListing}
+                disabled={!pageComplete || !isValidEmail(newProduct.contactEmail) || !acceptedTerms}>
+                Confirm
+              </StyledButton>
           }
         </>
       </StyledButtonDiv>
@@ -216,6 +236,6 @@ const NewListing = ({ userId }) => {
 
 export default function NewListingWithContext(props) {
   return <BulkiContextConsumer>
-    {context => <NewListing {...props} userId={context?.userData?.uid} />}
+    {context => <NewListing {...props} user={context?.userData} />}
   </BulkiContextConsumer>
 }

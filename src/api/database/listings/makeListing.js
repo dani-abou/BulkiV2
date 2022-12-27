@@ -1,7 +1,4 @@
-import app from "../../../../firebaseConfig"
-import { ref, uploadBytes } from "firebase/storage"
-import axios from "axios"
-import { cloneDeep } from "lodash"
+import { fixPricingLabels } from "../../../page_components/newListing/utils.";
 
 const makeListing = async (user, listing, images) => {
   if (user) {
@@ -26,17 +23,6 @@ const makeListing = async (user, listing, images) => {
   }
 
 
-}
-
-const fixPricingLabels = (uneditedPricing) => {
-  let editedPricing = cloneDeep(uneditedPricing);
-  Object.keys(uneditedPricing).forEach(key => {
-    const currentTier = uneditedPricing[key];
-    if (currentTier.label.length === 0) {
-      editedPricing[key].label = currentTier.quantity + (currentTier.quantity === "1" ? " unit" : " units")
-    }
-  })
-  return editedPricing;
 }
 
 

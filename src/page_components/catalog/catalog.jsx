@@ -16,6 +16,14 @@ import getListing from "../../api/database/listings/getListing"
 
 import { BulkiContextConsumer } from "../../common/context"
 
+export const CatalogCard = ({ product }) => (
+  <StyledCard
+    image={product.images[0]} header={product.name}>
+    <StyledPrice>US$ 40</StyledPrice>
+    <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
+  </StyledCard>
+)
+
 const Catalog = ({ searchQuery, bulkiContext }) => {
 
   const [products, loading] = useSearchProducts(searchQuery || "");
@@ -67,9 +75,7 @@ const Catalog = ({ searchQuery, bulkiContext }) => {
             <Link href={urls.listing + '/' + product.id} key={product.id}>
               <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
                 <StyledCard
-                  // imageLoading={loadingImages[product.id]}
                   image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.product}>
-                  {/* <StyledPrice>US$ {product.price[0].price}</StyledPrice> */}
                   <StyledPrice>US$ 40</StyledPrice>
 
                   <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>

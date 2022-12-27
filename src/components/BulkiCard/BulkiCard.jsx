@@ -18,13 +18,12 @@ const BulkiCard = ({ image, imageLoading, header, children, className }) => {
           {
             imageLoading || !image ?
               <CircularProgress />
-              : <></>
-            // <Image
-            //   alt={image}
-            //   src={image}
-            //   layout="fill"
-            //   objectFit='fill'
-            // />
+              : <Image
+                alt={image}
+                src={image}
+                layout="fill"
+                objectFit='fill'
+              />
 
           }
         </StyledImage>
