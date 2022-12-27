@@ -211,3 +211,12 @@ export const StyledDemoCardContainer = styled.div`
   top: 50%;
   transform: translate(-20%, -50%);
 `
+
+export const StyledDemoCaption = styled(BulkiCaption)`
+  opacity: 0.5;
+  text-align: right;
+`
+
+export const StyledInvalidEmail = styled(BulkiCaption)`
+  color: ${props => props.theme.colors.error.hexa()};
+`

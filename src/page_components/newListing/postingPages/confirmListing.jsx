@@ -4,11 +4,12 @@ import { CatalogCard } from "../../catalog/catalog"
 import {
   StyledPageFlex, StyledLeftContainer, StyledConfirmInfo, StyledConfirmInfoLabel,
   StyledConfirmTierContainer, StyledConfirmTier, StyledConfirmTierLabel, StyledConfirmTierInfo,
-  StyledDemoCardContainer
+  StyledDemoCardContainer, StyledDemoCaption, StyledInvalidEmail
 } from "../style"
 import { fixPricingLabels } from "../utils."
 import { urls } from "../../../common"
 import BulkiCheckbox from "../../../components/BulkiCheckbox"
+import { isValidEmail } from "../../../common/utils"
 
 const LabelWithInformation = ({ label, children }) => (
   <StyledConfirmInfo>
@@ -49,10 +50,12 @@ const ConfirmListing = ({ formValues, formControl, images, termControls }) => {
       <StyledConfirmInfoLabel>Point of Contact Email* </StyledConfirmInfoLabel>
       <BulkiInput
         value={formValues.contactEmail}
-        onChange={e => formControl('contactEmail', e.target.body)} />
+        onChange={e => formControl('contactEmail', e.target.value)} />
+      {!isValidEmail(formValues.contactEmail) && <StyledInvalidEmail>Invalid Email</StyledInvalidEmail>}
     </StyledLeftContainer>
     <StyledLeftContainer>
       <StyledDemoCardContainer>
+        <StyledDemoCaption>Demo of this listing in the catalog</StyledDemoCaption>
         <CatalogCard product={{ ...formValues, images: images.map(img => URL.createObjectURL(img)) }} />
         <br />
         <BulkiCheckbox label={<BulkiCaption>I agree to the {' '}
@@ -63,7 +66,6 @@ const ConfirmListing = ({ formValues, formControl, images, termControls }) => {
           onChange={termControls.setAcceptedTerms}
         />
       </StyledDemoCardContainer>
-
     </StyledLeftContainer>
   </StyledPageFlex>
 }
