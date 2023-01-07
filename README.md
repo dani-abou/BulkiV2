@@ -34,15 +34,15 @@ Currently, our Firebase storage is only being used to store listing images. In t
 
 ## Data structures
 
-# users
+### users
 
 This is simple, it holds data about all the users, including the ids of all the listings they've posted, and orders they've made. These are all indexed by the user's id.
 
-# listings
+### listings
 
 Anytime a user creates a listing, this database holds it. Notably, each listing has its own unique id, name, descrition, sellerId, and an ordered array of image urls (referencing those images in the storage).
 
-# orders
+### orders
 
 TBD (I have not fully built out the ordering flow yet, which will determine how this should look)
 
