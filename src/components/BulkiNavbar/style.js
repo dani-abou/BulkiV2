@@ -20,16 +20,19 @@ export const StyledBulkiLogoContainer = styled.div`
 
   width: ${props => props.$skinny ? '200px' : '300px'};
   margin-left: 10%;
-  transition: all 0.2s;
+  transition: all 0.3s ease-out;
 `
-// height: ${ props => props.$skinny ? '0' : 'inherit' };
 
 export const StyledToolbar = styled(Toolbar)`
-  visibility:${props => props.$skinny ? 'hidden' : 'visible'};
-  gap: 15px;
+  gap: 15px;  
   justify-content: space-between;
-  transition: all 0.2s;
-  
+
+`
+
+export const StyledCollapsible = styled.div`
+  max-height: ${props => props.$skinny ? 0 : '100%'};
+  overflow: hidden;
+  transition: all 0.3s ease-out;
 `
 
 export const StyledButton = styled(BulkiButton)`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BulkiButton, { BulkiIconButton } from "../../components/BulkiButton";
-import { BulkiH5, BulkiH4 } from "../../common/styles";
+import { BulkiH5, BulkiH4, BulkiBody1, BulkiBody2 } from "../../common/styles";
 import { BulkiCaption } from "../../common/styles";
 import BulkiInput from "../../components/BulkiInput";
 
@@ -18,6 +18,7 @@ export const StyledPageUnderStepper = styled.div`
   margin-top: 75px;
   padding: 0 4%;
   flex: 1 0;
+  height: 100%;
 `
 export const StyledSubformTitle = styled(BulkiH5)`
   margin-left: 1.7%;
@@ -152,4 +153,70 @@ export const StyledDropZone = styled.div`
 export const StyledAddImageButton = styled(BulkiButton)`
   margin-left: 2%;
   margin-bottom: 2%;
+`
+
+export const StyledPageFlex = styled.div`
+  display: flex;
+  min-height: 450px;
+`
+
+export const StyledLeftContainer = styled.div`
+  flex: 1 0;
+  position: relative;
+`
+
+export const StyledConfirmInfo = styled(BulkiBody1)`
+  margin-bottom: 10px;
+`
+export const StyledConfirmInfoLabel = styled(BulkiBody1)`
+  font-weight: bold;
+  display: inline;
+`
+
+export const StyledConfirmTierContainer = styled.div`
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+`
+export const StyledConfirmTier = styled.div`
+  border: 1.5px solid ${props => props.theme.colors.neutral.alpha(0.5).hexa()};
+  border-radius: 5px;
+  flex: 0 0 24%;
+  min-height:8px;
+  padding: 6px;
+  text-align: center;
+`
+
+export const StyledConfirmTierLabel = styled(BulkiBody2)`
+  font-weight: 900;
+  margin-bottom: 5px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+  height: 50%;
+  display: inline;
+`
+
+export const StyledConfirmTierInfo = styled(BulkiBody2)`
+`
+
+export const StyledDemoCardContainer = styled.div`
+  width: 270px;
+  position: absolute;
+  right: 0;  
+  top: 50%;
+  transform: translate(-20%, -50%);
+`
+
+export const StyledDemoCaption = styled(BulkiCaption)`
+  opacity: 0.5;
+  text-align: right;
+`
+
+export const StyledInvalidEmail = styled(BulkiCaption)`
+  color: ${props => props.theme.colors.error.hexa()};
 `

@@ -1,5 +1,7 @@
+import { useEffect, useMemo, useState } from "react";
+import getUserListings from "../../../api/database/users/getUserListings";
 import BulkiCard from "../../../components/BulkiCard";
-import { StyledAccountCard, StyledAccountCardContainer } from "../style"
+import { StyledAccountCard, StyledAccountCardContainer } from "../style";
 
 const DUMMY_ORDER = {
   orderId: 'JWPFsz0vrH5n93HvfKgm',
@@ -11,15 +13,25 @@ const DUMMY_ORDER = {
 const DUMMY_ORDERS = Array(10).fill(DUMMY_ORDER);
 
 
-const AccountListings = () => {
+const AccountListings = ({ userData }) => {
+  const [loading, setLoading] = useState(true);
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    const getListings = async () => {
+      setLoading(true);
+      const ourListings = await getUserListings(userData?.uid);
+      setListings(ourListings);
+      setLoading(false);
+    }
+    getListings()
+  }, [userData?.uid]);
 
   return <StyledAccountCardContainer>
-    {
-      DUMMY_ORDERS.map((order, index) => {
-        return <StyledAccountCard key={index} image='cans.png' header={order.product}>
-          CHILDREN
-        </StyledAccountCard>
-      })
+    {!loading && listings.map((order, index) => (<StyledAccountCard key={index} image={order.thumbnail} header={order.product}>
+      CHILDREN
+    </StyledAccountCard>
+    ))
     }
   </StyledAccountCardContainer>
 

@@ -1,10 +1,10 @@
-import {
-  StyledCard, StyledHeader, StyledImage, StyledFixedDimensions, StyledImageDiv
-} from './style'
+import { Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, CircularProgress } from '@mui/material'
 import Image from 'next/image'
-import BulkiCarousel from '../BulkiCarousel'
-import { Card, CardContent, CardMedia, CardActionArea, CardHeader, CircularProgress, CardActions } from '@mui/material'
 import PropTypes from "prop-types"
+import BulkiCarousel from '../BulkiCarousel'
+import {
+  StyledCard, StyledFixedDimensions, StyledHeader, StyledImage, StyledImageDiv
+} from './style'
 
 
 //If images is an array of > 1, then a carousel is shown
@@ -15,18 +15,12 @@ const BulkiCard = ({ image, imageLoading, header, children, className }) => {
     <CardActionArea sx={{ height: '100%' }}>
       <StyledImageDiv>
         <StyledImage>
-          {
-            imageLoading || !image ?
-              <CircularProgress />
-              : <></>
-            // <Image
-            //   alt={image}
-            //   src={image}
-            //   layout="fill"
-            //   objectFit='fill'
-            // />
-
-          }
+          <Image
+            alt={image}
+            src={image}
+            layout="fill"
+            objectFit='fill'
+          />
         </StyledImage>
       </StyledImageDiv>
       <CardContent sx={{ height: '55%', width: '100%' }} >

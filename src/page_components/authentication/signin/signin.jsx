@@ -1,17 +1,16 @@
-import {
-  StyledEmail, StyledPassword,
-  StyledOptions, StyledSignIn,
-  StyledCheckbox, StyledSearchFlex, StyledOptionsDiv
-} from './style'
-import { StyledPaper, LogInButton } from "../utils";
 import { PageIfNotAuthenticated } from "../../utils";
-import { useEmailSignIn, emailSignIn } from "../../../common/authentication"
-import { useState, useEffect } from "react";
+import { LogInButton, StyledPaper } from "../utils";
+import {
+  StyledCheckbox, StyledEmail, StyledOptions, StyledOptionsDiv, StyledPassword, StyledSearchFlex, StyledSignIn
+} from './style';
+// import { useEmailSignIn, emailSignIn } from "../../../common/authentication"
 import { Checkbox } from '@mui/material';
-import { BulkiCaption } from '../../../common/styles';
-import Link from "next/link"
-import { urls } from '../../../common';
+import Link from "next/link";
 import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import emailSignIn from '../../../api/authentication/emailSignIn';
+import { urls } from '../../../common';
+import { BulkiCaption } from '../../../common/styles';
 
 const SignIn = () => {
 
@@ -23,7 +22,8 @@ const SignIn = () => {
 
   const signin = e => {
     e.preventDefault();
-    emailSignIn(email, password, rememberMe, setStatus, router)
+    // emailSignIn(email, password, rememberMe, setStatus, router);
+    emailSignIn(email, password, rememberMe)
   }
 
   return <StyledPaper title='Log in'>

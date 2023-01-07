@@ -84,11 +84,13 @@ const DropHere = () => {
   </StyledEmptyContents>
 }
 
+const PRODUCT_INFO_KEYS = ['name', 'description', 'unitDefinition']
+
 
 const ProductInfo = ({ formControl, formValues, setPageComplete, imageControls }) => {
   const { images, reorderImages, removeImage, addImages } = imageControls;
   useEffect(() => {
-    if (Object.values(formValues).some(val => val.length === 0) || images.length === 0) {
+    if (PRODUCT_INFO_KEYS.some(key => formValues[key].length === 0) || images.length === 0) {
       setPageComplete(false)
     } else {
       setPageComplete(true)
@@ -113,8 +115,12 @@ const ProductInfo = ({ formControl, formValues, setPageComplete, imageControls }
     <StyledSubformTitle>Product Details</StyledSubformTitle>
     <ProductBasicInfoForm onChange={formControl} values={formValues} />
     <br />
-    <StyledAddImageButton onChange={e => addImages(e.target.files)} component="label">
-      <input hidden accept="image/*" name="image" type="file" multiple />
+    <StyledAddImageButton
+      onChange={e => addImages(e.target.files)}
+      onClick={e => e.target.value = null}
+      component="label">
+      <input hidden
+        accept="image/*" type="file" multiple />
       Add Image
     </StyledAddImageButton>
     <StyledImagesInstruction>Images will be ordered as they appear here.{'\n'}Drag an image to change the order.</StyledImagesInstruction>

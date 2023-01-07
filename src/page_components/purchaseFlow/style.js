@@ -57,3 +57,12 @@ export const StyledQuote = styled.div`
 export const StyledRadioDiv = styled.div`
   flex: 0 0 46.5%;
   `
+
+export const StyledPaymentFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const StyledPaymentContainer = styled.div`
+  flex: 0 0 45%;
+`

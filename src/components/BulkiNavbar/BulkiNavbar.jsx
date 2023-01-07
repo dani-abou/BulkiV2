@@ -1,22 +1,21 @@
-import { useState, useRef } from "react"
-import {
-  StyledBulkiLogoContainer, StyledBulkiInput, StyledButton,
-  StyledSearchButton, StyledAppbar, StyledToolbar
-} from "./style"
+import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded'
+import AddRoundedIcon from '@mui/icons-material/AddRounded'
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
+import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded'
+import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded'
+import { Grid } from "@mui/material"
 import Image from 'next/image'
 import Link from "next/link"
-import { BulkiButtonTypes } from "../BulkiButton"
-import { Grid } from "@mui/material";
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
-import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
-import PermPhoneMsgRoundedIcon from '@mui/icons-material/PermPhoneMsgRounded';
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
-import { urls } from "../../common"
 import { useRouter } from 'next/router'
-import AccountDropdown from "./AccountDropdown"
+import { useRef, useState } from "react"
+import { urls } from "../../common"
 import { BulkiContextConsumer } from "../../common/context"
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import { BulkiButtonTypes } from "../BulkiButton"
+import AccountDropdown from "./AccountDropdown"
+import {
+  StyledAppbar, StyledBulkiInput, StyledBulkiLogoContainer, StyledButton, StyledCollapsible, StyledSearchButton, StyledToolbar
+} from "./style"
 
 
 //All the buttons (other than the login button) that will show in the navbar
@@ -94,7 +93,6 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
 
   // return <CompressedNavbar />
   return <StyledAppbar position='static' >
-
     <Grid container sx={{
       height: '100%',
     }}>
@@ -112,8 +110,9 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
         </StyledBulkiLogoContainer>
       </Grid>
       <Grid item sm={9} xs={9} md={9} lg={7}>
-        {
-          !skinny && <StyledToolbar ref={navbarRef} $skinny={skinny}>
+        <StyledCollapsible $skinny={skinny}>
+
+          <StyledToolbar ref={navbarRef} $skinny={skinny}>
             {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
               <StyledButton
                 variant={BulkiButtonTypes['text']}
@@ -135,7 +134,8 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
                 </Link>
             }
           </StyledToolbar>
-        }
+        </StyledCollapsible>
+
         <SearchField loginRef={loginRef}
           searchbarValue={searchbarValue}
           setSearchbarValue={setSearchbarValue} />

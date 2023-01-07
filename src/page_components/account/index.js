@@ -1,34 +1,32 @@
-import { AccountProfile, AccountOrders, AccountListings, AccountPaymentInfo } from "./accountPages"
+import { useEffect } from "react"
 import { urls } from "../../common"
-import {
-  StyledSurface, StyledFlex, StyledTabs, StyledTab, StyledLeft,
-  StyledTitleBox, StyledTitle, StyledRight
-} from "./style"
+import { BulkiContextConsumer } from "../../common/context"
 import { BulkiH4 } from "../../common/styles"
+import { AccountListings, AccountOrders, AccountPaymentInfo, AccountProfile } from "./accountPages"
+import { StyledFlex, StyledLeft, StyledRight, StyledSurface, StyledTab, StyledTabs, StyledTitle, StyledTitleBox } from "./style"
 
 const TABS = {
   [urls.account.tabs.profile]: {
     tabLabel: 'Profile',
-    page: <AccountProfile />
+    page: () => <AccountProfile />
   },
   [urls.account.tabs.orders]: {
     tabLabel: 'Orders',
-    page: <AccountOrders />
+    page: () => <AccountOrders />
   },
   [urls.account.tabs.paymentInfo]: {
     tabLabel: 'Payment Info',
-    page: <AccountPaymentInfo />
+    page: () => <AccountPaymentInfo />
   },
   [urls.account.tabs.listings]: {
     tabLabel: 'Listings',
-    page: <AccountListings />
+    page: props => <AccountListings {...props} />
   }
 }
 
 
 
-const Account = ({ currentTab, setSelectedTab }) => {
-
+const Account = ({ currentTab, setSelectedTab, userData }) => {
   const test = (e, newValue) => {
     setSelectedTab(newValue)
   }
@@ -46,13 +44,18 @@ const Account = ({ currentTab, setSelectedTab }) => {
         <StyledTabs value={currentTab} onChange={test} orientation="vertical">
           {Object.keys(TABS).map(tabKey => {
             const tab = TABS[tabKey]
-            return <StyledTab key={tabKey} label={tab.tabLabel} value={tabKey} />
+            return <StyledTab key={tabKey} label={tab.tabLabel} value={tabKey} userData={userData} />
           })}
         </StyledTabs>
       </StyledLeft>
-      <StyledRight>{TABS[currentTab]?.page}</StyledRight>
+      <StyledRight>{TABS[currentTab]?.page({ userData })}</StyledRight>
     </StyledFlex>
   </StyledSurface>
 }
 
-export default Account
+export default function AccountWithContext(props) {
+  return <BulkiContextConsumer>
+
+    {context => <Account {...props} userData={context.userData} />}
+  </BulkiContextConsumer >
+}
