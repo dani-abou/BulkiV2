@@ -19,6 +19,8 @@ In no order:
 - Integrate Stripe as our payment gateway
 - Make 'What we do' page
 - Finish account info pages
+- Integrate Algolia search engine into catalog
+- Shift as many static pages to SSR
 
 ## Running
 

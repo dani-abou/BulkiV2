@@ -8,8 +8,9 @@ import { Checkbox } from '@mui/material';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
-import emailSignIn from '../../../api/authentication/emailSignIn';
+// import emailSignIn from '../../../api/authentication/emailSignIn';
 import { urls } from '../../../common';
+import { emailSignIn } from "../../../common/authentication";
 import { BulkiCaption } from '../../../common/styles';
 
 const SignIn = () => {
@@ -22,8 +23,8 @@ const SignIn = () => {
 
   const signin = e => {
     e.preventDefault();
-    // emailSignIn(email, password, rememberMe, setStatus, router);
-    emailSignIn(email, password, rememberMe)
+    emailSignIn(email, password, rememberMe, setStatus, router);
+    // emailSignIn(email, password, rememberMe)
   }
 
   return <StyledPaper title='Log in'>
