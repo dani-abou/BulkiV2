@@ -48,32 +48,32 @@ TBD (I have not fully built out the ordering flow yet, which will determine how 
 
 ## File structure
 
-# pages
+### pages
 
 NextJs is designed such that every file in `./pages` is directly assosciated with a page you'd see in the url. The exception to those are files that start with an underscore, and those are some overriding of NextJs rendering structure. Additionally `api` is an exception. I simply use this directory for my page structuring, but for the contents of the page, please refer to `src/page_components`
 
-# api
+### api
 
 The `api` directory is the only folder in `./pages` that does not actually contain a user's page. This folder is used to imitate a backend. In large part, I intend on hiding all configs and secrets such that they are viewed used from this directory, and the frontend simply pings here. The file paths within api mark their api url. These should only be called from the `src/api` directory. The names of these files should be all lower case, to easily differentiate from the frontend calling files.
 
-# gallery
+### gallery
 
 The gallery is a mock frontend I use to write and test out new components. Additionally, it serves as a good reference of use cases for many of my custom components.
 As of 01/07/2023 the gallery is not functional, but I have fixing it noted as a lower priority. TODO
 
-# src/api
+### src/api
 
 The frontend functions for calling the api backend functions. These files should all be in camel case, and have a parallel path to that of the backend api files. Per example: `./api/database/makeorder` should only ever be called by the frontend through `./src/api/database/makeOrder`.
 
-# src/common
+### src/common
 
 This folder is intended to hold basic frontend resources. This includes styles, the MUI theme, translations, context, and useful data.
 
-# src/components
+### src/components
 
 The `components` holds all of my customized components. These should be generic smaller components, and not whole entire pages. These should be built with a simple jsx file, an index file to manage the exports, and then a styling file.
 
-# src/page_components
+### src/page_components
 
 These `page_components` are the makup of each of the pages defined in `./pages`. I compartmentalized all the page building here inot source, rather than holding them all within the root.
 
