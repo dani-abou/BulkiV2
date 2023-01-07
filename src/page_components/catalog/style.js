@@ -1,8 +1,10 @@
+import { Card, Skeleton } from '@mui/material';
 import styled from "styled-components";
-import { BulkiBody1, BulkiH5 } from "../../common/styles";
-import BulkiButton from "../../components/BulkiButton"
+import { BulkiBody1, BulkiCaption, BulkiH5 } from "../../common/styles";
+import BulkiButton from "../../components/BulkiButton";
 import BulkiCard from "../../components/BulkiCard";
 import BulkiSurface from "../../components/BulkiSurface/BulkiSurface";
+
 
 export const StyledSearchFlex = styled.div`
   display: flex;
@@ -12,12 +14,16 @@ export const StyledSearchFlex = styled.div`
   height: 100%;
 `
 
-export const StyledFiltersBox = styled(BulkiSurface)`
-  width: 250px;
-  height: min-content;
-  min-height: 80vh;
-  flex: 1 0 20%;
+export const StyledFilters = styled(BulkiSurface)`
   padding: 30px 1%;
+  height: 100%;
+  width: 100%;
+`
+
+export const StyledFiltersContainer = styled.div`
+  width: 250px;
+  height: 100%;
+  flex: 0 0 20%;
 `
 
 export const StyledProductsDiv = styled.div`
@@ -33,6 +39,14 @@ export const StyledCardDivWithMargin = styled.div`
   flex: 0 0 19%;
   width: min-content;
   margin: 0;
+`
+
+export const StyledCardDescription = styled(BulkiCaption)`
+  opacity: 0.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
 `
 
 export const StyledCard = styled(BulkiCard)`
@@ -66,4 +80,17 @@ export const StyledSearchQueryBox = styled(BulkiSurface)`
 
 export const StyledDecoratedQuery = styled.span`
   color: ${props => props.theme.colors.secondary.hexa()};
+`
+
+export const StyledResultsContainer = styled.div`
+  flex: 1 0;
+`
+export const StyledSkeleton = styled(Skeleton)`
+  height: 100%;
+  width: 100%;
+  border-radius: 3.5px;
+  `
+
+export const StyledLoadingCard = styled(Card)`
+  height: 400px;
 `

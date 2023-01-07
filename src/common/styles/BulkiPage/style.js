@@ -1,5 +1,5 @@
-import styled from "styled-components"
 import { Paper } from '@mui/material';
+import styled from "styled-components";
 
 export const StyledWholePage = styled.div`
   width: 100vw;
@@ -8,6 +8,7 @@ export const StyledWholePage = styled.div`
   flex-direction: column;
   overflow: hidden;
   min-width: 1050px;
+  min-height: 900px;
 `
 export const StyledBodyDiv = styled.div`
   flex: 1 0;
@@ -17,11 +18,12 @@ export const StyledBodyDiv = styled.div`
   height: 100%;
 `
 export const StyledBackgroundDiv = styled(Paper)`
-  flex: 1 0 ${props => props.$skinny ? '90%' : '90%'};
+  flex: 1 0 90%;
   width: 100% !important;
-
   margin: 0;
-  padding: ${props => props.$skinny ? '8%' : '2%'} 0 3%;
+  /* padding: ${props => props.$skinny ? '8%' : '2%'} 0 3%; */
+  padding: 3% 0 3%;
+
   position: relative;
   background-color: ${props => props.theme.colors.background.hexa()};
   transition: all 0.2s;
@@ -29,8 +31,10 @@ export const StyledBackgroundDiv = styled(Paper)`
 `
 
 export const StyledNavbarDiv = styled.div`
-  flex: 0 0 ${props => props.$skinny ? '8%' : '18%'};
-  transition: all 0.2s;
+  flex: 0 0 150px;
+  max-height: ${props => props.$skinny ? '75px' : '150px'};
+  overflow: hidden;
+  transition: all 0.3s ease-out;
 `
 
 export const StyledFooterDiv = styled.div`

@@ -1,14 +1,13 @@
-import useEmblaCarousel from 'embla-carousel-react'
-import { useCallback, useState, useEffect } from 'react';
-import {
-  StyledCarouselDiv, StyledImagesDiv, StyledImage, StyledViewPort, StyledScrollButton,
-  StyledThumbnailViewport, StyledThumbnailFlexbox
-} from "./style"
-import Image from "next/image";
-import Thumbnail from "./thumbnail"
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
-import PropTypes from "prop-types"
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
+import useEmblaCarousel from 'embla-carousel-react';
+import Image from "next/image";
+import PropTypes from "prop-types";
+import { useCallback, useEffect, useState } from 'react';
+import {
+  StyledCarouselDiv, StyledImage, StyledImagesDiv, StyledScrollButton, StyledThumbnailFlexbox, StyledThumbnailViewport, StyledViewPort
+} from "./style";
+import Thumbnail from "./thumbnail";
 
 
 const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className }) => {
@@ -62,13 +61,16 @@ const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className
     </StyledViewPort>
     {showButtons &&
       <>
-        <StyledScrollButton onClick={scrollPrev} nextbutton={false}>
+        {selectedIndex !== 0 && <StyledScrollButton onClick={scrollPrev} nextbutton={false}>
           <ChevronLeftRoundedIcon fontSize='large' />
         </StyledScrollButton>
-        <StyledScrollButton onClick={scrollNext} nextbutton={true}>
-          <ChevronRightRoundedIcon fontSize='large' />
-
-        </StyledScrollButton>
+        }
+        {
+          selectedIndex !== urls.length - 1 &&
+          <StyledScrollButton onClick={scrollNext} nextbutton={true}>
+            <ChevronRightRoundedIcon fontSize='large' />
+          </StyledScrollButton>
+        }
       </>
     }
     {showThumbnails && <StyledThumbnailViewport ref={thumbViewportRef}>
@@ -82,7 +84,6 @@ const BulkiCarousel = ({ urls, showButtons, draggable, showThumbnails, className
         )}
       </StyledThumbnailFlexbox>
     </StyledThumbnailViewport>}
-
   </StyledCarouselDiv>
 }
 

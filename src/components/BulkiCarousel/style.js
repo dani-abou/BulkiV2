@@ -5,6 +5,7 @@ export const StyledCarouselDiv = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  padding-bottom: 25px;
 `
 
 export const StyledViewPort = styled.div`
@@ -17,6 +18,7 @@ export const StyledThumbnailViewport = styled.div`
   overflow: hidden;
   height: 100px;
   width: 100%;
+  margin-bottom: 50px;
 `
 
 export const StyledImagesDiv = styled.div`
@@ -33,18 +35,18 @@ export const StyledScrollButton = styled(BulkiIconButton)`
   position: absolute;
   top: 50%;
   ${props => props.nextbutton ? "right: 5%;" : "left:5%"};
-  transform: translate(0, -50%;);
+  transform: translate(0, -50%);
 
-  :hover {
+  /* :hover { */
     background-color: ${props => props.theme.colors.onSurface.darken(1).alpha(0.65).hexa()};
-  }
+  /* } */
 `
 
 
 
 export const StyledThumbnailDiv = styled.div`
   opacity: ${props => props.selected ? '1' : '0.5'};
-  flex: 0 0 10%;
+  flex: 0 0 20%;
   position: relative;
   border-radius: 3px;
   cursor:pointer;

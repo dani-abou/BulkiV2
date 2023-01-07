@@ -1,6 +1,6 @@
-import BulkiForm, { FormInputTypes } from "../BulkiForm"
 import { useMemo } from "react"
 import states from "states-us"
+import BulkiForm, { FormInputTypes } from "../BulkiForm"
 
 
 export const ProductBasicInfoForm = ({ className, onChange, values }) => {
@@ -33,7 +33,7 @@ export const ProductBasicInfoForm = ({ className, onChange, values }) => {
         type: FormInputTypes.input,
         width: 100,
         additionalProps: {
-          label: 'Description of a unit',
+          label: 'One unit consists of:',
           required: true,
         }
       },

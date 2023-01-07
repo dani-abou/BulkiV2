@@ -1,15 +1,12 @@
-import { Stepper, Step, StepLabel } from "@mui/material"
-import {
-  StyledSurface, StyledPageUnderStepper, StyledButtonDiv, StyledButton, StyledBackButton
-} from "./style"
-import PocInfo from "./purchasePages/poc"
-import PaymentInfo from "./purchasePages/paymentInfo"
-import ConfirmOrder from "./purchasePages/confirmOrder"
+import { Step, StepLabel, Stepper } from "@mui/material"
 import { useEffect, useState } from "react"
-import makeOrder from "../../api/database/orders/makeOrder";
-import { useProduct } from "../../hooks"
+import makeOrder from "../../api/database/orders/makeOrder"
 import { BulkiContextConsumer } from "../../common/context"
-import { usePocInfo } from "./utils"
+import { useProduct } from "../../hooks"
+import ConfirmOrder from "./purchasePages/confirmOrder"
+import PaymentInfo from "./purchasePages/paymentInfo"
+import PocInfo from "./purchasePages/poc"
+import { StyledBackButton, StyledButton, StyledButtonDiv, StyledPageUnderStepper, StyledSurface } from "./style"
 
 const FLOW_PAGES = [
   {
@@ -21,8 +18,12 @@ const FLOW_PAGES = [
   },
   {
     label: 'Payment Info',
-    page: (formControl, formValues, setPageComplete) =>
-      <PaymentInfo formControl={formControl} setPageComplete={setPageComplete} />,
+    page: (formControl, formValues, setPageComplete, additionalProps) =>
+      <PaymentInfo
+        setPageComplete={setPageComplete}
+        setSelectedPrice={additionalProps.setSelectedPrice}
+        selectedPrice={formValues.price}
+        listing={additionalProps.product} />,
 
   },
   {
@@ -34,6 +35,8 @@ const FLOW_PAGES = [
   },
 ]
 
+const DUMMY = { firstName: 'dan', lastName: 'Abou', email: 'dan@gmail.cmo', phone: '567865' }
+
 const defaultFormValue = {
   shippingInfo: { streetAddress: '', city: '', state: '', zip: '' },
   poc: { firstName: '', lastName: '', email: '', phone: '' }
@@ -44,14 +47,28 @@ export const PurchaseFlowWithContext = ({ product, loadingProduct, bulkiContext 
   const [purchaseData, setPurchaseData] = useState(defaultFormValue);
   const [pageComplete, setPageComplete] = useState(false);
 
-  usePocInfo(bulkiContext?.userData?.uid,
-    (fieldkey, newValue) => setPurchaseData(prev => {
-      prev.poc = { ...prev.poc, [fieldkey]: newValue }
-      return prev
-    }))
+  useEffect(() => {
+    const setter = async () => {
+      // const response = await getUserData(bulkiContext?.userData?.uid);
+      const response = DUMMY
+      setPurchaseData(prev => ({
+        ...prev, poc: {
+          firstName: response.firstName || '',
+          lastName: response.lastName || '',
+          email: response.email || '',
+          phone: response.phone || '',
+        }
+      }))
+    }
+    setter()
+  }, [bulkiContext?.userData?.uid])
 
   const changeFormValue = (fieldKey, value, formKey) => {
     setPurchaseData(prev => ({ ...prev, [formKey]: { ...prev[formKey], [fieldKey]: value } }))
+  }
+
+  const setSelectedPrice = (newPrice) => {
+    setPurchaseData(prev => ({ ...prev, price: newPrice }))
   }
 
   const goToNextPage = () => {
@@ -81,7 +98,7 @@ export const PurchaseFlowWithContext = ({ product, loadingProduct, bulkiContext 
       }
     </Stepper>
     <StyledPageUnderStepper>
-      {FLOW_PAGES[activeStepIndex].page(changeFormValue, purchaseData, setPageComplete, { product, loadingProduct })}
+      {FLOW_PAGES[activeStepIndex].page(changeFormValue, purchaseData, setPageComplete, { product, loadingProduct, setSelectedPrice })}
     </StyledPageUnderStepper>
     <StyledButtonDiv $previous={activeStepIndex !== 0}>
       {
