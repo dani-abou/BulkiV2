@@ -1,33 +1,31 @@
-import {
-  StyledSearchFlex, StyledFiltersBox, StyledDecoratedQuery,
-  StyledPrice, StyledOrderButton, StyledCard, StyledSearchDescription, StyledSearchQueryBox
-} from "./style"
-import { useSearchProducts, useImageUrls } from "../../hooks"
-import BulkiButton, { BulkiButtonTypes } from "../../components/BulkiButton";
-import { urls } from "../../common"
-import Link from "next/link"
-import { useRouter } from 'next/router'
 import { Grid } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from 'next/router';
 import { useState } from "react";
-import cans from "../../../public/cans.png"
+import cans from "../../../public/cans.png";
+import getListing from "../../api/database/listings/getListing";
+import { urls } from "../../common";
+import BulkiButton, { BulkiButtonTypes } from "../../components/BulkiButton";
 import BulkiTree from "../../components/BulkiTree";
+import { useImageUrls, useSearchProducts } from "../../hooks";
 import filterTree from "./filterTree";
-import getListing from "../../api/database/listings/getListing"
+import { StyledCard, StyledCardDescription, StyledDecoratedQuery, StyledFilters, StyledFiltersContainer, StyledOrderButton, StyledPrice, StyledResultsContainer, StyledSearchDescription, StyledSearchFlex, StyledSearchQueryBox } from "./style";
 
-import { BulkiContextConsumer } from "../../common/context"
+import { BulkiContextConsumer } from "../../common/context";
+import { BulkiCaption } from "../../common/styles";
+import CatalogSkeleton from "./skeleton";
 
 export const CatalogCard = ({ product }) => (
   <StyledCard
     image={product.images[0]} header={product.name}>
-    <StyledPrice>US$ 40</StyledPrice>
-    <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
+    <StyledCardDescription>{product.description}</StyledCardDescription>
+    <StyledOrderButton type={BulkiButtonTypes['outline']}>Order</StyledOrderButton>
   </StyledCard>
 )
 
 const Catalog = ({ searchQuery, bulkiContext }) => {
 
   const [products, loading] = useSearchProducts(searchQuery || "");
-  const [imageUrls, setUrls] = useState({});
 
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -43,51 +41,48 @@ const Catalog = ({ searchQuery, bulkiContext }) => {
     }
   }
 
+  return loading ? <CatalogSkeleton />
+    : <StyledSearchFlex>
+      <StyledFiltersContainer>
 
-  // const loadingImages = useImageUrls(products, setUrls)
+        <StyledFilters>
+          <BulkiButton onClick={async () => console.log(await getListing('3VgHlyt43mrWHBlFpFIK'))}>TEST</BulkiButton>
+          {filterTree.map(tree => {
+            return <BulkiTree
+              multiSelect
+              key={tree.id}
+              tree={tree}
+              onNodeSelect={(e, node) => selectFilter(tree.id, e, node)} />
+          })}
+        </StyledFilters>
+      </StyledFiltersContainer>
 
-  return <StyledSearchFlex>
-    <StyledFiltersBox>
-      <BulkiButton onClick={async () => console.log(await getListing('3VgHlyt43mrWHBlFpFIK'))}>TEST</BulkiButton>
-      {filterTree.map(tree => {
-        return <BulkiTree
-          multiSelect
-          key={tree.id}
-          tree={tree}
-          onNodeSelect={(e, node) => selectFilter(tree.id, e, node)} />
-      })}
-    </StyledFiltersBox>
-    <div>
-      {
-        searchQuery && searchQuery !== '' && <StyledSearchQueryBox>
-          <StyledSearchDescription>
-            Showing results for {" "}
-            <StyledDecoratedQuery>
-              {`"`}{searchQuery}{`"`}
-
-            </StyledDecoratedQuery>
-          </StyledSearchDescription>
-        </StyledSearchQueryBox>
-      }
-      <Grid container spacing={2}>
+      <StyledResultsContainer>
         {
-          products.map(product =>
-            <Link href={urls.listing + '/' + product.id} key={product.id}>
-              <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
-                <StyledCard
-                  image={(imageUrls && imageUrls[product.id]) ? imageUrls[product.id] : ''} header={product.product}>
-                  <StyledPrice>US$ 40</StyledPrice>
+          searchQuery && searchQuery !== '' && <StyledSearchQueryBox>
+            <StyledSearchDescription>
+              Showing results for {" "}
+              <StyledDecoratedQuery>
+                {`"`}{searchQuery}{`"`}
 
-                  <StyledOrderButton type={BulkiButtonTypes['outline']} onClick={event => event.stopPropagation()}>Order</StyledOrderButton>
-                </StyledCard>
-              </Grid>
-            </Link>
-          )
+              </StyledDecoratedQuery>
+            </StyledSearchDescription>
+          </StyledSearchQueryBox>
         }
-      </Grid>
-    </div>
+        <Grid container spacing={2}>
+          {
+            products.map(product =>
+              <Link href={urls.listing + '/' + product.id} key={product.id}>
+                <Grid item xs={4} sm={4} md={4} lg={3} xl={2.4} xxl={2}>
+                  <CatalogCard product={product} />
+                </Grid>
+              </Link>
+            )
+          }
+        </Grid>
+      </StyledResultsContainer>
 
-  </StyledSearchFlex>
+    </StyledSearchFlex>
 }
 
 export default function BulkiCatalogWithContext(props) {

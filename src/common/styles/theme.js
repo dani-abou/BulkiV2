@@ -12,7 +12,7 @@ const PALETTE = {
 //Colors incoroporates a color object to include functions such as lighten, darken , alpha...
 //All palette get included in colors
 
-const colors = {
+export const colors = {
   surface: Color('#ffffff'),
   onSurface: Color('#616161'),
   background: Color('#B0BEC5'),

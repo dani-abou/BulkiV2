@@ -21,6 +21,7 @@ const makeListing = async (user, listing, images) => {
     const myJson = await response.json();
     console.log(myJson)
   }
+  //TODO Add seller name
 
 
 }
