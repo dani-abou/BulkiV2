@@ -24,7 +24,7 @@ export const BulkiSubtitle2 = forwardRef(({ children, className, ...props }, ref
 BulkiSubtitle1.displayName = 'BulkiSubtitle1'
 BulkiSubtitle2.displayName = 'BulkiSubtitle2'
 
-export const BulkiCaption = forwardRef(({ children, className, ...props }, ref) => <Typography {...props} ref={ref} className={className} variant='caption'>{children}</Typography>)
+export const BulkiCaption = forwardRef(({ children, className, ...props }, ref) => <Typography {...props} ref={ref} className={className} variant='caption' style={{ opacity: '0.8' }}>{children}</Typography>)
 BulkiCaption.displayName = 'BulkiCaption'
 
 export const BulkiButtonText = forwardRef(({ children, className, ...props }, ref) => <Typography {...props} className={className} variant='button'>{children}</Typography>)

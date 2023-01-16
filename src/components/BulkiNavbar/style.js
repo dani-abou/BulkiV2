@@ -20,7 +20,7 @@ export const StyledBulkiLogoContainer = styled.div`
 
   width: ${props => props.$skinny ? '200px' : '300px'};
   margin-left: 10%;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
 `
 
 export const StyledToolbar = styled(Toolbar)`
@@ -32,7 +32,7 @@ export const StyledToolbar = styled(Toolbar)`
 export const StyledCollapsible = styled.div`
   max-height: ${props => props.$skinny ? 0 : '100%'};
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
 `
 
 export const StyledButton = styled(BulkiButton)`

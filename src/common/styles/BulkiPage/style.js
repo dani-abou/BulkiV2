@@ -8,7 +8,6 @@ export const StyledWholePage = styled.div`
   flex-direction: column;
   overflow: hidden;
   min-width: 1050px;
-  min-height: 900px;
 `
 export const StyledBodyDiv = styled.div`
   flex: 1 0;
@@ -16,6 +15,7 @@ export const StyledBodyDiv = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 800px;
 `
 export const StyledBackgroundDiv = styled(Paper)`
   flex: 1 0 90%;
@@ -34,7 +34,7 @@ export const StyledNavbarDiv = styled.div`
   flex: 0 0 150px;
   max-height: ${props => props.$skinny ? '75px' : '150px'};
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
 `
 
 export const StyledFooterDiv = styled.div`

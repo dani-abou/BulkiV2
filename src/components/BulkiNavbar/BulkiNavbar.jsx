@@ -57,8 +57,8 @@ export const NAVBAR_ITEMS = [
 const search = (e, searchbarValue, router) => {
   e.preventDefault();
   router.push(searchbarValue == "" ?
-    `${NAVBAR_ITEMS.listings.href}` :
-    `${NAVBAR_ITEMS.listings.href}?search=${searchbarValue}`);
+    `${urls.catalog}` :
+    `${urls.catalog}?search=${searchbarValue}`);
 }
 
 export const SearchField = ({ loginRef, searchbarValue, setSearchbarValue }) => {
