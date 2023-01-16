@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BulkiBody2, BulkiCaption, BulkiH6, BulkiSubtitle1, BulkiSubtitle2 } from "../../common/styles/tags"
+import { BulkiBody2, BulkiCaption, BulkiH6, BulkiSubtitle1, BulkiSubtitle2 } from "../../common/styles/tags";
 import { BulkiIconButton } from "../BulkiButton";
 
 export const StyledFooterContainer = styled.footer`
@@ -46,11 +46,11 @@ export const StyledFooterTitle = styled(BulkiH6)`
 
 export const StyledFooterLink = styled(BulkiSubtitle2)`
   margin-bottom: 10px;
-  color: ${props => props.theme.colors.secondary.lighten(0.4)};
+  color: ${props => props.theme.colors.footerText.lighten(0.4)};
   text-decoration: none;
 `
 export const StyledFooterLinkColor = styled.a`
-  color: ${props => props.theme.colors.secondary.lighten(0.4)};
+  color: ${props => props.theme.colors.footerText.lighten(0.4)};
   text-decoration: none;
 `
 export const StyledCopyrightDiv = styled.div`
@@ -69,5 +69,5 @@ export const StyledSocials = styled.div`
 `
 
 export const StyledSocialIconButton = styled(BulkiIconButton)`
-  color: ${props => props.theme.colors.secondary.lighten(1.5)};
+  color: ${props => props.theme.colors.footerText.lighten(1.5)};
 `

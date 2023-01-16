@@ -1,10 +1,10 @@
 const Color = require('color');
+import { blue, deepOrange, grey, purple, teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import { lightBlue, teal, purple, grey, deepOrange } from '@mui/material/colors';
 
 const PALETTE = {
   primary: deepOrange,
-  secondary: teal,
+  secondary: { main: '#2452ff' },
   info: purple,
   neutral: grey
 }
@@ -19,11 +19,12 @@ export const colors = {
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),
-  footer: Color('#263238')
+  footer: Color('#263238'),
+  footerText: Color(teal[500])
 }
 
 Object.keys(PALETTE).forEach(k => {
-  colors[k] = Color(PALETTE[k][500])
+  colors[k] = Color(PALETTE[k].main || PALETTE[k][500])
 })
 
 const theme = {

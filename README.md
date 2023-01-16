@@ -24,6 +24,8 @@ In no order:
 
 ## Running
 
+Firstly, your .env.local must be created with the proper Firebase Configs. These are called in [firebaseConfig.js](/firebaseConfig.js)
+
 From the root of the project simply run:
 
 ```

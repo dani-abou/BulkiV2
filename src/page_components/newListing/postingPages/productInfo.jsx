@@ -1,16 +1,15 @@
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import Image from "next/image";
 import { useCallback, useEffect } from "react";
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { useDropzone } from 'react-dropzone';
+import { BulkiCaption, BulkiH1 } from "../../../common/styles";
 import BulkiButton from "../../../components/BulkiButton";
 import { ProductBasicInfoForm, ProductDimensionsForm } from "../../../components/BulkiForm/forms/productInfo";
 import {
-  StyledSubformTitle, StyledDraggableImagesContainer, StyledDraggableImage, StyledImagesInstruction,
-  StyledEmptyContents, StyledDropZone, StyledDropZoneContainer, StyledCloseButton, StyledAddImageButton
-} from "../style"
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useDropzone } from 'react-dropzone'
-import Image from "next/image";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import { BulkiCaption, BulkiH1 } from "../../../common/styles";
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+  StyledAddImageButton, StyledCloseButton, StyledDraggableImage, StyledDraggableImagesContainer, StyledDropZone, StyledDropZoneContainer, StyledEmptyContents, StyledEmptyImagesCaption, StyledImagesInstruction, StyledSubformTitle
+} from "../style";
 
 const DraggableImageBox = ({ onDragEnd, onDrop, images, removeImage }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
@@ -73,8 +72,8 @@ const EmptyMessage = ({ droppableProps, rootProps }) => (
   <StyledEmptyContents
     {...droppableProps}
     {...rootProps}>
-    <UploadFileIcon sx={{ fontSize: '100px' }} /><br />
-    <BulkiCaption>Drop images here!</BulkiCaption>
+    <UploadFileIcon sx={{ fontSize: '100px' }} color='secondary' /><br />
+    <StyledEmptyImagesCaption>Drop images here!</StyledEmptyImagesCaption>
   </StyledEmptyContents>
 )
 

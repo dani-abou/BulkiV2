@@ -9,30 +9,7 @@ import {
   StyledListingPage, StyledPrice, StyledPriceLabel, StyledPrices, StyledProductTitle, StyledUnitDef, StyledUnits
 } from "./style";
 
-const DUMMY = {
-  name: 'Cans',
-  description: 'A lot of very nice cans, lorem ipsum an some other text so that it feels long enough. I should keep writing. Parquet Courts are super duper cooooool. I am boucning my head aggresively to this stuff on the plane while typing away and everyone else is sleeping.',
-  unitDefinition: 'A pack of 12 cans',
-  pricing: {
-    sdfghjk: {
-      quantity: 50, price: 100, label: '50 units'
-    },
-    sdfghj: {
-      quantity: 100, price: 175, label: 'Set'
-    },
-    hjsdfghjk: {
-      quantity: 200, price: 300, label: 'Bundle'
-    }
-
-  },
-  contactEmail: 'dummy@gmail.com',
-  sellerName: 'The Can Bros',
-  images: ['/cans.png']
-}
-
-// const Listing = ({ listing }) => {
-const Listing = ({ }) => {
-  const listing = DUMMY;
+const Listing = ({ listing }) => {
   return <StyledBackgroundPaper>
     {listing &&
       <StyledListingPage>
@@ -54,6 +31,7 @@ const Listing = ({ }) => {
           <br />
 
           <StyledPrices>
+            {console.log(listing)}
             {Object.values(listing?.pricing).map((price, index) => (
               <StyledPrice key={index}>
                 <BulkiBody1>

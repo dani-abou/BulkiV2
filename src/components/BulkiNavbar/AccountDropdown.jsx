@@ -1,13 +1,13 @@
-import { useMemo, useState } from 'react'
-import BulkiButton from "../BulkiButton"
+import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Link from 'next/link'
-import { StyledButton, StyledDropdown } from './style';
-import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
-import { urls } from "../../common"
-import bulkiSignOut from '../../common/authentication/signOut';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useMemo, useState } from 'react';
+import { urls } from "../../common";
+import bulkiSignOut from '../../common/authentication/signOut';
+import BulkiButton from "../BulkiButton";
+import { StyledButton, StyledDropdown } from './style';
 
 const dropDownItems = [
   {
@@ -19,13 +19,14 @@ const dropDownItems = [
     href: urls.account.fullUrl + urls.account.tabs.orders
   },
   {
-    label: 'Payment Info',
-    href: urls.account.fullUrl + urls.account.tabs.paymentInfo
-  },
-  {
     label: 'Listings',
     href: urls.account.fullUrl + urls.account.tabs.listings
   },
+  {
+    label: 'Payment Info',
+    href: urls.account.fullUrl + urls.account.tabs.paymentInfo
+  },
+
 ]
 
 const AccountDropdown = () => {

@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import app from "../../../../../firebaseConfig";
 
 export default async function getListing(req, res) {
@@ -7,9 +7,17 @@ export default async function getListing(req, res) {
     const docRef = doc(app.firestore, "listings", listingId);
     const docSnap = await getDoc(docRef);
     const docData = docSnap?.data();
+
+    const pricingSnap = await getDocs(collection(docRef, 'pricing'));
+    let pricing = {};
+    pricingSnap?.forEach(price => {
+      pricing[price.id] = price.data();
+    })
+
     if (!docData) throw 'Unable to fetch data for given listingId'
-    res.status(200).json(docData)
+    if (!pricing) throw 'Unable to fetch data for pricing at listingId'
+    res.status(200).json({ ...docData, pricing })
   } catch (e) {
-    res.status(404).json(e.message)
+    res.status(501).json(e.message)
   }
 }

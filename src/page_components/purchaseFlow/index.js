@@ -1,6 +1,7 @@
 import { Step, StepLabel, Stepper } from "@mui/material"
 import { useEffect, useState } from "react"
 import makeOrder from "../../api/database/orders/makeOrder"
+import getUserData from "../../api/database/users/getUserData"
 import { BulkiContextConsumer } from "../../common/context"
 import { useProduct } from "../../hooks"
 import ConfirmOrder from "./purchasePages/confirmOrder"
@@ -35,8 +36,6 @@ const FLOW_PAGES = [
   },
 ]
 
-const DUMMY = { firstName: 'dan', lastName: 'Abou', email: 'dan@gmail.cmo', phone: '567865' }
-
 const defaultFormValue = {
   shippingInfo: { streetAddress: '', city: '', state: '', zip: '' },
   poc: { firstName: '', lastName: '', email: '', phone: '' }
@@ -49,8 +48,7 @@ export const PurchaseFlowWithContext = ({ product, loadingProduct, bulkiContext 
 
   useEffect(() => {
     const setter = async () => {
-      // const response = await getUserData(bulkiContext?.userData?.uid);
-      const response = DUMMY
+      const response = await getUserData(bulkiContext?.userData?.uid);
       setPurchaseData(prev => ({
         ...prev, poc: {
           firstName: response.firstName || '',

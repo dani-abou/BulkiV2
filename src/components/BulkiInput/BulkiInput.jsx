@@ -1,6 +1,6 @@
-import { StyledInput, StyledAdornment } from "./style"
 import { InputBase } from "@mui/material";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import { StyledAdornment, StyledInput } from "./style";
 
 const BulkiInput = ({ prefix, suffix, className, width = '100%', ...props }) => {
   return <StyledInput
@@ -24,6 +24,7 @@ const BulkiInput = ({ prefix, suffix, className, width = '100%', ...props }) => 
         padding: 0,
       }
     }}
+    color='secondary'
     {...props}
   />
 }

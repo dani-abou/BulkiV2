@@ -1,9 +1,9 @@
-import { StyledFormDiv, StyledForm } from "./style"
-import BulkiInput from "../BulkiInput";
 import { Grid } from "@mui/material";
 import BulkiButton from "../BulkiButton";
 import BulkiCheckbox from "../BulkiCheckbox";
+import BulkiInput from "../BulkiInput";
 import BulkiSelect from "../BulkiSelect";
+import { StyledForm, StyledFormDiv } from "./style";
 
 
 export const FormInputTypes = {

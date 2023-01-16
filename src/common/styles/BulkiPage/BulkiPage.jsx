@@ -1,9 +1,9 @@
-import BulkiNavbar from '../../../components/BulkiNavbar';
-import Head from 'next/head'
-import BulkiFooter from '../../../components/BulkiFooter';
-import { useState } from 'react';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { StyledWholePage, StyledBodyDiv, StyledBackgroundDiv, StyledNavbarDiv, StyledFooterDiv } from "./style"
+import Head from 'next/head';
+import { useState } from 'react';
+import BulkiFooter from '../../../components/BulkiFooter';
+import BulkiNavbar from '../../../components/BulkiNavbar';
+import { StyledBackgroundDiv, StyledBodyDiv, StyledFooterDiv, StyledNavbarDiv, StyledWholePage } from "./style";
 
 const DEFAULT_HEAD = {
   title: 'Bulki',

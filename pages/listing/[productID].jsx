@@ -14,26 +14,25 @@ const ListingPage = ({ headControls }) => {
   const [pageTitle, setPageTitle] = useState('Listing')
   useEffect(() => { headControls({ ...PAGE_META, title: pageTitle }) }, [headControls, pageTitle])
   const router = useRouter()
-  const { productId } = router.query
+  const { productID } = router.query
 
   const [listing, setListing] = useState();
 
-  // useEffect(() => {
-  //   const callGetListing = async () => {
-  //     if (productId) {
-  //       const listingResponse = await getListing(productId);
-  //       if (listingResponse) {
-  //         setListing(listingResponse);
-  //         setPageTitle(listingResponse.product)
-  //       }
-  //     }
-  //   }
-  //   callGetListing();
-  // }, [productId])
+  useEffect(() => {
+    const callGetListing = async () => {
+      if (productID) {
+        const listingResponse = await getListing(productID);
+        console.log(listingResponse)
+        if (listingResponse) {
+          setListing(listingResponse);
+          setPageTitle(listingResponse.product)
+        }
+      }
+    }
+    callGetListing();
+  }, [productID])
 
-  // return <Listing listing={listing} />
-  return <Listing />
-
+  return <Listing listing={listing} />
 }
 
 export default ListingPage

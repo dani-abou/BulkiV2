@@ -1,7 +1,6 @@
 import styled from "styled-components";
+import { BulkiBody1, BulkiBody2, BulkiCaption, BulkiH4, BulkiH5 } from "../../common/styles";
 import BulkiButton, { BulkiIconButton } from "../../components/BulkiButton";
-import { BulkiH5, BulkiH4, BulkiBody1, BulkiBody2 } from "../../common/styles";
-import { BulkiCaption } from "../../common/styles";
 import BulkiInput from "../../components/BulkiInput";
 
 export const StyledButtonDiv = styled.div`
@@ -219,4 +218,9 @@ export const StyledDemoCaption = styled(BulkiCaption)`
 
 export const StyledInvalidEmail = styled(BulkiCaption)`
   color: ${props => props.theme.colors.error.hexa()};
+`
+
+export const StyledEmptyImagesCaption = styled(BulkiCaption)`
+  color: ${props => props.theme.colors.secondary.hexa()};
+
 `

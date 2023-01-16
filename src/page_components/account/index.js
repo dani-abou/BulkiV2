@@ -8,19 +8,19 @@ import { StyledFlex, StyledLeft, StyledRight, StyledSurface, StyledTab, StyledTa
 const TABS = {
   [urls.account.tabs.profile]: {
     tabLabel: 'Profile',
-    page: () => <AccountProfile />
+    page: props => <AccountProfile {...props} />
   },
   [urls.account.tabs.orders]: {
-    tabLabel: 'Orders',
+    tabLabel: 'My Orders',
     page: () => <AccountOrders />
+  },
+  [urls.account.tabs.listings]: {
+    tabLabel: 'My Listings',
+    page: props => <AccountListings {...props} />
   },
   [urls.account.tabs.paymentInfo]: {
     tabLabel: 'Payment Info',
     page: () => <AccountPaymentInfo />
-  },
-  [urls.account.tabs.listings]: {
-    tabLabel: 'Listings',
-    page: props => <AccountListings {...props} />
   }
 }
 

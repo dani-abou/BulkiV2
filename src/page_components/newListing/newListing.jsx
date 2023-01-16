@@ -1,17 +1,17 @@
-import { PageIfAuthenticated } from "../utils"
-import BulkiSurface from "../../components/BulkiSurface"
-import { useState, useEffect } from "react";
-import { Stepper, Step, StepLabel, Button } from "@mui/material"
-import { StyledButtonDiv, StyledButton, StyledPageUnderStepper, StyledSubformTitle, StyledPageTitle, StyledRequiredIndicator } from "./style";
-import { ProductInfo, ConfirmListing, Pricing } from "./postingPages";
-import { ProductBasicInfoForm, ProductDimensionsForm } from "../../components/BulkiForm/forms/productInfo";
-import { v1 } from "uuid";
+import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import { cloneDeep } from "lodash";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { v1 } from "uuid";
 import makeListing from "../../api/database/listings/makeListing";
 import { BulkiContextConsumer } from "../../common/context";
-import { changeFileName } from "./utils.";
 import { isValidEmail } from "../../common/utils";
+import { ProductBasicInfoForm, ProductDimensionsForm } from "../../components/BulkiForm/forms/productInfo";
+import BulkiSurface from "../../components/BulkiSurface";
+import { PageIfAuthenticated } from "../utils";
+import { ConfirmListing, Pricing, ProductInfo } from "./postingPages";
+import { StyledButton, StyledButtonDiv, StyledPageTitle, StyledPageUnderStepper, StyledRequiredIndicator, StyledSubformTitle } from "./style";
+import { changeFileName } from "./utils.";
 
 
 const FLOW_PAGES = [
@@ -182,6 +182,8 @@ const NewListing = ({ user }) => {
 
   return <BulkiSurface>
     <PageIfAuthenticated>
+
+      {/* Stepper */}
       <Stepper>
         {
           FLOW_PAGES.map((page, index) => {

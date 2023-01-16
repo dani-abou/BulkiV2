@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import getUserListings from "../../../api/database/users/getUserListings";
 import BulkiCard from "../../../components/BulkiCard";
-import { StyledAccountCard, StyledAccountCardContainer } from "../style";
+import { StyledAccountCard, StyledAccountCardContainer, StyledAccountPageHeader } from "../style";
 
 const DUMMY_ORDER = {
   orderId: 'JWPFsz0vrH5n93HvfKgm',
@@ -27,13 +27,18 @@ const AccountListings = ({ userData }) => {
     getListings()
   }, [userData?.uid]);
 
-  return <StyledAccountCardContainer>
-    {!loading && listings.map((order, index) => (<StyledAccountCard key={index} image={order.thumbnail} header={order.product}>
-      CHILDREN
-    </StyledAccountCard>
-    ))
-    }
-  </StyledAccountCardContainer>
+  return <>
+    <StyledAccountPageHeader>
+      My Listings
+    </StyledAccountPageHeader>
+    <StyledAccountCardContainer>
+      {!loading && listings.map((order, index) => (<StyledAccountCard key={index} image={order.thumbnail} header={order.product}>
+        CHILDREN
+      </StyledAccountCard>
+      ))
+      }
+    </StyledAccountCardContainer>
+  </>
 
 }
 export default AccountListings
