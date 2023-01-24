@@ -38,7 +38,7 @@ const FLOW_PAGES = [
 
 const defaultFormValue = {
   shippingInfo: { streetAddress: '', city: '', state: '', zip: '' },
-  poc: { firstName: '', lastName: '', email: '', phone: '' }
+  poc: { firstName: '', lastName: '', email: '', phone: '' },
 }
 
 export const PurchaseFlowWithContext = ({ product, loadingProduct, bulkiContext }) => {

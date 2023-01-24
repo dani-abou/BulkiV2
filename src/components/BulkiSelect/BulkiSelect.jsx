@@ -1,9 +1,9 @@
-import { Select, MenuItem, InputLabel, FormControl } from "@mui/material"
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import { useState } from "react"
 import { v1 } from "uuid"
 import { StyledFormControl } from './style'
 
-const BulkiSelect = ({ options, className, required, value, label, ...props }) => {
+const BulkiSelect = ({ options, className, required, label, ...props }) => {
   const [open, setOpen] = useState(false);
 
   const selectOption = option => {
@@ -13,14 +13,14 @@ const BulkiSelect = ({ options, className, required, value, label, ...props }) =
   return <StyledFormControl fullwidth required={required}>
     <InputLabel >{label}</InputLabel>
     <Select
-
       className={className}
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       required={required}
       label={label}
-      {...props}>
+      {...props}
+    >
       {
         options.map(option => {
           return <MenuItem key={v1()} onClick={() => selectOption(option)} >
