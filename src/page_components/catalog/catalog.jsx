@@ -11,6 +11,7 @@ import { useImageUrls, useSearchProducts } from "../../hooks";
 import filterTree from "./filterTree";
 import { StyledCard, StyledCardDescription, StyledDecoratedQuery, StyledFilters, StyledFiltersContainer, StyledOrderButton, StyledPrice, StyledResultsContainer, StyledSearchDescription, StyledSearchFlex, StyledSearchQueryBox } from "./style";
 
+import makeStripeAccount from "../../api/payment/makeStripeAccount";
 import { BulkiContextConsumer } from "../../common/context";
 import { BulkiCaption } from "../../common/styles";
 import CatalogSkeleton from "./skeleton";
@@ -46,7 +47,7 @@ const Catalog = ({ searchQuery, bulkiContext }) => {
       <StyledFiltersContainer>
 
         <StyledFilters>
-          <BulkiButton color='secondary' onClick={async () => console.log(await getListing('3VgHlyt43mrWHBlFpFIK'))}>TEST</BulkiButton>
+          <BulkiButton color='secondary' onClick={async () => await makeStripeAccount()}>TEST</BulkiButton>
           {filterTree.map(tree => {
             return <BulkiTree
               multiSelect
