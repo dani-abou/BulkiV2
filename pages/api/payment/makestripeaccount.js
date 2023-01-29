@@ -39,7 +39,12 @@ const individual = {
   },
   individual: {
     first_name: 'jack',
-    last_name: 'white'
+    last_name: 'white',
+    dob: {
+      day: 15,
+      month: 2,
+      year: 2000
+    }
   }
 }
 

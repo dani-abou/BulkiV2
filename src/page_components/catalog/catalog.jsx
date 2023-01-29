@@ -47,7 +47,7 @@ const Catalog = ({ searchQuery, bulkiContext }) => {
       <StyledFiltersContainer>
 
         <StyledFilters>
-          <BulkiButton color='secondary' onClick={async () => await makeStripeAccount()}>TEST</BulkiButton>
+          {/* <BulkiButton color='secondary' onClick={async () => await makeStripeAccount()}>TEST</BulkiButton> */}
           {filterTree.map(tree => {
             return <BulkiTree
               multiSelect

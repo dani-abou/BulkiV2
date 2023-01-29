@@ -142,7 +142,7 @@ export function ChangesButtons({ isNotChanged, revertChanges, saveChanges, email
   </StyledButtonsFlex>
 }
 
-function ModalConfirmPassword({ originalEmail, onSubmit, ...props }) {
+export function ModalConfirmPassword({ originalEmail, onSubmit, ...props }) {
   const [password, setPassword] = useState('');
 
   const [status, setStatus] = useState();

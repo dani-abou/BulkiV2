@@ -18,6 +18,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [helperText, setHelperText] = useState()
+  const [agreed, setAgreed] = useState(false);
 
   const verifyForm = async (e) => {
     e.preventDefault();
@@ -40,6 +41,10 @@ const SignUp = () => {
     } else {
       await signUp({ email, firstName, lastName, password, passwordConfirm }, router, setStatus);
     }
+  }
+
+  const disabledButton = () => {
+    return !email || !password || !firstName || !lastName || !passwordConfirm || !agreed
   }
 
   return (
@@ -87,13 +92,17 @@ const SignUp = () => {
               onChange={setPasswordConfirm} />
           </StyledPasswordDiv>
           <BulkiCheckbox
+            value={agreed}
+            onChange={e => setAgreed(e.target.checked)}
             label={<StyledAgreements>I agree to the {" "}
               <a href={urls.termsAndConditions} target="_blank" rel="noreferrer">Terms and Conditions</a>{" "}
               and the {" "}
               <a href={urls.privacyPolicy} target="_blank" rel="noreferrer">Privacy Policy</a>.</StyledAgreements>}
             required />
           <LogInButton
-            type='submit'>Next</LogInButton>
+            type='submit'
+            disabled={disabledButton()}
+          >Sign up</LogInButton>
         </form>
       </PageIfNotAuthenticated>
     </StyledPaper >)
