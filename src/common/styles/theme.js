@@ -3,10 +3,12 @@ import { blue, deepOrange, grey, purple, teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const PALETTE = {
-  primary: deepOrange,
+  // primary: { main: '#78909C' },
+  primary: teal,
   secondary: { main: '#2452ff' },
   info: purple,
-  neutral: grey
+  neutral: grey,
+  onSurface: { main: '#424242' },
 }
 
 //Colors incoroporates a color object to include functions such as lighten, darken , alpha...
@@ -14,8 +16,7 @@ const PALETTE = {
 
 export const colors = {
   surface: Color('#ffffff'),
-  onSurface: Color('#616161'),
-  background: Color('#B0BEC5'),
+  background: Color('#EEEEEE'),
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),

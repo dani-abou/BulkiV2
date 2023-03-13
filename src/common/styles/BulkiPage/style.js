@@ -22,7 +22,7 @@ export const StyledBackgroundDiv = styled(Paper)`
   width: 100% !important;
   margin: 0;
   /* padding: ${props => props.$skinny ? '8%' : '2%'} 0 3%; */
-  padding: 3% 0 3%;
+  padding: 1% 0 3%;
 
   position: relative;
   background-color: ${props => props.theme.colors.background.hexa()};

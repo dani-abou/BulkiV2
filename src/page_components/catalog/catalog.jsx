@@ -11,9 +11,13 @@ import { useImageUrls, useSearchProducts } from "../../hooks";
 import filterTree from "./filterTree";
 import { StyledCard, StyledCardDescription, StyledDecoratedQuery, StyledFilters, StyledFiltersContainer, StyledOrderButton, StyledPrice, StyledResultsContainer, StyledSearchDescription, StyledSearchFlex, StyledSearchQueryBox } from "./style";
 
+import makeOrder from "../../api/database/orders/makeOrder";
 import makeStripeAccount from "../../api/payment/makeStripeAccount";
+import updateStripeAccount from "../../api/payment/updateStripeAccount";
+import updateTaxId from "../../api/payment/updateTaxId";
 import { BulkiContextConsumer } from "../../common/context";
 import { BulkiCaption } from "../../common/styles";
+import Search from "../../components/BulkiNavbar/Search";
 import CatalogSkeleton from "./skeleton";
 
 export const CatalogCard = ({ product }) => (
@@ -42,16 +46,19 @@ const Catalog = ({ searchQuery, bulkiContext }) => {
     }
   }
 
+
+
   return loading ? <CatalogSkeleton />
     : <StyledSearchFlex>
       <StyledFiltersContainer>
 
         <StyledFilters>
-          {/* <BulkiButton color='secondary' onClick={async () => await makeStripeAccount()}>TEST</BulkiButton> */}
+          {/* <BulkiButton color='secondary' onClick={async () => await makeOrder(bulkiContext?.userData?.uid)}>TEST</BulkiButton> */}
           {filterTree.map(tree => {
             return <BulkiTree
               multiSelect
               key={tree.id}
+              id={'PARENT'}
               tree={tree}
               onNodeSelect={(e, node) => selectFilter(tree.id, e, node)} />
           })}

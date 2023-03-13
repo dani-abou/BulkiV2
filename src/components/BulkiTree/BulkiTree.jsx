@@ -1,6 +1,6 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import AnchorIcon from '@mui/icons-material/Anchor';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { TreeView } from '@mui/lab';
 import PropTypes from 'prop-types';
 import TreeNode, { Node_Shape } from './TreeNode';
@@ -30,7 +30,7 @@ const BulkiTree = ({
 BulkiTree.propTypes = {
   //The tree array to be printed
   //A tree starts with a node
-  tree: Node_Shape,
+  tree: PropTypes.shape(Node_Shape),
 
   //Array of ids of selected nodes
   selected: PropTypes.arrayOf(PropTypes.string),

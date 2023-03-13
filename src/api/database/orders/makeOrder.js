@@ -1,17 +1,19 @@
 const dummyDoc = {
-  product: 'Cow',
-  quantity: 1,
-  price: 2000,
-  sellerId: 'sellerId',
+  listingId: 'K227iZEQJRSPioYUYf5Q',
+  contactEmail: 'dummy@gmail.com',
+  destination: 'acct_1MVhNrGhBaNPTemb',
+  sellerId: 'FnaR9P1xGdbzecdDLn1pXo6clXD2',
 }
 
-const makeOrder = async (listingId, user) => {
-  if (listingId && user) {
+const makeOrder = async (uid, listing = dummyDoc, amount = 10000) => {
+  if (listing && uid) {
     const response = await fetch('/api/database/orders/makeorder', {
       method: 'POST',
-      body: JSON.stringify({ ...dummyDoc, listing: listingId, buyerId: user.uid })
+      body: JSON.stringify({ listing, buyerId: uid, amount })
     });
-    return await response.json();
+    const myJson = await response.json();
+    console.log(myJson)
+    return myJson
   }
 }
 

@@ -35,4 +35,4 @@ const PurchasePage = ({ headControls }) => {
   return <PurchaseFlow product={product} loadingProduct={loadingProduct} />
 }
 
-export default PurchasePage
+export default PurchasePage;

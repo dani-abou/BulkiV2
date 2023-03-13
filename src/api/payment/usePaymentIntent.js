@@ -13,6 +13,7 @@ export default function usePaymentIntent(price) {
         }
       )
       const myJson = await response.json()
+      console.log(myJson)
       if (myJson.clientSecret) {
         setClientSecret(myJson.clientSecret)
       } else {

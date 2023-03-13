@@ -1,9 +1,9 @@
-import { collection, doc, writeBatch } from "firebase/firestore";
+import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { cloneDeep } from "lodash";
-import app from "../../../../firebaseConfig";
+import multer from 'multer';
 import nextConnect from 'next-connect';
-import multer from 'multer'
+import app from "../../../../firebaseConfig";
 
 
 
@@ -49,7 +49,9 @@ apiRoute.post(async (req, res) => {
     //Uploads the images to storage, and prepares the array of image paths
     const imagePaths = await uploadImages(images, newListingDoc.id, res);
 
-    const listingWithImages = { ...listing, images: imagePaths }
+    const paymentDestination = await getPaymentDestination(listing.sellerId);
+
+    const listingWithImages = { ...listing, destination: paymentDestination, images: imagePaths }
 
     //Uploads the new docs to the database
     addListingToCatalog(batch, listingWithImages, newListingDoc)
@@ -104,6 +106,14 @@ async function uploadImages(images, listingId) {
   }
   // batch.update(doc(collection(app.firestore, "listings"), listingId), { images: paths })
   return paths
+}
+
+async function getPaymentDestination(sellerId) {
+  const sellerDocSnap = await getDoc(doc(app.firestore, "users", sellerId));
+  const sellerDocData = sellerDocSnap?.data();
+  if (!sellerDocData) throw 'Listing has invalid sellerId'
+  if (!sellerDocData.stripeId) throw 'Seller does not have a stripe id'
+  return sellerDocData.stripeId
 }
 
 export const config = {

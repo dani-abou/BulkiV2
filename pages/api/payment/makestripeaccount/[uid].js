@@ -1,4 +1,6 @@
+import { doc, updateDoc } from "firebase/firestore";
 import stripe from "stripe";
+import app from "../../../../firebaseConfig";
 
 const ourStripe = stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY)
 
@@ -49,26 +51,25 @@ const individual = {
 }
 
 export default async function makestripeaccount(req, res) {
-  const accountInfo = dummy;
+
   try {
+    const { uid } = req.query
+    const { profile, payment } = JSON.parse(req.body)
 
     const account = await ourStripe.accounts.create(
       {
-        ...individual,
         type: 'custom',
         country: 'US',
         capabilities: { transfers: { requested: true } },
-        external_account: accountInfo,
+        external_account: payment,
         tos_acceptance: { date: Math.floor(Date.now() / 1000), ip: req.socket.remoteAddress },
+        ...profile
       })
 
-    // let paymentAccount
-    // if (accountInfo.account_type === 'card') {
-    //   paymentAccount = await makestripecard(accountInfo)
-    // } else if (accountInfo.account_type === 'bank_account') {
-    //   paymentAccount = await makestripebank(account.id, accountInfo);
-    // } else throw 'Invalid account_type'
-
+    const userDocRef = doc(app.firestore, "users", uid);
+    await updateDoc(userDocRef, {
+      stripeId: account.id
+    })
 
     res.status(200).json({ message: 'succcess' })
   } catch (e) {

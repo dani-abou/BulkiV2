@@ -2,6 +2,7 @@ import { isEqual } from "lodash";
 import { useEffect, useState } from "react";
 import getStripeAccount from "../../../api/payment/getStripeAccount";
 import makeStripeAccount from "../../../api/payment/makeStripeAccount";
+import updateTaxId from "../../../api/payment/updateTaxId";
 import { BulkiCaption } from "../../../common/styles";
 import BulkiDatePicker from "../../../components/BulkiDatePicker/BulkiDatePicker";
 import BulkiInput from "../../../components/BulkiInput";
@@ -40,7 +41,7 @@ export default function BusinessProfile({ userData }) {
 
   async function saveChanges() {
     console.log(`submitting changes for ${userData?.email}`)
-    await makeStripeAccount(formProfile)
+    await makeStripeAccount({ ...formProfile, payment: { ...formProfile.payment, account_number: '000123456789', routing_number: '110000000' } }, userData?.uid)
   }
 
 
@@ -61,10 +62,16 @@ export default function BusinessProfile({ userData }) {
       email={userData?.email}
     />
 
-    <ProfileSection onChange={(k, v) => onChange('profile', k, v)
-    } setModalCallback={setShowPasswordCallback} form={formProfile?.profile} loading={loading} />
-
-    <PaymentSection onChange={(k, v) => onChange('paymentMethod', k, v)} form={formProfile?.paymentMethod} loading={loading} />
+    <ProfileSection
+      onChange={(k, v) => onChange('profile', k, v)}
+      setModalCallback={setShowPasswordCallback}
+      form={formProfile?.profile}
+      stripeId={originalProfile?.id}
+      loading={loading} />
+    <PaymentSection
+      onChange={(k, v) => onChange('paymentMethod', k, v)}
+      form={formProfile?.paymentMethod}
+      loading={loading} />
   </>
 }
 
@@ -74,7 +81,7 @@ const BUSINESS_TYPES = {
 }
 
 function ProfileSection(props) {
-  const { onChange, form, loading, setModalCallback } = props
+  const { onChange, form, loading, setModalCallback, stripeId } = props
   return <div>
     <StyledInputFlex >
       <StyledNameInputWithLabel>
@@ -98,7 +105,9 @@ function ProfileSection(props) {
       <IndividualProfile {...props} />
     }
     {
-      form?.business_type === 'company' && <CompanyProfile {...props} />
+      form?.business_type === 'company'
+      && <CompanyProfile onButtonClick={() => updateTaxId(
+        'acct_1MVhVEGax1PC646X', '12-3456789')} {...props} />
     }
 
 
@@ -126,10 +135,22 @@ function IndividualProfile({ onChange, form, onButtonClick, loading }) {
 }
 
 function CompanyProfile({ onChange, form, loading, onButtonClick }) {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const disableWhileLoading = async () => {
+    setButtonDisabled(true);
+    await onButtonClick();
+    setButtonDisabled(false)
+  }
+
   return <>
     <StyledInputLabel>Company Name</StyledInputLabel>
     <BulkiInput value={form?.name} onChange={e => onChange('name', e.target.value)} disabled={loading} />
-    <StyledPasswordResetButton size='small'>{form?.tax_id_provided ? 'Update' : 'Add'} Tax ID</StyledPasswordResetButton>
+    <StyledPasswordResetButton
+      onClick={disableWhileLoading}
+      disabled={buttonDisabled}
+      size='small'>
+      {form?.tax_id_provided ? 'Update' : 'Add'} Tax ID
+    </StyledPasswordResetButton>
   </>
 }
 

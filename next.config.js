@@ -22,15 +22,15 @@ const nextConfig = {
     return config;
   },
   fallback: false,
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/catalog',
-        permanent: false,
-      },
-    ]
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/catalog',
+  //       permanent: false,
+  //     },
+  //   ]
+  // },
 
 }
 

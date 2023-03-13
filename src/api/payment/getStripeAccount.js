@@ -9,6 +9,7 @@ export default async function getStripeAccount(uid) {
     })
 
     const myJson = await response.json();
+    if (!myJson.accountExists) return { profile: { business_type: 'individual' } }
 
     const defaultPayment = myJson.external_accounts?.data.find(e => e.default_for_currency && e.country === "US")
     let flattenedPayment = {};

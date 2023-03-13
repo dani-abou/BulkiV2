@@ -4,7 +4,6 @@ const getUserListings = async (userId) => {
       method: 'GET',
     });
     const myJson = await response.json();
-    console.log(myJson);
     return myJson;
 
   } else {
