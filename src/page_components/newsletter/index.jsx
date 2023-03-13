@@ -21,8 +21,7 @@ export default function Newsletter() {
     e.preventDefault();
     if (!isValidEmail(email)) {
       setHelperText('Please enter a valid email')
-    } else {
-      // } else if (status !== 'added') {
+    } else if (status !== 'added') {
       setStatus('loading')
       newsletterSignup(email, fName, lName)
       setStatus('added')
