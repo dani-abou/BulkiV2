@@ -1,4 +1,4 @@
-import { PaymentElement } from "@stripe/react-stripe-js"
+import { Elements, PaymentElement } from "@stripe/react-stripe-js"
 import { useEffect } from "react"
 import { BulkiBody1, BulkiH5 } from "../../../common/styles"
 import { BulkiStripe } from "../../../components/BulkiStripe"
@@ -15,7 +15,10 @@ const PaymentInfo = ({ setSelectedPrice, selectedPrice, listing, setPageComplete
   return <StyledPaymentFlex>
     <BulkiStripe>
       <StyledPaymentContainer>
-        <PaymentElement id="payment-element" options={paymentElementOptions} />
+        <Elements>
+          <PaymentElement id="payment-element" />
+
+        </Elements>
       </StyledPaymentContainer>
       <StyledPaymentContainer>
         <BulkiH5> Please select payment option:</BulkiH5>

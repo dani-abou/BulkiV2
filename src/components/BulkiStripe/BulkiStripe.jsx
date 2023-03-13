@@ -68,6 +68,7 @@ export default function BulkiStripeInElements({ price, children }) {
     clientSecret,
     appearance,
   };
+  console.log(clientSecret)
   return <> {clientSecret &&
     <Elements options={options} stripe={stripePromise}>
       <BulkiStripeProvider>{children}</BulkiStripeProvider>

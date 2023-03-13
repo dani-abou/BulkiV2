@@ -37,5 +37,5 @@ export const StyledHelperText = styled.div`
 `
 
 export const StyledAgreements = styled(BulkiCaption)`
-  color: ${props => props.theme.colors.onSurface.alpha(0.5).hexa()};
+  color: ${props => props.theme.colors.onSurface.hexa()};
 `

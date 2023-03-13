@@ -88,6 +88,7 @@ export const StyledAccountSectionLabel = styled(BulkiH6)`
 export const StyledInputFlex = styled.div`
   display: flex;
   gap: 10px;
+  width: 100%;
 `
 
 

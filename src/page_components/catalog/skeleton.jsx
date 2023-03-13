@@ -1,7 +1,7 @@
-import { StyledFiltersContainer, StyledLoadingCard, StyledResultsContainer, StyledSearchFlex, StyledSkeleton } from "./style";
-import { colors } from "../../common/styles/theme";
 import { Grid } from "@mui/material";
+import { colors } from "../../common/styles/theme";
 import { StyledImageDiv } from "../../components/BulkiCard/style";
+import { StyledFiltersContainer, StyledLoadingCard, StyledResultsContainer, StyledSearchFlex, StyledSkeleton } from "./style";
 
 const SKELETON_COLOR = { bgcolor: colors.onSurface.lighten(0.1).alpha(0.5).hexa() };
 const NUMBER_OF_RESULTS = 10;
@@ -23,7 +23,7 @@ const CatalogSkeleton = () => {
               <StyledLoadingCard>
                 <StyledImageDiv>
                   <StyledSkeleton variant="rectangular"
-                    animation="none"
+                    animation={false}
                     sx={SKELETON_COLOR} />
                 </StyledImageDiv>
               </StyledLoadingCard>
