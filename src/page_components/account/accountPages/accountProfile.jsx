@@ -21,11 +21,6 @@ const AccountProfile = ({ userData }) => {
   const [showPasswordResetModal, setShowPasswordResetModal] = useState(false);
   const [showSuccessfulChanges, setShowSuccessfulChanges] = useState(false);
 
-
-  useEffect(() => {
-
-  }, [userData])
-
   useEffect(() => {
     async function getter() {
       setLoading(true);
@@ -61,21 +56,21 @@ const AccountProfile = ({ userData }) => {
   return <>
     <StyledAccountPageHeader>User Information</StyledAccountPageHeader>
 
-    {/* Revert changes and save changes buttons */}
-    <ChangesButtons
-      isNotChanged={isEqual(originalUser, user)}
-      email={user?.email}
-      revertChanges={revertChanges}
-      saveChanges={saveChanges}
-    />
-    <br />
-
     {/* Confirm password modal (showed before changes are pushed) */}
     <ModalConfirmPassword originalEmail={originalUser?.email}
       show={showPasswordModal}
       onSubmit={onSuccesfulPasswordCheck}
       onClose={() => setShowPasswordModal(false)}
     />
+
+
+    {/* Confirm email change */}
+    <ModalConfirmEmail
+      newEmail={user?.email}
+      show={showEmailResetModal}
+      onClose={() => setShowEmailResetModal(false)}
+    />
+
     {/* Toast for showing succesful changes*/}
     <Snackbar
       open={showSuccessfulChanges}
@@ -87,12 +82,14 @@ const AccountProfile = ({ userData }) => {
       </Alert>
     </Snackbar>
 
-    {/* Confirm email change */}
-    <ModalConfirmEmail
-      newEmail={user?.email}
-      show={showEmailResetModal}
-      onClose={() => setShowEmailResetModal(false)}
+    {/* Revert changes and save changes buttons */}
+    <ChangesButtons
+      isNotChanged={isEqual(originalUser, user)}
+      email={user?.email}
+      revertChanges={revertChanges}
+      saveChanges={saveChanges}
     />
+    <br />
 
     {/* Email */}
     <StyledAccountSectionLabel>Email</StyledAccountSectionLabel>
@@ -129,7 +126,7 @@ const AccountProfile = ({ userData }) => {
   </>
 }
 
-function ChangesButtons({ isNotChanged, revertChanges, saveChanges, email }) {
+export function ChangesButtons({ isNotChanged, revertChanges, saveChanges, email }) {
   return <StyledButtonsFlex>
     <StyledAccountButton
       variant="outline"
@@ -145,7 +142,7 @@ function ChangesButtons({ isNotChanged, revertChanges, saveChanges, email }) {
   </StyledButtonsFlex>
 }
 
-function ModalConfirmPassword({ originalEmail, onSubmit, ...props }) {
+export function ModalConfirmPassword({ originalEmail, onSubmit, ...props }) {
   const [password, setPassword] = useState('');
 
   const [status, setStatus] = useState();

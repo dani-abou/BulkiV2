@@ -17,24 +17,22 @@ const PurchasePage = ({ headControls }) => {
   const [loadingProduct, setLoadingProduct] = useState(false);
 
   const router = useRouter()
-  const { productId } = router.query
+  const { productID } = router.query
   const [product, setProduct] = useState();
 
   useEffect(() => {
     const callGetListing = async () => {
-      if (productId) {
+      if (productID) {
         setLoadingProduct(true);
-        const listing = await getListing(productId);
+        const listing = await getListing(productID);
         setProduct(listing);
         setLoadingProduct(false);
       }
     }
     callGetListing();
-  }, [productId]);
-
-
+  }, [productID]);
 
   return <PurchaseFlow product={product} loadingProduct={loadingProduct} />
 }
 
-export default PurchasePage
+export default PurchasePage;

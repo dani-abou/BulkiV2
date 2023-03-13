@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"
-import { StyledEndNode, StyledParentNode, StyledCenteredDiv } from "./style"
+import PropTypes from "prop-types";
+import { StyledCenteredDiv, StyledEndNode, StyledParentNode } from "./style";
 
 let Node_Shape = {
   //The label of this node
@@ -11,7 +11,7 @@ let Node_Shape = {
   //Icon beside node -- also always shown when collapsed
   icon: PropTypes.element,
 
-  //Icon to show when expanded
+  //Icon to show when collapsed
   collapseIcon: PropTypes.element,
 
   //Icon to show when expanded

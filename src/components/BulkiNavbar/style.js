@@ -50,7 +50,7 @@ export const StyledBulkiInput = styled(BulkiInput)`
 
 export const StyledSearchButton = styled(BulkiButton)`
   height: 100%;
-  width: ${props => props.width || '100%'};
+  width: ${props => props.width || '26%'};
   margin-top:-1px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -64,5 +64,11 @@ export const StyledSearchButton = styled(BulkiButton)`
 export const StyledDropdown = styled.div`
   width: 100%;
 `
-
-// export const StyledMenu
+export const SearchResult = styled.div`
+  width: 100%;
+  height: 40px;
+  :hover {
+    background-color: ${props => props.theme.colors.surface.darken(0.5).hexa()};
+    cursor: pointer;
+  }
+`

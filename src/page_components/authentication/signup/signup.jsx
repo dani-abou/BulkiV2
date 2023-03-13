@@ -1,16 +1,13 @@
-import { useState } from "react";
-import { StyledPaper, LogInButton } from "../utils";
-import { PageIfNotAuthenticated } from "../../utils";
-import {
-  StyledNameDiv, StyledNameField, StyledEmail, StyledHelperText,
-  StyledPasswordDiv, StyledPasswordField, StyledAgreements
-} from "./style";
-import { signUp } from "../../../common/authentication"
-import { useRouter } from 'next/router'
-import { PASSWORD_REGEX, PASSWORD_RULES, EMAIL_REGEX } from "../../../components/BulkiInput";
-import BulkiCheckbox from "../../../components/BulkiCheckbox/BulkiCheckbox";
 import Link from "next/link";
+import { useRouter } from 'next/router';
+import { useState } from "react";
 import { urls } from "../../../common";
+import { signUp } from "../../../common/authentication";
+import BulkiCheckbox from "../../../components/BulkiCheckbox/BulkiCheckbox";
+import { EMAIL_REGEX, PASSWORD_REGEX, PASSWORD_RULES } from "../../../components/BulkiInput";
+import { PageIfNotAuthenticated } from "../../utils";
+import { LogInButton, StyledPaper } from "../utils";
+import { StyledAgreements, StyledEmail, StyledHelperText, StyledNameDiv, StyledNameField, StyledPasswordDiv, StyledPasswordField } from "./style";
 
 const SignUp = () => {
   const router = useRouter();
@@ -21,11 +18,39 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [helperText, setHelperText] = useState()
+  const [agreed, setAgreed] = useState(false);
+
+  const verifyForm = async (e) => {
+    e.preventDefault();
+    const setStatus = response => response === "invalid" && setHelperText({ ref: "email", text: "Email Already in use" });
+
+    const xCannotBeEmpty = (x) => `Must include ${x}`;
+
+    if (firstName === '' || firstName === undefined) {
+      setHelperText({ ref: 'firstName', text: xCannotBeEmpty('First name') })
+    } else if (lastName === '' || lastName === undefined) {
+      setHelperText({ ref: 'lastName', text: xCannotBeEmpty('Last name') })
+    } else if (email === '' || email === undefined) {
+      setHelperText({ ref: 'email', text: xCannotBeEmpty('Email') })
+    } else if (!EMAIL_REGEX.test(email)) {
+      setHelperText({ ref: 'email', text: "Invalid email address" })
+    } else if (!PASSWORD_REGEX.test(password)) {
+      setHelperText({ ref: 'password', text: PASSWORD_RULES })
+    } else if (password !== passwordConfirm) {
+      setHelperText({ ref: 'password', text: "Passwords must match" })
+    } else {
+      await signUp({ email, firstName, lastName, password, passwordConfirm }, router, setStatus);
+    }
+  }
+
+  const disabledButton = () => {
+    return !email || !password || !firstName || !lastName || !passwordConfirm || !agreed
+  }
 
   return (
     <StyledPaper title='Sign up'>
       <PageIfNotAuthenticated>
-        <form>
+        <form onSubmit={verifyForm}>
           <StyledNameDiv>
             <StyledNameField
               required
@@ -67,6 +92,8 @@ const SignUp = () => {
               onChange={setPasswordConfirm} />
           </StyledPasswordDiv>
           <BulkiCheckbox
+            value={agreed}
+            onChange={e => setAgreed(e.target.checked)}
             label={<StyledAgreements>I agree to the {" "}
               <a href={urls.termsAndConditions} target="_blank" rel="noreferrer">Terms and Conditions</a>{" "}
               and the {" "}
@@ -74,36 +101,11 @@ const SignUp = () => {
             required />
           <LogInButton
             type='submit'
-            onClick={() => verifyForm({ email, firstName, lastName, password, passwordConfirm },
-              setHelperText, router)
-            }>Next</LogInButton>
+            disabled={disabledButton()}
+          >Sign up</LogInButton>
         </form>
       </PageIfNotAuthenticated>
     </StyledPaper >)
 }
-
-const verifyForm = async (credentials, setHelperText, router) => {
-  const setStatus = response => response === "invalid" && setHelperText({ ref: "email", text: "Email Already in use" });
-
-  const xCannotBeEmpty = (x) => `Must include ${x}`;
-  const { password, passwordConfirm, ...creds } = credentials;
-
-  if (creds?.firstName === '' || creds?.firstName === undefined) {
-    setHelperText({ ref: 'firstName', text: xCannotBeEmpty('First name') })
-  } else if (creds?.lastName === '' || creds?.lastName === undefined) {
-    setHelperText({ ref: 'lastName', text: xCannotBeEmpty('Last name') })
-  } else if (creds?.email === '' || creds?.email === undefined) {
-    setHelperText({ ref: 'email', text: xCannotBeEmpty('Email') })
-  } else if (!EMAIL_REGEX.test(creds.email)) {
-    setHelperText({ ref: 'email', text: "Invalid email address" })
-  } else if (!PASSWORD_REGEX.test(password)) {
-    setHelperText({ ref: 'password', text: PASSWORD_RULES })
-  } else if (password !== passwordConfirm) {
-    setHelperText({ ref: 'password', text: "Passwords must match" })
-  } else {
-    signUp(credentials, router, setStatus);
-  }
-}
-
 
 export default SignUp;

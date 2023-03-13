@@ -1,14 +1,15 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-import { ThemeProvider as SCThemeProvider } from 'styled-components';
-import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
-import { theme, BulkiPage } from '../src/common';
-import createEmotionCache from '../src/common/createEmotionCache';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { ThemeProvider as SCThemeProvider } from 'styled-components';
+import { BulkiPage, theme } from '../src/common';
 import { BulkiContextProvider } from '../src/common/context';
-import "../src/common/styles/scrollbar.css"
+import createEmotionCache from '../src/common/createEmotionCache';
+import "../src/common/styles/scrollbar.css";
+import Newsletter from '../src/page_components/newsletter';
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.
@@ -32,10 +33,13 @@ function MyApp(props) {
       <MUIThemeProvider theme={theme}>
         <SCThemeProvider theme={theme}>
           <BulkiContextProvider>
-            <BulkiPage headProps={pageHead}>
-              <CssBaseline />
+            <CssBaseline />
+
+            <Newsletter />
+            {/* <BulkiPage headProps={pageHead}>
               <Component headControls={setPageHead} {...pageProps} />
-            </BulkiPage>
+            </BulkiPage> */}
+
           </BulkiContextProvider>
         </SCThemeProvider>
       </MUIThemeProvider>

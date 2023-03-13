@@ -15,7 +15,8 @@
       "profile": "profile",
       "orders": "orders",
       "listings": "listings",
-      "paymentInfo": "paymentInfo"
+      "paymentInfo": "paymentInfo",
+      "businessProfile": "businessProfile"
     }
   },
   "accountProfile": "/account?tab=profile",

@@ -1,15 +1,11 @@
+import { urls } from "../../../common"
 import { BulkiCaption } from "../../../common/styles"
+import { isValidEmail } from "../../../common/utils"
+import BulkiCheckbox from "../../../components/BulkiCheckbox"
 import BulkiInput from "../../../components/BulkiInput"
 import { CatalogCard } from "../../catalog/catalog"
-import {
-  StyledPageFlex, StyledLeftContainer, StyledConfirmInfo, StyledConfirmInfoLabel,
-  StyledConfirmTierContainer, StyledConfirmTier, StyledConfirmTierLabel, StyledConfirmTierInfo,
-  StyledDemoCardContainer, StyledDemoCaption, StyledInvalidEmail
-} from "../style"
+import { StyledConfirmInfo, StyledConfirmInfoLabel, StyledConfirmTier, StyledConfirmTierContainer, StyledConfirmTierInfo, StyledConfirmTierLabel, StyledDemoCaption, StyledDemoCardContainer, StyledInvalidEmail, StyledLeftContainer, StyledPageFlex } from "../style"
 import { fixPricingLabels } from "../utils."
-import { urls } from "../../../common"
-import BulkiCheckbox from "../../../components/BulkiCheckbox"
-import { isValidEmail } from "../../../common/utils"
 
 const LabelWithInformation = ({ label, children }) => (
   <StyledConfirmInfo>

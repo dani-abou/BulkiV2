@@ -13,6 +13,7 @@ import { urls } from "../../common"
 import { BulkiContextConsumer } from "../../common/context"
 import { BulkiButtonTypes } from "../BulkiButton"
 import AccountDropdown from "./AccountDropdown"
+import Search from "./Search"
 import {
   StyledAppbar, StyledBulkiInput, StyledBulkiLogoContainer, StyledButton, StyledCollapsible, StyledSearchButton, StyledToolbar
 } from "./style"
@@ -61,26 +62,28 @@ const search = (e, searchbarValue, router) => {
     `${urls.catalog}?search=${searchbarValue}`);
 }
 
-export const SearchField = ({ loginRef, searchbarValue, setSearchbarValue }) => {
-  const router = useRouter()
+// export const SearchField = ({ loginRef, searchbarValue, setSearchbarValue }) => {
+//   const router = useRouter()
 
-  return <form onSubmit={e => search(e, searchbarValue, router)}>
-    <StyledBulkiInput
-      color='primary'
-      focused
-      suffix={
-        <StyledSearchButton
-          type="submit"
-          width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth) * 2) + 'px' : '20%'}>
-          Search</StyledSearchButton>
-      }
-      style={{ marginRight: '20px' }}
-      placeholder='Search for'
-      value={searchbarValue}
-      size='small'
-      onChange={e => setSearchbarValue(e.target.value)} />
-  </form>
-}
+//   return <form onSubmit={e => search(e, searchbarValue, router)}>
+//     {connectSearchBox(
+//       <StyledBulkiInput
+//         color='primary'
+//         focused
+//         suffix={
+//           <StyledSearchButton
+//             type="submit"
+//             width={loginRef?.current?.offsetWidth ? ((loginRef.current.offsetWidth) * 2) + 'px' : '20%'}>
+//             Search</StyledSearchButton>
+//         }
+//         style={{ marginRight: '20px' }}
+//         placeholder='Search for'
+//         value={searchbarValue}
+//         size='small'
+//         onChange={e => setSearchbarValue(e.target.value)} />
+//     )}
+//   </form>
+// }
 
 
 const BulkiNavbar = ({ skinny, bulkiContext }) => {
@@ -135,10 +138,10 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
             }
           </StyledToolbar>
         </StyledCollapsible>
-
-        <SearchField loginRef={loginRef}
+        <Search loginRef={loginRef}
           searchbarValue={searchbarValue}
           setSearchbarValue={setSearchbarValue} />
+
       </Grid>
     </Grid>
   </StyledAppbar >

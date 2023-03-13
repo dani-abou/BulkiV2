@@ -14,6 +14,7 @@ export const StyledSurface = styled(BulkiSurface)`
 export const StyledLeft = styled.div`
   border-right: 1px solid ${props => props.theme.colors.onSurface.alpha(0.4).hexa()};
   flex: 0 0 20%;
+  height: 100%;
 `
 
 export const StyledRight = styled.div`
@@ -25,6 +26,7 @@ export const StyledRight = styled.div`
 export const StyledFlex = styled.div`
   display: flex;
   gap: 20px;
+  min-height: 100%;
 `
 
 export const StyledTabs = styled(Tabs)`
@@ -39,7 +41,7 @@ export const StyledTab = styled(Tab)`
 
 `
 export const StyledTitleBox = styled.div`
-  height: 20%;
+  height: 150px;
   border-bottom: 1px solid ${props => props.theme.colors.onSurface.alpha(0.4).hexa()};
   position: relative;
 `
@@ -86,6 +88,7 @@ export const StyledAccountSectionLabel = styled(BulkiH6)`
 export const StyledInputFlex = styled.div`
   display: flex;
   gap: 10px;
+  width: 100%;
 `
 
 

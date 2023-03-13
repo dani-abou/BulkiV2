@@ -1,19 +1,24 @@
-import { useEffect } from "react"
 import { urls } from "../../common"
 import { BulkiContextConsumer } from "../../common/context"
 import { BulkiH4 } from "../../common/styles"
-import { AccountListings, AccountOrders, AccountPaymentInfo, AccountProfile } from "./accountPages"
+import { AccountListings, AccountOrders, AccountPaymentInfo, AccountProfile, BusinessProfile } from "./accountPages"
 import { StyledFlex, StyledLeft, StyledRight, StyledSurface, StyledTab, StyledTabs, StyledTitle, StyledTitleBox } from "./style"
 
 const TABS = {
   [urls.account.tabs.profile]: {
-    tabLabel: 'Profile',
+    tabLabel: 'Account',
     page: props => <AccountProfile {...props} />
   },
+  [urls.account.tabs.businessProfile]: {
+    tabLabel: 'Business Profile',
+    page: props => <BusinessProfile {...props} />
+  },
+
   [urls.account.tabs.orders]: {
     tabLabel: 'My Orders',
     page: () => <AccountOrders />
   },
+
   [urls.account.tabs.listings]: {
     tabLabel: 'My Listings',
     page: props => <AccountListings {...props} />
@@ -23,8 +28,6 @@ const TABS = {
     page: () => <AccountPaymentInfo />
   }
 }
-
-
 
 const Account = ({ currentTab, setSelectedTab, userData }) => {
   const test = (e, newValue) => {
@@ -55,7 +58,6 @@ const Account = ({ currentTab, setSelectedTab, userData }) => {
 
 export default function AccountWithContext(props) {
   return <BulkiContextConsumer>
-
     {context => <Account {...props} userData={context.userData} />}
   </BulkiContextConsumer >
 }
