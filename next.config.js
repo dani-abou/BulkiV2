@@ -6,8 +6,15 @@ const withPlugins = require("next-compose-plugins");
 const nextConfig = {
 
   images: {
-    loader: 'akamai',
-    path: ''
+    // loader: 'akamai',
+    path: '/',
+    // domains: ['firebasestorage.googleapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com'
+      }
+    ]
   },
   future: {
     webpack5: true, // by default, if you customize webpack config, they switch back to version 4. 

@@ -1,9 +1,9 @@
+import { Card, CardMedia, Skeleton } from '@mui/material'
 import styled from 'styled-components'
 import { BulkiH4, BulkiH6 } from '../../common/styles'
-import { Card, CardMedia, Skeleton } from '@mui/material'
 
 export const StyledCard = styled(Card)`
-  height: 400px;
+  height: 350px;
 
 `
 
@@ -20,7 +20,6 @@ export const StyledImage = styled.div`
 export const StyledImageDiv = styled(CardMedia)`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-
   overflow: hidden;
   height: 45%;
   width: 100%
@@ -36,4 +35,4 @@ export const StyledHeader = styled(BulkiH6)`
   max-height: 38%;
   width: 100%;
   font-weight: bold;
-  `
+`

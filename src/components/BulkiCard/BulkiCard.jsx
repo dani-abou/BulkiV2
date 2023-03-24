@@ -18,8 +18,7 @@ const BulkiCard = ({ image, imageLoading, header, children, className }) => {
           <Image
             alt={image}
             src={image}
-            layout="fill"
-            objectFit='fill'
+            fill
           />
         </StyledImage>
       </StyledImageDiv>
