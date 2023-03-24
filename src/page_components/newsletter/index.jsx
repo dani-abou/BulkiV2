@@ -133,7 +133,7 @@ export default function Newsletter() {
           rows={4}
           label='Speak your mind!'
         />
-        <BulkiButton type='submit' disabled={status === 'loading'}
+        <BulkiButton type='submit' disabled={contactStatus === 'loading'}
           style={{ height: '36.5px' }}>
           {contactStatus === 'loading' ? <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} /> :
             contactStatus === 'sent' ? 'sent :)' :
