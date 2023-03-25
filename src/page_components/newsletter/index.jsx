@@ -1,6 +1,6 @@
 import { Card, CardMedia, CircularProgress } from "@mui/material";
 import { getDownloadURL, ref } from "firebase/storage";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useMemo, useState } from "react";
 import app from "../../../firebaseConfig";
 // import logo from "../../../public/BulkiLogo.png";
@@ -61,7 +61,7 @@ export default function Newsletter() {
         <Image
           src='/BulkiLogo.png'
           alt='BulkiLogo'
-          fill
+          layout='fill'
         />
       </StyledLogoDiv>
       <BulkiH5 style={{ textAlign: 'center' }}>We connect small farmers to people who want fresh meat</BulkiH5>
