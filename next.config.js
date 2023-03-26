@@ -6,8 +6,8 @@ const withPlugins = require("next-compose-plugins");
 const nextConfig = {
 
   images: {
-    // loader: 'akamai',
-    path: '/',
+    loader: 'akamai',
+    path: '',
     // domains: ['firebasestorage.googleapis.com'],
     remotePatterns: [
       {

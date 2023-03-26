@@ -1,5 +1,5 @@
 import { StyledThumbnailDiv, StyledThumbnailButton } from './style'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 
 const Thumbnail = ({ onClick, image, selected }) => (

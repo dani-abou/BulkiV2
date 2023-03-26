@@ -1,5 +1,6 @@
 import { Card, Paper } from "@mui/material"
 import styled from "styled-components"
+import { BulkiBody1 } from "../../common/styles"
 import BulkiCard from "../../components/BulkiCard/BulkiCard"
 
 export const StyledSurface = styled.div`
@@ -47,4 +48,15 @@ export const StyledExamplesPaper = styled(BulkiCard)`
   height: 300px;
   width: 250px;
   background-color: #f7f7f7;
+`
+
+export const StyledExampleDescription = styled(BulkiBody1)`
+  height: 75px;
+  overflow: hidden;
+`
+
+export const StyledPrice = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
 `

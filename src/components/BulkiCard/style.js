@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { BulkiH4, BulkiH6 } from '../../common/styles'
 
 export const StyledCard = styled(Card)`
-  height: 350px;
+  height: 900px;
 
 `
 
 export const StyledImage = styled.div`
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   overflow: hidden;
   background-color: ${props => props.theme.colors.background.lighten(0.2).hexa()};

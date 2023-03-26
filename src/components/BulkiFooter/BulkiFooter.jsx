@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Link from "next/link"
 import logo from "../../../public/BulkiLogo.png"
 import { BulkiBody1 } from "../../common/styles"

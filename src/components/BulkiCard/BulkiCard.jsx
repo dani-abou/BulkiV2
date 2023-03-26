@@ -1,5 +1,5 @@
 import { Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, CircularProgress } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import PropTypes from "prop-types"
 import BulkiCarousel from '../BulkiCarousel'
 import {
@@ -18,7 +18,8 @@ const BulkiCard = ({ image, imageLoading, header, children, className }) => {
           <Image
             alt={image}
             src={image}
-            fill
+            layout='fill'
+            objectFit='cover'
           />
         </StyledImage>
       </StyledImageDiv>

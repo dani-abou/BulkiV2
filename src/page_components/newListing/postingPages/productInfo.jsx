@@ -1,6 +1,6 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useCallback, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDropzone } from 'react-dropzone';

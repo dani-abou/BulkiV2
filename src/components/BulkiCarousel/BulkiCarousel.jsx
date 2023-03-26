@@ -1,7 +1,7 @@
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import useEmblaCarousel from 'embla-carousel-react';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PropTypes from "prop-types";
 import { useCallback, useEffect, useState } from 'react';
 import {

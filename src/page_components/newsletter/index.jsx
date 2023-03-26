@@ -3,16 +3,15 @@ import { getDownloadURL, ref } from "firebase/storage";
 import Image from "next/legacy/image";
 import { useMemo, useState } from "react";
 import app from "../../../firebaseConfig";
-// import logo from "../../../public/BulkiLogo.png";
 import logo from "../../../public/BulkiLogo.png";
 import sendMail from "../../api/mailer";
 import newsletterSignup from "../../api/newsletter/signup";
-import { BulkiH4, BulkiH5 } from "../../common/styles";
+import { BulkiBody1, BulkiH4, BulkiH5 } from "../../common/styles";
 import { isValidEmail } from "../../common/utils";
 import BulkiButton from "../../components/BulkiButton";
 import BulkiCard from "../../components/BulkiCard/BulkiCard";
 import BulkiInput from "../../components/BulkiInput";
-import { StyledExamplesFlex, StyledExamplesPaper, StyledFormDiv, StyledLogoDiv, StyledSection, StyledSurface } from "./style";
+import { StyledExampleDescription, StyledExamplesFlex, StyledExamplesPaper, StyledFormDiv, StyledLogoDiv, StyledPrice, StyledSection, StyledSurface } from "./style";
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
@@ -69,8 +68,19 @@ export default function Newsletter() {
     <StyledSection>
       <StyledExamplesFlex>
         {examples.map((example, index) => (
-          <StyledExamplesPaper image={example.src} header={example.title} key={index}>
-            {example.description}
+          <StyledExamplesPaper
+            image={example.src}
+            header={example.title}
+            key={index}>
+            <StyledExampleDescription>
+              {example.description}
+              {/* <StyledPrice>${example.price}</StyledPrice> */}
+
+            </StyledExampleDescription>
+            <StyledPrice>
+              <BulkiBody1 style={{ fontWeight: 'bold' }}>${example.price}</BulkiBody1>
+
+            </StyledPrice>
           </StyledExamplesPaper>
         )
         )}
@@ -150,7 +160,7 @@ export const examples = [
     title: 'Pork Freeze Filler',
     farm: 'Four Mile River Farm',
     price: 299,
-    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
+    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FporkFiller.jpg?alt=media&token=b2ac5356-1c11-4c92-99ce-067791a85ecf',
     description: `4lbs Breakfast sausage Patties\n
 4lbs Ground Pork\n
 4lbs Boneless country style Ribs\n
@@ -163,24 +173,25 @@ export const examples = [
     farm: 'Four Mile River Farm',
     price: 599,
     src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
-    description: `
-24lbs ground beef \n
-1 Roast(Eye, Chuck or Top Round)\n
-2 Shank Packages(Soup Bones)\n
-2 Stew Meat Packages\n
-1 of the following: Brisket or Short Ribs\n
-1 Sirloin Tip\n
-1 Sirloin\n
-2-3 Ribeye\n
-2 Filet Mignon\n
-3 New York Strip\n
-1 of the following: Flank, Skirt or Flap Steak`
+    //     description: `
+    // 24lbs ground beef \n
+    // 1 Roast(Eye, Chuck or Top Round)\n
+    // 2 Shank Packages(Soup Bones)\n
+    // 2 Stew Meat Packages\n
+    // 1 of the following: Brisket or Short Ribs\n
+    // 1 Sirloin Tip\n
+    // 1 Sirloin\n
+    // 2-3 Ribeye\n
+    // 2 Filet Mignon\n
+    // 3 New York Strip\n
+    // 1 of the following: Flank, Skirt or Flap Steak`,
+    description: ''
   },
   {
     title: 'Bulki Ground Beef',
     farm: 'Four Mile River Farm',
     price: 135,
-    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
+    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FgroundBeef.jpg?alt=media&token=6bcc1baf-4486-4daa-9500-49fd29114d62',
     description: `15lbs of individually packaged ground beef`
   }
 ]
