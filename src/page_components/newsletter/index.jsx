@@ -11,7 +11,7 @@ import { isValidEmail } from "../../common/utils";
 import BulkiButton from "../../components/BulkiButton";
 import BulkiCard from "../../components/BulkiCard/BulkiCard";
 import BulkiInput from "../../components/BulkiInput";
-import { StyledExampleDescription, StyledExamplesFlex, StyledExamplesPaper, StyledFormDiv, StyledLogoDiv, StyledPrice, StyledSection, StyledSurface } from "./style";
+import { StyledExampleDescription, StyledExamplesFlex, StyledExamplesPaper, StyledFormDiv, StyledLogoDiv, StyledMissionStatement, StyledPrice, StyledSection, StyledSurface } from "./style";
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
@@ -63,7 +63,7 @@ export default function Newsletter() {
           layout='fill'
         />
       </StyledLogoDiv>
-      <BulkiH5 style={{ textAlign: 'center' }}>We connect small farmers to people who want fresh meat</BulkiH5>
+      <StyledMissionStatement style={{ textAlign: 'center' }}>We connect small farmers to people who want fresh meat</StyledMissionStatement>
     </StyledSection>
     <StyledSection>
       <StyledExamplesFlex>
