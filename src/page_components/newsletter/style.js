@@ -10,6 +10,7 @@ export const StyledSurface = styled.div`
   left: 50%;
   transform: translate(-50%);
   width: 100vw;
+
 `
 
 export const StyledLogoDiv = styled.div`

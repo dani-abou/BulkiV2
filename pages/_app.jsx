@@ -29,6 +29,10 @@ function MyApp(props) {
       <Head>
         <meta name="viewport"
           content="initial-scale=1, width=device-width" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
       </Head>
       <MUIThemeProvider theme={theme}>
         <SCThemeProvider theme={theme}>
