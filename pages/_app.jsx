@@ -38,7 +38,6 @@ function MyApp(props) {
         <SCThemeProvider theme={theme}>
           <BulkiContextProvider>
             <CssBaseline />
-
             <Newsletter />
             {/* <BulkiPage headProps={pageHead}>
               <Component headControls={setPageHead} {...pageProps} />

@@ -10,6 +10,7 @@ export const StyledSurface = styled.div`
   left: 50%;
   transform: translate(-50%);
   width: 100vw;
+  background-color: ${props => props.theme.colors.background.hexa()}	;
 
 `
 
@@ -41,7 +42,7 @@ export const StyledSection = styled.div`
   width: 100%;
   /* padding: 50px 20px; */
   padding-bottom: 50px;
-  ${props => props.$greyed && 'background-color: #d9d9d9;'}
+  ${props => props.$greyed && `background-color: ${props.theme.colors.background.darken(0.1).hexa()};`}
 
 
 `
@@ -67,7 +68,6 @@ export const StyledExamplesPaper = styled(BulkiCard)`
   height: 300px;
   width: 250px;
   background-color: #f7f7f7;
-  ${console.log(screenSizes)}
 
   @media only screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min})  {
     height: 350px;

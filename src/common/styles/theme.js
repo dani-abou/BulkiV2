@@ -16,7 +16,7 @@ const PALETTE = {
 
 export const colors = {
   surface: Color('#ffffff'),
-  background: Color('#EEEEEE'),
+  background: Color('#f4faf2'),
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),

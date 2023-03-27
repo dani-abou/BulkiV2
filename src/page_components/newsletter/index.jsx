@@ -45,6 +45,7 @@ export default function Newsletter() {
       setContactHelperText('')
       setContactStatus('loading')
       await sendMail([process.env.NEXT_PUBLIC_CONTACT_EMAIL], `Contact form submission: ${contactEmail}`, contact);
+      await newsletterSignup(contactEmail)
       setContactStatus('sent')
     }
   }
