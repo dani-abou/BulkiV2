@@ -11,7 +11,7 @@ import {
 
 const BulkiCard = ({ image, imageLoading, header, children, className }) => {
 
-  return <StyledCard className={className}>
+  return <StyledCard className={className} >
     <CardActionArea sx={{ height: '100%' }}>
       <StyledImageDiv>
         <StyledImage>

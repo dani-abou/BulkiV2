@@ -51,6 +51,7 @@ export const StyledExamplesFlex = styled.div`
   margin-left: 50%;
   transform: translate(-50%);
   justify-content: space-around;
+  align-items: stretch;
   gap: 10px;
   width: 80%;
 
@@ -59,12 +60,20 @@ export const StyledExamplesFlex = styled.div`
       align-items: center;
       gap: 20px;
   }
+
 `
 
 export const StyledExamplesPaper = styled(BulkiCard)`
   height: 300px;
   width: 250px;
   background-color: #f7f7f7;
+  ${console.log(screenSizes)}
+
+  @media only screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min})  {
+    height: 350px;
+  }
+
+  
 `
 
 export const StyledExampleDescription = styled(BulkiBody1)`

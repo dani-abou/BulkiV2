@@ -1,18 +1,18 @@
 {
   "mobile": {
-    "max": "480px",
-    "min": "320px"
+    "min": "320px",
+    "max": "480px"
   },
-  "tablets": {
-    "max": "481px",
-    "min": "768px"
+  "tablet": {
+    "min": "481px",
+    "max": "768px"
   },
-  "laptops": {
-    "max": "769px",
-    "min": "1024px"
+  "laptop": {
+    "min": "769px",
+    "max": "1024px"
   },
-  "desktops": {
-    "max": "1025px",
-    "min": "1200px"
+  "desktop": {
+    "min": "1025px",
+    "max": "1200px"
   }
 }

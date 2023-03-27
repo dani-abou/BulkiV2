@@ -61,9 +61,10 @@ export default function Newsletter() {
           src='/BulkiLogo.png'
           alt='BulkiLogo'
           layout='fill'
+          priority
         />
       </StyledLogoDiv>
-      <StyledMissionStatement style={{ textAlign: 'center' }}>We connect small farmers to people who want fresh meat</StyledMissionStatement>
+      <StyledMissionStatement style={{ textAlign: 'center' }}>Buy directly from small farms!</StyledMissionStatement>
     </StyledSection>
     <StyledSection>
       <StyledExamplesFlex>
@@ -86,10 +87,41 @@ export default function Newsletter() {
         )}
       </StyledExamplesFlex>
     </StyledSection>
+
     <StyledSection $greyed>
+      <StyledFormDiv onSubmit={onSubmitContact}>
+        <br />
+        <BulkiH5>Contact Us</BulkiH5>
+        <BulkiInput
+          value={contactEmail}
+          onChange={(e) => setContactEmail(e.target.value)}
+          label='Your Email Address'
+          required
+          helperText={contactHelperText}
+          error={!(!contactHelperText)}
+        />
+        <BulkiInput
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          required
+          multiline
+          inputProps={{ style: { padding: '10px' } }}
+          rows={4}
+          label='Speak your mind!'
+        />
+        <BulkiButton type='submit' disabled={contactStatus === 'loading'}
+          style={{ height: '36.5px' }}>
+          {contactStatus === 'loading' ? <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} /> :
+            contactStatus === 'sent' ? 'sent :)' :
+              'Submit'
+          }
+        </BulkiButton>
+      </StyledFormDiv>
+    </StyledSection>
+    <StyledSection >
       <br /><br />
       <StyledFormDiv onSubmit={onSubmit}>
-        <BulkiH5 style={{ textAlign: 'center' }}>Join the newsletter to be the first to know!</BulkiH5>
+        <BulkiH5 style={{ textAlign: 'center' }}>Sign up now to get exclusive deals!</BulkiH5>
         <div style={{ display: 'flex', gap: '10px' }}>
           <BulkiInput
             value={fName}
@@ -121,37 +153,6 @@ export default function Newsletter() {
 
       </StyledFormDiv>
     </StyledSection>
-
-    <StyledSection>
-      <StyledFormDiv onSubmit={onSubmitContact}>
-        <br />
-        <BulkiH5>Contact Us</BulkiH5>
-        <BulkiInput
-          value={contactEmail}
-          onChange={(e) => setContactEmail(e.target.value)}
-          label='Your Email Address'
-          required
-          helperText={contactHelperText}
-          error={!(!contactHelperText)}
-        />
-        <BulkiInput
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
-          required
-          multiline
-          inputProps={{ style: { padding: '10px' } }}
-          rows={4}
-          label='Speak your mind!'
-        />
-        <BulkiButton type='submit' disabled={contactStatus === 'loading'}
-          style={{ height: '36.5px' }}>
-          {contactStatus === 'loading' ? <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} /> :
-            contactStatus === 'sent' ? 'sent :)' :
-              'Submit'
-          }
-        </BulkiButton>
-      </StyledFormDiv>
-    </StyledSection>
   </StyledSurface>
 }
 
@@ -161,31 +162,14 @@ export const examples = [
     farm: 'Four Mile River Farm',
     price: 299,
     src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FporkFiller.jpg?alt=media&token=b2ac5356-1c11-4c92-99ce-067791a85ecf',
-    description: `4lbs Breakfast sausage Patties\n
-4lbs Ground Pork\n
-4lbs Boneless country style Ribs\n
-3lbs Smoked Bacon\n
-1 Small Boneless smoked Ham\n
-12 Boneless Pork Chops`
+    description: 'Variety of cuts of pork, serving about 100 meals'
   },
   {
     title: 'Beef Freezer Filler',
     farm: 'Four Mile River Farm',
     price: 599,
     src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
-    //     description: `
-    // 24lbs ground beef \n
-    // 1 Roast(Eye, Chuck or Top Round)\n
-    // 2 Shank Packages(Soup Bones)\n
-    // 2 Stew Meat Packages\n
-    // 1 of the following: Brisket or Short Ribs\n
-    // 1 Sirloin Tip\n
-    // 1 Sirloin\n
-    // 2-3 Ribeye\n
-    // 2 Filet Mignon\n
-    // 3 New York Strip\n
-    // 1 of the following: Flank, Skirt or Flap Steak`,
-    description: ''
+    description: 'Variety cuts of beef, including tenderloin, new york strip, and roast'
   },
   {
     title: 'Bulki Ground Beef',
