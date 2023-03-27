@@ -169,7 +169,7 @@ export const examples = [
     farm: 'Four Mile River Farm',
     price: 599,
     src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
-    description: 'Variety cuts of beef, including tenderloin, new york strip, and roast'
+    description: 'Variety cuts of beef, including tenderloin, and new york strip, serving 120 meals'
   },
   {
     title: 'Bulki Ground Beef',
