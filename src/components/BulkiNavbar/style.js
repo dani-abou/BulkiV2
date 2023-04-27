@@ -1,14 +1,23 @@
-import { AppBar, Toolbar } from "@mui/material";
 import styled from "styled-components";
+import screenSizes from "../../common/styles/screenSizes.json";
 import BulkiButton from "../BulkiButton";
 import BulkiInput from "../BulkiInput";
 
-export const StyledAppbar = styled(AppBar)`
+export const StyledAppbar = styled.div`
   width: 100%;
-  height: 100%;
+  height: 130px;
   box-shadow: none;
   background-color: transparent;
-  border-bottom: 1px solid ${props => props.theme.colors.onSurface.alpha(0.2).hexa()};
+  /* border-bottom: 1px solid ${props => props.theme.colors.onSurface.alpha(0.2).hexa()}; */
+  position: static;
+  padding: 0 50px 0 50px;
+  display: flex;
+  align-items: center; 
+
+  @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
+    padding: 0;
+    justify-content: center;
+  }
 `
 
 export const StyledBulkiLogoContainer = styled.div`
@@ -16,16 +25,42 @@ export const StyledBulkiLogoContainer = styled.div`
   z-index: 0;
   cursor: pointer;
   height: 100%;
-
-
-  width: ${props => props.$skinny ? '200px' : '300px'};
-  margin-left: 10%;
+  flex: 0 0 ${props => props.$skinny ? '200px' : '300px'};
   transition: all 0.2s ease-out;
+  @media screen and (max-width: ${screenSizes.mobile.max}) {
+    flex: 1 0 100%;
+  }
+
+  @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
+    flex: 0 0 300px;
+  }
 `
 
-export const StyledToolbar = styled(Toolbar)`
-  gap: 15px;  
-  justify-content: space-between;
+export const StyledLinks = styled.div`
+  flex: 1 1 80%;
+  height: 100%;
+  display: flex;
+  gap: 50px;  
+  justify-content: end;
+  align-items: center;
+  ${console.log(screenSizes)}
+
+  @media screen and (max-width: ${screenSizes.mobile.max}) {
+      display: none;
+  }
+
+  @media screen and (max-width: ${screenSizes.tablet.max}) {
+    display: none;
+  }
+
+  
+`
+
+export const StyledToolbar = styled.div`
+  display: flex;
+  gap: 50px;  
+  justify-content: end;
+
 
 `
 

@@ -100,6 +100,7 @@ export default function Newsletter() {
           required
           helperText={contactHelperText}
           error={!(!contactHelperText)}
+          color='primary'
         />
         <BulkiInput
           value={contact}
@@ -109,9 +110,12 @@ export default function Newsletter() {
           inputProps={{ style: { padding: '10px' } }}
           rows={4}
           label='Speak your mind!'
+          color='primary'
+
         />
         <BulkiButton type='submit' disabled={contactStatus === 'loading'}
-          style={{ height: '36.5px' }}>
+          style={{ height: '36.5px' }}
+        >
           {contactStatus === 'loading' ? <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} /> :
             contactStatus === 'sent' ? 'sent :)' :
               'Submit'
@@ -128,11 +132,15 @@ export default function Newsletter() {
             value={fName}
             onChange={(e) => setFName(e.target.value)}
             label='First Name'
+            color='primary'
+
           />
           <BulkiInput
             value={lName}
             onChange={(e) => setLName(e.target.value)}
             label='Last Name'
+            color='primary'
+
           />
         </div>
         <BulkiInput

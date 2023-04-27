@@ -30,18 +30,20 @@ const BulkiPage = ({ children, headProps }) => {
       <link rel="icon" href={icon || '/favicon.ico'} />
       {Object.keys(links).map(linkKey => <link rel={links[linkKey].rel} href={links[linkKey].href} key={linkKey} />)}
     </Head>
-    <StyledNavbarDiv $skinny={scrollTrigger}>
+    {/* <StyledNavbarDiv $skinny={scrollTrigger}>
       <BulkiNavbar skinny={scrollTrigger} />
-    </StyledNavbarDiv>
+    </StyledNavbarDiv> */}
     <StyledBodyDiv ref={node => {
       if (node) setBodyRef(node)
     }}>
+
       <StyledBackgroundDiv $skinny={scrollTrigger}>
         {children}
       </StyledBackgroundDiv>
-      <StyledFooterDiv $skinny={scrollTrigger}>
+      {/* <StyledFooterDiv $skinny={scrollTrigger}>
         <BulkiFooter />
-      </StyledFooterDiv>
+      </StyledFooterDiv> */}
+
     </StyledBodyDiv>
   </StyledWholePage >
 }

@@ -33,15 +33,20 @@ function MyApp(props) {
 
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <title>{pageHead.title || 'Bulki'}</title>
+
       </Head>
       <MUIThemeProvider theme={theme}>
         <SCThemeProvider theme={theme}>
           <BulkiContextProvider>
             <CssBaseline />
-            <Newsletter />
-            {/* <BulkiPage headProps={pageHead}>
+            {/* <Newsletter /> */}
+            {/* <Component headControls={setPageHead} {...pageProps} /> */}
+
+
+            <BulkiPage headProps={pageHead}>
               <Component headControls={setPageHead} {...pageProps} />
-            </BulkiPage> */}
+            </BulkiPage>
 
           </BulkiContextProvider>
         </SCThemeProvider>

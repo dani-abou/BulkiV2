@@ -10,6 +10,7 @@ export const StyledFooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 `
 export const StyledFooterFlex = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ export const StyledFooterLink = styled(BulkiSubtitle2)`
   color: ${props => props.theme.colors.footerText.lighten(0.4)};
   text-decoration: none;
 `
-export const StyledFooterLinkColor = styled.a`
+export const StyledFooterLinkColor = styled.div`
   color: ${props => props.theme.colors.footerText.lighten(0.4)};
   text-decoration: none;
 `

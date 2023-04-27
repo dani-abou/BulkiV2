@@ -4,8 +4,8 @@ import { createTheme } from '@mui/material/styles';
 
 const PALETTE = {
   // primary: { main: '#78909C' },
-  primary: teal,
-  secondary: { main: '#2452ff' },
+  primary: { main: '#41BB3A' },
+  secondary: { main: '#F1E9D2' },
   info: purple,
   neutral: grey,
   onSurface: { main: '#424242' },
@@ -16,7 +16,7 @@ const PALETTE = {
 
 export const colors = {
   surface: Color('#ffffff'),
-  background: Color('#f4faf2'),
+  background: Color('#F6EDD9'),
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),

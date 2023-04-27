@@ -2,16 +2,11 @@ import { Stack } from "@mui/material"
 import Image from "next/legacy/image"
 import Link from "next/link"
 import logo from "../../../public/BulkiLogo.png"
+import { metadata, urls } from "../../common"
 import { BulkiBody1 } from "../../common/styles"
-import {
-  StyledFooterContainer, StyledTitleDiv, StyledVStack, StyledFooterLogoContainer,
-  StyledPurposeStatement, StyledFooterTitle, StyledFooterLink, StyledFooterLinkColor,
-  StyledCopyrightNotice, StyledFooterFlex, StyledCopyrightDiv, StyledSocials,
-  StyledSocialIconButton
-} from "./style"
-import { urls, metadata } from "../../common"
 import { NAVBAR_ITEMS } from "../BulkiNavbar/BulkiNavbar"
 import socialIcons from "./socialIcons"
+import { StyledCopyrightDiv, StyledCopyrightNotice, StyledFooterContainer, StyledFooterFlex, StyledFooterLink, StyledFooterLinkColor, StyledFooterLogoContainer, StyledFooterTitle, StyledPurposeStatement, StyledSocialIconButton, StyledSocials, StyledTitleDiv, StyledVStack } from "./style"
 
 
 
@@ -21,13 +16,13 @@ const BulkiFooter = () => {
       <StyledTitleDiv>
         <StyledFooterLogoContainer>
           <Link href={urls.primary}>
-            <a style={{ height: '100%', width: '100%' }} href={urls.primary}>
+            <div style={{ height: '100%', width: '100%' }} href={urls.primary}>
               <Image
                 src={logo}
                 alt="footer-logo"
                 layout="fill"
               />
-            </a>
+            </div>
           </Link>
         </StyledFooterLogoContainer>
         <StyledPurposeStatement>{metadata.slogan}</StyledPurposeStatement>
