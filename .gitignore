@@ -30,3 +30,7 @@ yarn-error.log*
 .env.production.local
 
 /node_modules
+
+
+/pages/legacy
+/page_components/legacy

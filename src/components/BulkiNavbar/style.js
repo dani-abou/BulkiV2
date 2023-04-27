@@ -43,8 +43,7 @@ export const StyledLinks = styled.div`
   gap: 50px;  
   justify-content: end;
   align-items: center;
-  ${console.log(screenSizes)}
-
+  
   @media screen and (max-width: ${screenSizes.mobile.max}) {
       display: none;
   }

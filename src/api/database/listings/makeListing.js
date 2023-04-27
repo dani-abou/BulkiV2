@@ -1,4 +1,4 @@
-import { fixPricingLabels } from "../../../page_components/newListing/utils.";
+import { fixPricingLabels } from "../../../page_components/legacy/newListing/utils.";
 
 const makeListing = async (user, listing, images) => {
   if (user) {
