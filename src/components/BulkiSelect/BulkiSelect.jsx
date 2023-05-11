@@ -1,36 +1,22 @@
 import { InputLabel, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { v1 } from "uuid"
-import { StyledFormControl, StyledSelect } from './style'
+import BulkiInput from "../BulkiInput/BulkiInput"
+import { StyledFormControl, StyledLabel, StyledSelect } from './style'
 
-const BulkiSelect = ({ options, className, required, label, ...props }) => {
+const BulkiSelect = ({ options, className, required, label, onChange, ...props }) => {
   const [open, setOpen] = useState(false);
 
-  const selectOption = option => {
-    if (props.onChange) props.onChange(option);
-    setOpen(false)
-  }
-  return <StyledFormControl fullwidth required={required}>
-    <InputLabel >{label}</InputLabel>
-    <StyledSelect
-      className={className}
-      open={open}
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      required={required}
-      label={label}
-      {...props}
-    >
-      {
-        options.map(option => {
-          return <MenuItem key={v1()} onClick={() => selectOption(option)} >
-            {option.label}
-          </MenuItem>
-        })
-      }
+  return <div className={className} style={{ height: '100%' }}>
+    {label && <StyledLabel >{label}  {required && '*'}</StyledLabel>}
+    <StyledSelect {...props} onChange={e => onChange(e.target.value)}>
+      {options.map(option => {
+        return <option key={option.key} value={option.value}>
+          {option.label}
+        </option>
+      })}
     </StyledSelect>
-  </StyledFormControl>
-
+  </div>
 }
 
 export default BulkiSelect

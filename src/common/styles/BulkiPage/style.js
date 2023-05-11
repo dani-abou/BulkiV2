@@ -4,11 +4,33 @@ import styled from "styled-components";
 export const StyledWholePage = styled.div`
   width: 100vw;
   min-height: 100vh;
+  /* min-height: 650px; */
+
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
   /* min-width: 1050px; */
   height: 100vh;
+
+  ${props => props.$showImg ? `
+
+  background: linear-gradient(rgba(150, 150, 150, 0.1), rgba(0, 0, 0, 0.4)), url('/cows.png');
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;`:
+
+    `
+  background-color: ${props.theme.colors.background.hexa()};
+  `
+  }
+
+&::-webkit-scrollbar {
+  display: none;
+}
+
+
 `
 export const StyledBodyDiv = styled.div`
   flex: 1 0;
@@ -26,15 +48,13 @@ export const StyledBackgroundDiv = styled(Paper)`
   flex: 1 0 auto;
   display: block;
   width: 100% !important;
-  margin: 0;
+  margin: ${props => props.$noNavbar ? '0' : '40px'} 0 0;
   /* padding: ${props => props.$skinny ? '8%' : '2%'} 0 3%; */
   /* padding: 1% 0 3%; */
 
   position: relative;
-  background-color: ${props => props.theme.colors.background.hexa()};
+  background-color: transparent;
   transition: all 0.2s;
-  border-radius: 0px;
-  /* border: 10px solid; */  
 `
 
 export const StyledNavbarDiv = styled.div`

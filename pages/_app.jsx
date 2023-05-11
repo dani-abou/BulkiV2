@@ -18,7 +18,6 @@ const clientSideEmotionCache = createEmotionCache();
 
 function MyApp(props) {
 
-
   const [pageHead, setPageHead] = useState({ title: 'Bulki' })
 
   const { Component, emotionCache =
@@ -45,7 +44,7 @@ function MyApp(props) {
 
 
             <BulkiPage headProps={pageHead}>
-              <Component headControls={setPageHead} {...pageProps} />
+              <Component headControls={setPageHead} />
             </BulkiPage>
 
           </BulkiContextProvider>

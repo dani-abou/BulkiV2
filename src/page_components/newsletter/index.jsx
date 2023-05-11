@@ -3,7 +3,7 @@ import { getDownloadURL, ref } from "firebase/storage";
 import Image from "next/legacy/image";
 import { useMemo, useState } from "react";
 import app from "../../../firebaseConfig";
-import logo from "../../../public/BulkiLogo.png";
+import logo from "../../../public/logos/MainPrimary.png";
 import sendMail from "../../api/mailer";
 import newsletterSignup from "../../api/newsletter/signup";
 import { BulkiBody1, BulkiH4, BulkiH5 } from "../../common/styles";

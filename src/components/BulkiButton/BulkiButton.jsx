@@ -1,6 +1,6 @@
-import { StyledTextButton, StyledButton } from "./style"
-import { forwardRef } from "react";
 import PropTypes from 'prop-types';
+import { forwardRef } from "react";
+import { StyledButton, StyledButtonFlex, StyledTextButton } from "./style";
 
 //Enumerations for different button types
 export const BulkiButtonTypes = {
@@ -29,7 +29,7 @@ const typeStyles = {
   },
 }
 
-const BulkiButton = forwardRef(({ variant = [BulkiButtonTypes['primary']], className, children, ...props }, ref) => {
+const BulkiButton = forwardRef(({ variant = [BulkiButtonTypes['primary']], className, children, startIcon, ...props }, ref) => {
   const Custom = typeStyles[variant]?.custom
   return (Custom ?
     <Custom
@@ -37,15 +37,22 @@ const BulkiButton = forwardRef(({ variant = [BulkiButtonTypes['primary']], class
       variant={typeStyles[variant]?.variant}
       color={typeStyles[variant]?.color}
       {...props} ref={ref}>
-      {children}
+      <StyledButtonFlex>
+        {startIcon}
+        {children}
+      </StyledButtonFlex>
     </Custom>
     :
     <StyledButton
       className={className}
+      classes={[className]}
       variant={typeStyles[variant]?.variant}
       color={typeStyles[variant]?.color}
       ref={ref}{...props} >
-      {children}
+      <StyledButtonFlex>
+        {startIcon}
+        {children}
+      </StyledButtonFlex>
     </StyledButton>
   )
 })

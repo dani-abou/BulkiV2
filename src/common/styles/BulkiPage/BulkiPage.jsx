@@ -11,11 +11,13 @@ const DEFAULT_HEAD = {
   fonts: {
     rel: 'stylesheet',
     href: 'https://use.typekit.net/vou1mix.css'
-  }
+  },
+  hideNav: false,
+  backgroundImg: true
 }
 
 const BulkiPage = ({ children, headProps }) => {
-  const { title, icon, ...links } = { ...DEFAULT_HEAD, ...headProps }
+  const { title, icon, hideNav, backgroundImg, ...links } = { ...DEFAULT_HEAD, ...headProps }
   const [bodyRef, setBodyRef] = useState();
   const scrollTrigger = useScrollTrigger(
     {
@@ -24,27 +26,26 @@ const BulkiPage = ({ children, headProps }) => {
       threshold: 27,
     });
 
-  return <StyledWholePage>
+  return <StyledWholePage $showImg={backgroundImg}>
     <Head>
       <title>{title || 'Bulki'}</title>
       <link rel="icon" href={icon || '/favicon.ico'} />
       {Object.keys(links).map(linkKey => <link rel={links[linkKey].rel} href={links[linkKey].href} key={linkKey} />)}
     </Head>
-    {/* <StyledNavbarDiv $skinny={scrollTrigger}>
-      <BulkiNavbar skinny={scrollTrigger} />
-    </StyledNavbarDiv> */}
-    <StyledBodyDiv ref={node => {
+    {!hideNav && <BulkiNavbar />}
+    {/* <StyledBodyDiv ref={node => {
       if (node) setBodyRef(node)
-    }}>
+    }}> */}
 
-      <StyledBackgroundDiv $skinny={scrollTrigger}>
-        {children}
-      </StyledBackgroundDiv>
-      {/* <StyledFooterDiv $skinny={scrollTrigger}>
+
+    <StyledBackgroundDiv $skinny={scrollTrigger} $noNavbar={hideNav}>
+      {children}
+    </StyledBackgroundDiv>
+    {/* <StyledFooterDiv $skinny={scrollTrigger}>
         <BulkiFooter />
       </StyledFooterDiv> */}
 
-    </StyledBodyDiv>
+    {/* </StyledBodyDiv> */}
   </StyledWholePage >
 }
 

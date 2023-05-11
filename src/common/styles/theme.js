@@ -15,7 +15,7 @@ const PALETTE = {
 //All palette get included in colors
 
 export const colors = {
-  surface: Color('#ffffff'),
+  surface: Color('#faf7f0'),
   background: Color('#F6EDD9'),
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),

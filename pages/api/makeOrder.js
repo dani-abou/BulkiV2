@@ -8,10 +8,10 @@ const ourStripe = stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY)
 /**API funciton for adding a order to the database */
 export default async function makeOrder(req, res) {
   try {
-    const { product, customer } = JSON.parse(req.body)
+    const { order } = JSON.parse(req.body)
     // await makePayment(order.amount, order.listing?.destination)
 
-    const newOrderId = await addOrderToDb({ ...customer, product })
+    const newOrderId = await addOrderToDb(order)
     res.status(200).json({ newOrderId });
   } catch (e) {
     res.status(501).json({ message: e.message });

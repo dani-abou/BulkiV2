@@ -1,9 +1,9 @@
-import { CloseRounded } from "@mui/icons-material"
-import { DialogTitle, IconButton, Modal } from "@mui/material"
-import { StyledBox } from "./style"
+import { CloseRounded } from "@mui/icons-material";
+import { DialogTitle, IconButton, Modal } from "@mui/material";
+import { StyledBox } from "./style";
 
 
-const BulkiModal = ({ show, onClose, children, className, style, title, ...props }) => {
+export default function BulkiModal({ show, onClose, children, className, style, title, ...props }) {
   return <Modal
     open={show}
     onClose={onClose}
@@ -34,7 +34,7 @@ function BootstrapDialogTitle(props) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            // color: (theme) => theme.palette.grey[500],
           }}
         >
           <CloseRounded />
@@ -43,5 +43,3 @@ function BootstrapDialogTitle(props) {
     </DialogTitle>
   );
 }
-
-export default BulkiModal

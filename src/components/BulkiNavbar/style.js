@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import screenSizes from "../../common/styles/screenSizes.json";
+import { media, screenSizes } from "../../common/styles/screenSizes";
+import { BulkiBody1 } from "../../common/styles/tags";
 import BulkiButton from "../BulkiButton";
 import BulkiInput from "../BulkiInput";
 
 export const StyledAppbar = styled.div`
   width: 100%;
   height: 130px;
+  flex: 0 0 150px;
   box-shadow: none;
   background-color: transparent;
   /* border-bottom: 1px solid ${props => props.theme.colors.onSurface.alpha(0.2).hexa()}; */
@@ -13,6 +15,13 @@ export const StyledAppbar = styled.div`
   padding: 0 50px 0 50px;
   display: flex;
   align-items: center; 
+
+    ${props => media.mobile(`
+      height: 300px;
+      flex-direction: column;
+      align-items: stretch;
+      margin-bottom: 20px;
+  `)}
 
   @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
     padding: 0;
@@ -43,35 +52,52 @@ export const StyledLinks = styled.div`
   gap: 50px;  
   justify-content: end;
   align-items: center;
-  
+  text-decoration: none;
+  @media screen and (max-width: ${screenSizes.mobile.max}) {
+      display: inline;
+  }
+  ${() => media.tablet(`
+    padding-right: 20px;
+  `)}
+`
+
+export const StyledButton = styled(BulkiButton)`
+  width: 120px;
+    
   @media screen and (max-width: ${screenSizes.mobile.max}) {
       display: none;
+
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) {
     display: none;
+  } 
+`
+
+export const StyledCartButton = styled(BulkiButton)`
+  width: 120px;
+    @media screen and (max-width: ${screenSizes.mobile.max}) {
+        margin-left: 50%;
+  transform: translate(-50%);
   }
-
-  
 `
 
-export const StyledToolbar = styled.div`
-  display: flex;
-  gap: 50px;  
-  justify-content: end;
 
 
-`
+// export const StyledToolbar = styled.div`
+//   display: flex;
+//   gap: 50px;  
+//   justify-content: end;
 
-export const StyledCollapsible = styled.div`
-  max-height: ${props => props.$skinny ? 0 : '100%'};
-  overflow: hidden;
-  transition: all 0.2s ease-out;
-`
 
-export const StyledButton = styled(BulkiButton)`
-  width: 100%;
-`
+// `
+
+// export const StyledCollapsible = styled.div`
+//   max-height: ${props => props.$skinny ? 0 : '100%'};
+//   overflow: hidden;
+//   transition: all 0.2s ease-out;
+// `
+
 
 export const StyledBulkiInput = styled(BulkiInput)`
   margin-left: auto;
@@ -106,3 +132,24 @@ export const SearchResult = styled.div`
     cursor: pointer;
   }
 `
+export const StyledCartNumberBox = styled.span`
+  background-color: ${props => props.theme.colors.background.hexa()};
+  width: 19px;
+  height: 19px;
+  border-radius: 4px;
+  position: relative;
+  opacity: ${props => props.$hovered ? 0.8 : 1};
+  transition: opacity 0.2s;
+`
+
+export const StyledCartNumber = styled(BulkiBody1)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  color: ${props => props.theme.colors.primary.hexa()};
+  font-weight: bold;
+
+`
+

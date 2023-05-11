@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material"
 import Image from "next/legacy/image"
 import Link from "next/link"
-import logo from "../../../public/BulkiLogo.png"
+import logo from "../../../public/logos/MainPrimary.png"
 import { metadata, urls } from "../../common"
 import { BulkiBody1 } from "../../common/styles"
 import { NAVBAR_ITEMS } from "../BulkiNavbar/BulkiNavbar"

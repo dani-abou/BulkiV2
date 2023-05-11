@@ -1,7 +1,7 @@
 import { Card, Paper } from "@mui/material"
 import styled from "styled-components"
 import { BulkiBody1, BulkiH5 } from "../../common/styles"
-import screenSizes from "../../common/styles/screenSizes.json"
+import { screenSizes } from "../../common/styles/screenSizes"
 import BulkiCard from "../../components/BulkiCard/BulkiCard"
 
 export const StyledSurface = styled.div`

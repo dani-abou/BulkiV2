@@ -1,25 +1,50 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
 
 export default function usePaymentIntent(price) {
-  const [clientSecret, setClientSecret] = useState('')
-  useEffect(() => {
-    (async () => {
+  const [paymentIntent, setPaymentIntent] = useState();
+
+  const updatePrice = useCallback(async () => {
+    if (price && paymentIntent) {
       const response = await fetch(
-        '/api/payment/makepaymentintent',
+        '/api/payment/updatePaymentIntent',
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(price)
+          body: JSON.stringify({ price, paymentIntentId: paymentIntent.id })
         }
       )
       const myJson = await response.json()
-      console.log(myJson)
-      if (myJson.clientSecret) {
-        setClientSecret(myJson.clientSecret)
-      } else {
-        setClientSecret('')
+    }
+  }, [price, paymentIntent])
+
+  useEffect(() => {
+    (async () => {
+      if (!paymentIntent && price) {
+        const response = await fetch(
+          '/api/payment/makePaymentIntent',
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price })
+          }
+        )
+        const myJson = await response.json();
+
+        if (myJson.paymentIntent) {
+          setPaymentIntent(myJson.paymentIntent)
+        } else {
+          setPaymentIntent('')
+        }
+      } else if (price) {
+        await updatePrice(price)
       }
     })()
-  }, [price])
-  return clientSecret
+  }, [price, paymentIntent, updatePrice])
+
+
+
+
+
+  return { clientSecret: paymentIntent?.client_secret }
 } 
