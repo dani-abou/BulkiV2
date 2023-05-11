@@ -13,14 +13,9 @@ import {
 } from "./style";
 
 
-export default function CartProducts({ tax }) {
+export default function CartProducts() {
   const { extendedCart, totals } = useCart();
   const cart = useMemo(() => extendedCart(), [extendedCart])
-  // const [taxedAmount, totalAfterTax] = useMemo(() => {
-  //   const thisTax = Math.round((tax / 100 * totals.subtotal) * 100) / 100;
-  //   const thisTotal = totals.total + thisTax;
-  //   return [thisTax, thisTotal]
-  // }, [tax, totals])
 
   return <>{
     Object.keys(cart).map(cartKey => {
@@ -66,7 +61,7 @@ export default function CartProducts({ tax }) {
       <BulkiBody1>Shipping</BulkiBody1>
       <BulkiBody1>${totals.shippingTotal}</BulkiBody1>
     </StyledTotalDiv>
-    {tax > 0 && <StyledTotalDiv style={{ marginBottom: '15px' }}>
+    {totals.taxTotal > 0 && <StyledTotalDiv style={{ marginBottom: '15px' }}>
       <BulkiBody1>Tax</BulkiBody1>
       <BulkiBody1>${totals.taxTotal}</BulkiBody1>
     </StyledTotalDiv>}

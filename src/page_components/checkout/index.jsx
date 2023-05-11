@@ -198,7 +198,7 @@ export default function Checkout() {
     </StyledInfoContainer>
     <StyledCartContainer>
       <StyledCartProductsContainer >
-        <CartProducts tax={form.state === 'CT' ? 6.38 : 0} />
+        <CartProducts />
       </StyledCartProductsContainer>
     </StyledCartContainer>
   </StyledPageFlex >

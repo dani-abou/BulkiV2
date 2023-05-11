@@ -25,7 +25,6 @@ export default function CheckoutPage({ headControls }) {
   const { totals } = useCart();
 
   const { clientSecret } = usePaymentIntent(totals.total);
-  return <></>
 
   if (!clientSecret) return <></>
 

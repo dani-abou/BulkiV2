@@ -19,12 +19,20 @@ const Home = ({ headControls }) => {
     }
   }, [router, setShowSnack])
 
+  const hideSnack = () => {
+    setShowSnack(false)
+    router.push({
+      pathname: '/',
+      shallow: true
+    })
+  }
+
   useEffect(() => headControls(PageProps), [headControls])
 
   return <>
     <Landing />
-    <Snackbar open={showSnack} autoHideDuration={6000} onClose={() => setShowSnack(false)}>
-      <Alert onClose={() => setShowSnack(false)} severity="success" sx={{ width: '100%' }}>
+    <Snackbar open={showSnack} autoHideDuration={6000} onClose={hideSnack}>
+      <Alert onClose={hideSnack} severity="success" sx={{ width: '100%' }}>
         Your Order has been succesfully placed!
       </Alert>
     </Snackbar>
