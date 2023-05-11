@@ -204,6 +204,7 @@ export default function Checkout() {
   </StyledPageFlex >
 }
 
+
 function ContactInfo({ form, updateForm, setForm, errorFields }) {
   return <>
     <BulkiH5>
