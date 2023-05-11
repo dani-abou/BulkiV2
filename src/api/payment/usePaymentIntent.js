@@ -6,7 +6,7 @@ export default function usePaymentIntent(price) {
   const [paymentIntent, setPaymentIntent] = useState();
 
   const updatePrice = useCallback(async () => {
-    if (price && paymentIntent) {
+    if (price && paymentIntent && price !== 0 && paymentIntent.status !== 'succeeded') {
       // const response = await fetch(
       //   '/api/payment/updatePaymentIntent',
       //   {
@@ -16,7 +16,7 @@ export default function usePaymentIntent(price) {
       //   }
       // )
       // const myJson = await response.json()
-      clientUpdateIntent(price, paymentIntent.id);
+      await clientUpdateIntent(price, paymentIntent.id);
     }
   }, [price, paymentIntent])
 
