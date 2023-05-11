@@ -20,16 +20,16 @@ const ORDER_RECIPIENTS = [
 
 export default async function makeOrder(order, totals) {
   try {
-    console.log(order, totals)
     // let response = await fetch('/api/makeOrder', {
     //   method: 'POST',
     //   body: JSON.stringify({ order })
     // })
     // const { newOrderId } = await response.json();
 
-    const newOrderId = clientMakeOrder(order)
+    const newOrderId = await clientMakeOrder(order)
 
 
+    console.log('New Order Id: ' + newOrderId);
     if (order.newsletter) {
       response = await fetch('/api/newsletter/signup', {
         method: 'POST',
