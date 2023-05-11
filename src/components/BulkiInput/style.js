@@ -17,7 +17,7 @@ export const StyledInput = styled.input`
   width: 100%;
   height: 100%;
   padding: 10px;
-  border: ${props => props.$error ? `1px solid red` : `0.5px solid ${props.theme.colors.neutral.alpha(0.5).hexa()}`};
+ border: ${props => props.$borderless ? 'none' : props.$error ? `1px solid red` : `0.5px solid ${props.theme.colors.neutral.alpha(0.5).hexa()}`};
   outline: none;
   border-radius: 5px;
   font-size: 16px;

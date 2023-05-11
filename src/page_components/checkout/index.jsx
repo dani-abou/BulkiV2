@@ -119,8 +119,10 @@ export default function Checkout() {
           setButtonDisabled(false);
         });
         emptyCart();
-        router.push({ pathname: '/', query: { confirmOrder: true } });
-      } catch (e) { }
+        // router.push({ pathname: '/', query: { confirmOrder: true } });
+      } catch (e) {
+        console.log('Submit error: ' + e.message);
+      }
     } else {
       setError('Some Fields are incomplete or invalid')
       setButtonDisabled(false)

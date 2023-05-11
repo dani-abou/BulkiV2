@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { BulkiCaption } from "../../common/styles/tags";
 import { StyledAdornment, StyledHelper, StyledInput, StyledLabel } from "./style";
 
-const BulkiInput = ({ label, className, required, error, helperText, ...props }) => {
+const BulkiInput = ({ label, className, required, error, borderless, helperText, ...props }) => {
   return <div className={className} >
     {label && <StyledLabel >{label}  {required && '*'}</StyledLabel>}
-    <StyledInput required={required} $error={error} {...props} />
+    <StyledInput required={required} $error={error} $borderless={borderless}{...props} />
     {helperText && <StyledHelper >{helperText}</StyledHelper>}
   </div>
 }
