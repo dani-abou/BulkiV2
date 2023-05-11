@@ -39,7 +39,7 @@ export default async function makeOrder(order, totals) {
       console.log('Newsletter Response', newsletterJson)
     }
 
-    response = await fetch('/api/mailer/sendMail', {
+    let response = await fetch('/api/mailer/sendMail', {
       method: 'POST',
       body: JSON.stringify({ recipients: ORDER_RECIPIENTS, subject: 'New Order Placed', message: orderEmail(order, newOrderId, totals) })
     })
