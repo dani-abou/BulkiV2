@@ -23,6 +23,7 @@ export default function usePaymentIntent(price) {
     (async () => {
       if (!paymentIntent && price) {
         const responsePaymentIntent = await clientMakeIntent(price);
+        console.log(responsePaymentIntent);
         // const response = await fetch(
         //   '/api/payment/makePaymentIntent',
         //   {
@@ -55,7 +56,7 @@ async function clientMakeIntent(price) {
         enabled: true,
       },
     });
-    return ({ paymentIntent: paymentIntent })
+    return (paymentIntent)
   } catch (e) {
     console.log('Error: ' + e.message)
   }
