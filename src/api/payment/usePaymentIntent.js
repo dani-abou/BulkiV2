@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 
 export default function usePaymentIntent(price) {
@@ -21,18 +22,19 @@ export default function usePaymentIntent(price) {
   useEffect(() => {
     (async () => {
       if (!paymentIntent && price) {
-        const response = await fetch(
-          '/api/payment/makePaymentIntent',
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ price })
-          }
-        )
-        const myJson = await response.json();
+        const responsePaymentIntent = await clientMakeIntent(price);
+        // const response = await fetch(
+        //   '/api/payment/makePaymentIntent',
+        //   {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({ price })
+        //   }
+        // )
+        // const myJson = await response.json();
 
-        if (myJson.paymentIntent) {
-          setPaymentIntent(myJson.paymentIntent)
+        if (responsePaymentIntent) {
+          setPaymentIntent(responsePaymentIntent)
         } else {
           setPaymentIntent('')
         }
@@ -41,10 +43,20 @@ export default function usePaymentIntent(price) {
       }
     })()
   }, [price, paymentIntent, updatePrice])
-
-
-
-
-
   return { clientSecret: paymentIntent?.client_secret }
-} 
+}
+
+async function clientMakeIntent(price) {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: price * 100,
+      currency: 'usd',
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+    return ({ paymentIntent: paymentIntent })
+  } catch (e) {
+    console.log('Error: ' + e.message)
+  }
+}
