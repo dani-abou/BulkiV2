@@ -7,15 +7,16 @@ export default function usePaymentIntent(price) {
 
   const updatePrice = useCallback(async () => {
     if (price && paymentIntent) {
-      const response = await fetch(
-        '/api/payment/updatePaymentIntent',
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ price, paymentIntentId: paymentIntent.id })
-        }
-      )
-      const myJson = await response.json()
+      // const response = await fetch(
+      //   '/api/payment/updatePaymentIntent',
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ price, paymentIntentId: paymentIntent.id })
+      //   }
+      // )
+      // const myJson = await response.json()
+      clientUpdateIntent(price, paymentIntent.id);
     }
   }, [price, paymentIntent])
 
@@ -50,7 +51,7 @@ export default function usePaymentIntent(price) {
 async function clientMakeIntent(price) {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: price * 100,
+      amount: Math.round(price * 100),
       currency: 'usd',
       automatic_payment_methods: {
         enabled: true,
@@ -60,4 +61,11 @@ async function clientMakeIntent(price) {
   } catch (e) {
     console.log('Error: ' + e.message)
   }
+}
+
+async function clientUpdateIntent(price, intentId) {
+  const paymentIntent = await stripe.paymentIntents.update(intentId, {
+    amount: Math.round(price * 100)
+  })
+  return paymentIntent;
 }
