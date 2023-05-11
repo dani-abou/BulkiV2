@@ -114,12 +114,17 @@ export default function Checkout() {
         }
       })
       try {
-        await makePayment(stripe, elements, async () => await makeOrder({ ...form, cart: cartOut }, totals), v => {
-          setError(v);
-          setButtonDisabled(false);
-        });
-        emptyCart();
-        // router.push({ pathname: '/', query: { confirmOrder: true } });
+        await makePayment(stripe, elements,
+          async () => {
+            await makeOrder({ ...form, cart: cartOut }, totals);
+            emptyCart();
+            router.push({ pathname: '/', query: { confirmOrder: true } });
+          },
+          v => {
+            setError(v);
+            setButtonDisabled(false);
+          });
+
       } catch (e) {
         console.log('Submit error: ' + e.message);
       }

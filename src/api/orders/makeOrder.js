@@ -1,3 +1,5 @@
+import { collection, doc, writeBatch } from "firebase/firestore";
+import app from "../../../firebaseConfig";
 import orderEmail from "./orderEmail";
 
 const ORDER_RECIPIENTS = [
@@ -19,11 +21,14 @@ const ORDER_RECIPIENTS = [
 export default async function makeOrder(order, totals) {
   try {
     console.log(order, totals)
-    let response = await fetch('/api/makeOrder', {
-      method: 'POST',
-      body: JSON.stringify({ order })
-    })
-    const { newOrderId } = await response.json();
+    // let response = await fetch('/api/makeOrder', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ order })
+    // })
+    // const { newOrderId } = await response.json();
+
+    const newOrderId = clientMakeOrder(order)
+
 
     if (order.newsletter) {
       response = await fetch('/api/newsletter/signup', {
@@ -45,4 +50,25 @@ export default async function makeOrder(order, totals) {
     console.log(err)
     // throw new Error(err)
   }
+}
+
+
+async function clientMakeOrder(order) {
+  const timestamp = Date.now();
+  const db = app.firestore
+  //Instantiate batch
+  const batch = writeBatch(db);
+  //Creates the order doc
+  order.orderedOn = timestamp;
+  order.status = 'confirmed'
+
+  const newOrderDoc = doc(collection(app.firestore, "orders"));
+  batch.set(newOrderDoc, order);
+
+  const newOrderId = newOrderDoc.id
+  // addOrderToUsers(batch, order)
+  //Commits the batch
+  await batch.commit()
+  return newOrderId
+
 }
