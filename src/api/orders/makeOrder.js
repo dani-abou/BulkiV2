@@ -18,6 +18,7 @@ const ORDER_RECIPIENTS = [
 
 export default async function makeOrder(order, totals) {
   try {
+    console.log(order, totals)
     let response = await fetch('/api/makeOrder', {
       method: 'POST',
       body: JSON.stringify({ order })
