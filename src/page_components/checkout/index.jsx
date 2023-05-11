@@ -135,7 +135,6 @@ export default function Checkout() {
     Object.keys(form).forEach(formKey => {
       if (REGEXES[formKey]) {
         const validField = form[formKey].match(REGEXES[formKey]) !== null
-        console.log(formKey, validField, form[formKey])
         errorsClone[formKey] = !validField;
         valid = valid && validField;
       }

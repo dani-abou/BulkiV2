@@ -64,10 +64,8 @@ async function clientMakeIntent(price) {
 }
 
 async function clientUpdateIntent(price, intentId) {
-  console.log('NewPrice: ', price);
   const paymentIntent = await stripe.paymentIntents.update(intentId, {
     amount: Math.round(price * 100)
   })
-  console.log('Intent: ', paymentIntent);
   return paymentIntent;
 }

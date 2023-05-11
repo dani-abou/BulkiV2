@@ -13,7 +13,7 @@ export default async function makePayment(stripe, elements, callback, errorCallb
     if (error) throw error;
     await callback();
   } catch (e) {
-    errorCallback(e.number, ', ', e.code + ": " + e.message);
+    errorCallback(e.code + ": " + e.message);
     console.log(e)
   }
 }
