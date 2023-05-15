@@ -30,6 +30,7 @@
     "dotenv": "^16.0.1",
     "embla-carousel-react": "^7.0.0",
     "firebase": "^9.9.3",
+    "firebase-functions": "^4.4.0",
     "fs": "^0.0.1-security",
     "googleapis": "^105.0.0",
     "imagemin-mozjpeg": "^10.0.0",

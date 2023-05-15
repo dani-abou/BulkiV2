@@ -5,6 +5,8 @@ import Link from "next/link"
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from "react"
 import { isMobile } from 'react-device-detect'
+import sendMail from '../../api/mailer'
+import newsletterSignup from '../../api/newsletter/signup'
 import { urls } from "../../common"
 import { BulkiContextConsumer, useCart } from "../../common/context"
 import Cart from '../../page_components/cart'
@@ -69,6 +71,7 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
       )}
       <CartButton />
     </StyledLinks>
+    <button onClick={() => sendMail(['dani@bulki.us'], 'test', 'test message')}>Test</button>
     <Cart />
   </StyledAppbar >
 }

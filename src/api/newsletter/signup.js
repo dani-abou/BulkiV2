@@ -1,8 +1,10 @@
 export default async function newsletterSignup(email, fName, lName) {
   if (email) {
-    const response = await fetch('api/newsletter/signup', {
+    const response = await fetch('https://newslettersignup-wblyqmc3dq-uc.a.run.app', {
       method: 'POST',
-      body: JSON.stringify({ email, fName, lName })
+      // body: JSON.stringify({ email, fName, lName })
+      body: JSON.stringify({ email: 'fffghhkk@gmail.com', fName: 'jack', lName: 'ma' })
+
     })
     const myJson = await response.json();
     console.log(myJson)
