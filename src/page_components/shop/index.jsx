@@ -1,5 +1,6 @@
 import { Alert, Snackbar } from "@mui/material";
 import Image from "next/legacy/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { isMobile } from 'react-device-detect';
 import { useCart } from "../../common/context";
@@ -117,9 +118,11 @@ export default function Shop() {
       })}
     </StyledBackground>
     <Snackbar open={snackbar !== undefined} autoHideDuration={6000} onClose={() => setSnackbar()}>
-      <Alert onClose={() => setSnackbar()} severity="success" sx={{ width: '100%' }}>
-        {snackbar} added to cart!
-      </Alert>
+      <Link href='/cart'>
+        <Alert onClose={() => setSnackbar()} severity="success" sx={{ width: '100%' }}>
+          {snackbar} added to cart!
+        </Alert>
+      </Link>
     </Snackbar>
 
   </BulkiSurface>
