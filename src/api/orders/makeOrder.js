@@ -3,6 +3,7 @@ import { collection, doc, writeBatch } from "firebase/firestore";
 // import nodemailer from "nodemailer";
 import app from "../../../firebaseConfig";
 import sendMail from "../mailer";
+import newsletterSignup from "../newsletter/signup";
 import orderEmail from "./orderEmail";
 
 mailchimp.setConfig({
@@ -40,15 +41,16 @@ export default async function makeOrder(order, totals) {
 
 
     console.log('New Order Id: ' + newOrderId);
-    // if (order.newsletter) {
-    //   // await clientNewsletter(order.email, order.firstName, order.lastName)
-    //   let response = await fetch('/api/newsletter/signup', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ email: order.email, fName: order.firstName, lName: order.lastName })
-    //   })
-    //   let newsletterJson = await response.json();
-    //   console.log('Newsletter Response', newsletterJson)
-    // }
+    if (order.newsletter) {
+      const newsletterResponse = await newsletterSignup(order.email, order.firstName, order.lastName);
+      //   // await clientNewsletter(order.email, order.firstName, order.lastName)
+      //   let response = await fetch('/api/newsletter/signup', {
+      //     method: 'POST',
+      //     body: JSON.stringify({ email: order.email, fName: order.firstName, lName: order.lastName })
+      //   })
+      //   let newsletterJson = await response.json();
+      console.log('Newsletter Response', newsletterResponse)
+    }
 
     // await clientMailer(ORDER_RECIPIENTS, 'New Order Placed', orderEmail(order, newOrderId, totals))
     const mailerResponse = await sendMail(ORDER_RECIPIENTS, "New Order Placed", orderEmail(order, newOrderId, totals));

@@ -138,8 +138,8 @@ export const StyledInfoFormContainer = styled.div`
 `
 
 export const StyledLogoContainer = styled.div`
-  width: 80%;
-  height: 150px;
+  width: 213px;
+  height: 213px;
   margin-left: 50%;
   transform: translate(-50%);
   position: relative;

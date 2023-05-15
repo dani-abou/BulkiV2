@@ -66,6 +66,7 @@ export const StyledSubtitle = styled(BulkiH4)`
 export const StyledButton = styled(BulkiButton)`
   color: white;
   width: 200px;  
+  text-decoration: none;
 
   @media screen and (max-width: ${screenSizes.mobile.max}) {
         margin-top: 20px;
