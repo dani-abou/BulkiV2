@@ -71,7 +71,7 @@ const BulkiNavbar = ({ skinny, bulkiContext }) => {
       )}
       <CartButton />
     </StyledLinks>
-    <button onClick={() => sendMail(['dani@bulki.us'], 'test', 'test message')}>Test</button>
+    <button onClick={() => newsletterSignup("dabouhamad@gmail.com", "Dan", "Jackson")}>Test</button>
     <Cart />
   </StyledAppbar >
 }

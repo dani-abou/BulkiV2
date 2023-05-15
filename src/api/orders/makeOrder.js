@@ -2,6 +2,7 @@ import mailchimp from "@mailchimp/mailchimp_marketing";
 import { collection, doc, writeBatch } from "firebase/firestore";
 // import nodemailer from "nodemailer";
 import app from "../../../firebaseConfig";
+import sendMail from "../mailer";
 import orderEmail from "./orderEmail";
 
 mailchimp.setConfig({
@@ -12,8 +13,8 @@ mailchimp.setConfig({
 const listId = process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE
 
 const ORDER_RECIPIENTS = [
-  'dabouhamad@gmail.com',
-  // 'dani@bulki.us',
+  // 'dabouhamad@gmail.com',
+  'dani@bulki.us',
   // 'steve@bulki.us'
 ]
 
@@ -39,23 +40,24 @@ export default async function makeOrder(order, totals) {
 
 
     console.log('New Order Id: ' + newOrderId);
-    if (order.newsletter) {
-      // await clientNewsletter(order.email, order.firstName, order.lastName)
-      let response = await fetch('/api/newsletter/signup', {
-        method: 'POST',
-        body: JSON.stringify({ email: order.email, fName: order.firstName, lName: order.lastName })
-      })
-      let newsletterJson = await response.json();
-      console.log('Newsletter Response', newsletterJson)
-    }
+    // if (order.newsletter) {
+    //   // await clientNewsletter(order.email, order.firstName, order.lastName)
+    //   let response = await fetch('/api/newsletter/signup', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ email: order.email, fName: order.firstName, lName: order.lastName })
+    //   })
+    //   let newsletterJson = await response.json();
+    //   console.log('Newsletter Response', newsletterJson)
+    // }
 
     // await clientMailer(ORDER_RECIPIENTS, 'New Order Placed', orderEmail(order, newOrderId, totals))
+    const mailerResponse = await sendMail(ORDER_RECIPIENTS, "New Order Placed", orderEmail(order, newOrderId, totals));
 
-    let response = await fetch('/api/mailer/sendMail', {
-      method: 'POST',
-      body: JSON.stringify({ recipients: ORDER_RECIPIENTS, subject: 'New Order Placed', message: orderEmail(order, newOrderId, totals) })
-    })
-    let mailerResponse = await response.json();
+    // let response = await fetch('/api/mailer/sendMail', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ recipients: ORDER_RECIPIENTS, subject: 'New Order Placed', message: orderEmail(order, newOrderId, totals) })
+    // })
+    // let mailerResponse = await response.json();
     console.log('Mailer Response', mailerResponse);
 
   } catch (err) {

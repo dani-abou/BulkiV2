@@ -6,6 +6,5 @@ export default async function sendMail(recipients, subject, message) {
   })
 
   const myJson = await response.json();
-  console.log(myJson);
   return myJson;
 }

@@ -3,8 +3,7 @@ export default async function newsletterSignup(email, fName, lName) {
     const response = await fetch('https://newslettersignup-wblyqmc3dq-uc.a.run.app', {
       method: 'POST',
       // body: JSON.stringify({ email, fName, lName })
-      body: JSON.stringify({ email: 'fffghhkk@gmail.com', fName: 'jack', lName: 'ma' })
-
+      body: JSON.stringify({ email, fName, lName })
     })
     const myJson = await response.json();
     console.log(myJson)
