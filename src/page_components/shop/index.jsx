@@ -19,7 +19,7 @@ export default function Shop() {
 
   const [hovered, setHovered] = useState();
   const [active, setActive] = useState();
-  const { cart, increaseCart, decreaseCart, removeFromCart } = useCart();
+  const { cart, increaseCart, decreaseCart, removeFromCart, setShowCart } = useCart();
 
 
   //If true, hover should be enabled
@@ -118,11 +118,9 @@ export default function Shop() {
       })}
     </StyledBackground>
     <Snackbar open={snackbar !== undefined} autoHideDuration={6000} onClose={() => setSnackbar()}>
-      <Link href='/cart'>
-        <Alert onClose={() => setSnackbar()} severity="success" sx={{ width: '100%' }}>
-          {snackbar} added to cart!
-        </Alert>
-      </Link>
+      <Alert onClose={() => setSnackbar()} severity="success" sx={{ width: '100%', cursor: 'pointer' }} onClick={() => setShowCart(true)}>
+        {snackbar} added to cart!
+      </Alert>
     </Snackbar>
 
   </BulkiSurface>
