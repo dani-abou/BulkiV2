@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BulkiSelect from "../src/components/BulkiSelect";
+import PrimabullSelect from "../src/components/PrimabullSelect";
 
 const dummyData = [
   { value: 'test', label: 'Test' },
@@ -22,7 +22,7 @@ const GallerySelect = () => {
       return prev
     })
   }
-  return <BulkiSelect
+  return <PrimabullSelect
     options={data}
     sx={{ width: 400 }}
     value={value}

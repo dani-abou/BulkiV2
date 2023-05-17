@@ -1,4 +1,4 @@
-import { BulkiContextConsumer } from "../common/context";
+import { PrimabullContextConsumer } from "../common/context";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { urls } from "../common";
@@ -14,9 +14,9 @@ const NotAuthCheckerRouter = ({ context, children }) => {
 }
 
 export const PageIfNotAuthenticated = (props) => {
-  return <BulkiContextConsumer>
+  return <PrimabullContextConsumer>
     {context => <NotAuthCheckerRouter {...props} context={context} />}
-  </BulkiContextConsumer>
+  </PrimabullContextConsumer>
 }
 
 const AuthCheckerRouter = ({ context, children }) => {
@@ -31,8 +31,8 @@ const AuthCheckerRouter = ({ context, children }) => {
 }
 
 export const PageIfAuthenticated = (props) => {
-  return <BulkiContextConsumer>
+  return <PrimabullContextConsumer>
     {context => <AuthCheckerRouter {...props} context={context} />}
-  </BulkiContextConsumer>
+  </PrimabullContextConsumer>
 }
 

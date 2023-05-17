@@ -1,4 +1,4 @@
-import { BulkiIconButton } from "../src/components/BulkiButton";
+import { PrimabullIconButton } from "../src/components/PrimabullButton";
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import { StyledIconButtonTest } from './style'
 

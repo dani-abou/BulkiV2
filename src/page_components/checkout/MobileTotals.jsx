@@ -1,5 +1,5 @@
 import { useCart } from "../../common/context";
-import { BulkiBody1 } from "../../common/styles";
+import { PrimabullBody1 } from "../../common/styles";
 import { StyledMobileTotals, StyledTotalDiv } from "./style";
 
 export default function MobileTotals() {
@@ -8,16 +8,16 @@ export default function MobileTotals() {
 
   return <StyledMobileTotals>
     <StyledTotalDiv style={{ marginBottom: '6px' }}>
-      <BulkiBody1>Subtotal</BulkiBody1>
-      <BulkiBody1>${totals.subtotal}</BulkiBody1>
+      <PrimabullBody1>Subtotal</PrimabullBody1>
+      <PrimabullBody1>${totals.subtotal}</PrimabullBody1>
     </StyledTotalDiv>
     <StyledTotalDiv style={{ marginBottom: '15px' }}>
-      <BulkiBody1>Shipping</BulkiBody1>
-      <BulkiBody1>${totals.shippingTotal}</BulkiBody1>
+      <PrimabullBody1>Shipping</PrimabullBody1>
+      <PrimabullBody1>${totals.shippingTotal}</PrimabullBody1>
     </StyledTotalDiv>
     <StyledTotalDiv >
-      <BulkiBody1 style={{ fontWeight: 600, fontSize: '20px' }}>Total</BulkiBody1>
-      <BulkiBody1 style={{ fontWeight: 500, fontSize: '20px' }}>${totals.total}</BulkiBody1>
+      <PrimabullBody1 style={{ fontWeight: 600, fontSize: '20px' }}>Total</PrimabullBody1>
+      <PrimabullBody1 style={{ fontWeight: 500, fontSize: '20px' }}>${totals.total}</PrimabullBody1>
     </StyledTotalDiv>
   </StyledMobileTotals>
 }

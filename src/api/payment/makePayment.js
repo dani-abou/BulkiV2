@@ -7,7 +7,7 @@ export default async function makePayment(stripe, elements, callback, errorCallb
       elements,
       redirect: "if_required",
       confirmParams: {
-        return_url: "https://bulki.us",
+        return_url: "https://Primabull.us",
       },
     });
     if (error) throw error;

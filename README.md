@@ -1,6 +1,6 @@
-# Bulki
+# Primabull
 
-Bulki is a B2B marketplace platform, built as a NextJs application. I decided to use NextJs for two reasons: I wanted to learn about an up-and-coming technology, and because I want this website to be sustainable and up-to-date in the long-term. Firebase is used for storage, authentication, and databases. Since I am building this alone, with a minimal backend, Firebase was an easy option due to its simple frontend integrations, and vast array of functionality.
+Primabull is a B2B marketplace platform, built as a NextJs application. I decided to use NextJs for two reasons: I wanted to learn about an up-and-coming technology, and because I want this website to be sustainable and up-to-date in the long-term. Firebase is used for storage, authentication, and databases. Since I am building this alone, with a minimal backend, Firebase was an easy option due to its simple frontend integrations, and vast array of functionality.
 
 This is certainly a work in progress, that I am still working on today.
 
@@ -37,12 +37,12 @@ npm run dev
 
 ## Hosting and Branching
 
-This project is hosted directly from main. Whatever is on main is exactly what you will see on [Bulki](www.bulki.us).
+This project is hosted directly from main. Whatever is on main is exactly what you will see on [Primabull](www.Primabull.us).
 I am using Vercel to host because it is built to work with NextJs, and it's cheap (unless we get a lot traffic).
 Before pushing to main, always make sure you run the following `npm run build`.
 
 I've also set it up such that staging is built as a preparation branch before anything pushes to live. As expected, one can build individual features on an independent branch, then PR their branch into staging. Staging can then test any changes prior to making the changes live.
-You can see the current state of staging [here](http://bulki.us.test-google-a.com/)
+You can see the current state of staging [here](http://Primabull.us.test-google-a.com/)
 
 ## Storage
 
@@ -66,11 +66,11 @@ TBD (I have not fully built out the ordering flow yet, which will determine how 
 
 ### pages
 
-NextJs is designed such that every file in `./pages` is directly assosciated with a page you'd see in the url. The exception to those are files that start with an underscore, and those are some overriding of NextJs rendering structure. Additionally `api` is an exception. I simply use this directory for my page structuring, but for the contents of the page, please refer to [`src/page_components`](https://github.com/dani-abou/Bulki/tree/staging#srcpage_components)
+NextJs is designed such that every file in `./pages` is directly assosciated with a page you'd see in the url. The exception to those are files that start with an underscore, and those are some overriding of NextJs rendering structure. Additionally `api` is an exception. I simply use this directory for my page structuring, but for the contents of the page, please refer to [`src/page_components`](https://github.com/dani-abou/Primabull/tree/staging#srcpage_components)
 
 ### api
 
-The `api` directory is the only folder in `./pages` that does not actually contain a user's page. This folder is used to imitate a backend. In large part, I intend on hiding all configs and secrets such that they are viewed used from this directory, and the frontend simply pings here. The file paths within api mark their api url. These should only be called from the [`src/api`](https://github.com/dani-abou/Bulki/tree/staging#srcapi) directory. The names of these files should be all lower case, to easily differentiate from the frontend calling files.
+The `api` directory is the only folder in `./pages` that does not actually contain a user's page. This folder is used to imitate a backend. In large part, I intend on hiding all configs and secrets such that they are viewed used from this directory, and the frontend simply pings here. The file paths within api mark their api url. These should only be called from the [`src/api`](https://github.com/dani-abou/Primabull/tree/staging#srcapi) directory. The names of these files should be all lower case, to easily differentiate from the frontend calling files.
 
 ### gallery
 

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { useEffect, useMemo, useState } from 'react';
-import { BulkiBody1, BulkiH5 } from "../../common/styles";
+import { PrimabullBody1, PrimabullH5 } from "../../common/styles";
 
 import { CircularProgress } from "@mui/material";
 import { useElements, useStripe } from "@stripe/react-stripe-js";
@@ -11,9 +11,9 @@ import { useRouter } from "next/router";
 import makeOrder from "../../api/orders/makeOrder";
 import makePayment from "../../api/payment/makePayment";
 import { useCart } from "../../common/context";
-import BulkiButton, { BulkiButtonTypes } from "../../components/BulkiButton/BulkiButton";
-import { EMAIL_REGEX, LETTERS, PHONE_NUMBER, STREETADDRESS, ZIPCODE } from "../../components/BulkiInput";
-import BulkiSelect from "../../components/BulkiSelect/BulkiSelect";
+import PrimabullButton, { PrimabullButtonTypes } from "../../components/PrimabullButton/PrimabullButton";
+import { EMAIL_REGEX, LETTERS, PHONE_NUMBER, STREETADDRESS, ZIPCODE } from "../../components/PrimabullInput";
+import PrimabullSelect from "../../components/PrimabullSelect/PrimabullSelect";
 import { PRODUCTS } from "../../data";
 import { STATES } from "../../data/states";
 import Payment from "./Payment";
@@ -154,14 +154,15 @@ export default function Checkout() {
         <Link href='/'>
           <StyledLogoContainer>
             <Image
-              src='logos/MainSecondary.png'
+              src='logos/MainPrimary.png'
               alt='Logo'
               layout='fill'
-              objectFit="cover"
+              // objectFit="cover"
+              priority
             />
           </StyledLogoContainer>
         </Link>
-        <br />
+        {/* <br /> */}
         <ContactInfo
           errorFields={errorFields}
           form={form}
@@ -176,19 +177,19 @@ export default function Checkout() {
         />
         <br /><br />
 
-        <BulkiH5>
+        <PrimabullH5>
           Payment
-        </BulkiH5>
+        </PrimabullH5>
         <Payment />
         <br /><br />
         <MobileTotals />
         {error && <StyledError>
-          <BulkiBody1>{error}</BulkiBody1>
+          <PrimabullBody1>{error}</PrimabullBody1>
         </StyledError>}
 
         <br /><br />
         <StyledButtonsFlex>
-          <StyledButton size='large' variant={BulkiButtonTypes.outline} onClick={() => router.push('/shop')}>
+          <StyledButton size='large' variant={PrimabullButtonTypes.outline} onClick={() => router.push('/shop')}>
             Return to Cart</StyledButton>
           {/* <Link href='/'> */}
           <StyledSubmitButton
@@ -212,10 +213,10 @@ export default function Checkout() {
 
 
 function ContactInfo({ form, updateForm, setForm, errorFields }) {
-  return <>
-    <BulkiH5>
+  return <div style={{ marginTop: '-60px' }}>
+    <PrimabullH5>
       Contact
-    </BulkiH5>
+    </PrimabullH5>
     <br />
     <StyledInput
       helperText={errorFields.email ? helperText('Email') : ''}
@@ -241,14 +242,14 @@ function ContactInfo({ form, updateForm, setForm, errorFields }) {
       error={errorFields.phone}
     />
 
-  </>
+  </div>
 }
 
 function ShippingInfo({ form, updateForm, errorFields, updateSelect }) {
   return <>
-    <BulkiH5>
+    <PrimabullH5>
       Shipping Address
-    </BulkiH5>
+    </PrimabullH5>
     <br />
     <StyledInputFlex>
       <StyledInput

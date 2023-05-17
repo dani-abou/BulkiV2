@@ -1,7 +1,7 @@
 import Link from "next/link.js"
 import { useState } from "react"
 import makeOrder from "../../api/orders/makeOrder.js"
-import BulkiNavbar from "../../components/BulkiNavbar/BulkiNavbar.jsx"
+import PrimabullNavbar from "../../components/PrimabullNavbar/PrimabullNavbar.jsx"
 import { StyledBackground, StyledButton, StyledCenter, StyledSubtitle, StyledTitle } from "./style.js"
 
 export default function Landing() {
@@ -14,7 +14,7 @@ export default function Landing() {
   }
 
   // return <StyledBackground>
-  //   <BulkiNavbar />
+  //   <PrimabullNavbar />
   return <StyledCenter>
     <StyledTitle>True Farm to Table</StyledTitle>
     <br />

@@ -54,13 +54,11 @@ export default function useCart() {
     let subtotal = 0;
 
     Object.keys(cart).forEach(cartKey => {
-      subtotal += cart[cartKey] * PRODUCTS[cartKey].price
+      subtotal += cart[cartKey] * PRODUCTS[cartKey]?.price || 0
     })
 
     let shippingTotal = subtotal > 200 ? 0 : 20;
-
     let taxedAmount = Math.round((tax / 100 * subtotal) * 100) / 100
-
     return { subtotal, shippingTotal, taxTotal: taxedAmount, total: subtotal + shippingTotal + taxedAmount }
   }, [cart, tax])
 

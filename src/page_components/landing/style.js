@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { BulkiH1, BulkiH4, screenSizes } from "../../common/styles";
-import BulkiButton from "../../components/BulkiButton/BulkiButton";
+import { PrimabullH1, PrimabullH4, screenSizes } from "../../common/styles";
+import PrimabullButton from "../../components/PrimabullButton/PrimabullButton";
 
 export const StyledBackground = styled.div`
   height: 100vh;
@@ -32,7 +32,7 @@ export const StyledCenter = styled.div`
   }
 `
 
-export const StyledTitle = styled(BulkiH1)`
+export const StyledTitle = styled(PrimabullH1)`
   color: white;
   font-size: 85px;
 
@@ -47,7 +47,7 @@ export const StyledTitle = styled(BulkiH1)`
   }
 `
 
-export const StyledSubtitle = styled(BulkiH4)`
+export const StyledSubtitle = styled(PrimabullH4)`
   color: white;
   font-size: 37px;
   width: 80%;
@@ -63,7 +63,7 @@ export const StyledSubtitle = styled(BulkiH4)`
   }
 `
 
-export const StyledButton = styled(BulkiButton)`
+export const StyledButton = styled(PrimabullButton)`
   color: white;
   width: 200px;  
   text-decoration: none;

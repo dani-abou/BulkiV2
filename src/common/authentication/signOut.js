@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import app from "../../../firebaseConfig";
 import { urls } from "..";
 
-const bulkiSignOut = async (router, redirectPath = urls.primary) => {
+const PrimabullSignOut = async (router, redirectPath = urls.primary) => {
   const auth = app?.auth;
   if (!auth) throw 'Auth instance invalid';
   try {
@@ -13,4 +13,4 @@ const bulkiSignOut = async (router, redirectPath = urls.primary) => {
   }
 }
 
-export default bulkiSignOut
+export default PrimabullSignOut

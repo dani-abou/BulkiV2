@@ -1,10 +1,10 @@
 import { CircularProgress } from "@mui/material";
 import styled from "styled-components";
-import { BulkiBody1, media } from "../../common/styles";
-import BulkiButton from "../../components/BulkiButton/BulkiButton";
-import BulkiCheckbox from "../../components/BulkiCheckbox/BulkiCheckbox";
-import BulkiInput from "../../components/BulkiInput/BulkiInput";
-import BulkiSelect from "../../components/BulkiSelect/BulkiSelect";
+import { PrimabullBody1, media } from "../../common/styles";
+import PrimabullButton from "../../components/PrimabullButton/PrimabullButton";
+import PrimabullCheckbox from "../../components/PrimabullCheckbox/PrimabullCheckbox";
+import PrimabullInput from "../../components/PrimabullInput/PrimabullInput";
+import PrimabullSelect from "../../components/PrimabullSelect/PrimabullSelect";
 
 export const StyledPageFlex = styled.div`
   width: 100vw;
@@ -16,7 +16,7 @@ export const StyledPageFlex = styled.div`
 
 export const StyledInfoContainer = styled.div`
   flex: 1 0;
-  padding-top: 100px;
+  padding-top: 10px;
   padding-bottom: 100px;
   ${() => media.mobile(`
     padding-top: 20px;
@@ -87,7 +87,7 @@ export const StyledQuantityContainer = styled.div`
   border-radius: 50%;
 `
 
-export const StyledQuantityNumber = styled(BulkiBody1)`
+export const StyledQuantityNumber = styled(PrimabullBody1)`
   margin-left: 50%;
   margin-top: 50%;
   transform: translate(-50%, -50%);
@@ -138,27 +138,25 @@ export const StyledInfoFormContainer = styled.div`
 `
 
 export const StyledLogoContainer = styled.div`
-  width: 213px;
-  height: 213px;
+  width: 450px;
+  height: 400px;
   margin-left: 50%;
   transform: translate(-50%);
   position: relative;
-
-
 `
-export const StyledInput = styled(BulkiInput)`
+export const StyledInput = styled(PrimabullInput)`
   background-color: inherit;
   margin-bottom: 10px;
   flex: 1 0 50px;
 `
 
-export const StyledSelect = styled(BulkiSelect)`
+export const StyledSelect = styled(PrimabullSelect)`
   background-color: inherit;
   margin-bottom: 10px;
   flex: 1 1 15px;
 `
 
-export const StyledCheckbox = styled(BulkiCheckbox)`
+export const StyledCheckbox = styled(PrimabullCheckbox)`
   margin-left: 5px;
 `
 
@@ -176,7 +174,7 @@ export const StyledButtonsFlex = styled.div`
   justify-content:space-between;
 `
 
-export const StyledButton = styled(BulkiButton)`
+export const StyledButton = styled(PrimabullButton)`
   width: 170px;
   text-decoration: none;
 `

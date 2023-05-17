@@ -1,8 +1,8 @@
 import { Card, Paper } from "@mui/material"
 import styled from "styled-components"
-import { BulkiBody1, BulkiH5 } from "../../common/styles"
+import { PrimabullBody1, PrimabullH5 } from "../../common/styles"
 import { screenSizes } from "../../common/styles/screenSizes"
-import BulkiCard from "../../components/BulkiCard/BulkiCard"
+import PrimabullCard from "../../components/PrimabullCard/PrimabullCard"
 
 export const StyledSurface = styled.div`
   position: absolute;
@@ -64,7 +64,7 @@ export const StyledExamplesFlex = styled.div`
 
 `
 
-export const StyledExamplesPaper = styled(BulkiCard)`
+export const StyledExamplesPaper = styled(PrimabullCard)`
   height: 300px;
   width: 250px;
   background-color: #f7f7f7;
@@ -76,7 +76,7 @@ export const StyledExamplesPaper = styled(BulkiCard)`
   
 `
 
-export const StyledExampleDescription = styled(BulkiBody1)`
+export const StyledExampleDescription = styled(PrimabullBody1)`
   height: 75px;
   overflow: hidden;
 `
@@ -87,7 +87,7 @@ export const StyledPrice = styled.div`
   right: 20px;
 `
 
-export const StyledMissionStatement = styled(BulkiH5)`
+export const StyledMissionStatement = styled(PrimabullH5)`
   text-align: center;
 
     @media screen and (max-width: ${screenSizes.mobile.max}) {

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import BulkiRadioGroup from "../src/components/BulkiRadioGroup"
+import PrimabullRadioGroup from "../src/components/PrimabullRadioGroup"
 
 const dummyOptions = [
   { value: 'first', label: 'First' },
@@ -16,7 +16,7 @@ const GalleryRadio = () => {
     console.log(e.target.value);
   }
 
-  return <BulkiRadioGroup
+  return <PrimabullRadioGroup
     row
     onChange={handleChange}
     label='Radio' options={options}

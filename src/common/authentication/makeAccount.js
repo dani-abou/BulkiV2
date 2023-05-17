@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { urls } from "..";
 import app from "../../../firebaseConfig";
-import bulkiSignOut from "./signOut";
+import PrimabullSignOut from "./signOut";
 
 
 const signUp = async (credentials, router, setStatus) => {
@@ -15,7 +15,7 @@ const signUp = async (credentials, router, setStatus) => {
       let metadata = {}
       for (const key of Object.keys(newUser.user.metadata)) { metadata[key] = newUser.user.metadata[key] }
       await setDoc(doc(app?.firestore, "users", newUser?.user.uid), { email, firstName, lastName, metadata });
-      await bulkiSignOut(router, urls.signin);
+      await PrimabullSignOut(router, urls.signin);
       setStatus('success');
 
     } catch (error) {

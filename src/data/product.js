@@ -1,6 +1,6 @@
 export const PRODUCTS = {
-  'Bulki Ancestral Ground Beef': {
-    name: 'Bulki Ancestral Ground Beef',
+  'Primabull Ancestral Ground Beef': {
+    name: 'Primabull Ancestral Ground Beef',
     price: 10,
     unit: '1lb',
     image: '/products/ground.webp',

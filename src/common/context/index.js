@@ -10,9 +10,9 @@ import { useCartStates } from "./useCart";
 
 
 export const Context = createContext({});
-Context.displayName = 'BulkiContext';
+Context.displayName = 'PrimabullContext';
 
-export const BulkiContextProvider = ({ children }) => {
+export const PrimabullContextProvider = ({ children }) => {
 
   const cartStates = useCartStates();
 
@@ -22,7 +22,7 @@ export const BulkiContextProvider = ({ children }) => {
   </Context.Provider>
 }
 
-export const BulkiContextConsumer = ({ children }) => <Context.Consumer>{children}</Context.Consumer>
+export const PrimabullContextConsumer = ({ children }) => <Context.Consumer>{children}</Context.Consumer>
 
 
 export { default as useCart } from "./useCart";

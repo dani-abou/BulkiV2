@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { BulkiBody2, media, screenSizes } from "../../common/styles";
-import BulkiButton from "../../components/BulkiButton/BulkiButton";
+import { PrimabullBody2, media, screenSizes } from "../../common/styles";
+import PrimabullButton from "../../components/PrimabullButton/PrimabullButton";
 
 export const StyledBackground = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ export const StyledProduct = styled.div`
   position: relative;
   /* cursor: pointer; */
   transition: opacity 0.2s, background-color 0.1s;
-  opacity: ${props => props.$greyed ? 0.8 : 1};
+  opacity: ${props => props.$greyed ? 1 : 1};
   ${props => props.$hovered && `background-color: ${props.theme.colors.neutral.alpha(0.1).hexa()}`};
   padding-top: 15px;
   padding-bottom: 5px;
@@ -61,7 +61,7 @@ export const StyledContent = styled.div`
   }
 `
 
-export const StyledDescLine = styled(BulkiBody2)`
+export const StyledDescLine = styled(PrimabullBody2)`
 ${props => props.$last ? '' : 'margin-bottom: 7px;'}
 border: 1px solid transparent;
 `
@@ -84,7 +84,7 @@ export const StyledBorder = styled.div`
   `)}
 `
 
-export const StyledBuyButton = styled(BulkiButton)`
+export const StyledBuyButton = styled(PrimabullButton)`
   position: absolute;
   left: 50%;
   bottom: 10px;
@@ -96,9 +96,11 @@ export const StyledBuyButton = styled(BulkiButton)`
   overflow: hidden;
   :hover {
     background-color: ${props => props.theme.colors.primary.hexa()};
-      color: #ffee10;
-    box-shadow: 0 0 5px #ffee10;
-    text-shadow: 0 0 5px #ffee10;
+
+    /* box-shadow: 0 0 5px #ffee10;
+    text-shadow: 0 0 5px #ffee10; */
+    box-shadow: 0 0 5px #000000;
+    /* text-shadow: 0 0 5px #000000; */
   }
 `
 export const StyledButtonChildDiv = styled.div`

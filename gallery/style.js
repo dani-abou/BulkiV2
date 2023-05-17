@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import BulkiButton from "../src/components/BulkiButton";
-import { BulkiIconButton } from "../src/components/BulkiButton";
+import PrimabullButton from "../src/components/PrimabullButton";
+import { PrimabullIconButton } from "../src/components/PrimabullButton";
 
 
-export const StyledButtonTest = styled(BulkiButton)`
+export const StyledButtonTest = styled(PrimabullButton)`
   width: 10px;
   height: 50px;
 `
 
-export const StyledIconButtonTest = styled(BulkiIconButton)`
+export const StyledIconButtonTest = styled(PrimabullIconButton)`
   color: ${props => props.theme.colors.primary.hexa()};
   :hover {
     background-color: ${props => props.theme.colors.onSurface.alpha(0.5).hexa()};

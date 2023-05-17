@@ -1,4 +1,4 @@
-import BulkiForm, { FormInputTypes } from "../src/components/BulkiForm"
+import PrimabullForm, { FormInputTypes } from "../src/components/PrimabullForm"
 
 const dummyData = {
   1: {
@@ -40,7 +40,7 @@ const dummyData = {
 
 const GalleryForm = () => {
   return <div style={{ width: '50%', marginLeft: '25%' }}>
-    <BulkiForm form={dummyData} />
+    <PrimabullForm form={dummyData} />
   </div>
 }
 

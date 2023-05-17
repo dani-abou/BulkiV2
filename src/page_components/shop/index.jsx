@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { isMobile } from 'react-device-detect';
 import { useCart } from "../../common/context";
-import { BulkiBody1, BulkiH4, BulkiH5 } from "../../common/styles";
-import BulkiButton from "../../components/BulkiButton/BulkiButton";
-import BulkiSurface from "../../components/BulkiSurface";
+import { PrimabullBody1, PrimabullH4, PrimabullH5 } from "../../common/styles";
+import PrimabullButton from "../../components/PrimabullButton/PrimabullButton";
+import PrimabullSurface from "../../components/PrimabullSurface";
 import { PRODUCTS } from "../../data";
 import {
   StyledAddToCart,
@@ -55,10 +55,10 @@ export default function Shop() {
     setHovered()
   }
 
-  return <BulkiSurface>
-    <BulkiH4 style={{ textAlign: 'center', marginTop: '10px' }}>
+  return <PrimabullSurface>
+    <PrimabullH4 style={{ textAlign: 'center', marginTop: '10px' }}>
       Taste the Difference
-    </BulkiH4>
+    </PrimabullH4>
     <br />
     <StyledBackground>
       {Object.keys(PRODUCTS).map((productKey, index) => {
@@ -84,7 +84,7 @@ export default function Shop() {
           </StyledProductImage>
           <StyledContent>
             <br />
-            <BulkiH5>{product.name}</BulkiH5>
+            <PrimabullH5>{product.name}</PrimabullH5>
             <br />
             {product.description.map((desc, i) => {
               return <div key={`${i}-${product.name}`}>
@@ -123,6 +123,6 @@ export default function Shop() {
       </Alert>
     </Snackbar>
 
-  </BulkiSurface>
+  </PrimabullSurface>
 }
 

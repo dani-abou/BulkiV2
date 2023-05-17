@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { isMobile } from "react-device-detect"
 import { useCart } from "../../common/context"
-import { BulkiBody1, BulkiH5, BulkiH6 } from "../../common/styles"
+import { PrimabullBody1, PrimabullH5, PrimabullH6 } from "../../common/styles"
 import { PRODUCTS } from "../../data"
 import {
   StyledBorder,
@@ -141,13 +141,13 @@ function CloseButton({ onClick, smaller }) {
 function EmptyDiv({ setShowCart }) {
   return <StyledEmptyDiv>
     <StyledEmptyDivText>
-      <BulkiH5>
+      <PrimabullH5>
         Your cart is currently empty!
-      </BulkiH5>
+      </PrimabullH5>
       <br />
-      <BulkiH5>
+      <PrimabullH5>
         Visit the <Link href='/shop' onClick={() => setShowCart(false)}>Shop</Link> to browse our items
-      </BulkiH5>
+      </PrimabullH5>
     </StyledEmptyDivText>
   </StyledEmptyDiv>
 }

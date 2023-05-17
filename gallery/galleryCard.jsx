@@ -1,14 +1,14 @@
-import BulkiCard from "../src/components/BulkiCard";
+import PrimabullCard from "../src/components/PrimabullCard";
 import cans from "../public/cans.png"
 
 const header = 'Cans, all that random other info people like to include, aluminon '
 
 const GalleryCard = () => {
-  return <BulkiCard
+  return <PrimabullCard
     header={header}
     imageSrc={cans}
   > <div>ttttt</div>
-  </BulkiCard>
+  </PrimabullCard>
 }
 
 export default GalleryCard

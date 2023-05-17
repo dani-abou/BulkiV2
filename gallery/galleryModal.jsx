@@ -1,12 +1,12 @@
 import { useState } from "react"
-import BulkiButton from "../src/components/BulkiButton"
-import BulkiModal from "../src/components/BulkiModal"
+import PrimabullButton from "../src/components/PrimabullButton"
+import PrimabullModal from "../src/components/PrimabullModal"
 
 const GalleryModal = () => {
   const [show, setShow] = useState(false)
   return <>
-    <BulkiButton onClick={() => setShow(true)}>Show Modal</BulkiButton>
-    <BulkiModal show={show} onClose={() => setShow(false)} />
+    <PrimabullButton onClick={() => setShow(true)}>Show Modal</PrimabullButton>
+    <PrimabullModal show={show} onClose={() => setShow(false)} />
   </>
 }
 

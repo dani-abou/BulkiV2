@@ -2,22 +2,22 @@ import GalleryCard from './galleryCard';
 import GalleryCarousel from "./galleryCarousel"
 import GalleryIconButton from './galleryIconButton'
 import { StyledButtonTest } from './style'
-import BulkiButton from '../src/components/BulkiButton';
+import PrimabullButton from '../src/components/PrimabullButton';
 import GalleryModal from './galleryModal';
 import { signOut } from '../src/common/authentication';
 import { useRouter } from "next/router"
 import GalleryForm from './galleryForm';
-import BulkiSelect from '../src/components/BulkiSelect';
+import PrimabullSelect from '../src/components/PrimabullSelect';
 import { useState } from 'react';
 import GallerySelect from './gallerySelect';
 import GalleryRadio from './galleryRadio';
-import BulkiSurface from '../src/components/BulkiSurface/BulkiSurface';
+import PrimabullSurface from '../src/components/PrimabullSurface/PrimabullSurface';
 
 const Gallery = () => {
   const router = useRouter()
-  return <BulkiSurface>
+  return <PrimabullSurface>
     <GalleryRadio />
-  </BulkiSurface>
+  </PrimabullSurface>
 }
 
 export default Gallery 

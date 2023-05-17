@@ -6,11 +6,11 @@ import app from "../../../firebaseConfig";
 import logo from "../../../public/logos/MainPrimary.png";
 import sendMail from "../../api/mailer";
 import newsletterSignup from "../../api/newsletter/signup";
-import { BulkiBody1, BulkiH4, BulkiH5 } from "../../common/styles";
+import { PrimabullBody1, PrimabullH4, PrimabullH5 } from "../../common/styles";
 import { isValidEmail } from "../../common/utils";
-import BulkiButton from "../../components/BulkiButton";
-import BulkiCard from "../../components/BulkiCard/BulkiCard";
-import BulkiInput from "../../components/BulkiInput";
+import PrimabullButton from "../../components/PrimabullButton";
+import PrimabullCard from "../../components/PrimabullCard/PrimabullCard";
+import PrimabullInput from "../../components/PrimabullInput";
 import { StyledExampleDescription, StyledExamplesFlex, StyledExamplesPaper, StyledFormDiv, StyledLogoDiv, StyledMissionStatement, StyledPrice, StyledSection, StyledSurface } from "./style";
 
 export default function Newsletter() {
@@ -59,8 +59,8 @@ export default function Newsletter() {
     <StyledSection>
       <StyledLogoDiv>
         <Image
-          src='/BulkiLogo.png'
-          alt='BulkiLogo'
+          src='/PrimabullLogo.png'
+          alt='PrimabullLogo'
           layout='fill'
           priority
         />
@@ -80,7 +80,7 @@ export default function Newsletter() {
 
             </StyledExampleDescription>
             <StyledPrice>
-              <BulkiBody1 style={{ fontWeight: 'bold' }}>${example.price}</BulkiBody1>
+              <PrimabullBody1 style={{ fontWeight: 'bold' }}>${example.price}</PrimabullBody1>
 
             </StyledPrice>
           </StyledExamplesPaper>
@@ -92,8 +92,8 @@ export default function Newsletter() {
     <StyledSection $greyed>
       <StyledFormDiv onSubmit={onSubmitContact}>
         <br />
-        <BulkiH5>Contact Us</BulkiH5>
-        <BulkiInput
+        <PrimabullH5>Contact Us</PrimabullH5>
+        <PrimabullInput
           value={contactEmail}
           onChange={(e) => setContactEmail(e.target.value)}
           label='Your Email Address'
@@ -102,7 +102,7 @@ export default function Newsletter() {
           error={!(!contactHelperText)}
           color='primary'
         />
-        <BulkiInput
+        <PrimabullInput
           value={contact}
           onChange={(e) => setContact(e.target.value)}
           required
@@ -113,29 +113,29 @@ export default function Newsletter() {
           color='primary'
 
         />
-        <BulkiButton type='submit' disabled={contactStatus === 'loading'}
+        <PrimabullButton type='submit' disabled={contactStatus === 'loading'}
           style={{ height: '36.5px' }}
         >
           {contactStatus === 'loading' ? <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} /> :
             contactStatus === 'sent' ? 'sent :)' :
               'Submit'
           }
-        </BulkiButton>
+        </PrimabullButton>
       </StyledFormDiv>
     </StyledSection>
     <StyledSection >
       <br /><br />
       <StyledFormDiv onSubmit={onSubmit}>
-        <BulkiH5 style={{ textAlign: 'center' }}>Sign up now to get exclusive deals!</BulkiH5>
+        <PrimabullH5 style={{ textAlign: 'center' }}>Sign up now to get exclusive deals!</PrimabullH5>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <BulkiInput
+          <PrimabullInput
             value={fName}
             onChange={(e) => setFName(e.target.value)}
             label='First Name'
             color='primary'
 
           />
-          <BulkiInput
+          <PrimabullInput
             value={lName}
             onChange={(e) => setLName(e.target.value)}
             label='Last Name'
@@ -143,7 +143,7 @@ export default function Newsletter() {
 
           />
         </div>
-        <BulkiInput
+        <PrimabullInput
           value={email}
           onChange={onChange}
           helperText={helperText}
@@ -151,14 +151,14 @@ export default function Newsletter() {
           label='Email Address'
           required
         />
-        <BulkiButton type='submit' disabled={status === 'loading'}
+        <PrimabullButton type='submit' disabled={status === 'loading'}
           style={{ height: '36.5px' }}
         >
           {!status ? 'Sign me up!' :
             status === 'added' ? 'Added :)' :
               <CircularProgress style={{ color: 'lightgray', width: '20px', height: '20px' }} />
           }
-        </BulkiButton>
+        </PrimabullButton>
 
       </StyledFormDiv>
     </StyledSection>
@@ -170,21 +170,21 @@ export const examples = [
     title: 'Pork Freeze Filler',
     farm: 'Four Mile River Farm',
     price: 299,
-    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FporkFiller.jpg?alt=media&token=b2ac5356-1c11-4c92-99ce-067791a85ecf',
+    src: 'https://firebasestorage.googleapis.com/v0/b/Primabull-aa26c.appspot.com/o/landingPage%2FporkFiller.jpg?alt=media&token=b2ac5356-1c11-4c92-99ce-067791a85ecf',
     description: 'Variety of cuts of pork, serving about 100 meals'
   },
   {
     title: 'Beef Freezer Filler',
     farm: 'Four Mile River Farm',
     price: 599,
-    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
+    src: 'https://firebasestorage.googleapis.com/v0/b/Primabull-aa26c.appspot.com/o/landingPage%2FbeefFiller.jpg?alt=media&token=a17c9942-3aa4-4912-9429-2c9eee674835',
     description: 'Variety cuts of beef, including tenderloin, and new york strip, serving 120 meals'
   },
   {
-    title: 'Bulki Ground Beef',
+    title: 'Primabull Ground Beef',
     farm: 'Four Mile River Farm',
     price: 135,
-    src: 'https://firebasestorage.googleapis.com/v0/b/bulki-aa26c.appspot.com/o/landingPage%2FgroundBeef.jpg?alt=media&token=6bcc1baf-4486-4daa-9500-49fd29114d62',
+    src: 'https://firebasestorage.googleapis.com/v0/b/Primabull-aa26c.appspot.com/o/landingPage%2FgroundBeef.jpg?alt=media&token=6bcc1baf-4486-4daa-9500-49fd29114d62',
     description: `15lbs of individually packaged ground beef`
   }
 ]

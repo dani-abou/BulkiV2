@@ -15,9 +15,9 @@ const listId = process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE
 
 const ORDER_RECIPIENTS = [
   // 'dabouhamad@gmail.com',
-  'dani@bulki.us',
-  'steve@bulki.us',
-  'will@bulki.us'
+  'dani@Primabull.us',
+  'steve@Primabull.us',
+  'will@Primabull.us'
 ]
 
 //make order in DB

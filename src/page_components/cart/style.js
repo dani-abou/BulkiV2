@@ -1,13 +1,13 @@
 import { CloseRounded } from "@mui/icons-material";
 import styled from "styled-components";
 import { media } from "../../common";
-import { BulkiBody1, BulkiH1, BulkiH4, BulkiH5, BulkiH6 } from "../../common/styles/tags";
-import { BulkiIconButton } from "../../components/BulkiButton";
-import BulkiButton from "../../components/BulkiButton/BulkiButton";
-import BulkiInput from "../../components/BulkiInput/BulkiInput";
-import BulkiModal from "../../components/BulkiModal/BulkiModal";
+import { PrimabullBody1, PrimabullH1, PrimabullH4, PrimabullH5, PrimabullH6 } from "../../common/styles/tags";
+import { PrimabullIconButton } from "../../components/PrimabullButton";
+import PrimabullButton from "../../components/PrimabullButton/PrimabullButton";
+import PrimabullInput from "../../components/PrimabullInput/PrimabullInput";
+import PrimabullModal from "../../components/PrimabullModal/PrimabullModal";
 
-export const StyledModal = styled(BulkiModal)`
+export const StyledModal = styled(PrimabullModal)`
   width: 80%;
   max-height: 90vh;
   overflow-y: auto;
@@ -28,7 +28,7 @@ export const StyledHeader = styled.div`
   `)}
 `
 
-export const StyledTitle = styled(BulkiH4)`
+export const StyledTitle = styled(PrimabullH4)`
 `
 
 export const StyledCloseButton = styled.button`
@@ -76,14 +76,14 @@ export const StyledProductImage = styled.div`
   `)}
 `
 
-export const StyledProductName = styled(BulkiH6)`
+export const StyledProductName = styled(PrimabullH6)`
   ${props => media.mobile(`
     font-size: 14px;
     text-align: center;
   `)}
 `
 
-export const StyledPriceTotal = styled(BulkiBody1)`
+export const StyledPriceTotal = styled(PrimabullBody1)`
   font-size: 18px;
 `
 
@@ -131,7 +131,7 @@ export const StyledRightButton = styled(QuantityButtons)`
 `
 
 
-export const StyledQuantityInput = styled(BulkiInput)`
+export const StyledQuantityInput = styled(PrimabullInput)`
   flex: 4 0;
   /* height: 100%; */
   border-radius: 0px;
@@ -159,12 +159,12 @@ export const StyledFooter = styled.div`
   `)}
 `
 
-export const StyledSubmitButton = styled(BulkiButton)`
+export const StyledSubmitButton = styled(PrimabullButton)`
   /* margin-bottom: 50px;
   margin-right: 50px; */
 `
 
-export const StyledTotal = styled(BulkiH5)`
+export const StyledTotal = styled(PrimabullH5)`
   margin-left: 30px;
 `
 

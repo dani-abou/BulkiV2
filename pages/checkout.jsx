@@ -6,7 +6,7 @@ import { useCart } from "../src/common/context";
 import Checkout from "../src/page_components/checkout";
 
 const PAGE_HEAD = {
-  title: 'Bulki Checkout',
+  title: 'Primabull Checkout',
   hideNav: true,
   backgroundImg: false
 }
