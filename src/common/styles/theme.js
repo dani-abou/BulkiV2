@@ -5,18 +5,20 @@ import { createTheme } from '@mui/material/styles';
 const PALETTE = {
   // primary: { main: '#78909C' },
   primary: { main: '#1c750a' },
-  secondary: { main: '#2a413d' },
+  secondary: { main: '#31776c' },
   info: purple,
   neutral: grey,
-  onSurface: { main: '#032a0b' },
+  onSurface: { main: '#443427' },
 }
 
 //Colors incoroporates a color object to include functions such as lighten, darken , alpha...
 //All palette get included in colors
 
 export const colors = {
-  surface: Color('#f5f5f9'),
-  background: Color('#f5f5f9'),
+  // surface: Color('#f5f5f9'),
+  surface: Color('#d9d6c9'),
+  // background: Color('#f5f5f9'),
+  background: Color('#dfe1d5'),
   error: Color('#d32f2f'),
   success: Color('#2e7d32'),
   warning: Color('#ed6c02'),

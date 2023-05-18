@@ -38,6 +38,7 @@ export const StyledPrimabullLogoContainer = styled.div`
   transition: all 0.2s ease-out;
   @media screen and (max-width: ${screenSizes.mobile.max}) {
     flex: 1 0 100%;
+    /* height: 500px; */
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
@@ -62,7 +63,7 @@ export const StyledLinks = styled.div`
 `
 
 export const StyledButton = styled(PrimabullButton)`
-  width: 120px;
+  width: 140px;
     
   @media screen and (max-width: ${screenSizes.mobile.max}) {
       display: none;

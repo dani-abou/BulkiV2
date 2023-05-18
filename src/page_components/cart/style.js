@@ -1,4 +1,5 @@
 import { CloseRounded } from "@mui/icons-material";
+import { TableRow } from "@mui/material";
 import styled from "styled-components";
 import { media } from "../../common";
 import { PrimabullBody1, PrimabullH1, PrimabullH4, PrimabullH5, PrimabullH6 } from "../../common/styles/tags";
@@ -218,4 +219,11 @@ export const StyledMobileTable = styled.div`
   ${() => media.mobile(`
     display: inline;
   `)}
+`
+
+export const StyledTableRow = styled(TableRow)`
+  border-bottom: 2px solid ${props => props.theme.colors.onSurface.alpha(0.2).hexa()};
+
+  /* ${props => console.log(props.theme.colors.onSurface.hexa(), 'test')}; */
+  /* border-bottom: 1px solid ${props => props.theme.colors.onSurface.hexa()}; */
 `

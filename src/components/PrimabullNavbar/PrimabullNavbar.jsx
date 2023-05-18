@@ -12,11 +12,13 @@ import { PrimabullContextConsumer, useCart } from "../../common/context"
 import Cart from '../../page_components/cart'
 import { PrimabullButtonTypes } from "../PrimabullButton"
 import {
-  StyledAppbar, StyledPrimabullInput, StyledPrimabullLogoContainer, StyledButton,
+  StyledAppbar,
+  StyledButton,
   StyledCartButton,
   StyledCartNumber,
   StyledCartNumberBox,
   StyledLinks,
+  StyledPrimabullInput, StyledPrimabullLogoContainer,
   StyledSearchButton,
 } from "./style"
 
@@ -71,6 +73,7 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
       )}
       <CartButton />
     </StyledLinks>
+    {/* <button onClick={() => newsletterSignup('tonymail@gmail.com', 'tony', 'mail')}> test</button> */}
     <Cart />
   </StyledAppbar >
 }

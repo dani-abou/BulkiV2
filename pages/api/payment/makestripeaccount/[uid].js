@@ -30,14 +30,14 @@ const dummyAccount = {
     tax_id: '000000000'
   },
   business_profile: {
-    url: 'www.Primabull.us'
+    url: 'www.Primabull.co'
   }
 }
 
 const individual = {
   business_type: 'individual',
   business_profile: {
-    url: 'www.Primabull.us'
+    url: 'www.Primabull.co'
   },
   individual: {
     first_name: 'jack',

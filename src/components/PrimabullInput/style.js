@@ -26,7 +26,7 @@ export const StyledInput = styled.input`
 
 
   :focus {
-    border-color: ${props => props.theme.colors.primary.darken(0.35).hexa()};
+    border-color: ${props => props.theme.colors[props.$variant].hexa()};
     border-width: 1.7px;
   }
 

@@ -42,7 +42,7 @@ I am using Vercel to host because it is built to work with NextJs, and it's chea
 Before pushing to main, always make sure you run the following `npm run build`.
 
 I've also set it up such that staging is built as a preparation branch before anything pushes to live. As expected, one can build individual features on an independent branch, then PR their branch into staging. Staging can then test any changes prior to making the changes live.
-You can see the current state of staging [here](http://Primabull.us.test-google-a.com/)
+You can see the current state of staging [here](http://Primabull.co.test-google-a.com/)
 
 ## Storage
 

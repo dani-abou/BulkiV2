@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
+import { Table, TableBody, TableCell, TableHead } from "@mui/material"
 import Image from "next/legacy/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -23,7 +23,9 @@ import {
   StyledQuantityInput,
   StyledRemoveButtonMobile,
   StyledRightButton,
-  StyledSubmitButton, StyledTableContainer, StyledTitle,
+  StyledSubmitButton, StyledTableContainer,
+  StyledTableRow,
+  StyledTitle,
   StyledTotal
 } from "./style"
 
@@ -157,18 +159,18 @@ function CartTable({ cart, removeFromCart }) {
     <StyledTableContainer>
       <Table>
         <TableHead>
-          <TableRow>
+          <StyledTableRow>
             <TableCell>Product</TableCell>
             <TableCell align='center'>Quantity</TableCell>
             <TableCell align='right'>Total</TableCell>
             <TableCell />
-          </TableRow>
+          </StyledTableRow>
         </TableHead>
         <TableBody>
           {Object.keys(cart).map(cartProduct => {
             const product = PRODUCTS[cartProduct]
             const quantity = cart[cartProduct]
-            return quantity > 0 && <TableRow key={cartProduct}>
+            return quantity > 0 && <StyledTableRow key={cartProduct}>
               <TableCell> <ProductName product={product} /></TableCell>
               <TableCell >
                 <QuantityInput productKey={cartProduct} />
@@ -181,7 +183,7 @@ function CartTable({ cart, removeFromCart }) {
               <TableCell align='right' colSpan={0.5}>
                 <CloseButton smaller onClick={() => removeFromCart(cartProduct)} />
               </TableCell>
-            </TableRow>
+            </StyledTableRow>
           })}
         </TableBody>
       </Table>

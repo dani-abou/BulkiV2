@@ -8,10 +8,10 @@ export default function WhyPrimabull({ }) {
     <PrimabullH6 style={{ textAlign: 'center' }}>We are all about these three ideas</PrimabullH6>
     <br />
     <StyledBody>
-      {`While groceries can put some grass on their packaging and say "grass-fed," you never truly know or understand how your food was raised. With Nativemeats, our goal is to bring you as close to the source as possible. It's as if you're always living on the farm, wherever you are.`}
+      {`While groceries can put some grass on their packaging and say "grass-fed," you never truly know or understand how your food was raised. With Primabull, our goal is to bring you as close to the source as possible. It's as if you're always living on the farm, wherever you are.`}
     </StyledBody>
     <StyledBody>
-      {`If you're here in the first place, you likely know the horrors of how industrial meat was raised. Nativemeats is for those who seek to honor the life of the animal by eating each, the farmers lovingly raise your beef and pork to ensure they are given a humane death.`}
+      {`If you're here in the first place, you likely know the horrors of how industrial meat was raised. Primabull is for those who seek to honor the life of the animal by eating each, the farmers lovingly raise your beef and pork to ensure they are given a humane death.`}
     </StyledBody>
     <StyledBody>
       {`Quality vs Quantity, why not both? We enable you to not only save but plan your supply of meat for the year ahead.

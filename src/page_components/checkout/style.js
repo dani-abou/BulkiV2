@@ -19,7 +19,7 @@ export const StyledInfoContainer = styled.div`
   padding-top: 10px;
   padding-bottom: 100px;
   ${() => media.mobile(`
-    padding-top: 20px;
+    padding-top: 0;
     padding-bottom: 50px;
   `)}
 `
@@ -143,6 +143,11 @@ export const StyledLogoContainer = styled.div`
   margin-left: 50%;
   transform: translate(-50%);
   position: relative;
+    ${() => media.mobile(`
+      margin-top: -50px;
+      margin-left: 55%;
+      width: 110%;
+  `)}
 `
 export const StyledInput = styled(PrimabullInput)`
   background-color: inherit;
