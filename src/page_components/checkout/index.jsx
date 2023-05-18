@@ -195,6 +195,7 @@ export default function Checkout() {
           <StyledSubmitButton
             size='large'
             disabled={buttonDisabled}
+            onTouchEnd={onSubmit}
             onClick={onSubmit}>
             {buttonDisabled ? <StyledProgress /> :
               'Confirm Order'}
