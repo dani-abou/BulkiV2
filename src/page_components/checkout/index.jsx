@@ -1,20 +1,16 @@
-import dynamic from "next/dynamic";
-import Image from "next/legacy/image";
-import { useEffect, useMemo, useState } from 'react';
-import { PrimabullBody1, PrimabullH5 } from "../../common/styles";
-
-import { CircularProgress } from "@mui/material";
 import { useElements, useStripe } from "@stripe/react-stripe-js";
 import { cloneDeep } from "lodash";
+import dynamic from "next/dynamic";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useMemo, useState } from 'react';
 import makeOrder from "../../api/orders/makeOrder";
 import makePayment from "../../api/payment/makePayment";
 import { useCart } from "../../common/context";
-import PrimabullButton, { PrimabullButtonTypes } from "../../components/PrimabullButton/PrimabullButton";
+import { PrimabullBody1, PrimabullH5 } from "../../common/styles";
+import { PrimabullButtonTypes } from "../../components/PrimabullButton/PrimabullButton";
 import { EMAIL_REGEX, LETTERS, PHONE_NUMBER, STREETADDRESS, ZIPCODE } from "../../components/PrimabullInput";
-import PrimabullSelect from "../../components/PrimabullSelect/PrimabullSelect";
-import { PRODUCTS } from "../../data";
 import { STATES } from "../../data/states";
 import Payment from "./Payment";
 import {
@@ -54,7 +50,8 @@ const defaultForm = {
   city: '',
   state: 'MA',
   zipCode: '',
-  phone: ''
+  phone: '',
+  acceptedPrivacy: false
 }
 
 const REGEXES = {
@@ -187,14 +184,20 @@ export default function Checkout() {
           <PrimabullBody1>{error}</PrimabullBody1>
         </StyledError>}
 
+        <StyledCheckbox
+          checked={form.acceptedPrivacy}
+          onChange={e => setForm(prev => ({ ...prev, acceptedPrivacy: e.target.checked }))}
+          label={<>I agree to the <a target="_blank" rel="noopener noreferrer" href='/policies/privacy'>Privacy Policy</a> </>} />
+
         <br /><br />
+
         <StyledButtonsFlex>
           <StyledButton size='large' variant={PrimabullButtonTypes.outline} onClick={() => router.push('/shop')}>
             Return to Cart</StyledButton>
           {/* <Link href='/'> */}
           <StyledSubmitButton
             size='large'
-            disabled={buttonDisabled}
+            disabled={buttonDisabled || !form.acceptedPrivacy}
             onTouchEnd={onSubmit}
             onClick={onSubmit}>
             {buttonDisabled ? <StyledProgress /> :
