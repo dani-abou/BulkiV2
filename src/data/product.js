@@ -1,7 +1,7 @@
 export const PRODUCTS = {
   'Primabull Ancestral Ground Beef': {
     name: 'Primabull Ancestral Ground Beef',
-    price: 10,
+    price: 12.99,
     unit: '1lb',
     image: '/products/ground.webp',
     description: [`For those who want to benefit of heart and liver, but don’t like the taste. Comes in 1lb package`,
@@ -16,7 +16,7 @@ export const PRODUCTS = {
   },
   'Pork Kielbasa': {
     name: 'Pork Kielbasa',
-    price: 12,
+    price: 11.99,
     unit: '4 links',
     image: '/products/kielbasa.webp',
     description: [`Grilled, roasted or sautéed, these well seasoned links have an addition of garlic and marjoram making them a full flavored treat.`,
@@ -25,7 +25,7 @@ export const PRODUCTS = {
   },
   'Beef Liver': {
     name: 'Beef Liver',
-    price: 12,
+    price: 11.99,
     unit: '4 links',
     image: '/products/liver.webp',
     description: [`Includes: + Daily serving of iron, riboflavin, vitamin b12, vitamin A, and copper`, `
@@ -35,7 +35,7 @@ export const PRODUCTS = {
 
   'Ancestral Beef Bundle': {
     name: 'Ancestral Beef Bundle',
-    price: 200,
+    price: 199.99,
     unit: '4 links',
     image: '/products/ground.webp',
     description: [
@@ -47,7 +47,7 @@ export const PRODUCTS = {
   },
   '1/8 Cow Share': {
     name: '1/8 Cow Share',
-    price: 550,
+    price: 549.99,
     unit: '4 links',
     image: '/products/eighth.jpg',
     description: [`Includes: Prcoessing fees and free shipping, 40lbs of beef, $5.50/ meal, $13.75/lbs`,
@@ -66,7 +66,7 @@ export const PRODUCTS = {
   },
   'Taste of the farm': {
     name: 'Taste of the farm',
-    price: 159,
+    price: 158.99,
     unit: '',
     image: '/products/tasteOfFarm.webp',
     description: [
