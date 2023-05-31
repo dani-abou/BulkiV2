@@ -1,5 +1,6 @@
 import { Paper } from '@mui/material';
 import styled from "styled-components";
+import { media } from '../screenSizes';
 
 export const StyledBackgroundImage = styled.div`
   width: 100vw;
@@ -22,6 +23,11 @@ export const StyledBackgroundImage = styled.div`
 
   &::-webkit-scrollbar {
   display: none;
+
+  ${() => media.mobile(`
+    width: 100dvw;
+    height: 100dvh;
+  `)}
 }
 `
 
@@ -41,6 +47,9 @@ export const StyledBodyDiv = styled.div`
   flex-direction: column;
   background-color: transparent;
 
+  ${() => media.mobile(`
+    min-height: 100dvh;
+  `)}
 `
 
 export const StyledBackgroundDiv = styled(Paper)`
