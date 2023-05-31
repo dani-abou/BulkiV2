@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 const screenSizes = {
   mobile: {
     min: "320px",
@@ -28,4 +30,18 @@ Object.keys(screenSizes).forEach(key => {
   media[key] = styles => query(styles, screenSizes[key].min, screenSizes[key].max)
 })
 
-export { media, screenSizes }
+const Mobile = styled.div`
+  /* display: none; */
+  ${() => media.mobile(`
+    display: inline;
+  `)}
+`
+
+const Tablet = styled.div`
+  display: none;
+  ${() => media.tablet(`
+    display: inline;
+  `)}
+`
+
+export { media, screenSizes, Mobile, Tablet }

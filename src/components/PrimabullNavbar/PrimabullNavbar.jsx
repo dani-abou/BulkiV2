@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import { isMobile } from 'react-device-detect'
 import sendMail from '../../api/mailer'
 import newsletterSignup from '../../api/newsletter/signup'
-import { urls } from "../../common"
+import { Mobile, urls } from "../../common"
 import { PrimabullContextConsumer, useCart } from "../../common/context"
 import Cart from '../../page_components/cart'
 import { PrimabullButtonTypes } from "../PrimabullButton"
@@ -59,6 +59,8 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
         </div>
       </Link>
     </StyledPrimabullLogoContainer>
+    {/* <MobileLinks /> */}
+
     <StyledLinks>
       {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
         <StyledButton
@@ -73,7 +75,6 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
       )}
       <CartButton />
     </StyledLinks>
-    {/* <button onClick={() => newsletterSignup('tonymail@gmail.com', 'tony', 'mail')}> test</button> */}
     <Cart />
   </StyledAppbar >
 }
@@ -84,4 +85,20 @@ export default function PrimabullNavbarWithContext(props) {
   </PrimabullContextConsumer>
 }
 
-
+function MobileLinks() {
+  return <Mobile>
+    {/* <StyledLinks>
+    {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
+      <StyledButton
+        variant={PrimabullButtonTypes.text}
+        size='large'
+        color='onSurface'
+        {...button.props}
+      >
+        {button.label}
+      </StyledButton>
+    </Link>)}
+  </StyledLinks> */}
+    <button>TEST</button>
+  </Mobile>
+}

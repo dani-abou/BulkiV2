@@ -1,9 +1,8 @@
-import { Stack } from "@mui/material"
 import Image from "next/legacy/image"
 import Link from "next/link"
-import logo from "../../../public/logos/MainPrimary.png"
+import logo from "../../../public/logos/MainSecondary.png"
 import { metadata, urls } from "../../common"
-import { PrimabullBody1 } from "../../common/styles"
+import { useCart } from "../../common/context"
 import { NAVBAR_ITEMS } from "../PrimabullNavbar/PrimabullNavbar"
 import socialIcons from "./socialIcons"
 import { StyledCopyrightDiv, StyledCopyrightNotice, StyledFooterContainer, StyledFooterFlex, StyledFooterLink, StyledFooterLinkColor, StyledFooterLogoContainer, StyledFooterTitle, StyledPurposeStatement, StyledSocialIconButton, StyledSocials, StyledTitleDiv, StyledVStack } from "./style"
@@ -11,6 +10,8 @@ import { StyledCopyrightDiv, StyledCopyrightNotice, StyledFooterContainer, Style
 
 
 const PrimabullFooter = () => {
+  const { setShowCart } = useCart()
+
   return <StyledFooterContainer>
     <StyledFooterFlex>
       <StyledTitleDiv>
@@ -21,11 +22,12 @@ const PrimabullFooter = () => {
                 src={logo}
                 alt="footer-logo"
                 layout="fill"
+                objectFit="cover"
               />
             </div>
           </Link>
         </StyledFooterLogoContainer>
-        <StyledPurposeStatement>{metadata.slogan}</StyledPurposeStatement>
+        {/* <StyledPurposeStatement>{metadata.slogan}</StyledPurposeStatement> */}
         <br />
 
       </StyledTitleDiv>
@@ -41,6 +43,11 @@ const PrimabullFooter = () => {
             </Link>
           </StyledFooterLink>
         })}
+        <StyledFooterLink >
+          <StyledFooterLinkColor onClick={() => setShowCart(true)}>
+            My Cart
+          </StyledFooterLinkColor>
+        </StyledFooterLink>
       </StyledVStack>
       <StyledVStack>
         <StyledFooterTitle>Contact us</StyledFooterTitle>
@@ -52,16 +59,17 @@ const PrimabullFooter = () => {
             return <StyledSocialIconButton
               key={socialKey}
               href={metadata.socials[socialKey]}
+              $color={socialIcons[socialKey].color}
               target="_blank"
             >
-              {socialIcons[socialKey]}
+              {socialIcons[socialKey].icon}
             </StyledSocialIconButton>
           })}
         </StyledSocials>
       </StyledVStack>
     </StyledFooterFlex>
     <StyledCopyrightDiv>
-      <StyledCopyrightNotice>{'Copyright © 2022 Primabull LLC, Primabull.us'}</StyledCopyrightNotice>
+      <StyledCopyrightNotice>{'Copyright © 2022 Primabull LLC, primabull.co'}</StyledCopyrightNotice>
 
     </StyledCopyrightDiv>
 

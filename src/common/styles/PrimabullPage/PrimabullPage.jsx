@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import PrimabullFooter from '../../../components/PrimabullFooter';
 import PrimabullNavbar from '../../../components/PrimabullNavbar';
-import { StyledBackgroundDiv, StyledBodyDiv, StyledFooterDiv, StyledNavbarDiv, StyledWholePage } from "./style";
+import { StyledBackgroundDiv, StyledBackgroundImage, StyledBodyDiv, StyledFooterDiv, StyledNavbarDiv, StyledWholePage } from "./style";
 
 const DEFAULT_HEAD = {
   title: 'Primabull',
@@ -13,11 +13,12 @@ const DEFAULT_HEAD = {
     href: 'https://use.typekit.net/vou1mix.css'
   },
   hideNav: false,
+  hideFooter: false,
   backgroundImg: true
 }
 
 const PrimabullPage = ({ children, headProps }) => {
-  const { title, icon, hideNav, backgroundImg, ...links } = { ...DEFAULT_HEAD, ...headProps }
+  const { title, icon, hideNav, hideFooter, backgroundImg, ...links } = { ...DEFAULT_HEAD, ...headProps }
   const [bodyRef, setBodyRef] = useState();
   const scrollTrigger = useScrollTrigger(
     {
@@ -26,27 +27,37 @@ const PrimabullPage = ({ children, headProps }) => {
       threshold: 27,
     });
 
-  return <StyledWholePage $showImg={backgroundImg}>
+  return <StyledBackgroundImage $showImg={backgroundImg}>
     <Head>
       <title>{title || 'Primabull'}</title>
       <link rel="icon" href={icon || '/favicon.ico'} />
       {Object.keys(links).map(linkKey => <link rel={links[linkKey].rel} href={links[linkKey].href} key={linkKey} />)}
     </Head>
-    {!hideNav && <PrimabullNavbar />}
-    {/* <StyledBodyDiv ref={node => {
+    <StyledWholePage >
+
+      {/* <StyledBodyDiv ref={node => {
       if (node) setBodyRef(node)
     }}> */}
 
 
-    <StyledBackgroundDiv $skinny={scrollTrigger} $noNavbar={hideNav} priority>
-      {children}
-    </StyledBackgroundDiv>
-    {/* <StyledFooterDiv $skinny={scrollTrigger}>
-        <PrimabullFooter />
-      </StyledFooterDiv> */}
 
-    {/* </StyledBodyDiv> */}
-  </StyledWholePage >
+      <StyledBodyDiv $showImg={backgroundImg}>
+        {!hideNav && <PrimabullNavbar />}
+
+
+        <StyledBackgroundDiv $skinny={scrollTrigger} $noNavbar={hideNav} priority>
+          {children}
+        </StyledBackgroundDiv>
+
+        {/* </StyledBodyDiv> */}
+      </StyledBodyDiv >
+
+      {!hideFooter && <StyledFooterDiv $skinny={scrollTrigger}>
+        <PrimabullFooter />
+      </StyledFooterDiv>
+      }
+    </StyledWholePage>
+  </StyledBackgroundImage>
 }
 
 export default PrimabullPage

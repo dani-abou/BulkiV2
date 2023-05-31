@@ -59,6 +59,7 @@ export const StyledLinks = styled.div`
   }
   ${() => media.tablet(`
     padding-right: 20px;
+    gap: 20px;
   `)}
 `
 
@@ -71,7 +72,7 @@ export const StyledButton = styled(PrimabullButton)`
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) {
-    display: none;
+    /* display: none; */
   } 
 `
 

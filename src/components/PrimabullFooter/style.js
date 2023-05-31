@@ -1,39 +1,67 @@
 import styled from "styled-components";
+import { media } from "../../common";
 import { PrimabullBody2, PrimabullCaption, PrimabullH6, PrimabullSubtitle1, PrimabullSubtitle2 } from "../../common/styles/tags";
 import { PrimabullIconButton } from "../PrimabullButton";
 
 export const StyledFooterContainer = styled.footer`
   width: 100%;
-  height: 100%;
-  background-color: ${props => props.theme.colors.footer.hexa()};
+  /* height: 400px; */
+  background-color: ${props => props.theme.colors.background.darken(0.6).hexa()};
   color: ${props => props.theme.colors.neutral.lighten(1).hexa()};
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
   position: relative;
 `
 export const StyledFooterFlex = styled.div`
   display: flex;
   gap: 80px;
-  flex: 1 1 100%;
+  width: 100%;
+  /* flex: 0 0 100px; */
+  height: 250px;
+  ${props => media.mobile(`
+    height: 415px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0;
+  `)}
+    ${props => media.tablet(`
+    gap: 20px;
+  `)}
 `
+
 
 export const StyledTitleDiv = styled.div`
   flex: 0 0 50%;
-  padding-top: 3%;
+  padding-top: 1%;
+  padding-left: 3%;
+    ${props => media.mobile(`
+    flex: 1 0 100%;
+  `)}
 `
 
 export const StyledVStack = styled.div`
   flex: 1 1;
   padding-top: 3%;
+  ${props => media.mobile(`
+    flex: 1 0;
+    padding-top: 0;
+    margin-top: -20px;
+  `)}
 `
 
 export const StyledFooterLogoContainer = styled.div`
-  height: 110px;
-  width: 40%;
+  height: 90%;
+  aspect-ratio: 16 / 10;
 
   position: relative;
-  filter: grayscale(100%) brightness(3);
+  /* filter: grayscale(100%) brightness(3); */
+  ${props => media.mobile(`
+    aspect-ratio: auto;
+    width: 100%;
+    height: 150px;
+    margin-top: 50px;
+  `)}
 `
 
 export const StyledPurposeStatement = styled(PrimabullSubtitle1)`
@@ -43,32 +71,56 @@ export const StyledPurposeStatement = styled(PrimabullSubtitle1)`
 `
 
 export const StyledFooterTitle = styled(PrimabullH6)`
+  color: ${props => props.theme.colors.surface.lighten(0.1)};
+    ${props => media.mobile(`
+    margin-left: 40px;
+  `)}
 `
 
 export const StyledFooterLink = styled(PrimabullSubtitle2)`
   margin-bottom: 10px;
-  color: ${props => props.theme.colors.footerText.lighten(0.4)};
+  color: ${props => props.theme.colors.surface};
   text-decoration: none;
+      ${props => media.mobile(`
+    margin-left: 40px;
+  `)}
 `
 export const StyledFooterLinkColor = styled.div`
-  color: ${props => props.theme.colors.footerText.lighten(0.4)};
-  text-decoration: none;
+cursor: pointer;
+  color: ${props => props.theme.colors.surface.lighten(0.1)};
+  text-decoration: underline;
 `
 export const StyledCopyrightDiv = styled.div`
   text-align: center;
-  background-color: ${props => props.theme.colors.footer.lighten(0.3)};
-  flex: 0 0 10%;
+  background-color: ${props => props.theme.colors.background.darken(0.8)};
+  /* flex: 0 0 10%; */
+  /* position: absolute; */
+  width: 100%;
+  /* bottom: 0; */
 
 `
 
 export const StyledCopyrightNotice = styled(PrimabullCaption)`
+  color: ${props => props.theme.colors.surface.lighten(0.1)}
 `
 
 export const StyledSocials = styled.div`
-  margin-left: -3%;
   margin-top: 2.5%;
+  display: flex;
+  gap: 10px;
+  ${props => media.mobile(`
+    margin-left: 40px;
+  `)}
 `
 
 export const StyledSocialIconButton = styled(PrimabullIconButton)`
-  color: ${props => props.theme.colors.footerText.lighten(1.5)};
+  border: 1px solid ${props => props.$color};
+     color: white;
+    background-color: ${props => props.$color};
+
+  :hover {
+    background-color: ${props => props.$color};
+
+    filter: brightness(120%);
+  }
 `

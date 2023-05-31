@@ -8,7 +8,8 @@ import Checkout from "../src/page_components/checkout";
 const PAGE_HEAD = {
   title: 'Primabull Checkout',
   hideNav: true,
-  backgroundImg: false
+  backgroundImg: false,
+  hideFooter: true
 }
 
 

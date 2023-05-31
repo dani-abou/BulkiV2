@@ -1,6 +1,7 @@
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
+import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -9,7 +10,6 @@ import { PrimabullPage, theme } from '../src/common';
 import { PrimabullContextProvider } from '../src/common/context';
 import createEmotionCache from '../src/common/createEmotionCache';
 import "../src/common/styles/scrollbar.css";
-import Newsletter from '../src/page_components/newsletter';
 
 // Client-side cache shared for the whole session 
 // of the user in the browser.
@@ -45,6 +45,7 @@ function MyApp(props) {
 
             <PrimabullPage headProps={pageHead}>
               <Component headControls={setPageHead} />
+              <Analytics />
             </PrimabullPage>
 
           </PrimabullContextProvider>
