@@ -107,7 +107,7 @@ export const StyledCopyrightNotice = styled(PrimabullCaption)`
 export const StyledSocials = styled.div`
   margin-top: 2.5%;
   display: flex;
-  gap: 10px;
+  gap: 7px;
   ${props => media.mobile(`
     margin-left: 40px;
   `)}
@@ -120,7 +120,6 @@ export const StyledSocialIconButton = styled(PrimabullIconButton)`
 
   :hover {
     background-color: ${props => props.$color};
-
     filter: brightness(120%);
   }
 `

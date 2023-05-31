@@ -1,4 +1,4 @@
-import { Instagram } from '@mui/icons-material';
+import { Instagram, Twitter } from '@mui/icons-material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const socialIcons = {
@@ -9,6 +9,10 @@ const socialIcons = {
   "Instagram": {
     icon: <Instagram />,
     color: '#d62976'
+  },
+  "Twitter": {
+    icon: <Twitter />,
+    color: '#1DA1F2'
   }
 }
 
