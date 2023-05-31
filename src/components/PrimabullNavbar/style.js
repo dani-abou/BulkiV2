@@ -17,11 +17,14 @@ export const StyledAppbar = styled.div`
   align-items: center; 
 
     ${props => media.mobile(`
-      height: 300px;
-      flex-direction: column;
-      align-items: stretch;
-      margin-bottom: 20px;
-  `)}
+      min-height: 270px;
+      height: auto;
+      display: inline;
+      padding: 0;
+      padding-bottom: 10px;
+
+
+`)}
 
   @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
     padding: 0;
@@ -37,12 +40,13 @@ export const StyledPrimabullLogoContainer = styled.div`
   flex: 0 0 ${props => props.$skinny ? '200px' : '350px'};
   transition: all 0.2s ease-out;
   @media screen and (max-width: ${screenSizes.mobile.max}) {
-    flex: 1 0 100%;
-    /* height: 500px; */
+    /* flex: 1 0 100%; */
+    height: 200px;
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) and (min-width: ${screenSizes.tablet.min}) {
-    flex: 0 0 300px;
+    /* height: auto; */
+    flex: 0 0 250px;
   }
 `
 
@@ -54,13 +58,24 @@ export const StyledLinks = styled.div`
   justify-content: end;
   align-items: center;
   text-decoration: none;
-  @media screen and (max-width: ${screenSizes.mobile.max}) {
-      display: inline;
-  }
+  /* @media screen and (max-width: ${screenSizes.mobile.max}) {
+      align-items: flex-start;
+      justify-content: center;
+      gap: 30px;
+      height: auto;
+  } */
   ${() => media.tablet(`
     padding-right: 20px;
     gap: 20px;
   `)}
+`
+
+export const StyledMobileLinks = styled(StyledLinks)`
+  margin-top: -20px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  height: auto;
 `
 
 export const StyledLogoBox = styled.div`
@@ -73,10 +88,11 @@ export const StyledLogoBox = styled.div`
 
 export const StyledButton = styled(PrimabullButton)`
   width: 140px;
-    
+  text-decoration: none;
   @media screen and (max-width: ${screenSizes.mobile.max}) {
-      display: none;
-
+      display: ${props => props.$mobile ? 'inline-flex' : 'none'};
+      /* width: auto; */
+      flex: 0 1;
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) {
@@ -87,8 +103,9 @@ export const StyledButton = styled(PrimabullButton)`
 export const StyledCartButton = styled(PrimabullButton)`
   width: 120px;
     @media screen and (max-width: ${screenSizes.mobile.max}) {
-        margin-left: 50%;
-  transform: translate(-50%);
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translate(-50%);
   }
 `
 

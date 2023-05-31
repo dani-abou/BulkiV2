@@ -19,6 +19,7 @@ import {
   StyledCartNumberBox,
   StyledLinks,
   StyledLogoBox,
+  StyledMobileLinks,
   StyledPrimabullInput, StyledPrimabullLogoContainer,
   StyledSearchButton
 } from "./style"
@@ -67,7 +68,7 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
         </Mobile>
       </Link>
     </StyledPrimabullLogoContainer>
-    {/* <MobileLinks /> */}
+    <MobileLinks />
 
     <StyledLinks>
       {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
@@ -94,19 +95,19 @@ export default function PrimabullNavbarWithContext(props) {
 }
 
 function MobileLinks() {
-  return <Mobile>
-    {/* <StyledLinks>
-    {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
-      <StyledButton
-        variant={PrimabullButtonTypes.text}
-        size='large'
-        color='onSurface'
-        {...button.props}
-      >
-        {button.label}
-      </StyledButton>
-    </Link>)}
-  </StyledLinks> */}
-    <button>TEST</button>
+  return <Mobile style={{ width: "100%", height: '100%' }}>
+    <StyledMobileLinks>
+      {NAVBAR_ITEMS.map(button => <Link key={button.label} href={button.href}>
+        <StyledButton
+          variant={PrimabullButtonTypes.primary}
+          size='large'
+          $mobile={true}
+          {...button.props}
+        >
+          {button.label}
+        </StyledButton>
+      </Link>)}
+    </StyledMobileLinks>
+    <CartButton />
   </Mobile>
 }

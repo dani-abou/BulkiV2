@@ -31,7 +31,7 @@ Object.keys(screenSizes).forEach(key => {
 })
 
 const Mobile = styled.div`
-  /* display: none; */
+  display: none;
   ${() => media.mobile(`
     display: inline;
   `)}

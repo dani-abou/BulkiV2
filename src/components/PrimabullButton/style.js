@@ -7,6 +7,7 @@ export const StyledButton = styled(Button)`
   padding: 0;
   width: 120px;
   height: 50px;
+  text-decoration: none;
 `
 
 export const StyledTextButton = styled(StyledButton)`
