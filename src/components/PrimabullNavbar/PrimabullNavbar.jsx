@@ -18,8 +18,9 @@ import {
   StyledCartNumber,
   StyledCartNumberBox,
   StyledLinks,
+  StyledLogoBox,
   StyledPrimabullInput, StyledPrimabullLogoContainer,
-  StyledSearchButton,
+  StyledSearchButton
 } from "./style"
 
 const CartButton = dynamic(
@@ -50,13 +51,20 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
 
     <StyledPrimabullLogoContainer $skinny={skinny}>
       <Link href={urls.primary}>
-        <div style={{ width: '100%', height: '100%' }} href='/'>
+        <StyledLogoBox href='/'>
           <Image
             src='/logos/MainPrimary.png'
             alt='PrimabullLogo'
             layout='fill'
           />
-        </div>
+        </StyledLogoBox>
+        <Mobile style={{ width: '100%', height: '100%' }} href='/'>
+          <Image
+            src='/logos/MainSecondary.png'
+            alt='PrimabullLogo'
+            layout='fill'
+          />
+        </Mobile>
       </Link>
     </StyledPrimabullLogoContainer>
     {/* <MobileLinks /> */}

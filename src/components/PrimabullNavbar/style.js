@@ -63,6 +63,14 @@ export const StyledLinks = styled.div`
   `)}
 `
 
+export const StyledLogoBox = styled.div`
+  width: 100%;
+  height: 100%;
+  ${() => media.mobile(`
+    display: none;
+  `)}
+`
+
 export const StyledButton = styled(PrimabullButton)`
   width: 140px;
     

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import PrimabullFooter from '../../../components/PrimabullFooter';
 import PrimabullNavbar from '../../../components/PrimabullNavbar';
+import { Mobile } from '../screenSizes';
 import { StyledBackgroundDiv, StyledBackgroundImage, StyledBodyDiv, StyledFooterDiv, StyledNavbarDiv, StyledWholePage } from "./style";
 
 const DEFAULT_HEAD = {
@@ -53,6 +54,7 @@ const PrimabullPage = ({ children, headProps }) => {
       </StyledBodyDiv >
 
       {!hideFooter && <StyledFooterDiv $skinny={scrollTrigger}>
+        <Mobile><br /><br /></Mobile>
         <PrimabullFooter />
       </StyledFooterDiv>
       }
