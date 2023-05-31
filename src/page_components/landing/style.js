@@ -24,7 +24,7 @@ export const StyledCenter = styled.div`
   text-align: center;
   @media screen and (max-width: ${screenSizes.mobile.max}) {
       width: ${screenSizes.mobile.min};
-      top: 60%;
+      top: 40%;
   }
   @media screen and (max-width: ${screenSizes.tablet.max}) {
       width: ${screenSizes.tablet.min};
