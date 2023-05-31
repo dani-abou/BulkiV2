@@ -27,7 +27,8 @@ export const StyledBackgroundImage = styled.div`
   ${() => media.mobile(`
     width: 100dvw;
     height: 130dvh;
-    padding: 15dvh 0;
+    padding-top: 15dvh;
+    padding-bottom: 15dvh;
   `)}
 }
 `
@@ -49,7 +50,7 @@ export const StyledBodyDiv = styled.div`
   background-color: transparent;
 
   ${() => media.mobile(`
-    min-height: 100dvh;
+    min-height: 130dvh;
   `)}
 `
 
