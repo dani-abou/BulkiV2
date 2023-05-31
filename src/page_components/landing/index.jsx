@@ -1,6 +1,7 @@
 import Link from "next/link.js"
 import { useState } from "react"
 import makeOrder from "../../api/orders/makeOrder.js"
+import { Mobile } from "../../common/index.js"
 import PrimabullNavbar from "../../components/PrimabullNavbar/PrimabullNavbar.jsx"
 import { StyledBackground, StyledButton, StyledCenter, StyledSubtitle, StyledTitle } from "./style.js"
 
@@ -25,6 +26,9 @@ export default function Landing() {
       <StyledButton size='large'>Shop Now</StyledButton>
 
     </Link>
+    <Mobile>
+      <br /><br />
+    </Mobile>
   </StyledCenter>
   {/* </StyledBackground> */ }
 }

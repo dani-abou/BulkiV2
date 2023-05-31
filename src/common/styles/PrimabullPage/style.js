@@ -26,7 +26,8 @@ export const StyledBackgroundImage = styled.div`
 
   ${() => media.mobile(`
     width: 100dvw;
-    height: 100dvh;
+    height: 130dvh;
+    padding: 15dvh 0;
   `)}
 }
 `
