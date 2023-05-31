@@ -69,7 +69,8 @@ export const StyledButton = styled(PrimabullButton)`
   text-decoration: none;
 
   @media screen and (max-width: ${screenSizes.mobile.max}) {
-        margin-top: 20px;
+        /* margin-top: 20px; */
+        display: none;
   }
   
 `

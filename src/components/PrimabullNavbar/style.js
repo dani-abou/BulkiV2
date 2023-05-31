@@ -58,12 +58,9 @@ export const StyledLinks = styled.div`
   justify-content: end;
   align-items: center;
   text-decoration: none;
-  /* @media screen and (max-width: ${screenSizes.mobile.max}) {
-      align-items: flex-start;
-      justify-content: center;
-      gap: 30px;
-      height: auto;
-  } */
+  @media screen and (max-width: ${screenSizes.mobile.max}) {
+    display: none;
+  }
   ${() => media.tablet(`
     padding-right: 20px;
     gap: 20px;
@@ -71,6 +68,7 @@ export const StyledLinks = styled.div`
 `
 
 export const StyledMobileLinks = styled(StyledLinks)`
+display: flex;
   margin-top: -20px;
   align-items: flex-start;
   justify-content: center;
@@ -93,6 +91,8 @@ export const StyledButton = styled(PrimabullButton)`
       display: ${props => props.$mobile ? 'inline-flex' : 'none'};
       /* width: auto; */
       flex: 0 1;
+      text-decoration: none;
+
   }
 
   @media screen and (max-width: ${screenSizes.tablet.max}) {
