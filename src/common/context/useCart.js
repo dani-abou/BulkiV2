@@ -57,7 +57,7 @@ export default function useCart() {
       subtotal += cart[cartKey] * PRODUCTS[cartKey]?.price || 0
     })
 
-    let shippingTotal = subtotal > 200 ? 0 : 20;
+    let shippingTotal = subtotal > 199 ? 0 : 20;
     let taxedAmount = Math.round((tax / 100 * subtotal) * 100) / 100
     return { subtotal, shippingTotal, taxTotal: taxedAmount, total: subtotal + shippingTotal + taxedAmount }
   }, [cart, tax])

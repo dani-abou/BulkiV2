@@ -23,15 +23,34 @@ export const PRODUCTS = {
       `4 links per package, 1.00 - 1.25 lbs`
     ]
   },
-  'Beef Liver': {
-    name: 'Beef Liver',
-    price: 11.99,
-    unit: '4 links',
-    image: '/products/liver.webp',
-    description: [`Includes: + Daily serving of iron, riboflavin, vitamin b12, vitamin A, and copper`, `
-    1 lb package of grass fed, grass finished beef liver`
+  'TBone': {
+    name: 'T-Bone Steak',
+    price: 31.99,
+    unit: '',
+    image: '/products/tbone.webp',
+    description: [
+      'An all time favorite.  Similar to the Porterhouse, our T-Bone steak is cut from the short loin. The T-Bone is strip on one side and a small portion of tenderloin on the other side of a T shaped bone. 1-1.5 lbs'
     ]
   },
+  'strip': {
+    name: 'Strip Steak',
+    price: 22.99,
+    unit: '',
+    image: '/products/strip.webp',
+    description: [
+      'One of our most popular steaks, our Strip Steak is a rich, beefy steak with good marbling. Cut from the lower, mid portion of the back, the muscles don’t get much of a work out. 0.75-1 lb'
+    ]
+  },
+  'ribSteak': {
+    name: 'Rib Steak',
+    price: 31.99,
+    unit: '',
+    image: '/products/ribSteak.webp',
+    description: [
+      'For the real steak lover, our Rib Steak is a well marbled cut.  Don’t fear the fat, because fat = flavor and this cut is packed with it. 1.1-1.5 lbs'
+    ]
+  },
+
 
   'Ancestral Beef Bundle': {
     name: 'Ancestral Beef Bundle',
@@ -45,23 +64,34 @@ export const PRODUCTS = {
       `2,700 grams protein +`
     ]
   },
-  '1/8 Cow Share': {
-    name: '1/8 Cow Share',
-    price: 549.99,
+
+
+  'porkRib': {
+    name: 'Country Style Pork Ribs',
+    price: 9.99,
+    unit: '',
+    image: '/products/porkRib.webp',
+    description: [
+      'Boneless and meaty, these flavor packed ribs are great any way you cook them!  Slow cooked, grilled, or in the oven. A customer favorite! 1-1.5 lbs'
+    ]
+  },
+  'italianSausage': {
+    name: 'Sweet Italian Sausage',
+    price: 11.99,
+    unit: '',
+    image: '/products/italianSausage.webp',
+    description: [
+      `Herbs, seasonings and the great flavor of fennel has made this a customer favorite.`,
+      `4 links per package, 1.00 - 1.25 lbs.`
+    ]
+  },
+  'Beef Liver': {
+    name: 'Beef Liver',
+    price: 11.99,
     unit: '4 links',
-    image: '/products/eighth.jpg',
-    description: [`Includes: Prcoessing fees and free shipping, 40lbs of beef, $5.50/ meal, $13.75/lbs`,
-      `24 lbs of individually packaged ground beef`,
-      `1 Roast(Eye, Chuck or Top Round)`,
-      `2 Shank Packages(Soup Bones)`,
-      `2 Stew Meat Packages`,
-      `1 of the following: Brisket or Short Ribs`,
-      `1 Sirloin Tip`,
-      `1 Sirloin`,
-      `2 - 3 Ribeye`,
-      `2 Filet Mignon`,
-      `3 New York Strip`,
-      `1 of the following: Flank, Skirt or Flap Steak`
+    image: '/products/liver.webp',
+    description: [`Includes: + Daily serving of iron, riboflavin, vitamin b12, vitamin A, and copper`, `
+    1 lb package of grass fed, grass finished beef liver`
     ]
   },
   'Taste of the farm': {
@@ -84,5 +114,26 @@ export const PRODUCTS = {
       `Bonus Free 1 Package Pastured raised chicken drumsticks`
     ]
   },
+
+  '1/8 Cow Share': {
+    name: '1/8 Cow Share',
+    price: 549.99,
+    unit: '4 links',
+    image: '/products/eighth.jpg',
+    description: [`Includes: free shipping, 40lbs of beef, $5.50/ meal, $13.75/lbs`,
+      `24 lbs of individually packaged ground beef`,
+      `1 Roast(Eye, Chuck or Top Round)`,
+      `2 Shank Packages(Soup Bones)`,
+      `2 Stew Meat Packages`,
+      `1 of the following: Brisket or Short Ribs`,
+      `1 Sirloin Tip`,
+      `1 Sirloin`,
+      `2 - 3 Ribeye`,
+      `2 Filet Mignon`,
+      `3 New York Strip`,
+      `1 of the following: Flank, Skirt or Flap Steak`
+    ]
+  },
+
 
 }

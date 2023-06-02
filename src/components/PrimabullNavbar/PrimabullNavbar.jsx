@@ -39,10 +39,10 @@ export const NAVBAR_ITEMS = [
     label: 'Shop'
   },
   {
-    href: "/whyPrimabull",
+    href: "/aboutUs",
     // icon: <LocalShippingRoundedIcon />,
     translateKey: 'listings',
-    label: 'Why Primabull?'
+    label: 'About Us'
   }
 ]
 

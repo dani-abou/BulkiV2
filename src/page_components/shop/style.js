@@ -75,7 +75,7 @@ export const StyledBorder = styled.div`
   height: 60%;
   width: 1.5px;
   opacity: 0.5;
-  visibility: ${props => props.$index === 2 || props.$index === 5 ? 'hidden' : 'visible'};
+  visibility: ${props => ((props.$index + 1) % 3 === 0) || props.$index === props.$length - 1 ? 'hidden' : 'visible'};
   ${() => media.mobile(`
       visibility: hidden;
   `)}
@@ -137,7 +137,7 @@ export const StyledGutterBorder = styled.div`
   background-color: gray;
   left: 50%;
   transform: translate(-50%);
-  visibility: ${props => props.$index < props.$length / 2 ? 'hidden' : 'visible'};
+  visibility: ${props => props.$index < 3 ? 'hidden' : 'visible'};
 
   ${props => media.tablet(`
       visibility: ${props.$index < props.$length / 3 ? 'hidden' : 'visible'};
