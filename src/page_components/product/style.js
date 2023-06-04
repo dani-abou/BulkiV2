@@ -29,8 +29,8 @@ export const StyledCarouselDiv = styled.div`
   height: 500px;
   flex: 0 0 45%;
   ${() => media.mobile(`
-    flex: 0 0 150px;
-    width: 250px;
+    flex: 0 0 100px;
+    width: 95%px;
   `)}
     ${() => media.tablet(`
     flex: 0 0 280px;
