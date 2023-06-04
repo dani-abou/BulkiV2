@@ -25,7 +25,7 @@ export const StyledProduct = styled.div`
   padding-top: 15px;
   padding-bottom: 5px;
   min-height: 560px;
-  cursor: auto;
+  cursor: pointer;
   @media screen and (max-width: ${screenSizes.mobile.max}) {
     padding-bottom: 40px;
   }
@@ -35,8 +35,10 @@ export const StyledProduct = styled.div`
     height: auto;
     min-height: 200px;
   `)}
-
 `
+
+
+
 export const StyledProductImage = styled.div`
   width: 70%;
   height: 260px;

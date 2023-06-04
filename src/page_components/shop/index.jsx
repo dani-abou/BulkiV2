@@ -1,6 +1,7 @@
 import { Alert, Snackbar } from "@mui/material";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { isMobile } from 'react-device-detect';
 import { useCart } from "../../common/context";
@@ -17,6 +18,7 @@ const DEFAULT_HOVERS = Object.keys(PRODUCTS).reduce((accumulator, current) => ({
 
 export default function Shop() {
 
+  const router = useRouter();
   const [hovered, setHovered] = useState();
   const [active, setActive] = useState();
   const { cart, increaseCart, decreaseCart, removeFromCart, setShowCart } = useCart();
@@ -29,7 +31,8 @@ export default function Shop() {
 
   const [snackbar, setSnackbar] = useState();
 
-  const addToCart = useCallback((productKey, name) => {
+  const addToCart = useCallback((e, productKey, name) => {
+    e.stopPropagation();
     increaseCart(productKey);
     setSnackbar(name)
   }, [increaseCart, setSnackbar])
@@ -55,6 +58,14 @@ export default function Shop() {
     setHovered()
   }
 
+  const onProductClick = (e, productKey) => {
+    // console.log(e)
+    // console.log(e.target.className)
+    // if (!e.target.className == `style__StyledAddToCart-sc-1dcdn7-9 ddcKAy`) {
+    router.push(`/product/${productKey}`)
+    // }
+  }
+
   return <PrimabullSurface>
     <PrimabullH4 style={{ textAlign: 'center', marginTop: '10px' }}>
       Taste the Difference
@@ -69,6 +80,7 @@ export default function Shop() {
           onMouseLeave={() => toggleHoverTrigger()}
           onTouchStart={() => setActive(index)}
           onTouchEnd={() => setActive()}
+          onClick={e => onProductClick(e, productKey)}
           $hovered={index === hovered}
           $greyed={isMobile ? active !== undefined && index !== active : hovered !== undefined && index !== hovered}
         >
@@ -76,8 +88,8 @@ export default function Shop() {
           <StyledGutterBorder $index={index} $length={Object.keys(PRODUCTS).length} />
           <StyledProductImage>
             <Image
-              src={product.image}
-              alt={product.image}
+              src={product.images[0]}
+              alt={product.images[0]}
               layout='fill'
               objectFit="cover"
             />
@@ -99,7 +111,7 @@ export default function Shop() {
           </StyledContent>
           <StyledBuyButton
             size='large'
-            onClick={() => addToCart(productKey, product.name)}
+            onClick={e => addToCart(e, productKey, product.name)}
             onMouseOver={() => hoverButton(productKey)}
             onMouseOut={() => unHoverButton(productKey)}
           >

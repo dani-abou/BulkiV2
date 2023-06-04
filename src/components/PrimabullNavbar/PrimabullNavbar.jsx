@@ -54,14 +54,14 @@ const PrimabullNavbar = ({ skinny, PrimabullContext }) => {
       <Link href={urls.primary}>
         <StyledLogoBox href='/'>
           <Image
-            src='/logos/MainPrimary.png'
+            src='logos/MainPrimary.png'
             alt='PrimabullLogo'
             layout='fill'
           />
         </StyledLogoBox>
         <Mobile style={{ width: '100%', height: '100%' }} href='/'>
           <Image
-            src='/logos/MainSecondary.png'
+            src='logos/MainSecondary.png'
             alt='PrimabullLogo'
             layout='fill'
           />

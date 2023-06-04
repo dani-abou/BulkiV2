@@ -29,7 +29,7 @@ export default function CartProducts() {
           </StyledQuantityContainer>
           <StyledImageContainer>
             <Image
-              src={product.image}
+              src={product.images[0]}
               alt={'cart' + product.name}
               layout='fill'
               objectFit="cover"

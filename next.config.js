@@ -7,7 +7,7 @@ const nextConfig = {
 
   images: {
     loader: 'akamai',
-    path: '',
+    path: '/',
     formats: ["image/webp"],
     // domains: ['firebasestorage.googleapis.com'],
     remotePatterns: [

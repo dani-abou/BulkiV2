@@ -14,6 +14,9 @@ export function useCartStates() {
   const [showCart, setShowCart] = useState(false);
   const [tax, setTax] = useState(0)
 
+  const validCart = Object.keys(cart).every(key => PRODUCTS[key])
+  if (!validCart) setCart(defaultCart)
+
   return { cart, setCart, showCart, setShowCart, tax, setTax }
 }
 
@@ -58,9 +61,12 @@ export default function useCart() {
     })
 
     let shippingTotal = subtotal > 199 ? 0 : 20;
-    let taxedAmount = Math.round((tax / 100 * subtotal) * 100) / 100
-    return { subtotal, shippingTotal, taxTotal: taxedAmount, total: subtotal + shippingTotal + taxedAmount }
+    let taxedAmount = roundHundredth(tax / 100 * subtotal)
+
+    return { subtotal: roundHundredth(subtotal), shippingTotal, taxTotal: taxedAmount, total: roundHundredth(subtotal + shippingTotal + taxedAmount) }
   }, [cart, tax])
 
   return { cart, increaseCart, decreaseCart, removeFromCart, setCartValue, showCart, setShowCart, extendedCart, emptyCart, totals, setTax };
 }
+
+function roundHundredth(num) { return Math.round(num * 100) / 100 }

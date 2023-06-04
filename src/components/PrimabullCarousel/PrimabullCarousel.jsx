@@ -54,7 +54,9 @@ const PrimabullCarousel = ({ urls, showButtons, draggable, showThumbnails, class
   return <StyledCarouselDiv className={className}>
     <StyledViewPort ref={emblaRef}>
       <StyledImagesDiv>
+
         {urls.map((image, index) => <StyledImage key={index}>
+          {console.log(<Image src={image} alt={image} layout='fill' />)}
           <Image src={image} alt={image} layout='fill' />
         </StyledImage>)}
       </StyledImagesDiv>

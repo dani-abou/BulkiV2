@@ -144,8 +144,6 @@ export const StyledQuantityInput = styled(PrimabullInput)`
     border: none;
     outline: none;
   }
-
-
 `
 
 export const StyledFooter = styled.div`

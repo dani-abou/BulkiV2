@@ -1,4 +1,4 @@
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { PRODUCTS } from "../../src/data";
 import Product from "../../src/page_components/product";
@@ -16,22 +16,17 @@ import Product from "../../src/page_components/product";
 //   return { props: { test: Object.keys(context) } }
 // }
 
-export default function ProductPage({ headControls, ...props }) {
-  // const router = useRouter();
-  // const { productId } = router.query;
+export default function ProductPage({ headControls }) {
+  const router = useRouter();
+  const { productId } = router.query;
 
   // const output = PRODUCTS[productId];
   // if (!output && !(typeof window === undefined)) router.push('/');
   // else return output;
   // // console.log(productId);
 
-  // const product = useMemo(() => {
-  //   const output = PRODUCTS[productId];
-  //   if (!output && !(typeof window === undefined)) router.push('/');
-  //   else return output;
-  // }, [productId, router]);
+  const product = useMemo(() => PRODUCTS[productId], [productId]);
 
-  // return <Product product={product} />
-  return <></>
+  return <Product product={product} productId={productId} />
 }
 

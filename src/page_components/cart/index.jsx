@@ -32,7 +32,7 @@ import {
 
 export default function Cart() {
 
-  const { cart, showCart, setShowCart, removeFromCart } = useCart();
+  const { cart, showCart, setShowCart, removeFromCart, totals } = useCart();
 
   const router = useRouter();
 
@@ -54,7 +54,7 @@ export default function Cart() {
       <CartTable cart={cart} removeFromCart={removeFromCart} />
     }
     <StyledFooter>
-      <StyledTotal><b>Total:</b>  ${total(cart)}</StyledTotal>
+      <StyledTotal><b>Total:</b>  ${totals.subtotal}</StyledTotal>
 
       <StyledSubmitButton size='large'
         disabled={Object.values(cart).every(val => val === 0)}
@@ -68,7 +68,7 @@ function ProductName({ product }) {
   return <div>
     <StyledProductImage>
       <Image
-        src={product.image}
+        src={product.images[0]}
         alt={'cart' + product.name}
         layout='fill'
         objectFit="cover"
@@ -81,7 +81,7 @@ function ProductName({ product }) {
 function QuantityInput({ productKey }) {
 
 
-  const { cart, increaseCart, decreaseCart, setCartValue } = useCart();
+  const { cart, setCartValue } = useCart();
 
   const [value, setValue] = useState(cart[productKey]);
 
@@ -125,10 +125,6 @@ function QuantityInput({ productKey }) {
     <StyledRightButton onClick={addToCart}>+</StyledRightButton>
 
   </StyledFieldDiv>
-}
-
-function total(cart) {
-  return Object.keys(cart).reduce((accumulator, current) => accumulator + PRODUCTS[current].price * cart[current], 0);
 }
 
 function CloseButton({ onClick, smaller }) {
