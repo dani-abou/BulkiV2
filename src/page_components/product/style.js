@@ -26,7 +26,7 @@ export const StyledProductPage = styled.div`
 `
 
 export const StyledCarouselDiv = styled.div`
-  height: 500px;
+  /* height: 500px; */
   flex: 0 0 45%;
   ${() => media.mobile(`
     flex: 0 0 100px;

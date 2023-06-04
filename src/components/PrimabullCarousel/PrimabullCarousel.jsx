@@ -10,7 +10,7 @@ import {
 import Thumbnail from "./thumbnail";
 
 
-const PrimabullCarousel = ({ urls, showButtons, draggable, showThumbnails, className }) => {
+const PrimabullCarousel = ({ urls, showButtons, draggable = true, showThumbnails, className }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({ draggable: draggable, skipSnaps: false })
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
