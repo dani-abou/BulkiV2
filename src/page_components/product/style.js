@@ -31,10 +31,10 @@ export const StyledCarouselDiv = styled.div`
   aspect-ratio: 13/13;
   ${() => media.mobile(`
     width: 90%;
-    aspect-ratio: 16 / 13;
+    aspect-ratio: 1 / 1;
   `)}
     ${() => media.tablet(`
-    aspect-ratio: 16 / 15;
+    aspect-ratio: 1 / 1;
     width: 400px
   `)}
   `
