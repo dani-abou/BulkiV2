@@ -21,21 +21,21 @@ export const StyledProductPage = styled.div`
     ${() => media.tablet(`
     flex-direction: column;
     align-items: center;
-    gap: 80px;
+    gap: 100px;
   `)}
 `
 
 export const StyledCarouselDiv = styled.div`
-  /* height: 500px; */
-  flex: 0 0 45%;
+  height: 450px;
+  /* flex: 0 0 20%; */
+  aspect-ratio: 13/13;
   ${() => media.mobile(`
-    flex: 0 0 170px;
-    height: 260px;
-    width: 95%;
+    width: 90%;
+    aspect-ratio: 16 / 13;
   `)}
     ${() => media.tablet(`
-    flex: 0 0 280px;
-    width: 300px
+    aspect-ratio: 16 / 15;
+    width: 400px
   `)}
   `
 

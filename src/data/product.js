@@ -133,7 +133,7 @@ export const PRODUCTS = {
     unit: '4 links',
     images: [
       'products/eighth.jpg',
-      'products/sirloin.jpg',
+      'products/sirloin.webp',
       'products/ground.webp',
       'products/filet.webp',
       'products/brisket.webp',
