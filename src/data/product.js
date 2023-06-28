@@ -27,33 +27,33 @@ export const PRODUCTS = {
       `4 links per package, 1.00 - 1.25 lbs`
     ]
   },
-  'tBone': {
-    name: 'T-Bone Steak',
-    price: 31.99,
-    unit: '',
-    images: ['products/tbone.webp', 'products/kielbasa.webp'],
-    description: [
-      'An all time favorite.  Similar to the Porterhouse, our T-Bone steak is cut from the short loin. The T-Bone is strip on one side and a small portion of tenderloin on the other side of a T shaped bone. 1-1.5 lbs'
-    ]
-  },
-  'strip': {
-    name: 'Strip Steak',
-    price: 22.99,
-    unit: '',
-    images: ['products/strip.webp'],
-    description: [
-      'One of our most popular steaks, our Strip Steak is a rich, beefy steak with good marbling. Cut from the lower, mid portion of the back, the muscles don’t get much of a work out. 0.75-1 lb'
-    ]
-  },
-  'ribSteak': {
-    name: 'Rib Steak',
-    price: 31.99,
-    unit: '',
-    images: ['products/ribSteak.webp'],
-    description: [
-      'For the real steak lover, our Rib Steak is a well marbled cut.  Don’t fear the fat, because fat = flavor and this cut is packed with it. 1.1-1.5 lbs'
-    ]
-  },
+  // 'tBone': {
+  //   name: 'T-Bone Steak',
+  //   price: 31.99,
+  //   unit: '',
+  //   images: ['products/tbone.webp', 'products/kielbasa.webp'],
+  //   description: [
+  //     'An all time favorite.  Similar to the Porterhouse, our T-Bone steak is cut from the short loin. The T-Bone is strip on one side and a small portion of tenderloin on the other side of a T shaped bone. 1-1.5 lbs'
+  //   ]
+  // },
+  // 'strip': {
+  //   name: 'Strip Steak',
+  //   price: 22.99,
+  //   unit: '',
+  //   images: ['products/strip.webp'],
+  //   description: [
+  //     'One of our most popular steaks, our Strip Steak is a rich, beefy steak with good marbling. Cut from the lower, mid portion of the back, the muscles don’t get much of a work out. 0.75-1 lb'
+  //   ]
+  // },
+  // 'ribSteak': {
+  //   name: 'Rib Steak',
+  //   price: 31.99,
+  //   unit: '',
+  //   images: ['products/ribSteak.webp'],
+  //   description: [
+  //     'For the real steak lover, our Rib Steak is a well marbled cut.  Don’t fear the fat, because fat = flavor and this cut is packed with it. 1.1-1.5 lbs'
+  //   ]
+  // },
 
 
   'ancestralBeefBundle': {
