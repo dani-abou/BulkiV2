@@ -2,8 +2,6 @@
 
 Primabull is a B2B marketplace platform, built as a NextJs application. I decided to use NextJs for two reasons: I wanted to learn about an up-and-coming technology, and because I want this website to be sustainable and up-to-date in the long-term. Firebase is used for storage, authentication, and databases. Since I am building this alone, with a minimal backend, Firebase was an easy option due to its simple frontend integrations, and vast array of functionality.
 
-This is certainly a work in progress, that I am still working on today.
-
 ## Frontend technologies
 
 I am building this whole project with React. However, I do not have time to reinvent the wheel, and or that reason I have been utilizing Material UI for some pretty and reusable components. Additionally, I am using styled-components, to easily include dynamic styling into my components.
