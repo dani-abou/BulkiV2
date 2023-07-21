@@ -28,12 +28,13 @@ const PrimabullPage = ({ children, headProps }) => {
       threshold: 27,
     });
 
-  return <StyledBackgroundImage $showImg={backgroundImg}>
+  return <div style={{ position: 'relative', width: '100vw', overflowX: 'hidden' }}>
     <Head>
       <title>{title || 'Primabull'}</title>
       <link rel="icon" href={icon || '/favicon.ico'} />
       {Object.keys(links).map(linkKey => <link rel={links[linkKey].rel} href={links[linkKey].href} key={linkKey} />)}
     </Head>
+    <StyledBackgroundImage $showImg={backgroundImg} rel='preload' />
     <StyledWholePage >
 
       {/* <StyledBodyDiv ref={node => {
@@ -59,7 +60,7 @@ const PrimabullPage = ({ children, headProps }) => {
       </StyledFooterDiv>
       }
     </StyledWholePage>
-  </StyledBackgroundImage>
+  </div>
 }
 
 export default PrimabullPage

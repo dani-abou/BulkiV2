@@ -19,6 +19,7 @@ export const StyledBackgroundImage = styled.div`
 
     `
   background-color: ${props.theme.colors.background.hexa()};
+  background-position: fixed;
   `
   }
 
@@ -37,7 +38,16 @@ export const StyledBackgroundImage = styled.div`
 export const StyledWholePage = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: hidden;
+
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+
+  
   
 `
 
@@ -49,6 +59,8 @@ export const StyledBodyDiv = styled.div`
   display: flex;
   flex-direction: column;
   background-color: transparent;
+  overflow-x: hidden;
+
 
   ${() => media.mobile(`
     min-height: 110dvh;

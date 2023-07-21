@@ -101,7 +101,7 @@ function MobileLinks() {
         <StyledButton
           variant={PrimabullButtonTypes.primary}
           size='large'
-          $mobile={true}
+          // $mobile={true}
           {...button.props}
         >
           {button.label}
